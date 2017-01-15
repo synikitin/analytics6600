@@ -1,4 +1,4 @@
-baseurl = "https://synikitin.github.io"
+baseurl = "https://synikitin.github.io/"
 theme = "nixon"
 title = "Data Analytics 6600"
 languageCode = "en-us"
@@ -34,21 +34,14 @@ Fusce pulvinar dictum magna, vel rutrum nunc tempor non. Curabitur aliquam <a hr
 
 Ut pharetra pellentesque eros non fringilla. Duis vel augue at ex semper lobortis vitae in ipsum. Suspendisse et congue libero."""
 
-	[params.facebook]
-		account = "nixon.example"
-	[params.feedburner]
-		account = "nixon.example"
 	[params.github]
-		account = "nixon.example"
-	[params.googleplus]
-		account = ""
+		account = "synikitin"
 	[params.linkedin]
 		account = "nixon.example"
 		source  = "nixon.example"
 	[params.twitter]
-		account = "nixon.example"
-	[params.slideshare]
-		account = "nixon.example"
+		account = "slavaua87"
+
 
 	[params.license]
 		url = "http://creativecommons.org/licenses/by/3.0/"
