@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Presentation-rsses on Data Analytics 6600</title>
-    <link>https://synikitin.github.io/presentation/index.xml</link>
+    <link>https://synikitin.github.io/analytics6600/presentation/index.xml</link>
     <description>Recent content in Presentation-rsses on Data Analytics 6600</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 20YY, Your Name Here; all rights reserved.</copyright>
     <lastBuildDate>Tue, 29 Nov 2016 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://synikitin.github.io/presentation/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://synikitin.github.io/analytics6600/presentation/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Aenean: Odio orci MMXII</title>
-      <link>https://synikitin.github.io/presentation/aenean-odio-orci-mmxii</link>
+      <link>https://synikitin.github.io/analytics6600/presentation/aenean-odio-orci-mmxii</link>
       <pubDate>Tue, 29 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/presentation/aenean-odio-orci-mmxii</guid>
+      <guid>https://synikitin.github.io/analytics6600/presentation/aenean-odio-orci-mmxii</guid>
       <description>&lt;p&gt;Aenean odio orci, semper nec rhoncus id, rutrum id velit.
 Maecenas et consequat augue, et venenatis leo.
 &lt;/p&gt;
@@ -52,10 +52,10 @@ Data accessible to the rest of us&lt;/p&gt;
     
     <item>
       <title>Ullamcorper Ultrices Pellentesque (MMXV)</title>
-      <link>https://synikitin.github.io/presentation/ullamcorper-ultrices-pellentesque/</link>
+      <link>https://synikitin.github.io/analytics6600/presentation/ullamcorper-ultrices-pellentesque/</link>
       <pubDate>Sun, 27 Nov 2016 12:28:12 -0700</pubDate>
       
-      <guid>https://synikitin.github.io/presentation/ullamcorper-ultrices-pellentesque/</guid>
+      <guid>https://synikitin.github.io/analytics6600/presentation/ullamcorper-ultrices-pellentesque/</guid>
       <description>
 
 &lt;p&gt;Aliquam ullamcorper ultrices pellentesque.
@@ -78,10 +78,10 @@ Mauris sodales libero luctus nisl commodo, id tempus massa molestie.&lt;/p&gt;
     
     <item>
       <title>Vitae Blandit Turpis Blah</title>
-      <link>https://synikitin.github.io/presentation/vitae-blandit-turpis/</link>
+      <link>https://synikitin.github.io/analytics6600/presentation/vitae-blandit-turpis/</link>
       <pubDate>Fri, 18 Nov 2016 14:06:00 -0500</pubDate>
       
-      <guid>https://synikitin.github.io/presentation/vitae-blandit-turpis/</guid>
+      <guid>https://synikitin.github.io/analytics6600/presentation/vitae-blandit-turpis/</guid>
       <description>
 
 &lt;p&gt;Pellentesque ac magna at lorem semper aliquet.
