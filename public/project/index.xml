@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Project-rsses on Data Analytics 6600</title>
+    <link>https://synikitin.github.io/project/index.xml</link>
+    <description>Recent content in Project-rsses on Data Analytics 6600</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright (c) 20YY, Your Name Here; all rights reserved.</copyright>
+    <lastBuildDate>Thu, 24 Nov 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://synikitin.github.io/project/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Ornare Diam</title>
+      <link>https://synikitin.github.io/project/ornare-diam/</link>
+      <pubDate>Thu, 24 Nov 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://synikitin.github.io/project/ornare-diam/</guid>
+      <description>
+
+
+&lt;figure class=&#34;hid&#34;&gt;
+    
+        &lt;img src=&#34;https://synikitin.github.io/img/sociosqu.png&#34; alt=&#34;magna condimentum&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;p&gt;
+        magna condimentum
+        
+            
+        
+        &lt;/p&gt; 
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+
+&lt;p&gt;Nam in molestie metus&lt;/p&gt;
+
+&lt;h1 id=&#34;fusce-tristique&#34;&gt;Fusce tristique&lt;/h1&gt;
+
+&lt;p&gt;Acus id faucibus lacinia, dui nulla consequat felis, ac rhoncus magna tellus nec nulla.
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.&lt;/p&gt;
+
+&lt;p&gt;Etiam condimentum dui turpis, a auctor magna condimentum at. Integer non pharetra elit.
+Aenean auctor, urna id ullamcorper posuere, tellus purus sollicitudin mi, vel dapibus tellus nulla eget mi.&lt;/p&gt;
+
+&lt;p&gt;Ut vulputate luctus arcu nec consequat.
+Integer porttitor fermentum nibh, rutrum tristique magna.&lt;/p&gt;
+
+&lt;p&gt;Nam ornare a purus vel finibus.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://github.com/mdhender/&#34;&gt;Phasellus venenatis urna turpis&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Morbi ullamcorper sodales.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;mauris-odio-turpis&#34;&gt;Mauris odio turpis&lt;/h2&gt;
+
+&lt;p&gt;Suspendisse interdum, sem ut aliquet pretium.
+Velit justo volutpat lorem, ac amet.&lt;/p&gt;
+
+&lt;h1 id=&#34;vulputate-lacus-metus&#34;&gt;Vulputate Lacus Metus&lt;/h1&gt;
+
+&lt;p&gt;At mauris, suspendisse vestibulum, ex sit amet dictum rutrum.&lt;/p&gt;
+
+&lt;p&gt;~/.lorem.ipsum&lt;/p&gt;
+
+&lt;p&gt;suspendisse ex sit vestibulum mauris rutrum.&lt;/p&gt;
+
+&lt;h3 id=&#34;suspendisse-vestibulum&#34;&gt;Suspendisse vestibulum&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ibec&lt;/li&gt;
+&lt;li&gt;posuere&lt;/li&gt;
+&lt;li&gt;erat&lt;/li&gt;
+&lt;li&gt;sollicitudin&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;bibendum-feugiat-eti-ipat&#34;&gt;bibendum feugiat (*eti ipat):&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;vulputate imperdiet nulla
+egestas metus
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Nulla volutpat:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;quam ut aliquam&lt;/li&gt;
+&lt;li&gt;scel eri sque&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Nulla Mauris Sit</title>
+      <link>https://synikitin.github.io/project/nulla-mauris-sit/</link>
+      <pubDate>Sun, 13 Nov 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://synikitin.github.io/project/nulla-mauris-sit/</guid>
+      <description>
+
+
+&lt;figure class=&#34;third right&#34;&gt;
+    
+        &lt;img src=&#34;https://synikitin.github.io/img/nulla.png&#34; alt=&#34;nulla mauris&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+
+&lt;p&gt;Pellentesque turpis lorem, sollicitudin et imperdiet ac, venenatis non lacus.
+Nunc id urna sit amet ipsum sollicitudin ultrices sed eget dui.
+Aliquam ullamcorper ultrices pellentesque.&lt;/p&gt;
+
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Suspendisse &lt;code&gt;interdum&lt;/code&gt;, sem ut &lt;code&gt;aliquet pretium&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Velit justo volutpat lorem&lt;/li&gt;
+&lt;li&gt;Ac vulputate [lacus url=&amp;rsquo;&amp;lt;URL TO FILE ON GITHUB&amp;gt;&amp;rsquo;] metus at mauris.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Cras Consequat et Risus</title>
+      <link>https://synikitin.github.io/project/cras-consequat-et-risus/</link>
+      <pubDate>Fri, 11 Nov 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://synikitin.github.io/project/cras-consequat-et-risus/</guid>
+      <description>&lt;p&gt;Nullam Cursus Rhoncus&lt;/p&gt;
+
+&lt;h1 id=&#34;velit-in-dictum&#34;&gt;Velit in Dictum&lt;/h1&gt;
+
+&lt;p&gt;Cras vitae eros nunc.
+Praesent ornare diam ipsum, sed ultrices tortor porttitor luctus.
+Cras consequat et risus ac rutrum.
+Nullam ac elit blandit, laoreet lorem vel, scelerisque tortor.
+Sed sed tellus in diam tristique tempor.
+&lt;/p&gt;
+
+&lt;p&gt;Cras quis justo nibh.
+Mauris odio turpis, sodales a tempus vel.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/UKToY.png&#34; alt=&#34;nixon image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Fermentum a sem.
+Cras in semper diam.
+Integer cursus neque eget suscipit lobortis.&lt;/p&gt;
+
+&lt;h2 id=&#34;mauris-a-metus-massa&#34;&gt;Mauris a metus massa&lt;/h2&gt;
+
+&lt;p&gt;Morbi ullamcorper sodales eros a porttitor.
+Praesent at tellus ex.
+Ut mattis porttitor ex id ornare.
+Nullam vitae blandit turpis.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;    import (
+        vitae &amp;quot;github.com/mdhender/example&amp;quot;
+    )
+
+    if tincidunt.gravida {
+        vitae.porttitor(&amp;quot;blandit turpis&amp;quot;)
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Sed tincidunt gravida ex, vulputate imperdiet nulla ullamcorper id.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Maecenas et consequat&lt;/li&gt;
+&lt;li&gt;Sed id nisl sed lectus
+consectetur vehicula&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Ullamcorper ultrices pellentesque&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ulputate&lt;/li&gt;
+&lt;li&gt;imperdiet&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Nulla ullamcorpe&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Cras vitae eros nunc.
+Praesent ornare diam ipsum.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
