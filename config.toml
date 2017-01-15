@@ -1,6 +1,6 @@
-baseurl = "http://nixon.example.com/"
+baseurl = "https://synikitin.github.io"
 theme = "nixon"
-title = "Nixon Theme"
+title = "Data Analytics 6600"
 languageCode = "en-us"
 disqusShortname = "nixon.example"
 copyright = "Copyright (c) 20YY, Your Name Here; all rights reserved."
