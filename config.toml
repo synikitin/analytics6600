@@ -1,4 +1,4 @@
-baseurl = "https://synikitin.github.io/"
+baseurl = "https://synikitin.github.io/analytics6600/"
 theme = "nixon"
 title = "Data Analytics 6600"
 languageCode = "en-us"
@@ -21,7 +21,7 @@ GoogleAnalytics = "UA-XXXXX-Y"
 
 [params]
 	copyright_years = "2016"
-	css_file = "/css/nixon.css"
+	css_file = "css/nixon.css"
 	domain_name = "nixon.example.com"
 	personal_site = "https://nixon.example.com"
 
