@@ -12,7 +12,7 @@ GoogleAnalytics = "UA-XXXXX-Y"
 # note that the theme expects author both here and in the
 # parameters section
 [author]
-    name = "N. Ixon"
+    name = "Slava Nikitin"
 
 # used by the theme
 [indexes]
@@ -22,17 +22,16 @@ GoogleAnalytics = "UA-XXXXX-Y"
 [params]
 	copyright_years = "2016"
 	css_file = "css/nixon.css"
-	domain_name = "nixon.example.com"
+	domain_name = "https://synikitin.github.io/analytics6600/"
 	personal_site = "https://nixon.example.com"
 
 	[params.author]
-		name = "N. Ixon"
+		name = "Slava Nikitin"
 		# The three quotes allow the biography to span
 		# multiple lines. Must end with three, too.
 		short_bio = """
-Fusce pulvinar dictum magna, vel rutrum nunc tempor non. Curabitur aliquam <a href="http://mdhender.com">Laci Nia</a> justo. Pellentesque fringilla libero eget suscipit malesuada.
-
-Ut pharetra pellentesque eros non fringilla. Duis vel augue at ex semper lobortis vitae in ipsum. Suspendisse et congue libero."""
+Data scientist at Columbus Collaboratory.
+"""
 
 	[params.github]
 		account = "synikitin"
