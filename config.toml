@@ -1,6 +1,6 @@
 baseurl = "https://synikitin.github.io/analytics6600/"
-title = "Academic Theme"
-copyright = "&copy; 2016 Your Name"
+title = "Data Analytics 6600"
+copyright = "&copy; 2017 Slava Nikitin"
 theme = "hugo-academic"
 enableEmoji = true
 footnotereturnlinkcontents = "<sup>^</sup>"
@@ -19,15 +19,15 @@ defaultContentLanguageInSubdir = false
   hrefTargetBlank = true
 
 [params]
-  name = "Lena Smith"
-  role = "Professor of Artificial Intelligence"
-  organization = "Stanford University"
+  name = "Slava Nikitin"
+  role = "Adjunct Professor of Data Analytics"
+  organization = "Otterbein University"
   avatar = "portrait.jpg"
-  email = "test@example.org"
+  email = "analytics6600@gmail.com"
   address = "Building 1 Room 1, Stanford University, California, 90210, USA"
-  office_hours = "Monday 10:00 to 13:00 or email for appointment"
-  phone = "888 888 88 88"
-  skype = "echo123"
+  office_hours = "Email for appointment"
+  phone = ""
+  skype = ""
   telegram = ""
 
   # Enable Keybase in Contact section by entering your keybase.io username.
