@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Data Analytics 6600</title>
+    <title>Academic Theme</title>
     <link>https://synikitin.github.io/analytics6600/tags/venetais/index.xml</link>
-    <description>Recent content on Data Analytics 6600</description>
+    <description>Recent content on Academic Theme</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Copyright (c) 20YY, Your Name Here; all rights reserved.</copyright>
-    <atom:link href="https://synikitin.github.io/analytics6600/tags/venetais/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>&amp;copy; 2016 Your Name</copyright>
+    <atom:link href="/tags/venetais/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Aenean: Odio orci MMXII</title>
@@ -33,18 +33,18 @@ Pellentesque posuere mattis nibh, suscipit commodo est aliquam finibus.
 Cras quis justo nibh. Mauris odio turpis, sodales a tempus vel, fermentum a sem.&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;.@&lt;a href=&#34;https://twitter.com/spf13&#34;&gt;spf13&lt;/a&gt;: “Moore’s Law applies to more
+&lt;p&gt;.@&lt;a href=&#34;https://twitter.com/spf13&#34; target=&#34;_blank&#34;&gt;spf13&lt;/a&gt;: “Moore’s Law applies to more
 than just CPUs.It also applies to data”
-&lt;a href=&#34;https://twitter.com/search/%23structureconf&#34;&gt;#structureconf&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&#34;https://twitter.com/search/%23structureconf&#34; target=&#34;_blank&#34;&gt;#structureconf&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;— Matt Asay (@mjasay) &lt;a href=&#34;https://twitter.com/mjasay/status/260839414463332352&#34;&gt;October 23,
+&lt;p&gt;— Matt Asay (@mjasay) &lt;a href=&#34;https://twitter.com/mjasay/status/260839414463332352&#34; target=&#34;_blank&#34;&gt;October 23,
 2012&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;.@&lt;a href=&#34;https://twitter.com/spf13&#34;&gt;spf13&lt;/a&gt;: “For 10+ years, Big Data =
+&lt;p&gt;.@&lt;a href=&#34;https://twitter.com/spf13&#34; target=&#34;_blank&#34;&gt;spf13&lt;/a&gt;: “For 10+ years, Big Data =
 ‘custom sw w/ big hw.’” In the past few years open source has made Big
 Data accessible to the rest of us&lt;/p&gt;
 
-&lt;p&gt;— Matt Asay (@mjasay) &lt;a href=&#34;https://twitter.com/mjasay/status/260840149720649728&#34;&gt;October 23,
+&lt;p&gt;— Matt Asay (@mjasay) &lt;a href=&#34;https://twitter.com/mjasay/status/260840149720649728&#34; target=&#34;_blank&#34;&gt;October 23,
 2012&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;</description>
     </item>

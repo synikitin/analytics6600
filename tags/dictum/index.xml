@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Data Analytics 6600</title>
+    <title>Academic Theme</title>
     <link>https://synikitin.github.io/analytics6600/tags/dictum/index.xml</link>
-    <description>Recent content on Data Analytics 6600</description>
+    <description>Recent content on Academic Theme</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Copyright (c) 20YY, Your Name Here; all rights reserved.</copyright>
-    <atom:link href="https://synikitin.github.io/analytics6600/tags/dictum/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>&amp;copy; 2016 Your Name</copyright>
+    <atom:link href="/tags/dictum/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Ullamcorper Ultrices Pellentesque (MMXV)</title>
@@ -15,23 +15,9 @@
       <pubDate>Sun, 27 Nov 2016 12:28:12 -0700</pubDate>
       
       <guid>https://synikitin.github.io/analytics6600/presentation/ullamcorper-ultrices-pellentesque/</guid>
-      <description>
-
-&lt;p&gt;Aliquam ullamcorper ultrices pellentesque.
+      <description>&lt;p&gt;Aliquam ullamcorper ultrices pellentesque.
 Suspendisse interdum, sem ut aliquet pretium.
 Velit justo volutpat lorem, ac vulputate lacus metus at mauris.&lt;/p&gt;
-
-&lt;div class=&#34;embed slideshare&#34;&gt;
-&lt;iframe src=&#34;http://www.slideshare.net/slideshow/embed_code/48640688?rel=0&#34; width=&#34;599&#34; height=&#34;487&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px&#34; allowfullscreen webkitallowfullscreen mozallowfullscreen&gt; &lt;/iframe&gt;
-&lt;/div&gt;
-
-
-&lt;h2 id=&#34;suspendisse-vestibulum&#34;&gt;Suspendisse vestibulum&lt;/h2&gt;
-
-&lt;p&gt;Ex sit amet dictum rutrum, arcu tortor tincidunt orci, tempor pellentesque nisi sapien a ante.
-Mauris sodales libero luctus nisl commodo, id tempus massa molestie.&lt;/p&gt;
-
-&lt;iframe width=&#34;853&#34; height=&#34;480&#34; src=&#34;https://www.youtube.com/embed/Fx304EfqtMo&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
 </description>
     </item>
     

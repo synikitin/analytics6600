@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Data Analytics 6600</title>
+    <title>Academic Theme</title>
     <link>https://synikitin.github.io/analytics6600/tags/felis/index.xml</link>
-    <description>Recent content on Data Analytics 6600</description>
+    <description>Recent content on Academic Theme</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Copyright (c) 20YY, Your Name Here; all rights reserved.</copyright>
-    <atom:link href="https://synikitin.github.io/analytics6600/tags/felis/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>&amp;copy; 2016 Your Name</copyright>
+    <atom:link href="/tags/felis/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Aenean: Odio orci MMXII</title>
@@ -33,18 +33,18 @@ Pellentesque posuere mattis nibh, suscipit commodo est aliquam finibus.
 Cras quis justo nibh. Mauris odio turpis, sodales a tempus vel, fermentum a sem.&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;.@&lt;a href=&#34;https://twitter.com/spf13&#34;&gt;spf13&lt;/a&gt;: “Moore’s Law applies to more
+&lt;p&gt;.@&lt;a href=&#34;https://twitter.com/spf13&#34; target=&#34;_blank&#34;&gt;spf13&lt;/a&gt;: “Moore’s Law applies to more
 than just CPUs.It also applies to data”
-&lt;a href=&#34;https://twitter.com/search/%23structureconf&#34;&gt;#structureconf&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&#34;https://twitter.com/search/%23structureconf&#34; target=&#34;_blank&#34;&gt;#structureconf&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;— Matt Asay (@mjasay) &lt;a href=&#34;https://twitter.com/mjasay/status/260839414463332352&#34;&gt;October 23,
+&lt;p&gt;— Matt Asay (@mjasay) &lt;a href=&#34;https://twitter.com/mjasay/status/260839414463332352&#34; target=&#34;_blank&#34;&gt;October 23,
 2012&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;.@&lt;a href=&#34;https://twitter.com/spf13&#34;&gt;spf13&lt;/a&gt;: “For 10+ years, Big Data =
+&lt;p&gt;.@&lt;a href=&#34;https://twitter.com/spf13&#34; target=&#34;_blank&#34;&gt;spf13&lt;/a&gt;: “For 10+ years, Big Data =
 ‘custom sw w/ big hw.’” In the past few years open source has made Big
 Data accessible to the rest of us&lt;/p&gt;
 
-&lt;p&gt;— Matt Asay (@mjasay) &lt;a href=&#34;https://twitter.com/mjasay/status/260840149720649728&#34;&gt;October 23,
+&lt;p&gt;— Matt Asay (@mjasay) &lt;a href=&#34;https://twitter.com/mjasay/status/260840149720649728&#34; target=&#34;_blank&#34;&gt;October 23,
 2012&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;</description>
     </item>
@@ -55,43 +55,7 @@ Data accessible to the rest of us&lt;/p&gt;
       <pubDate>Sat, 19 Nov 2016 00:00:00 +0000</pubDate>
       
       <guid>https://synikitin.github.io/analytics6600/post/vestibulum-tincidunt</guid>
-      <description>
-
-
-&lt;figure class=&#34;third right&#34;&gt;
-    
-        &lt;img src=&#34;https://synikitin.github.io/analytics6600/img/tincidunt.png&#34; alt=&#34;Vestibulum&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-
-
-&lt;p&gt;Vivamus convallis diam imperdiet neque sodales ultricies.&lt;/p&gt;
-
-&lt;p&gt;Vestibulum tincidunt felis sed metus imperdiet.
-Eget volutpat felis imperdiet.
-Integer lobortis tincidunt tempor.&lt;/p&gt;
-
-&lt;p&gt;Phasellus interdum urna tellus.
-Nullam non mi lorem.
-Donec rhoncus felis nec enim dictum, et faucibus nisl dignissim.
-Mauris sed ligula ex.
-Duis tristique, lacus eget rutrum cursus, lectus leo vestibulum ligula, ut pulvinar magna elit eu ex.
-Nam malesuada sagittis enim id euismod.
-Mauris leo massa, tincidunt ac aliquet fringilla, iaculis vel tortor.&lt;/p&gt;
-
-&lt;p&gt;Praesent ligula orci, cursus a auctor et, lacinia vitae ex.
-Donec quam leo, sollicitudin eget eleifend at, consequat non turpis.
-Quisque id pretium eros, imperdiet dignissim enim.
-Phasellus posuere mauris egestas, dignissim ante et.&lt;/p&gt;
-
-&lt;h3 id=&#34;cursus-arcu&#34;&gt;Cursus Arcu&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://github.com/mdhender/&#34;&gt;Vivamus Convallis&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description></description>
     </item>
     
   </channel>

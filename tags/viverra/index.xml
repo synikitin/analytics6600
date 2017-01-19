@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Data Analytics 6600</title>
+    <title>Academic Theme</title>
     <link>https://synikitin.github.io/analytics6600/tags/viverra/index.xml</link>
-    <description>Recent content on Data Analytics 6600</description>
+    <description>Recent content on Academic Theme</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Copyright (c) 20YY, Your Name Here; all rights reserved.</copyright>
-    <atom:link href="https://synikitin.github.io/analytics6600/tags/viverra/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>&amp;copy; 2016 Your Name</copyright>
+    <atom:link href="/tags/viverra/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Vitae Blandit Turpis Blah</title>
@@ -15,31 +15,14 @@
       <pubDate>Fri, 18 Nov 2016 14:06:00 -0500</pubDate>
       
       <guid>https://synikitin.github.io/analytics6600/presentation/vitae-blandit-turpis/</guid>
-      <description>
-
-&lt;p&gt;Pellentesque ac magna at lorem semper aliquet.
+      <description>&lt;p&gt;Pellentesque ac magna at lorem semper aliquet.
 Proin sapien dolor, ultrices vel rutrum in, volutpat.
 Vitae tellus. Pellentesque mollis arcu bibendum magna fermentum suscipit.
 Morbi fringilla tortor a ex molestie, ac viverra dui pulvinar.&lt;/p&gt;
 
-&lt;p&gt;Vivamus eu &lt;a href=&#34;https://github.com/mdhender/&#34;&gt;Massa Maximus&lt;/a&gt;, ornare augue mattis, condimentum sapien.&lt;/p&gt;
+&lt;p&gt;Vivamus eu &lt;a href=&#34;https://github.com/mdhender/&#34; target=&#34;_blank&#34;&gt;Massa Maximus&lt;/a&gt;, ornare augue mattis, condimentum sapien.&lt;/p&gt;
 
-&lt;p&gt;Originally given in NYC Nov 14 at &lt;a href=&#34;https://github.com/mdhender/&#34;&gt;GothamGo&lt;/a&gt;.&lt;/p&gt;
-
-&lt;div class=&#34;embed slideshare&#34;&gt;
-&lt;iframe src=&#34;http://www.slideshare.net/slideshow/embed_code/41716887?rel=0&#34; width=&#34;599&#34; height=&#34;487&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px&#34; allowfullscreen webkitallowfullscreen mozallowfullscreen&gt; &lt;/iframe&gt;
-&lt;/div&gt;
-
-
-&lt;h2 id=&#34;fermentum-a-sem&#34;&gt;Fermentum a sem&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Cras quis justo nibh&lt;/li&gt;
-&lt;li&gt;Mauris odio turpis&lt;/li&gt;
-&lt;li&gt;Sodales a tempus vel&lt;/li&gt;
-&lt;li&gt;Cras in semper diam&lt;/li&gt;
-&lt;li&gt;Integer cursus neque eget suscipit lobortis&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;Originally given in NYC Nov 14 at &lt;a href=&#34;https://github.com/mdhender/&#34; target=&#34;_blank&#34;&gt;GothamGo&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
