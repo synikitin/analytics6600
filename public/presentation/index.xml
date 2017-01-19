@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Presentation-rsses on Data Analytics 6600</title>
+    <title>Presentation-rsses on Academic Theme</title>
     <link>https://synikitin.github.io/analytics6600/presentation/index.xml</link>
-    <description>Recent content in Presentation-rsses on Data Analytics 6600</description>
+    <description>Recent content in Presentation-rsses on Academic Theme</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Copyright (c) 20YY, Your Name Here; all rights reserved.</copyright>
+    <copyright>&amp;copy; 2016 Your Name</copyright>
     <lastBuildDate>Tue, 29 Nov 2016 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://synikitin.github.io/analytics6600/presentation/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/presentation/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Aenean: Odio orci MMXII</title>
@@ -34,18 +34,18 @@ Pellentesque posuere mattis nibh, suscipit commodo est aliquam finibus.
 Cras quis justo nibh. Mauris odio turpis, sodales a tempus vel, fermentum a sem.&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;.@&lt;a href=&#34;https://twitter.com/spf13&#34;&gt;spf13&lt;/a&gt;: “Moore’s Law applies to more
+&lt;p&gt;.@&lt;a href=&#34;https://twitter.com/spf13&#34; target=&#34;_blank&#34;&gt;spf13&lt;/a&gt;: “Moore’s Law applies to more
 than just CPUs.It also applies to data”
-&lt;a href=&#34;https://twitter.com/search/%23structureconf&#34;&gt;#structureconf&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&#34;https://twitter.com/search/%23structureconf&#34; target=&#34;_blank&#34;&gt;#structureconf&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;— Matt Asay (@mjasay) &lt;a href=&#34;https://twitter.com/mjasay/status/260839414463332352&#34;&gt;October 23,
+&lt;p&gt;— Matt Asay (@mjasay) &lt;a href=&#34;https://twitter.com/mjasay/status/260839414463332352&#34; target=&#34;_blank&#34;&gt;October 23,
 2012&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;.@&lt;a href=&#34;https://twitter.com/spf13&#34;&gt;spf13&lt;/a&gt;: “For 10+ years, Big Data =
+&lt;p&gt;.@&lt;a href=&#34;https://twitter.com/spf13&#34; target=&#34;_blank&#34;&gt;spf13&lt;/a&gt;: “For 10+ years, Big Data =
 ‘custom sw w/ big hw.’” In the past few years open source has made Big
 Data accessible to the rest of us&lt;/p&gt;
 
-&lt;p&gt;— Matt Asay (@mjasay) &lt;a href=&#34;https://twitter.com/mjasay/status/260840149720649728&#34;&gt;October 23,
+&lt;p&gt;— Matt Asay (@mjasay) &lt;a href=&#34;https://twitter.com/mjasay/status/260840149720649728&#34; target=&#34;_blank&#34;&gt;October 23,
 2012&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;</description>
     </item>
@@ -56,23 +56,9 @@ Data accessible to the rest of us&lt;/p&gt;
       <pubDate>Sun, 27 Nov 2016 12:28:12 -0700</pubDate>
       
       <guid>https://synikitin.github.io/analytics6600/presentation/ullamcorper-ultrices-pellentesque/</guid>
-      <description>
-
-&lt;p&gt;Aliquam ullamcorper ultrices pellentesque.
+      <description>&lt;p&gt;Aliquam ullamcorper ultrices pellentesque.
 Suspendisse interdum, sem ut aliquet pretium.
 Velit justo volutpat lorem, ac vulputate lacus metus at mauris.&lt;/p&gt;
-
-&lt;div class=&#34;embed slideshare&#34;&gt;
-&lt;iframe src=&#34;http://www.slideshare.net/slideshow/embed_code/48640688?rel=0&#34; width=&#34;599&#34; height=&#34;487&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px&#34; allowfullscreen webkitallowfullscreen mozallowfullscreen&gt; &lt;/iframe&gt;
-&lt;/div&gt;
-
-
-&lt;h2 id=&#34;suspendisse-vestibulum&#34;&gt;Suspendisse vestibulum&lt;/h2&gt;
-
-&lt;p&gt;Ex sit amet dictum rutrum, arcu tortor tincidunt orci, tempor pellentesque nisi sapien a ante.
-Mauris sodales libero luctus nisl commodo, id tempus massa molestie.&lt;/p&gt;
-
-&lt;iframe width=&#34;853&#34; height=&#34;480&#34; src=&#34;https://www.youtube.com/embed/Fx304EfqtMo&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
 </description>
     </item>
     
@@ -82,31 +68,14 @@ Mauris sodales libero luctus nisl commodo, id tempus massa molestie.&lt;/p&gt;
       <pubDate>Fri, 18 Nov 2016 14:06:00 -0500</pubDate>
       
       <guid>https://synikitin.github.io/analytics6600/presentation/vitae-blandit-turpis/</guid>
-      <description>
-
-&lt;p&gt;Pellentesque ac magna at lorem semper aliquet.
+      <description>&lt;p&gt;Pellentesque ac magna at lorem semper aliquet.
 Proin sapien dolor, ultrices vel rutrum in, volutpat.
 Vitae tellus. Pellentesque mollis arcu bibendum magna fermentum suscipit.
 Morbi fringilla tortor a ex molestie, ac viverra dui pulvinar.&lt;/p&gt;
 
-&lt;p&gt;Vivamus eu &lt;a href=&#34;https://github.com/mdhender/&#34;&gt;Massa Maximus&lt;/a&gt;, ornare augue mattis, condimentum sapien.&lt;/p&gt;
+&lt;p&gt;Vivamus eu &lt;a href=&#34;https://github.com/mdhender/&#34; target=&#34;_blank&#34;&gt;Massa Maximus&lt;/a&gt;, ornare augue mattis, condimentum sapien.&lt;/p&gt;
 
-&lt;p&gt;Originally given in NYC Nov 14 at &lt;a href=&#34;https://github.com/mdhender/&#34;&gt;GothamGo&lt;/a&gt;.&lt;/p&gt;
-
-&lt;div class=&#34;embed slideshare&#34;&gt;
-&lt;iframe src=&#34;http://www.slideshare.net/slideshow/embed_code/41716887?rel=0&#34; width=&#34;599&#34; height=&#34;487&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px&#34; allowfullscreen webkitallowfullscreen mozallowfullscreen&gt; &lt;/iframe&gt;
-&lt;/div&gt;
-
-
-&lt;h2 id=&#34;fermentum-a-sem&#34;&gt;Fermentum a sem&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Cras quis justo nibh&lt;/li&gt;
-&lt;li&gt;Mauris odio turpis&lt;/li&gt;
-&lt;li&gt;Sodales a tempus vel&lt;/li&gt;
-&lt;li&gt;Cras in semper diam&lt;/li&gt;
-&lt;li&gt;Integer cursus neque eget suscipit lobortis&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;Originally given in NYC Nov 14 at &lt;a href=&#34;https://github.com/mdhender/&#34; target=&#34;_blank&#34;&gt;GothamGo&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     

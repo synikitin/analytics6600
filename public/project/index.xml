@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Project-rsses on Data Analytics 6600</title>
+    <title>Project-rsses on Academic Theme</title>
     <link>https://synikitin.github.io/analytics6600/project/index.xml</link>
-    <description>Recent content in Project-rsses on Data Analytics 6600</description>
+    <description>Recent content in Project-rsses on Academic Theme</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Copyright (c) 20YY, Your Name Here; all rights reserved.</copyright>
+    <copyright>&amp;copy; 2016 Your Name</copyright>
     <lastBuildDate>Thu, 24 Nov 2016 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://synikitin.github.io/analytics6600/project/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/project/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Ornare Diam</title>
@@ -16,81 +16,7 @@
       <pubDate>Thu, 24 Nov 2016 00:00:00 +0000</pubDate>
       
       <guid>https://synikitin.github.io/analytics6600/project/ornare-diam/</guid>
-      <description>
-
-
-&lt;figure class=&#34;hid&#34;&gt;
-    
-        &lt;img src=&#34;https://synikitin.github.io/analytics6600/img/sociosqu.png&#34; alt=&#34;magna condimentum&#34; /&gt;
-    
-    
-    &lt;figcaption&gt;
-        &lt;p&gt;
-        magna condimentum
-        
-            
-        
-        &lt;/p&gt; 
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-
-
-
-&lt;p&gt;Nam in molestie metus&lt;/p&gt;
-
-&lt;h1 id=&#34;fusce-tristique&#34;&gt;Fusce tristique&lt;/h1&gt;
-
-&lt;p&gt;Acus id faucibus lacinia, dui nulla consequat felis, ac rhoncus magna tellus nec nulla.
-Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.&lt;/p&gt;
-
-&lt;p&gt;Etiam condimentum dui turpis, a auctor magna condimentum at. Integer non pharetra elit.
-Aenean auctor, urna id ullamcorper posuere, tellus purus sollicitudin mi, vel dapibus tellus nulla eget mi.&lt;/p&gt;
-
-&lt;p&gt;Ut vulputate luctus arcu nec consequat.
-Integer porttitor fermentum nibh, rutrum tristique magna.&lt;/p&gt;
-
-&lt;p&gt;Nam ornare a purus vel finibus.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://github.com/mdhender/&#34;&gt;Phasellus venenatis urna turpis&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Morbi ullamcorper sodales.&lt;/em&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;mauris-odio-turpis&#34;&gt;Mauris odio turpis&lt;/h2&gt;
-
-&lt;p&gt;Suspendisse interdum, sem ut aliquet pretium.
-Velit justo volutpat lorem, ac amet.&lt;/p&gt;
-
-&lt;h1 id=&#34;vulputate-lacus-metus&#34;&gt;Vulputate Lacus Metus&lt;/h1&gt;
-
-&lt;p&gt;At mauris, suspendisse vestibulum, ex sit amet dictum rutrum.&lt;/p&gt;
-
-&lt;p&gt;~/.lorem.ipsum&lt;/p&gt;
-
-&lt;p&gt;suspendisse ex sit vestibulum mauris rutrum.&lt;/p&gt;
-
-&lt;h3 id=&#34;suspendisse-vestibulum&#34;&gt;Suspendisse vestibulum&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;ibec&lt;/li&gt;
-&lt;li&gt;posuere&lt;/li&gt;
-&lt;li&gt;erat&lt;/li&gt;
-&lt;li&gt;sollicitudin&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;bibendum-feugiat-eti-ipat&#34;&gt;bibendum feugiat (*eti ipat):&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;vulputate imperdiet nulla
-egestas metus
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Nulla volutpat:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;quam ut aliquam&lt;/li&gt;
-&lt;li&gt;scel eri sque&lt;/li&gt;
-&lt;/ol&gt;
-</description>
+      <description></description>
     </item>
     
     <item>
@@ -99,30 +25,7 @@ egestas metus
       <pubDate>Sun, 13 Nov 2016 00:00:00 +0000</pubDate>
       
       <guid>https://synikitin.github.io/analytics6600/project/nulla-mauris-sit/</guid>
-      <description>
-
-
-&lt;figure class=&#34;third right&#34;&gt;
-    
-        &lt;img src=&#34;https://synikitin.github.io/analytics6600/img/nulla.png&#34; alt=&#34;nulla mauris&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-
-
-&lt;p&gt;Pellentesque turpis lorem, sollicitudin et imperdiet ac, venenatis non lacus.
-Nunc id urna sit amet ipsum sollicitudin ultrices sed eget dui.
-Aliquam ullamcorper ultrices pellentesque.&lt;/p&gt;
-
-&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Suspendisse &lt;code&gt;interdum&lt;/code&gt;, sem ut &lt;code&gt;aliquet pretium&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Velit justo volutpat lorem&lt;/li&gt;
-&lt;li&gt;Ac vulputate [lacus url=&amp;rsquo;&amp;lt;URL TO FILE ON GITHUB&amp;gt;&amp;rsquo;] metus at mauris.&lt;/li&gt;
-&lt;/ol&gt;
-</description>
+      <description></description>
     </item>
     
     <item>
@@ -186,6 +89,33 @@ consectetur vehicula&lt;/li&gt;
 
 &lt;p&gt;Cras vitae eros nunc.
 Praesent ornare diam ipsum.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Deep Learning</title>
+      <link>https://synikitin.github.io/analytics6600/project/deep-learning/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://synikitin.github.io/analytics6600/project/deep-learning/</guid>
+      <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.&lt;/p&gt;
+
+&lt;p&gt;Nullam vel molestie justo. Curabitur vitae efficitur leo. In hac habitasse platea dictumst. Sed pulvinar mauris dui, eget varius purus congue ac. Nulla euismod, lorem vel elementum dapibus, nunc justo porta mi, sed tempus est est vel tellus. Nam et enim eleifend, laoreet sem sit amet, elementum sem. Morbi ut leo congue, maximus velit ut, finibus arcu. In et libero cursus, rutrum risus non, molestie leo. Nullam congue quam et volutpat malesuada. Sed risus tortor, pulvinar et dictum nec, sodales non mi. Phasellus lacinia commodo laoreet. Nam mollis, erat in feugiat consectetur, purus eros egestas tellus, in auctor urna odio at nibh. Mauris imperdiet nisi ac magna convallis, at rhoncus ligula cursus.&lt;/p&gt;
+
+&lt;p&gt;Cras aliquam rhoncus ipsum, in hendrerit nunc mattis vitae. Duis vitae efficitur metus, ac tempus leo. Cras nec fringilla lacus. Quisque sit amet risus at ipsum pharetra commodo. Sed aliquam mauris at consequat eleifend. Praesent porta, augue sed viverra bibendum, neque ante euismod ante, in vehicula justo lorem ac eros. Suspendisse augue libero, venenatis eget tincidunt ut, malesuada at lorem. Donec vitae bibendum arcu. Aenean maximus nulla non pretium iaculis. Quisque imperdiet, nulla in pulvinar aliquet, velit quam ultrices quam, sit amet fringilla leo sem vel nunc. Mauris in lacinia lacus.&lt;/p&gt;
+
+&lt;p&gt;Suspendisse a tincidunt lacus. Curabitur at urna sagittis, dictum ante sit amet, euismod magna. Sed rutrum massa id tortor commodo, vitae elementum turpis tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus turpis, venenatis a ullamcorper nec, tincidunt et massa. Integer posuere quam rutrum arcu vehicula imperdiet. Mauris ullamcorper quam vitae purus congue, quis euismod magna eleifend. Vestibulum semper vel augue eget tincidunt. Fusce eget justo sodales, dapibus odio eu, ultrices lorem. Duis condimentum lorem id eros commodo, in facilisis mauris scelerisque. Morbi sed auctor leo. Nullam volutpat a lacus quis pharetra. Nulla congue rutrum magna a ornare.&lt;/p&gt;
+
+&lt;p&gt;Aliquam in turpis accumsan, malesuada nibh ut, hendrerit justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque sed erat nec justo posuere suscipit. Donec ut efficitur arcu, in malesuada neque. Nunc dignissim nisl massa, id vulputate nunc pretium nec. Quisque eget urna in risus suscipit ultricies. Pellentesque odio odio, tincidunt in eleifend sed, posuere a diam. Nam gravida nisl convallis semper elementum. Morbi vitae felis faucibus, vulputate orci placerat, aliquet nisi. Aliquam erat volutpat. Maecenas sagittis pulvinar purus, sed porta quam laoreet at.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>External Project</title>
+      <link>https://synikitin.github.io/analytics6600/project/example-external-project/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://synikitin.github.io/analytics6600/project/example-external-project/</guid>
+      <description></description>
     </item>
     
   </channel>
