@@ -1,54 +1,172 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
-  <url>
-    <loc>https://synikitin.github.io/analytics6600/</loc>
-    <lastmod>2016-11-29T00:00:00+00:00</lastmod>
-  </url>
+    
+    
+    <url>
+      <loc>https://synikitin.github.io/analytics6600/</loc>
+      <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+    </url>
+    
   
-  <url>
-    <loc>https://synikitin.github.io/analytics6600/presentation/aenean-odio-orci-mmxii</loc>
-    <lastmod>2016-11-29T00:00:00+00:00</lastmod>
-  </url>
+    
+    
+    <url>
+      <loc>https://synikitin.github.io/analytics6600/talk/example-talk/</loc>
+      <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+    </url>
+    
   
-  <url>
-    <loc>https://synikitin.github.io/analytics6600/presentation/ullamcorper-ultrices-pellentesque/</loc>
-    <lastmod>2016-11-27T12:28:12-07:00</lastmod>
-  </url>
+    
+    
+    <url>
+      <loc>https://synikitin.github.io/analytics6600/presentation/aenean-odio-orci-mmxii</loc>
+      <lastmod>2016-11-29T00:00:00+00:00</lastmod>
+    </url>
+    
   
-  <url>
-    <loc>https://synikitin.github.io/analytics6600/project/ornare-diam/</loc>
-    <lastmod>2016-11-24T00:00:00+00:00</lastmod>
-  </url>
+    
+    
+    <url>
+      <loc>https://synikitin.github.io/analytics6600/presentation/ullamcorper-ultrices-pellentesque/</loc>
+      <lastmod>2016-11-27T12:28:12-07:00</lastmod>
+    </url>
+    
   
-  <url>
-    <loc>https://synikitin.github.io/analytics6600/post/accumsan-ultricies-turpis</loc>
-    <lastmod>2016-11-23T00:00:00+00:00</lastmod>
-  </url>
+    
+    
+    <url>
+      <loc>https://synikitin.github.io/analytics6600/project/ornare-diam/</loc>
+      <lastmod>2016-11-24T00:00:00+00:00</lastmod>
+    </url>
+    
   
-  <url>
-    <loc>https://synikitin.github.io/analytics6600/post/proin-sodales-et-dolor-sed-congue</loc>
-    <lastmod>2016-11-21T00:00:00+00:00</lastmod>
-  </url>
+    
+    
+    <url>
+      <loc>https://synikitin.github.io/analytics6600/post/accumsan-ultricies-turpis</loc>
+      <lastmod>2016-11-23T00:00:00+00:00</lastmod>
+    </url>
+    
   
-  <url>
-    <loc>https://synikitin.github.io/analytics6600/post/vestibulum-tincidunt</loc>
-    <lastmod>2016-11-19T00:00:00+00:00</lastmod>
-  </url>
+    
+    
+    <url>
+      <loc>https://synikitin.github.io/analytics6600/post/proin-sodales-et-dolor-sed-congue</loc>
+      <lastmod>2016-11-21T00:00:00+00:00</lastmod>
+    </url>
+    
   
-  <url>
-    <loc>https://synikitin.github.io/analytics6600/presentation/vitae-blandit-turpis/</loc>
-    <lastmod>2016-11-18T14:06:00-05:00</lastmod>
-  </url>
+    
+    
+    <url>
+      <loc>https://synikitin.github.io/analytics6600/post/vestibulum-tincidunt</loc>
+      <lastmod>2016-11-19T00:00:00+00:00</lastmod>
+    </url>
+    
   
-  <url>
-    <loc>https://synikitin.github.io/analytics6600/project/nulla-mauris-sit/</loc>
-    <lastmod>2016-11-13T00:00:00+00:00</lastmod>
-  </url>
+    
+    
+    <url>
+      <loc>https://synikitin.github.io/analytics6600/presentation/vitae-blandit-turpis/</loc>
+      <lastmod>2016-11-18T14:06:00-05:00</lastmod>
+    </url>
+    
   
-  <url>
-    <loc>https://synikitin.github.io/analytics6600/project/cras-consequat-et-risus/</loc>
-    <lastmod>2016-11-11T00:00:00+00:00</lastmod>
-  </url>
+    
+    
+    <url>
+      <loc>https://synikitin.github.io/analytics6600/project/nulla-mauris-sit/</loc>
+      <lastmod>2016-11-13T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>https://synikitin.github.io/analytics6600/project/cras-consequat-et-risus/</loc>
+      <lastmod>2016-11-11T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>https://synikitin.github.io/analytics6600/project/deep-learning/</loc>
+      <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>https://synikitin.github.io/analytics6600/project/example-external-project/</loc>
+      <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>https://synikitin.github.io/analytics6600/post/getting-started/</loc>
+      <lastmod>2016-04-20T12:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>https://synikitin.github.io/analytics6600/post/widgets/</loc>
+      <lastmod>2016-04-20T11:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>https://synikitin.github.io/analytics6600/post/managing-content/</loc>
+      <lastmod>2016-04-20T11:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>https://synikitin.github.io/analytics6600/post/writing-markdown-latex/</loc>
+      <lastmod>2016-04-20T10:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>https://synikitin.github.io/analytics6600/publication/person-re-identification/</loc>
+      <lastmod>2015-09-01T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>https://synikitin.github.io/analytics6600/post/2015-07-23-r-rmarkdown/</loc>
+      <lastmod>2015-07-23T21:13:14-05:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>https://synikitin.github.io/analytics6600/post/migrate-from-jekyll/</loc>
+      <lastmod>2014-03-10T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>https://synikitin.github.io/analytics6600/publication/clothing-search/</loc>
+      <lastmod>2013-07-01T00:00:00+00:00</lastmod>
+    </url>
+    
   
 </urlset>
