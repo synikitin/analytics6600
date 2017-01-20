@@ -122,14 +122,14 @@ defaultContentLanguageInSubdir = false
   #   Full list: https://jpswalsh.github.io/academicons/
 
   [[params.social]]
-    icon = "twitter"
-    icon_pack = "fa"
-    link = "//twitter.com/slavaua87"
-
-  [[params.social]]
     icon = "github"
     icon_pack = "fa"
-    link = "https://github.com/synikitin"
+    link = "https://github.com/synikitin/analytics6600"
+    
+  [[params.social]]
+    icon = "email"
+    icon_pack = "fa"
+    link = "analytics6600@gmail.com"
 
 
 # Navigation Links
