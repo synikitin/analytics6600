@@ -120,16 +120,16 @@ defaultContentLanguageInSubdir = false
   #   google-scholar, arxiv, orcid, researchgate, mendeley
   #
   #   Full list: https://jpswalsh.github.io/academicons/
-
-  [[params.social]]
-    icon = "github"
-    icon_pack = "fa"
-    link = "https://github.com/synikitin/analytics6600"
     
   [[params.social]]
     icon = "envelope"
     icon_pack = "fa"
     link = "mailto:analytics6600@gmail.com"
+    
+  [[params.social]]
+    icon = "github"
+    icon_pack = "fa"
+    link = "https://github.com/synikitin/analytics6600"
 
 
 # Navigation Links
@@ -166,6 +166,11 @@ defaultContentLanguageInSubdir = false
   name = "Contact"
   url = "#contact"
   weight = 6
+  
+[[menu.main]]
+  name = "test"
+  url = "#rtest"
+  weight = 7
 
 # Taxonomies.
 [taxonomies]
