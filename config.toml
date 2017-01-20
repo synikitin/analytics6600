@@ -168,7 +168,7 @@ defaultContentLanguageInSubdir = false
   weight = 6
   
 [[menu.main]]
-  name = "test"
+  name = "Test"
   url = "#rtest"
   weight = 7
 
