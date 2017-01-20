@@ -127,9 +127,9 @@ defaultContentLanguageInSubdir = false
     link = "https://github.com/synikitin/analytics6600"
     
   [[params.social]]
-    icon = "email"
+    icon = "envelope"
     icon_pack = "fa"
-    link = "analytics6600@gmail.com"
+    link = "mailto:analytics6600@gmail.com"
 
 
 # Navigation Links
