@@ -10,14 +10,14 @@ widget = "about"
 weight = 1
 
 # List your academic interests.
-[interests]
-  interests = []
+# [interests]
+#   interests = ""
 
 # List your qualifications (such as academic degrees).
-[[education.courses]]
-  course = ""
-  institution = ""
-  year = ""
+# [[education.courses]]
+#   course = ""
+#   institution = ""
+#   year = ""
 
 +++
 
