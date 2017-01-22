@@ -1,0 +1,74 @@
+---
+title: "Syllabus"
+author: "Slava Nikitin"
+date: "January 22, 2017"
+weight: 10
+widget: "custom"
+draft: false
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Prerequisite
+Statistics I (MATH 1240) 
+
+## Schedule (subject to change)
+
+### 1. Explore - 01/09, 01/23  
+- Visualization  
+- Data transformation  
+- Exploratory analysis  
+
+### 2. Wrangle - 01/30, 02/06
+- Data import
+- Data organization in tibbles
+- Relational data operations
+- Handling text, categories and datetimes
+
+### 3. Program - 02/13, 02/20
+- Pipes
+- Functions
+- Data structures
+- Iteration
+
+### 4. Model - 03/06, 03/13
+- Basics
+- Model building
+- Handling many models
+
+### 5. Communicate - 03/20, 03/27
+- R markdown
+- Visualization for communication
+- Other communication products
+
+### 6. Automate or Deploy - 04/03, 04/10
+- Shiny web applications
+- R packages
+
+### 7. Project presentations - 04/17, 04/24 [Schedule](#anchor)
+
+---
+
+## Textbooks and Helpful Links
+Main: http://r4ds.had.co.nz/  
+Basic R: https://leanpub.com/rprogramming  
+Advanced R: http://adv-r.had.co.nz/
+Graphics in R: http://www.cookbook-r.com/Graphs/
+Cheatsheets for packages: https://www.rstudio.com/resources/cheatsheets/
+
+---
+
+## Reference Data Sets  
+https://www.kaggle.com/ludobenistant/hr-analytics  
+https://www.kaggle.com/harlfoxem/housesalesprediction  
+https://www.kaggle.com/wendykan/lending-club-loan-data  
+https://www.kaggle.com/dalpozz/creditcardfraud  
+https://www.kaggle.com/crowdflower/twitter-user-gender-classification  
+https://www.kaggle.com/onlineauctions/online-auctions-dataset  
+
+---
+
+## Coding Style
