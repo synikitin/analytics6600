@@ -4,7 +4,7 @@
     
     
     <url>
-      <loc>/</loc>
+      <loc>https://synikitin.github.io/analytics6600/</loc>
       <lastmod>2017-01-01T00:00:00+00:00</lastmod>
     </url>
     
@@ -12,7 +12,7 @@
     
     
     <url>
-      <loc>/talk/example-talk/</loc>
+      <loc>https://synikitin.github.io/analytics6600/talk/example-talk/</loc>
       <lastmod>2017-01-01T00:00:00+00:00</lastmod>
     </url>
     
@@ -20,7 +20,7 @@
     
     
     <url>
-      <loc>/presentation/aenean-odio-orci-mmxii</loc>
+      <loc>https://synikitin.github.io/analytics6600/presentation/aenean-odio-orci-mmxii</loc>
       <lastmod>2016-11-29T00:00:00+00:00</lastmod>
     </url>
     
@@ -28,7 +28,7 @@
     
     
     <url>
-      <loc>/presentation/ullamcorper-ultrices-pellentesque/</loc>
+      <loc>https://synikitin.github.io/analytics6600/presentation/ullamcorper-ultrices-pellentesque/</loc>
       <lastmod>2016-11-27T12:28:12-07:00</lastmod>
     </url>
     
@@ -36,7 +36,7 @@
     
     
     <url>
-      <loc>/project/ornare-diam/</loc>
+      <loc>https://synikitin.github.io/analytics6600/project/ornare-diam/</loc>
       <lastmod>2016-11-24T00:00:00+00:00</lastmod>
     </url>
     
@@ -44,7 +44,7 @@
     
     
     <url>
-      <loc>/post/accumsan-ultricies-turpis</loc>
+      <loc>https://synikitin.github.io/analytics6600/post/accumsan-ultricies-turpis</loc>
       <lastmod>2016-11-23T00:00:00+00:00</lastmod>
     </url>
     
@@ -52,7 +52,7 @@
     
     
     <url>
-      <loc>/post/proin-sodales-et-dolor-sed-congue</loc>
+      <loc>https://synikitin.github.io/analytics6600/post/proin-sodales-et-dolor-sed-congue</loc>
       <lastmod>2016-11-21T00:00:00+00:00</lastmod>
     </url>
     
@@ -60,7 +60,7 @@
     
     
     <url>
-      <loc>/post/vestibulum-tincidunt</loc>
+      <loc>https://synikitin.github.io/analytics6600/post/vestibulum-tincidunt</loc>
       <lastmod>2016-11-19T00:00:00+00:00</lastmod>
     </url>
     
@@ -68,7 +68,7 @@
     
     
     <url>
-      <loc>/presentation/vitae-blandit-turpis/</loc>
+      <loc>https://synikitin.github.io/analytics6600/presentation/vitae-blandit-turpis/</loc>
       <lastmod>2016-11-18T14:06:00-05:00</lastmod>
     </url>
     
@@ -76,7 +76,7 @@
     
     
     <url>
-      <loc>/project/nulla-mauris-sit/</loc>
+      <loc>https://synikitin.github.io/analytics6600/project/nulla-mauris-sit/</loc>
       <lastmod>2016-11-13T00:00:00+00:00</lastmod>
     </url>
     
@@ -84,7 +84,7 @@
     
     
     <url>
-      <loc>/project/cras-consequat-et-risus/</loc>
+      <loc>https://synikitin.github.io/analytics6600/project/cras-consequat-et-risus/</loc>
       <lastmod>2016-11-11T00:00:00+00:00</lastmod>
     </url>
     
@@ -92,7 +92,7 @@
     
     
     <url>
-      <loc>/project/deep-learning/</loc>
+      <loc>https://synikitin.github.io/analytics6600/project/deep-learning/</loc>
       <lastmod>2016-04-27T00:00:00+00:00</lastmod>
     </url>
     
@@ -100,7 +100,7 @@
     
     
     <url>
-      <loc>/project/example-external-project/</loc>
+      <loc>https://synikitin.github.io/analytics6600/project/example-external-project/</loc>
       <lastmod>2016-04-27T00:00:00+00:00</lastmod>
     </url>
     
@@ -108,7 +108,7 @@
     
     
     <url>
-      <loc>/post/getting-started/</loc>
+      <loc>https://synikitin.github.io/analytics6600/post/getting-started/</loc>
       <lastmod>2016-04-20T12:00:00+00:00</lastmod>
     </url>
     
@@ -116,7 +116,7 @@
     
     
     <url>
-      <loc>/post/widgets/</loc>
+      <loc>https://synikitin.github.io/analytics6600/post/widgets/</loc>
       <lastmod>2016-04-20T11:00:00+00:00</lastmod>
     </url>
     
@@ -124,7 +124,7 @@
     
     
     <url>
-      <loc>/post/managing-content/</loc>
+      <loc>https://synikitin.github.io/analytics6600/post/managing-content/</loc>
       <lastmod>2016-04-20T11:00:00+00:00</lastmod>
     </url>
     
@@ -132,7 +132,7 @@
     
     
     <url>
-      <loc>/post/writing-markdown-latex/</loc>
+      <loc>https://synikitin.github.io/analytics6600/post/writing-markdown-latex/</loc>
       <lastmod>2016-04-20T10:00:00+00:00</lastmod>
     </url>
     
@@ -140,7 +140,7 @@
     
     
     <url>
-      <loc>/publication/person-re-identification/</loc>
+      <loc>https://synikitin.github.io/analytics6600/publication/person-re-identification/</loc>
       <lastmod>2015-09-01T00:00:00+00:00</lastmod>
     </url>
     
@@ -148,15 +148,7 @@
     
     
     <url>
-      <loc>/post/2015-07-23-r-rmarkdown/</loc>
-      <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-      <loc>/post/migrate-from-jekyll/</loc>
+      <loc>https://synikitin.github.io/analytics6600/post/migrate-from-jekyll/</loc>
       <lastmod>2014-03-10T00:00:00+00:00</lastmod>
     </url>
     
@@ -164,7 +156,7 @@
     
     
     <url>
-      <loc>/publication/clothing-search/</loc>
+      <loc>https://synikitin.github.io/analytics6600/publication/clothing-search/</loc>
       <lastmod>2013-07-01T00:00:00+00:00</lastmod>
     </url>
     
