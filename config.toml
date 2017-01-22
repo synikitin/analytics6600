@@ -144,7 +144,7 @@ defaultContentLanguageInSubdir = false
   
 
 [[menu.main]]
-  name = "Home"
+  name = "Syllabus"
   url = "#syllabus"
   weight = 2
 
