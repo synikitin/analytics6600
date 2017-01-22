@@ -9,6 +9,8 @@ widget = "about"
 # Order that this section will appear in.
 weight = 1
 
+image = "data-science.png"
+
 # List your academic interests.
 [interests]
   interests = []
@@ -24,6 +26,8 @@ weight = 1
 # Course Description
 
 Introduction to data science cycle of getting, preparing, visualizing and modeling data with intention of communication or automation. R language and Rstudio will be the primary tools to accomplish these tasks.
+
+
 
 
 
