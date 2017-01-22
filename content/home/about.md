@@ -23,7 +23,7 @@ weight = 1
 
 # Course Description
 
-Introduction to data science cycle of getting, preparing, visualizing and modeling data with intention of communication or automation. R language and Rstudio will be the primary tools to accomplish these tasks.
+Introduction to data science cycle of getting, preparing, visualizing and modeling data with intention of communication or automation. R language and Rstudio will be the primary tools to accomplish these tasks. The course book is [**R for Data Science**](https://r4ds.had.co.nz/) by Garrett Grolemund and Hadley Wickham.
 
 
 ![](img/data-science.png)
