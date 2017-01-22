@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data Analytics 6600</title>
-    <link>https://synikitin.github.io/analytics6600/tags/pretium/index.xml</link>
+    <link>/tags/pretium/index.xml</link>
     <description>Recent content on Data Analytics 6600</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -11,19 +11,19 @@
     
     <item>
       <title>Ornare Diam</title>
-      <link>https://synikitin.github.io/analytics6600/project/ornare-diam/</link>
+      <link>/project/ornare-diam/</link>
       <pubDate>Thu, 24 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/project/ornare-diam/</guid>
+      <guid>/project/ornare-diam/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Nulla Mauris Sit</title>
-      <link>https://synikitin.github.io/analytics6600/project/nulla-mauris-sit/</link>
+      <link>/project/nulla-mauris-sit/</link>
       <pubDate>Sun, 13 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/project/nulla-mauris-sit/</guid>
+      <guid>/project/nulla-mauris-sit/</guid>
       <description></description>
     </item>
     
