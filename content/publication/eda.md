@@ -12,12 +12,12 @@ publication_short = ""
 selected = false
 title = "Exploratory Data Analysis"
 url_code = ""
-url_dataset = "https://www.kaggle.com/ludobenistant/hr-analytics"
+url_dataset = "https://github.com/rudeboybert/fivethirtyeight/blob/master/data/bechdel.rda"
 url_pdf = ""
-url_project = ""
+url_project = "https://fivethirtyeight.com/features/the-dollar-and-cents-case-against-hollywoods-exclusion-of-women/"
 url_slides = ""
 url_video = ""
 
 +++
 
-Transformation and visualization of data to get insights into why people stay or leave a job.
+Transformation and visualization of data to get insights into returns on movies depending on who you cast.
