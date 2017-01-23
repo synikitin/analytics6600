@@ -13,13 +13,13 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## Textbooks and Helpful Links
-- [Main Text](https://r4ds.had.co.nz/)  
+- [Main Text](r4ds.had.co.nz/)  
 - [Basic R Programming](https://leanpub.com/rprogramming)  
-- [Advanced R Programming](https://adv-r.had.co.nz/)  
-- [Graphics in R](https://www.cookbook-r.com/Graphs/)  
+- [Advanced R Programming](//adv-r.had.co.nz/)  
+- [Graphics in R](www.cookbook-r.com/Graphs/)  
 - [Cheatsheets for Packages](https://www.rstudio.com/resources/cheatsheets/)  
 - [Awesome-R List](https://awesome-r.com/)  
-- [Stats/ML in R](https://r-statistics.co/)  
+- [Stats/ML in R](r-statistics.co/)  
 
 ## Example Data Sets  
 - [HR Analytics](https://www.kaggle.com/ludobenistant/hr-analytics)  
@@ -31,5 +31,5 @@ knitr::opts_chunk$set(echo = TRUE)
 - [Fivethirtyeight](https://github.com/rudeboybert/fivethirtyeight)  
 
 ## Coding Style
-- [Hadley's](https://adv-r.had.co.nz/Style.html) 
+- [Hadley's](adv-r.had.co.nz/Style.html) 
 
