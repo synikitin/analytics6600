@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data Analytics 6600</title>
-    <link>https://synikitin.github.io/analytics6600/index.xml</link>
+    <link>/index.xml</link>
     <description>Recent content on Data Analytics 6600</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,20 +12,20 @@
     
     <item>
       <title>Example Talk</title>
-      <link>https://synikitin.github.io/analytics6600/talk/example-talk/</link>
+      <link>/talk/example-talk/</link>
       <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/talk/example-talk/</guid>
+      <guid>/talk/example-talk/</guid>
       <description>&lt;p&gt;Embed your slides or video here using &lt;a href=&#34;https://gcushen.github.io/hugo-academic-demo/post/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;shortcodes&lt;/a&gt;. Further details can easily be added using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Aenean: Odio orci MMXII</title>
-      <link>https://synikitin.github.io/analytics6600/presentation/aenean-odio-orci-mmxii</link>
+      <link>/presentation/aenean-odio-orci-mmxii</link>
       <pubDate>Tue, 29 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/presentation/aenean-odio-orci-mmxii</guid>
+      <guid>/presentation/aenean-odio-orci-mmxii</guid>
       <description>&lt;p&gt;Aenean odio orci, semper nec rhoncus id, rutrum id velit.
 Maecenas et consequat augue, et venenatis leo.
 &lt;/p&gt;
@@ -62,10 +62,10 @@ Data accessible to the rest of us&lt;/p&gt;
     
     <item>
       <title>Ullamcorper Ultrices Pellentesque (MMXV)</title>
-      <link>https://synikitin.github.io/analytics6600/presentation/ullamcorper-ultrices-pellentesque/</link>
+      <link>/presentation/ullamcorper-ultrices-pellentesque/</link>
       <pubDate>Sun, 27 Nov 2016 12:28:12 -0700</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/presentation/ullamcorper-ultrices-pellentesque/</guid>
+      <guid>/presentation/ullamcorper-ultrices-pellentesque/</guid>
       <description>&lt;p&gt;Aliquam ullamcorper ultrices pellentesque.
 Suspendisse interdum, sem ut aliquet pretium.
 Velit justo volutpat lorem, ac vulputate lacus metus at mauris.&lt;/p&gt;
@@ -74,46 +74,46 @@ Velit justo volutpat lorem, ac vulputate lacus metus at mauris.&lt;/p&gt;
     
     <item>
       <title>Ornare Diam</title>
-      <link>https://synikitin.github.io/analytics6600/project/ornare-diam/</link>
+      <link>/project/ornare-diam/</link>
       <pubDate>Thu, 24 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/project/ornare-diam/</guid>
+      <guid>/project/ornare-diam/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Accumsan Ultricies Turpis?</title>
-      <link>https://synikitin.github.io/analytics6600/post/accumsan-ultricies-turpis</link>
+      <link>/post/accumsan-ultricies-turpis</link>
       <pubDate>Wed, 23 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/post/accumsan-ultricies-turpis</guid>
+      <guid>/post/accumsan-ultricies-turpis</guid>
       <description></description>
     </item>
     
     <item>
       <title>Proin Sodales et Dolor sed Congue</title>
-      <link>https://synikitin.github.io/analytics6600/post/proin-sodales-et-dolor-sed-congue</link>
+      <link>/post/proin-sodales-et-dolor-sed-congue</link>
       <pubDate>Mon, 21 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/post/proin-sodales-et-dolor-sed-congue</guid>
+      <guid>/post/proin-sodales-et-dolor-sed-congue</guid>
       <description></description>
     </item>
     
     <item>
       <title>Vestibulum Tincidunt</title>
-      <link>https://synikitin.github.io/analytics6600/post/vestibulum-tincidunt</link>
+      <link>/post/vestibulum-tincidunt</link>
       <pubDate>Sat, 19 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/post/vestibulum-tincidunt</guid>
+      <guid>/post/vestibulum-tincidunt</guid>
       <description></description>
     </item>
     
     <item>
       <title>Vitae Blandit Turpis Blah</title>
-      <link>https://synikitin.github.io/analytics6600/presentation/vitae-blandit-turpis/</link>
+      <link>/presentation/vitae-blandit-turpis/</link>
       <pubDate>Fri, 18 Nov 2016 14:06:00 -0500</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/presentation/vitae-blandit-turpis/</guid>
+      <guid>/presentation/vitae-blandit-turpis/</guid>
       <description>&lt;p&gt;Pellentesque ac magna at lorem semper aliquet.
 Proin sapien dolor, ultrices vel rutrum in, volutpat.
 Vitae tellus. Pellentesque mollis arcu bibendum magna fermentum suscipit.
@@ -127,19 +127,19 @@ Morbi fringilla tortor a ex molestie, ac viverra dui pulvinar.&lt;/p&gt;
     
     <item>
       <title>Nulla Mauris Sit</title>
-      <link>https://synikitin.github.io/analytics6600/project/nulla-mauris-sit/</link>
+      <link>/project/nulla-mauris-sit/</link>
       <pubDate>Sun, 13 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/project/nulla-mauris-sit/</guid>
+      <guid>/project/nulla-mauris-sit/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Cras Consequat et Risus</title>
-      <link>https://synikitin.github.io/analytics6600/project/cras-consequat-et-risus/</link>
+      <link>/project/cras-consequat-et-risus/</link>
       <pubDate>Fri, 11 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/project/cras-consequat-et-risus/</guid>
+      <guid>/project/cras-consequat-et-risus/</guid>
       <description>&lt;p&gt;Nullam Cursus Rhoncus&lt;/p&gt;
 
 &lt;h1 id=&#34;velit-in-dictum&#34;&gt;Velit in Dictum&lt;/h1&gt;
@@ -199,10 +199,10 @@ Praesent ornare diam ipsum.&lt;/p&gt;</description>
     
     <item>
       <title>Deep Learning</title>
-      <link>https://synikitin.github.io/analytics6600/project/deep-learning/</link>
+      <link>/project/deep-learning/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/project/deep-learning/</guid>
+      <guid>/project/deep-learning/</guid>
       <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.&lt;/p&gt;
 
 &lt;p&gt;Nullam vel molestie justo. Curabitur vitae efficitur leo. In hac habitasse platea dictumst. Sed pulvinar mauris dui, eget varius purus congue ac. Nulla euismod, lorem vel elementum dapibus, nunc justo porta mi, sed tempus est est vel tellus. Nam et enim eleifend, laoreet sem sit amet, elementum sem. Morbi ut leo congue, maximus velit ut, finibus arcu. In et libero cursus, rutrum risus non, molestie leo. Nullam congue quam et volutpat malesuada. Sed risus tortor, pulvinar et dictum nec, sodales non mi. Phasellus lacinia commodo laoreet. Nam mollis, erat in feugiat consectetur, purus eros egestas tellus, in auctor urna odio at nibh. Mauris imperdiet nisi ac magna convallis, at rhoncus ligula cursus.&lt;/p&gt;
@@ -217,19 +217,19 @@ Praesent ornare diam ipsum.&lt;/p&gt;</description>
     
     <item>
       <title>External Project</title>
-      <link>https://synikitin.github.io/analytics6600/project/example-external-project/</link>
+      <link>/project/example-external-project/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/project/example-external-project/</guid>
+      <guid>/project/example-external-project/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Getting started with the Academic theme for Hugo</title>
-      <link>https://synikitin.github.io/analytics6600/post/getting-started/</link>
+      <link>/post/getting-started/</link>
       <pubDate>Wed, 20 Apr 2016 12:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/post/getting-started/</guid>
+      <guid>/post/getting-started/</guid>
       <description>
 
 &lt;p&gt;The Academic theme enables you to easily create a beautifully simple academic or personal website using the &lt;a href=&#34;https://gohugo.io&#34; target=&#34;_blank&#34;&gt;Hugo&lt;/a&gt; static site generator.&lt;/p&gt;
@@ -239,7 +239,7 @@ Praesent ornare diam ipsum.&lt;/p&gt;</description>
 &lt;ul&gt;
 &lt;li&gt;Designed for academic staff, students, or general personal use&lt;/li&gt;
 &lt;li&gt;Configurable widgets available for Biography, Publications, Projects, News/Blog, Talks, Contact, and Custom&lt;/li&gt;
-&lt;li&gt;Write in &lt;a href=&#34;https://synikitin.github.io/analytics6600/post/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;Markdown&lt;/a&gt; for easy formatting and code highlighting, with &lt;a href=&#34;https://en.wikibooks.org/wiki/LaTeX/Mathematics&#34; target=&#34;_blank&#34;&gt;LaTeX&lt;/a&gt; for mathematical expressions&lt;/li&gt;
+&lt;li&gt;Write in &lt;a href=&#34;./post/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;Markdown&lt;/a&gt; for easy formatting and code highlighting, with &lt;a href=&#34;https://en.wikibooks.org/wiki/LaTeX/Mathematics&#34; target=&#34;_blank&#34;&gt;LaTeX&lt;/a&gt; for mathematical expressions&lt;/li&gt;
 &lt;li&gt;Academic linking (Scholar etc.), &lt;a href=&#34;https://analytics.google.com&#34; target=&#34;_blank&#34;&gt;Google Analytics&lt;/a&gt;, and &lt;a href=&#34;https://disqus.com&#34; target=&#34;_blank&#34;&gt;Disqus&lt;/a&gt; comments&lt;/li&gt;
 &lt;li&gt;Responsive and mobile friendly&lt;/li&gt;
 &lt;li&gt;Simple and refreshing one page design&lt;/li&gt;
@@ -303,15 +303,15 @@ cd my_website
 
 &lt;h3 id=&#34;customize-the-homepage&#34;&gt;Customize the homepage&lt;/h3&gt;
 
-&lt;p&gt;Refer to our guide on using &lt;a href=&#34;https://synikitin.github.io/analytics6600/post/widgets/&#34; target=&#34;_blank&#34;&gt;widgets&lt;/a&gt; to customize your homepage.&lt;/p&gt;
+&lt;p&gt;Refer to our guide on using &lt;a href=&#34;./post/widgets/&#34; target=&#34;_blank&#34;&gt;widgets&lt;/a&gt; to customize your homepage.&lt;/p&gt;
 
 &lt;h3 id=&#34;add-your-content&#34;&gt;Add your content&lt;/h3&gt;
 
-&lt;p&gt;Refer to our guide on &lt;a href=&#34;https://synikitin.github.io/analytics6600/post/managing-content/&#34; target=&#34;_blank&#34;&gt;managing content&lt;/a&gt; to create your own publications, blog posts, talks, and projects.&lt;/p&gt;
+&lt;p&gt;Refer to our guide on &lt;a href=&#34;./post/managing-content/&#34; target=&#34;_blank&#34;&gt;managing content&lt;/a&gt; to create your own publications, blog posts, talks, and projects.&lt;/p&gt;
 
 &lt;h3 id=&#34;remove-unused-widgets-and-pages&#34;&gt;Remove unused widgets and pages&lt;/h3&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://synikitin.github.io/analytics6600/post/managing-content/#removing-content&#34; target=&#34;_blank&#34;&gt;How to remove unused widgets and content pages&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;./post/managing-content/#removing-content&#34; target=&#34;_blank&#34;&gt;How to remove unused widgets and content pages&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h3 id=&#34;customization-upgrading&#34;&gt;Customization &amp;amp; Upgrading&lt;/h3&gt;
 
@@ -415,10 +415,10 @@ $ git log --pretty=oneline --abbrev-commit --decorate HEAD..upstream/master
     
     <item>
       <title>Customizing the homepage with widgets</title>
-      <link>https://synikitin.github.io/analytics6600/post/widgets/</link>
+      <link>/post/widgets/</link>
       <pubDate>Wed, 20 Apr 2016 11:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/post/widgets/</guid>
+      <guid>/post/widgets/</guid>
       <description>
 
 &lt;p&gt;Homepage widgets display as sections on the homepage. They can be enabled/disabled and configured as desired. Academic has the following widgets available to use:&lt;/p&gt;
@@ -481,15 +481,15 @@ $ git log --pretty=oneline --abbrev-commit --decorate HEAD..upstream/master
     
     <item>
       <title>Managing content</title>
-      <link>https://synikitin.github.io/analytics6600/post/managing-content/</link>
+      <link>/post/managing-content/</link>
       <pubDate>Wed, 20 Apr 2016 11:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/post/managing-content/</guid>
-      <description>&lt;p&gt;This is a brief guide to managing content with the Academic theme. Content can include publications, projects, talks, and news/blog articles. After you have read this guide about creating and managing content, you may also be interested to learn about &lt;a href=&#34;https://synikitin.github.io/analytics6600/post/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;writing content with Markdown, LaTeX, and Shortcodes&lt;/a&gt;.&lt;/p&gt;
+      <guid>/post/managing-content/</guid>
+      <description>&lt;p&gt;This is a brief guide to managing content with the Academic theme. Content can include publications, projects, talks, and news/blog articles. After you have read this guide about creating and managing content, you may also be interested to learn about &lt;a href=&#34;./post/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;writing content with Markdown, LaTeX, and Shortcodes&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;To enable LaTeX math rendering for a page, you should include &lt;code&gt;math = true&lt;/code&gt; in the page&amp;rsquo;s &lt;code&gt;+++&lt;/code&gt; preamble, as demonstrated in the included example site. Otherwise, to enable math on the homepage or for all pages, you must globally set &lt;code&gt;math = true&lt;/code&gt; in &lt;code&gt;config.toml&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;To disable source code highlighting by default for all pages, set &lt;code&gt;highlight = false&lt;/code&gt; in &lt;code&gt;config.toml&lt;/code&gt;. You can then enable source code highlighting only on pages that need it by setting &lt;code&gt;highlight = true&lt;/code&gt; in that page&amp;rsquo;s preamble. See the &lt;a href=&#34;https://synikitin.github.io/analytics6600/post/writing-markdown-latex/#code-highlighting&#34; target=&#34;_blank&#34;&gt;code-highlighting docs&lt;/a&gt; for more details.&lt;/p&gt;
+&lt;p&gt;To disable source code highlighting by default for all pages, set &lt;code&gt;highlight = false&lt;/code&gt; in &lt;code&gt;config.toml&lt;/code&gt;. You can then enable source code highlighting only on pages that need it by setting &lt;code&gt;highlight = true&lt;/code&gt; in that page&amp;rsquo;s preamble. See the &lt;a href=&#34;./post/writing-markdown-latex/#code-highlighting&#34; target=&#34;_blank&#34;&gt;code-highlighting docs&lt;/a&gt; for more details.&lt;/p&gt;
 
 &lt;p&gt;To display an image in publication, post, or project page headers, you can include the &lt;code&gt;image = &amp;quot;my-image.jpg&amp;quot;&lt;/code&gt; option in the page &lt;code&gt;+++&lt;/code&gt; preamble. It is automatically assumed that the image is located in your &lt;code&gt;static/img/&lt;/code&gt; folder. In the context of posts and projects, the image is intended to behave as a full width banner across the top of the article.&lt;/p&gt;
 
