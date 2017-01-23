@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data Analytics 6600</title>
-    <link>/tags/venetais/index.xml</link>
+    <link>https://synikitin.github.io/analytics6600/tags/venetais/index.xml</link>
     <description>Recent content on Data Analytics 6600</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -11,10 +11,10 @@
     
     <item>
       <title>Aenean: Odio orci MMXII</title>
-      <link>/presentation/aenean-odio-orci-mmxii</link>
+      <link>https://synikitin.github.io/analytics6600/presentation/aenean-odio-orci-mmxii</link>
       <pubDate>Tue, 29 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>/presentation/aenean-odio-orci-mmxii</guid>
+      <guid>https://synikitin.github.io/analytics6600/presentation/aenean-odio-orci-mmxii</guid>
       <description>&lt;p&gt;Aenean odio orci, semper nec rhoncus id, rutrum id velit.
 Maecenas et consequat augue, et venenatis leo.
 &lt;/p&gt;
