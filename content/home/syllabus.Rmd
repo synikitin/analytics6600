@@ -43,6 +43,11 @@ Statistics I (MATH 1240)
 +---------------+---------------+---------------------------------------------+------------------------------+
 
 ## **Assignment**
+- Exploratory Data Analysis
+- Data Organization
+- Programmatic Report
+- Predictive Modeling
+- R Markdown Writeup of Analysis
 
 ## **Project**
 - R package of functions useful for your work
@@ -50,7 +55,7 @@ Statistics I (MATH 1240)
 - Shiny web app with exploratory or predictive functionality
 
 ## **Assessment**
-- 5 Assignments 40%
-- Project 50%
-- Participation 10%
+- 5 Assignments - 40%
+- Project - 50%
+- Participation - 10%
 

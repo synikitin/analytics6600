@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Analytics 6600</title>
+    <link>/tags/course/index.xml</link>
+    <description>Recent content on Data Analytics 6600</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Slava Nikitin</copyright>
+    <atom:link href="/tags/course/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Website is Online</title>
+      <link>/post/welcome/</link>
+      <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/welcome/</guid>
+      <description>&lt;p&gt;Greetings Students!&lt;/p&gt;
+
+&lt;p&gt;We will use this website for information about the course and any news that is longer than appropriate for an email. Here you will find the syllabus, assignments, projects, news items and ways of contacting me.&lt;/p&gt;
+
+&lt;p&gt;I am looking forward to discussing the exciting field of data science with you and teaching you its practical aspects 😄&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
