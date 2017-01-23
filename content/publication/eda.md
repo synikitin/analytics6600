@@ -2,7 +2,7 @@
 abstract = ""
 abstract_short = ""
 authors = []
-date = "2017-01-30"
+date = "2017-01-22"
 image = ""
 image_preview = ""
 math = true
