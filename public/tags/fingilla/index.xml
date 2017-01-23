@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data Analytics 6600</title>
-    <link>/tags/fingilla/index.xml</link>
+    <link>https://synikitin.github.io/analytics6600/tags/fingilla/index.xml</link>
     <description>Recent content on Data Analytics 6600</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -11,10 +11,10 @@
     
     <item>
       <title>Vitae Blandit Turpis Blah</title>
-      <link>/presentation/vitae-blandit-turpis/</link>
+      <link>https://synikitin.github.io/analytics6600/presentation/vitae-blandit-turpis/</link>
       <pubDate>Fri, 18 Nov 2016 14:06:00 -0500</pubDate>
       
-      <guid>/presentation/vitae-blandit-turpis/</guid>
+      <guid>https://synikitin.github.io/analytics6600/presentation/vitae-blandit-turpis/</guid>
       <description>&lt;p&gt;Pellentesque ac magna at lorem semper aliquet.
 Proin sapien dolor, ultrices vel rutrum in, volutpat.
 Vitae tellus. Pellentesque mollis arcu bibendum magna fermentum suscipit.
