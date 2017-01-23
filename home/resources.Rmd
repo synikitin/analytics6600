@@ -30,6 +30,6 @@ knitr::opts_chunk$set(echo = TRUE)
 - [Online Auctions](https://www.kaggle.com/onlineauctions/online-auctions-dataset)  
 - [Fivethirtyeight](https://github.com/rudeboybert/fivethirtyeight)  
 
-## **Coding Style**
+## **Coding Style**  
 - [Hadley's](adv-r.had.co.nz/Style.html) 
 
