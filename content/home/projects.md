@@ -26,12 +26,16 @@ view = 1
   tag = "*"
   
 [[filter]]
-  name = "Deep Learning"
-  tag = ".deep-learning"
+  name = "Analysis"
+  tag = ".rmarkdown"
 
 [[filter]]
-  name = "Other"
-  tag = ".demo"
+  name = "Package"
+  tag = ".package"
+
+[[filter]]
+  name = "Shiny"
+  tag = ".shiny"
 
 +++
 
