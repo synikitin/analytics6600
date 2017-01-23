@@ -12,10 +12,10 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Prerequisite
+## **Prerequisite**
 Statistics I (MATH 1240) 
 
-## Schedule (subject to change)
+## **Schedule (subject to change)**
 
 +---------------+---------------+---------------------------------------------+------------------------------+
 | Module        |      Dates    |         Topics                              |  Assignments                 |
@@ -42,14 +42,14 @@ Statistics I (MATH 1240)
 |               | - 04/10       | - Student's choice                          | - Presentation               |
 +---------------+---------------+---------------------------------------------+------------------------------+
 
-## Assignments
+## **Assignments**
 
-## Projects
+## **Projects**
 - R package of functions useful for your work
 - R markdown report of deep analysis
 - Shiny web app with exploratory or predictive functionality
 
-## Assessment
+## **Assessment**
 - 5 Assignments 40%
 - Project 50%
 - Participation 10%

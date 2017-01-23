@@ -12,7 +12,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Textbooks and Helpful Links
+## **Textbooks and Helpful Links**
 - [Main Text](r4ds.had.co.nz/)  
 - [Basic R Programming](https://leanpub.com/rprogramming)  
 - [Advanced R Programming](//adv-r.had.co.nz/)  
@@ -21,7 +21,7 @@ knitr::opts_chunk$set(echo = TRUE)
 - [Awesome-R List](https://awesome-r.com/)  
 - [Stats/ML in R](r-statistics.co/)  
 
-## Example Data Sets  
+## **Example Data Sets**
 - [HR Analytics](https://www.kaggle.com/ludobenistant/hr-analytics)  
 - [House Sales Prediction](https://www.kaggle.com/harlfoxem/housesalesprediction)  
 - [Lending Club Loan](https://www.kaggle.com/wendykan/lending-club-loan-data)  
@@ -30,6 +30,6 @@ knitr::opts_chunk$set(echo = TRUE)
 - [Online Auctions](https://www.kaggle.com/onlineauctions/online-auctions-dataset)  
 - [Fivethirtyeight](https://github.com/rudeboybert/fivethirtyeight)  
 
-## Coding Style
+## **Coding Style**  
 - [Hadley's](adv-r.had.co.nz/Style.html) 
 
