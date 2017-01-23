@@ -1,7 +1,7 @@
 ---
 title: "Syllabus"
 author: "Slava Nikitin"
-date: "January 22, 2017"
+date: "2017-01-22"
 weight: 10
 widget: "custom"
 draft: false
@@ -42,9 +42,9 @@ Statistics I (MATH 1240)
 |               | - 04/10       | - Student's choice                          | - Presentation               |
 +---------------+---------------+---------------------------------------------+------------------------------+
 
-## **Assignments**
+## **Assignment**
 
-## **Projects**
+## **Project**
 - R package of functions useful for your work
 - R markdown report of deep analysis
 - Shiny web app with exploratory or predictive functionality

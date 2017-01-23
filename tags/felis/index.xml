@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data Analytics 6600</title>
-    <link>https://synikitin.github.io/analytics6600/tags/felis/index.xml</link>
+    <link>/tags/felis/index.xml</link>
     <description>Recent content on Data Analytics 6600</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -11,10 +11,10 @@
     
     <item>
       <title>Aenean: Odio orci MMXII</title>
-      <link>https://synikitin.github.io/analytics6600/presentation/aenean-odio-orci-mmxii</link>
+      <link>/presentation/aenean-odio-orci-mmxii</link>
       <pubDate>Tue, 29 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/presentation/aenean-odio-orci-mmxii</guid>
+      <guid>/presentation/aenean-odio-orci-mmxii</guid>
       <description>&lt;p&gt;Aenean odio orci, semper nec rhoncus id, rutrum id velit.
 Maecenas et consequat augue, et venenatis leo.
 &lt;/p&gt;
@@ -51,10 +51,10 @@ Data accessible to the rest of us&lt;/p&gt;
     
     <item>
       <title>Vestibulum Tincidunt</title>
-      <link>https://synikitin.github.io/analytics6600/post/vestibulum-tincidunt</link>
+      <link>/post/vestibulum-tincidunt</link>
       <pubDate>Sat, 19 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/post/vestibulum-tincidunt</guid>
+      <guid>/post/vestibulum-tincidunt</guid>
       <description></description>
     </item>
     

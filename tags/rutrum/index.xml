@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data Analytics 6600</title>
-    <link>https://synikitin.github.io/analytics6600/tags/rutrum/index.xml</link>
+    <link>/tags/rutrum/index.xml</link>
     <description>Recent content on Data Analytics 6600</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -11,77 +11,14 @@
     
     <item>
       <title>Ullamcorper Ultrices Pellentesque (MMXV)</title>
-      <link>https://synikitin.github.io/analytics6600/presentation/ullamcorper-ultrices-pellentesque/</link>
+      <link>/presentation/ullamcorper-ultrices-pellentesque/</link>
       <pubDate>Sun, 27 Nov 2016 12:28:12 -0700</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/presentation/ullamcorper-ultrices-pellentesque/</guid>
+      <guid>/presentation/ullamcorper-ultrices-pellentesque/</guid>
       <description>&lt;p&gt;Aliquam ullamcorper ultrices pellentesque.
 Suspendisse interdum, sem ut aliquet pretium.
 Velit justo volutpat lorem, ac vulputate lacus metus at mauris.&lt;/p&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>Cras Consequat et Risus</title>
-      <link>https://synikitin.github.io/analytics6600/project/cras-consequat-et-risus/</link>
-      <pubDate>Fri, 11 Nov 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://synikitin.github.io/analytics6600/project/cras-consequat-et-risus/</guid>
-      <description>&lt;p&gt;Nullam Cursus Rhoncus&lt;/p&gt;
-
-&lt;h1 id=&#34;velit-in-dictum&#34;&gt;Velit in Dictum&lt;/h1&gt;
-
-&lt;p&gt;Cras vitae eros nunc.
-Praesent ornare diam ipsum, sed ultrices tortor porttitor luctus.
-Cras consequat et risus ac rutrum.
-Nullam ac elit blandit, laoreet lorem vel, scelerisque tortor.
-Sed sed tellus in diam tristique tempor.
-&lt;/p&gt;
-
-&lt;p&gt;Cras quis justo nibh.
-Mauris odio turpis, sodales a tempus vel.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/UKToY.png&#34; alt=&#34;nixon image&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Fermentum a sem.
-Cras in semper diam.
-Integer cursus neque eget suscipit lobortis.&lt;/p&gt;
-
-&lt;h2 id=&#34;mauris-a-metus-massa&#34;&gt;Mauris a metus massa&lt;/h2&gt;
-
-&lt;p&gt;Morbi ullamcorper sodales eros a porttitor.
-Praesent at tellus ex.
-Ut mattis porttitor ex id ornare.
-Nullam vitae blandit turpis.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;    import (
-        vitae &amp;quot;github.com/mdhender/example&amp;quot;
-    )
-
-    if tincidunt.gravida {
-        vitae.porttitor(&amp;quot;blandit turpis&amp;quot;)
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Sed tincidunt gravida ex, vulputate imperdiet nulla ullamcorper id.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Maecenas et consequat&lt;/li&gt;
-&lt;li&gt;Sed id nisl sed lectus
-consectetur vehicula&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Ullamcorper ultrices pellentesque&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;ulputate&lt;/li&gt;
-&lt;li&gt;imperdiet&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Nulla ullamcorpe&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Cras vitae eros nunc.
-Praesent ornare diam ipsum.&lt;/p&gt;</description>
     </item>
     
   </channel>
