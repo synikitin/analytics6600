@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data Analytics 6600</title>
-    <link>https://synikitin.github.io/analytics6600/index.xml</link>
+    <link>/index.xml</link>
     <description>Recent content on Data Analytics 6600</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>Exploratory Data Analysis</title>
-      <link>https://synikitin.github.io/analytics6600/publication/eda/</link>
+      <link>/publication/eda/</link>
       <pubDate>Wed, 25 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/publication/eda/</guid>
+      <guid>/publication/eda/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -47,7 +47,7 @@ df &amp;lt;- read_csv(&amp;quot;movie.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Next, we should clean up a few names and types using dplyr functions:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Use &lt;code&gt;rename&lt;/code&gt; function to remove &lt;strong&gt;$&lt;/strong&gt; and empty spaces from variables that have them. You will need to use backsticks, for example &lt;strong&gt;x = `budget_2013$`&lt;/strong&gt;, to have proper syntax for rename. Save the data frame with corrected names as &lt;strong&gt;df&lt;/strong&gt; or with some other name.&lt;/li&gt;
-&lt;li&gt;After correcting names, we need to also fix data types. Output of &lt;code&gt;str(df)&lt;/code&gt; shows that, say &lt;strong&gt;budget_2013$&lt;/strong&gt;, has type &lt;code&gt;chr&lt;/code&gt; which represents text data, without much sense. Use &lt;code&gt;mutate&lt;/code&gt; and &lt;code&gt;as.double&lt;/code&gt; to convert all variables that are by their nature numerical, but are stored as text.&lt;/li&gt;
+&lt;li&gt;After correcting names, we need to also fix data types. Output of &lt;code&gt;str(df)&lt;/code&gt; shows that, say &lt;strong&gt;budget_2013$&lt;/strong&gt;, has type &lt;code&gt;chr&lt;/code&gt; which represents text data. Use &lt;code&gt;mutate&lt;/code&gt; and &lt;code&gt;as.double&lt;/code&gt; to convert all variables that are by their nature numerical, but are stored as text.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div id=&#34;test-and-budget-statistics&#34; class=&#34;section level2&#34;&gt;
@@ -55,7 +55,7 @@ df &amp;lt;- read_csv(&amp;quot;movie.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Now, lets get some basic information about movies and budget:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Calculate percentage of movies passing the test in the period of 1970 - 1980 using &lt;strong&gt;clean_test&lt;/strong&gt; variable. Use &lt;code&gt;count&lt;/code&gt; function from dplyr to get you started and basic arithmetic for the rest. Is the number below 50? Do the same calculation but for 2000 - 2010. How did the number change?&lt;/li&gt;
-&lt;li&gt;Switching to budget, first filter all movies from 1970 - 1989 from your data and save as an intermediate result. Then, calculate inflation-adjusted median budget for all movies and also separate medians for each unique value of &lt;strong&gt;clean_test&lt;/strong&gt; variable. How do group-specific medians compare to the overall median? Do author’s explanations provide a satisfying explanation of these numbers or do you have some additional factors you have in mind? Note you may get a warning about missing values; you can remove missing values during calculation by adding &lt;code&gt;na.rm = TRUE&lt;/code&gt; to median.&lt;/li&gt;
+&lt;li&gt;Switching to budget, first filter out all movies from 1970 - 1989 from your data and save as an intermediate result. Then, calculate inflation-adjusted median budget for all movies and also separate medians for each unique value of &lt;strong&gt;clean_test&lt;/strong&gt; variable. How do group-specific medians compare to the overall median? Do author’s explanations provide a satisfying explanation of these numbers or do you have some additional factors you have in mind? Note you may get a warning about missing values; you can remove missing values during calculation by adding &lt;code&gt;na.rm = TRUE&lt;/code&gt; to median.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div id=&#34;sales-statistics&#34; class=&#34;section level2&#34;&gt;
@@ -64,7 +64,7 @@ df &amp;lt;- read_csv(&amp;quot;movie.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;ul&gt;
 &lt;li&gt;Lets add a few new variables to &lt;code&gt;df&lt;/code&gt;. Note that &lt;strong&gt;intgross&lt;/strong&gt; stands for worldwide gross sales. Add variables that represent international only gross sales, worldwide return, international return, and domestic return on investment.&lt;/li&gt;
 &lt;li&gt;Summarise returns by calculating median total return and median total returns grouped by outcome of Bechdel test. What pattern do you see?&lt;/li&gt;
-&lt;li&gt;Next, select international only gross and clean_test variables followed by creating a new variable that only says “international”. Save this as a separate data frame. Repeat the same computations to create a data frame for “domestic”, and then combine the two into a new data frame using &lt;code&gt;bind_rows&lt;/code&gt;. Calculate median gross sales for combination of clean_test result and origin of sales by using both variables for grouping. What can you say about relation of passing the test and market on gross sales?&lt;/li&gt;
+&lt;li&gt;Next, select international only gross and clean_test variables followed by creating a new variable with a single value of “international”. Save this as a separate data frame. Repeat the same computations to create a data frame for “domestic”, and then combine the two into a new data frame using &lt;code&gt;bind_rows&lt;/code&gt; (here you had to name the new variables with the same name, say mrket). Calculate median gross sales for combination of clean_test result and origin of sales by using both variables for grouping. What can you say about relation of passing the test and market on gross sales?&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div id=&#34;visualizations&#34; class=&#34;section level2&#34;&gt;
@@ -79,7 +79,7 @@ df &amp;lt;- read_csv(&amp;quot;movie.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;additional&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;&lt;strong&gt;Additional&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Fivethirtyeight article arrived at certain conclusions based on the movie data. Come up either with one summary calculation or one visualization that will support or challenge their findings.&lt;/p&gt;
+&lt;p&gt;Fivethirtyeight article arrived at certain conclusions based on the movie data. Come up either with one new summary calculation or one new visualization that will support or challenge their findings.&lt;/p&gt;
 &lt;p&gt;Remember to place all your results in R markdown. Good luck!&lt;/p&gt;
 &lt;/div&gt;
 
@@ -95,40 +95,40 @@ df &amp;lt;- read_csv(&amp;quot;movie.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Deep Analysis</title>
-      <link>https://synikitin.github.io/analytics6600/project/analysis/</link>
+      <link>/project/analysis/</link>
       <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/project/analysis/</guid>
+      <guid>/project/analysis/</guid>
       <description>&lt;p&gt;Details to be determined.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>R Package</title>
-      <link>https://synikitin.github.io/analytics6600/project/package/</link>
+      <link>/project/package/</link>
       <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/project/package/</guid>
+      <guid>/project/package/</guid>
       <description>&lt;p&gt;Details to be determined.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Shiny Web Application</title>
-      <link>https://synikitin.github.io/analytics6600/project/shiny/</link>
+      <link>/project/shiny/</link>
       <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/project/shiny/</guid>
+      <guid>/project/shiny/</guid>
       <description>&lt;p&gt;Details to be determined.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Website is Online</title>
-      <link>https://synikitin.github.io/analytics6600/post/welcome/</link>
+      <link>/post/welcome/</link>
       <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/post/welcome/</guid>
+      <guid>/post/welcome/</guid>
       <description>&lt;p&gt;Greetings Students!&lt;/p&gt;
 
 &lt;p&gt;We will use this website for information about the course and any news that is longer than appropriate for an email. Here you will find the syllabus, assignments, projects, news items and ways of contacting me.&lt;/p&gt;
