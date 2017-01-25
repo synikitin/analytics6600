@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Project-rsses on Data Analytics 6600</title>
-    <link>/project/index.xml</link>
+    <link>https://synikitin.github.io/analytics6600/project/index.xml</link>
     <description>Recent content in Project-rsses on Data Analytics 6600</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,30 +12,30 @@
     
     <item>
       <title>Deep Analysis</title>
-      <link>/project/analysis/</link>
+      <link>https://synikitin.github.io/analytics6600/project/analysis/</link>
       <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>/project/analysis/</guid>
+      <guid>https://synikitin.github.io/analytics6600/project/analysis/</guid>
       <description>&lt;p&gt;Details to be determined.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>R Package</title>
-      <link>/project/package/</link>
+      <link>https://synikitin.github.io/analytics6600/project/package/</link>
       <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>/project/package/</guid>
+      <guid>https://synikitin.github.io/analytics6600/project/package/</guid>
       <description>&lt;p&gt;Details to be determined.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Shiny Web Application</title>
-      <link>/project/shiny/</link>
+      <link>https://synikitin.github.io/analytics6600/project/shiny/</link>
       <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>/project/shiny/</guid>
+      <guid>https://synikitin.github.io/analytics6600/project/shiny/</guid>
       <description>&lt;p&gt;Details to be determined.&lt;/p&gt;
 </description>
     </item>
