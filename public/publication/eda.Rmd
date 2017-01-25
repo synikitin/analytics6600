@@ -82,6 +82,10 @@ The last part of the assignment is to roughly reproduce the charts in the articl
 
 You can try installing and using various themes from `ggthemes` package to experiment with how your plots look.
 
+## **Additional**
+
+Fivethirtyeight article arrived at certain conclusions based on the movie data. Come up either with one summary calculation or one visualization that will support or challenge their findings.
+
 Remember to place all your results in R markdown. Good luck!
 
 

@@ -76,6 +76,10 @@ df &amp;lt;- read_csv(&amp;quot;movie.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;Lastly, use data build with &lt;code&gt;bind_rows&lt;/code&gt; from &lt;strong&gt;Sales Statistics&lt;/strong&gt; section to make the chart about gross sales by market and test result. Hint: faceting will be helpful here.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;You can try installing and using various themes from &lt;code&gt;ggthemes&lt;/code&gt; package to experiment with how your plots look.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;additional&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;Additional&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Fivethirtyeight article arrived at certain conclusions based on the movie data. Come up either with one summary calculation or one visualization that will support or challenge their findings.&lt;/p&gt;
 &lt;p&gt;Remember to place all your results in R markdown. Good luck!&lt;/p&gt;
 &lt;/div&gt;
 
