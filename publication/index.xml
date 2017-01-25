@@ -2,21 +2,35 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Publication-rsses on Data Analytics 6600</title>
-    <link>https://synikitin.github.io/analytics6600/publication/index.xml</link>
+    <link>/publication/index.xml</link>
     <description>Recent content in Publication-rsses on Data Analytics 6600</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Slava Nikitin</copyright>
-    <lastBuildDate>Sun, 22 Jan 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 30 Jan 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="/publication/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Exploratory Data Analysis</title>
-      <link>https://synikitin.github.io/analytics6600/publication/eda/</link>
-      <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
+      <link>/publication/eda/</link>
+      <pubDate>Mon, 30 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/publication/eda/</guid>
-      <description>&lt;p&gt;Transformation and visualization of data to get insights into returns on movies depending on who you cast.&lt;/p&gt;
+      <guid>/publication/eda/</guid>
+      <description>
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;learning-objectives&#34;&gt;&lt;strong&gt;Learning Objectives&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Package installation and loading&lt;/li&gt;
+&lt;li&gt;Data frame manipulation&lt;/li&gt;
+&lt;li&gt;Exploratory visualization&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;instructions&#34;&gt;&lt;strong&gt;Instructions&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;Transformation and visualization of data to get insights into returns on movies depending on who you cast.&lt;/p&gt;
 </description>
     </item>
     
