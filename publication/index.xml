@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Publication-rsses on Data Analytics 6600</title>
-    <link>https://synikitin.github.io/analytics6600/publication/index.xml</link>
+    <link>/publication/index.xml</link>
     <description>Recent content in Publication-rsses on Data Analytics 6600</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Slava Nikitin</copyright>
-    <lastBuildDate>Wed, 25 Jan 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 30 Jan 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="/publication/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Exploratory Data Analysis</title>
-      <link>https://synikitin.github.io/analytics6600/publication/eda/</link>
-      <pubDate>Wed, 25 Jan 2017 00:00:00 +0000</pubDate>
+      <link>/publication/eda/</link>
+      <pubDate>Mon, 30 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/publication/eda/</guid>
+      <guid>/publication/eda/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
