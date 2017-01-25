@@ -2,7 +2,7 @@
 abstract = ""
 abstract_short = ""
 authors = []
-date = "2017-01-22"
+date = "2017-01-30"
 image = ""
 image_preview = ""
 math = true
@@ -17,7 +17,14 @@ url_pdf = ""
 url_project = "https://fivethirtyeight.com/features/the-dollar-and-cents-case-against-hollywoods-exclusion-of-women/"
 url_slides = ""
 url_video = ""
-
 +++
 
+-----
+
+## **Learning Objectives**
+- Package installation and loading
+- Data frame manipulation
+- Exploratory visualization
+
+## **Instructions**
 Transformation and visualization of data to get insights into returns on movies depending on who you cast.

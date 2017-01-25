@@ -55,16 +55,16 @@
 # Publication/Talk details
 
 - id: abstract
-  translation: Abstract
+  translation: ""
 
 - id: publication
-  translation: Publication
+  translation: ""
 
 - id: publication_type
   translation: Type
 
 - id: date
-  translation: Date
+  translation: Due Date
 
 - id: links
   translation: Links
