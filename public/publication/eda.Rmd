@@ -54,7 +54,7 @@ Type **df** into console to test that data loaded properly. Also, use `str(df)` 
 Next, we should clean up a few names and types using dplyr functions:
 
 - Use `rename` function to remove **\$** and empty spaces from variables that have them. You will need to use backsticks, for example **x = \`budget_2013$\`**, to have proper syntax for rename. Save the data frame with corrected names as **df** or with some other name.
-- After correcting names, we need to also fix data types. Output of `str(df)` shows that, say **budget_2013$**, has type `chr` which represents text data, without much sense. Use `mutate` and `as.double` to convert all variables that are by their nature numerical, but are stored as text.
+- After correcting names, we need to also fix data types. Output of `str(df)` shows that, say **budget_2013$**, has type `chr` which represents text data. Use `mutate` and `as.double` to convert all variables that are by their nature numerical, but are stored as text.
 
 ## **Test and Budget Statistics**
 
@@ -62,7 +62,7 @@ Now, lets get some basic information about movies and budget:
 
 
 - Calculate percentage of movies passing the test in the period of 1970 - 1980 using **clean_test** variable. Use `count` function from dplyr to get you started and basic arithmetic for the rest. Is the number below 50? Do the same calculation but for 2000 - 2010. How did the number change?
-- Switching to budget, first filter all movies from 1970 - 1989 from your data and save as an intermediate result. Then, calculate inflation-adjusted median budget for all movies and also separate medians for each unique value of **clean_test** variable. How do group-specific medians compare to the overall median? Do author's explanations provide a satisfying explanation of these numbers or do you have some additional factors you have in mind? Note you may get a warning about missing values; you can remove missing values during calculation by adding `na.rm = TRUE` to median.
+- Switching to budget, first filter out all movies from 1970 - 1989 from your data and save as an intermediate result. Then, calculate inflation-adjusted median budget for all movies and also separate medians for each unique value of **clean_test** variable. How do group-specific medians compare to the overall median? Do author's explanations provide a satisfying explanation of these numbers or do you have some additional factors you have in mind? Note you may get a warning about missing values; you can remove missing values during calculation by adding `na.rm = TRUE` to median.
 
 ## **Sales Statistics**
 
@@ -70,7 +70,7 @@ Next, we will look at returns:
 
 - Lets add a few new variables to `df`. Note that **intgross** stands for worldwide gross sales. Add variables that represent international only gross sales, worldwide return, international return, and domestic return on investment. 
 - Summarise returns by calculating median total return and median total returns grouped by outcome of Bechdel test. What pattern do you see?
-- Next, select international only gross and clean_test variables followed by creating a new variable that only says "international". Save this as a separate data frame. Repeat the same computations to create a data frame for "domestic", and then combine the two into a new data frame using `bind_rows`. Calculate median gross sales for combination of clean_test result and origin of sales by using both variables for grouping. What can you say about relation of passing the test and market on gross sales?
+- Next, select international only gross and clean_test variables followed by creating a new variable with a single value of "international". Save this as a separate data frame. Repeat the same computations to create a data frame for "domestic", and then combine the two into a new data frame using `bind_rows` (here you had to name the new variables with the same name, say mrket). Calculate median gross sales for combination of clean_test result and origin of sales by using both variables for grouping. What can you say about relation of passing the test and market on gross sales?
 
 ## **Visualizations**
 
@@ -84,7 +84,7 @@ You can try installing and using various themes from `ggthemes` package to exper
 
 ## **Additional**
 
-Fivethirtyeight article arrived at certain conclusions based on the movie data. Come up either with one summary calculation or one visualization that will support or challenge their findings.
+Fivethirtyeight article arrived at certain conclusions based on the movie data. Come up either with one new summary calculation or one new visualization that will support or challenge their findings.
 
 Remember to place all your results in R markdown. Good luck!
 
