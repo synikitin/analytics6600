@@ -13,7 +13,9 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## **Textbooks and Helpful Links**
-- [Main Text](http://r4ds.had.co.nz/)  
+- [Main Text](http://r4ds.had.co.nz/)
+- [Rweekly](https://rweekly.org/)
+- [R-bloggers](https://www.r-bloggers.com/)
 - [Basic R Programming](https://leanpub.com/rprogramming)  
 - [Advanced R Programming](http://adv-r.had.co.nz/)  
 - [Graphics in R](http://www.cookbook-r.com/Graphs/)  
