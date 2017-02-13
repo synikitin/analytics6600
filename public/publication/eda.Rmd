@@ -35,13 +35,43 @@ df <- structure(read_csv("analytics6600/static/data/movies.csv"), "spec" = NULL)
 ```
 
 ```{r echo = FALSE, eval = FALSE}
-df <- rename(df, budget_2013 = `budget_2013$`, domgross_2013 = `domgross_2013$`,
-             intgross_2013 = `intgross_2013$`,
-             period_code = `period code`, decade_code = `decade code`) %>% 
-  mutate(domgross = as.double(domgross), intgross = as.double(intgross),
-         domgross_2013 = as.double(domgross_2013),
-         intgross_2013 = as.double(intgross_2013))
+df <- df %>% 
+  rename(
+  budget_2013 = `budget_2013$`,
+  domgross_2013 = `domgross_2013$`,
+  intgross_2013 = `intgross_2013$`,
+  period_code = `period code`,
+  decade_code = `decade code`
+  ) %>% 
+  mutate(
+    domgross = as.double(domgross),
+    intgross = as.double(intgross),
+    domgross_2013 = as.double(domgross_2013),
+    intgross_2013 = as.double(intgross_2013),
+    intgross_only = intgross_2013 - domgross_2013,
+    int_return = (intgross_only - budget_2013) / budget_2013 * 100,
+    dom_return = (domgross_2013 - budget_2013) / budget_2013 * 100,
+    world_return = (intgross_2013 - budget_2013) / budget_2013 * 100
+  )
 
+test1 <- filter(df, year <= 1980) %>% 
+  count(clean_test) %>% 
+  mutate(perc = n / sum(n) * 100)
+
+test2 <- filter(df, year <= 2010, year >= 2000) %>% 
+  count(clean_test) %>% 
+  mutate(perc = n / sum(n) * 100)
+
+budget1 <- filter(df, year >= 1990) %>% 
+  summarise(med_budget = median(budget_2013, na.rm = TRUE))
+budget2 <- filter(df, year >= 1990) %>% 
+  group_by(clean_test) %>% 
+  summarise(med_budget = median(budget_2013, na.rm = TRUE))
+
+return1 <- summarise(df, med_budget = median(int_return, na.rm = TRUE))
+return2 <- group_by(df, clean_test) %>% 
+  summarise(med_gross = median(int_return, na.rm = TRUE))
+  
 df_plot1 <- mutate(df, year_interval = cut_width(year, width = 5, boundary = 1970))
 ggobj1 <- ggplot(df_plot1, aes(x = year_interval, fill = clean_test)) +   
   geom_bar(position = "fill")
@@ -53,10 +83,6 @@ ggobj2 <- ggplot(df_plot2, aes(clean_test, median_budget_2013)) +
     geom_bar(stat = "identity") +
     coord_flip()
 
-df <- mutate(df, intgross_only = intgross_2013 - domgross_2013,
-             int_return = (intgross_only - budget_2013) / budget_2013 * 100,
-             dom_return = (domgross_2013 - budget_2013) / budget_2013 * 100
-)
 df_plot3 <- bind_rows(
   mutate(select(df, clean_test, return = int_return), market = "international"),
   mutate(select(df, clean_test, return = dom_return), market = "domestic")
