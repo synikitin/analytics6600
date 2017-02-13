@@ -4,7 +4,23 @@
     
     
     <url>
-      <loc>https://synikitin.github.io/analytics6600/</loc>
+      <loc>/</loc>
+      <lastmod>2017-02-13T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>/post/wrangle/</loc>
+      <lastmod>2017-02-13T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>/publication/eda/</loc>
       <lastmod>2017-01-30T00:00:00+00:00</lastmod>
     </url>
     
@@ -12,15 +28,7 @@
     
     
     <url>
-      <loc>https://synikitin.github.io/analytics6600/publication/eda/</loc>
-      <lastmod>2017-01-30T00:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-      <loc>https://synikitin.github.io/analytics6600/project/analysis/</loc>
+      <loc>/project/analysis/</loc>
       <lastmod>2017-01-22T00:00:00+00:00</lastmod>
     </url>
     
@@ -28,7 +36,7 @@
     
     
     <url>
-      <loc>https://synikitin.github.io/analytics6600/project/package/</loc>
+      <loc>/project/package/</loc>
       <lastmod>2017-01-22T00:00:00+00:00</lastmod>
     </url>
     
@@ -36,7 +44,7 @@
     
     
     <url>
-      <loc>https://synikitin.github.io/analytics6600/project/shiny/</loc>
+      <loc>/project/shiny/</loc>
       <lastmod>2017-01-22T00:00:00+00:00</lastmod>
     </url>
     
@@ -44,7 +52,7 @@
     
     
     <url>
-      <loc>https://synikitin.github.io/analytics6600/post/welcome/</loc>
+      <loc>/post/welcome/</loc>
       <lastmod>2017-01-22T00:00:00+00:00</lastmod>
     </url>
     
