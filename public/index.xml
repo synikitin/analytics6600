@@ -2,20 +2,162 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data Analytics 6600</title>
-    <link>https://synikitin.github.io/analytics6600/index.xml</link>
+    <link>/index.xml</link>
     <description>Recent content on Data Analytics 6600</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Slava Nikitin</copyright>
-    <lastBuildDate>Mon, 13 Feb 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 06 Mar 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Wrangling and Exploring</title>
+      <link>/publication/wrangle/</link>
+      <pubDate>Mon, 06 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/wrangle/</guid>
+      <description>&lt;!-- BLOGDOWN-BODY-BEFORE
+
+/BLOGDOWN-BODY-BEFORE --&gt;
+
+&lt;div id=&#34;learning-objectives&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;Learning Objectives&lt;/strong&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Package loading&lt;/li&gt;
+&lt;li&gt;Data import&lt;/li&gt;
+&lt;li&gt;Data clean up&lt;/li&gt;
+&lt;li&gt;Data manipulation&lt;/li&gt;
+&lt;li&gt;Exploratory calculations and visualization&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;context&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;Context&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;In this assignment, we will explore a sample of data from &lt;a href=&#34;https://movielens.org&#34;&gt;MovieLens&lt;/a&gt; service that collects information about users and their ratings of movies covering roughly 1997 - 1998 release dates; the data is used to build experimental exploration and recommendation products by &lt;a href=&#34;http://grouplens.org/&#34;&gt;GroupLens&lt;/a&gt;. In our case, this data is a good source of exercises to meet various learning objectives. You can download the zip-compressed collection of files using the &lt;strong&gt;Dataset&lt;/strong&gt; button and read more about it under &lt;strong&gt;Project&lt;/strong&gt; button.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-import&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;Data Import&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;As usual, start by creating a new folder and turning it into a Rstudio project, and then copy the downloaded data there. You will need software to unzip the files - it should be installed on Mac by default, and on windows you could install and use &lt;strong&gt;WinZip&lt;/strong&gt;. Once you unzip the file, you should have a new folder called &lt;strong&gt;ml-100k&lt;/strong&gt; or something similar, which you can check using &lt;em&gt;Files&lt;/em&gt; tab in Rstudio.&lt;/p&gt;
+&lt;p&gt;There will be many files in the new, unzipped folder. The first part of the assignment is to read in 3 files. Start a new Rmarkdown file to capture your import commands.&lt;/p&gt;
+&lt;p&gt;Suggested functions: &lt;code&gt;read_tsv&lt;/code&gt; for tab separated columns and &lt;code&gt;read_delim&lt;/code&gt; for arbitrary delimited files.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Read and assign to a variable tab-separated &lt;strong&gt;u.data&lt;/strong&gt; file. Give columns these names - &lt;em&gt;user id, movie id, rating, timestamp&lt;/em&gt; - but make sure to clean up any unusual symbols or spaces. This dataset contains information about rating by a specific user for a specific movie on some date and time. Examine the variable you created with &lt;code&gt;str&lt;/code&gt; function in the console. Are there any columns that may need transformation to be understood?&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Read and assign to a variable pipe-separated, |, &lt;strong&gt;u.item&lt;/strong&gt; file. Give columns these names - &lt;em&gt;movie id, movie title, release date, video release date, IMDb_URL, unknown, Action, Adventure, Animation, Childrens, Comedy, Crime, Documentary, Drama, Fantasy, Film-Noir, Horror, Musical, Mystery, Romance, Sci-Fi, Thriller, War, Western&lt;/em&gt; - but make sure to clean up any unusual symbols or spaces. This dataset contains information about movies, like their names and what genres they fall under. Examine the variable you created with &lt;code&gt;str&lt;/code&gt; function in the console. Are there any columns that may need transformation to be understood?&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Read and assign to a variable pipe-separated, |, &lt;strong&gt;u.user&lt;/strong&gt; file. Give columns these names - &lt;em&gt;user id, age, gender, occupation, zip code&lt;/em&gt; - but make sure to clean up any unusual symbols or spaces. This dataset contains information about users, like their age and occupation. Examine the variable you created with &lt;code&gt;str&lt;/code&gt; function in the console. Are there any columns that may need transformation to be understood?&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-joins&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;Data Joins&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;You should now have three data frames loaded in R; confirm this by using the environment tab. The next step is to combine all the information together using &lt;code&gt;*_join&lt;/code&gt; functions from &lt;strong&gt;dplyr&lt;/strong&gt;. This requires knowing foreign keys - variables in common between data frames that can uniquely identify rows in each other.&lt;/p&gt;
+&lt;ol start=&#34;4&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;What is the foreign key between u.data and u.user data frames? How about u.data and u.item data frames?&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Experiment with &lt;code&gt;inner_join&lt;/code&gt; and &lt;code&gt;full_join&lt;/code&gt; from &lt;strong&gt;dplyr&lt;/strong&gt; to join &lt;em&gt;u.data&lt;/em&gt; to &lt;em&gt;u.user&lt;/em&gt;, and then both to &lt;em&gt;u.item&lt;/em&gt;. Could we have used a composition of two &lt;code&gt;left_join&lt;/code&gt; calls here without losing data? Why? Think about the relations and cross-combinations between the three data sets in terms of users and movies.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-cleanup&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;Data Cleanup&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Examine the combined data frame with &lt;code&gt;str&lt;/code&gt;; check that you columns corresponding to u.data, u.user, and u.item columns. One thing to notice is that types are off for a couple variables. Specifically, &lt;em&gt;timestamp&lt;/em&gt; is shown to be an uninterpretable integer and &lt;em&gt;release date&lt;/em&gt; is stored as character. The other is that &lt;em&gt;video release date&lt;/em&gt; has nothing but missing values.&lt;/p&gt;
+&lt;ol start=&#34;6&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;timestamp&lt;/em&gt; stores datetime type incorrectly as integers and &lt;em&gt;release date&lt;/em&gt; stores a combination of year, month and day as cahracter. Use appropriate type converting function from &lt;strong&gt;lubridate&lt;/strong&gt; package to transform the variable types. Confirm that we have data somewhere around 1997 - 1998 with &lt;code&gt;range(df$timestamp)&lt;/code&gt;, substituting your name for the final data.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Remove &lt;em&gt;video release date&lt;/em&gt; from the dataset.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;movies-by-genre&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;Movies by Genre&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Our first exploratory analysis will focus on the question of which genre was least produced and most produced in 1997 - 1998 period. The final output will be a bar chart, however the first step is to shape and transform data so it can be easily plotted.&lt;/p&gt;
+&lt;ol start=&#34;8&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Note that some column names in your combined dataset actually stand for genres. We want to obtain a data frame containing two variables: genres and their count. Combine &lt;code&gt;gather&lt;/code&gt; from &lt;strong&gt;tidyr&lt;/strong&gt; and &lt;code&gt;count&lt;/code&gt;, &lt;code&gt;count&lt;/code&gt;, &lt;code&gt;filter&lt;/code&gt; functions from &lt;strong&gt;dplyr&lt;/strong&gt; to accomplish this. Which genre was least and which genre was most produced?&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;If you examine your transformed data by printing it in the console, you will see that rows are arranged alphabetically by genre. It is more visually telling if our bar chart was arranged by count instead, however &lt;code&gt;arrange&lt;/code&gt; from &lt;strong&gt;dplyr&lt;/strong&gt; will not work here. To fix the order we need to transform genres into a factor and reorder it by count. Convert &lt;em&gt;genre&lt;/em&gt; variable to factor and reorder it by count using a function from &lt;strong&gt;forcats&lt;/strong&gt; package.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Now make a horizontally pointed bar chart of counts by genre. Additionally, make the annotations nicer with function&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;labs(x = &amp;quot;x label&amp;quot;, y = &amp;quot;y label&amp;quot;, title = &amp;quot;chart title&amp;quot;,
+ caption = &amp;quot;Source: MovieLens&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;by adjusting its inputs and adding it to your ggplot code.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;users-demographics&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;Users’ Demographics&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;What can we understand about the user of MovieLens? We want to examine relations between age, gender and occupation, regardless of location.&lt;/p&gt;
+&lt;ol start=&#34;11&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;What age and gender is the oldest engineer?&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Now, lets visualise the three-way relation. Use &lt;code&gt;geom_boxplot&lt;/code&gt; to obtain a representation of age distribution for each occupation, and employ &lt;code&gt;facet_wrap&lt;/code&gt; to group data by gender. Make sure to experiment with &lt;code&gt;coord_flip&lt;/code&gt; to get readable labels on axes, and &lt;code&gt;labs&lt;/code&gt; function to set axis titles, plot title, and caption citing the source data. Use the 0.25, 0.5 and 0.75 quantiles that define the box in the boxplot to compare users in the healthcare occupation in terms of median age, variability in age and difference across gender.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;movie-ratings-by-occupation&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;Movie Ratings by Occupation&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;In this part, we will look at relations between users, movies and ratings. Lets compare average rating for a SciFi movie for an executive and a scientist.&lt;/p&gt;
+&lt;ol start=&#34;11&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Calculate mean rating for an executive and a scientist using a single composition of functions from &lt;strong&gt;dplyr&lt;/strong&gt; (both numbers should be in the same data frame). This requires filtering rows and grouped summarisation. Adapt the following syntax for creating a vector of logical values to help you filter occupations of interest:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;x &amp;lt;- &amp;quot;a&amp;quot;
+x %in% c(&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Create a grid of plots showing bar plots signifying proportions of ratings given to a certain genre of movie by a user of a certain occupation. This is a large plot that is legible only when you stretch the pane with &lt;em&gt;Plots&lt;/em&gt; tab throughout your screen and may take a few moments to render.&lt;br /&gt;
+First, you will need to prepare a dataset similar to what you did in 8 - deriving genre from column headers - except for controlling for duplicates with &lt;code&gt;distinct&lt;/code&gt; function only for rating, genre and occupation.&lt;br /&gt;
+Second, create the basic bar plots with&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;facet_grid(genre ~ occupation)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and aesthetics specified with&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;aes(rating, ..prop..).&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;..prop..&lt;/code&gt; is what replaces counts with proportions.&lt;br /&gt;
+Third, add axis labels and title and caption as before, adjusted for the information you are displaying in this plot.&lt;br /&gt;
+Fourth, add&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;scale_x_continuous(breaks = 1:5)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;to your ggplot to control which values show up on the x-axis and determine centers of the bars.&lt;br /&gt;
+Fifth, add&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;theme(axis.text = element_text(size = 5),  
+  strip.text.x = element_text(size = 6),   
+  strip.text.y = element_text(size = 5, angle = 30))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;to control size of text annotating axis with numbers, and title of the rows and columns in the strips. In general, &lt;code&gt;theme&lt;/code&gt; is a way to adjust many appearance elements of the plot and to make it presentable for communication.&lt;br /&gt;
+Sixth, use the plot to determine what seems to be the dominant attitude of executives towards documentaries of 1997 - 1998 period based on their ratings distribution?&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Dont forget to put all your code into Rmarkdown and test that all of it runs without errors to produce an html file that contains your answers. Good luck!&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;!-- BLOGDOWN-HEAD
+
+
+
+
+/BLOGDOWN-HEAD --&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Wrangle - Types</title>
+      <link>/post/wrangle2/</link>
+      <pubDate>Sun, 19 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/wrangle2/</guid>
+      <description>&lt;!-- BLOGDOWN-BODY-BEFORE
+
+/BLOGDOWN-BODY-BEFORE --&gt;
+
+&lt;div id=&#34;strings&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Strings&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;library(stringr)&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;factors&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Factors&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;library(forcats)&lt;/code&gt; - &lt;code&gt;factor&lt;/code&gt; - &lt;code&gt;fct_reorder&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;dates-and-datetimes&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Dates and Datetimes&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;library(lubridate)&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;!-- BLOGDOWN-HEAD
+
+
+
+
+/BLOGDOWN-HEAD --&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Notes and Practice For Wrangle</title>
-      <link>https://synikitin.github.io/analytics6600/post/wrangle/</link>
+      <link>/post/wrangle/</link>
       <pubDate>Mon, 13 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/post/wrangle/</guid>
+      <guid>/post/wrangle/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -448,10 +590,10 @@ orders &amp;lt;- tibble(
     
     <item>
       <title>Exploratory Data Analysis</title>
-      <link>https://synikitin.github.io/analytics6600/publication/eda/</link>
+      <link>/publication/eda/</link>
       <pubDate>Mon, 30 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/publication/eda/</guid>
+      <guid>/publication/eda/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -597,40 +739,40 @@ ggplot(df_plot1, aes(x = year_interval, fill = clean_test)) +
     
     <item>
       <title>Deep Analysis</title>
-      <link>https://synikitin.github.io/analytics6600/project/analysis/</link>
+      <link>/project/analysis/</link>
       <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/project/analysis/</guid>
+      <guid>/project/analysis/</guid>
       <description>&lt;p&gt;Details to be determined.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>R Package</title>
-      <link>https://synikitin.github.io/analytics6600/project/package/</link>
+      <link>/project/package/</link>
       <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/project/package/</guid>
+      <guid>/project/package/</guid>
       <description>&lt;p&gt;Details to be determined.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Shiny Web Application</title>
-      <link>https://synikitin.github.io/analytics6600/project/shiny/</link>
+      <link>/project/shiny/</link>
       <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/project/shiny/</guid>
+      <guid>/project/shiny/</guid>
       <description>&lt;p&gt;Details to be determined.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Website is Online</title>
-      <link>https://synikitin.github.io/analytics6600/post/welcome/</link>
+      <link>/post/welcome/</link>
       <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/post/welcome/</guid>
+      <guid>/post/welcome/</guid>
       <description>&lt;p&gt;Greetings Students!&lt;/p&gt;
 
 &lt;p&gt;We will use this website for information about the course and any news that is longer than appropriate for an email. Here you will find the syllabus, assignments, projects, news items and ways of contacting me.&lt;/p&gt;

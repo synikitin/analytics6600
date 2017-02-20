@@ -1,0 +1,21 @@
+---
+title: "Wrangle - Types"
+author: "Slava Nikitin"
+date: "2017-02-19"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Strings
+`library(stringr)`
+
+## Factors
+`library(forcats)`
+- `factor`
+- `fct_reorder`
+
+## Dates and Datetimes
+`library(lubridate)`

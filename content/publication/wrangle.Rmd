@@ -1,0 +1,257 @@
+---
+title: "Wrangling and Exploring"
+author: "Slava Nikitin"
+date: "2017-03-06"
+abstract: ""
+abstract_short: ""
+authors: []
+image: ""
+image_preview: ""
+math: true
+publication_types: []
+publication: ""
+publication_short: ""
+selected: false
+url_code: ""
+url_dataset: "http://www.grouplens.org/system/files/ml-100k.zip"
+url_pdf: ""
+url_project: "http://files.grouplens.org/papers/ml-100k-README.txt"
+url_slides: ""
+url_video: ""
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = "~/Documents/training/class/data/ml-100k/")
+```
+
+
+```{r echo = FALSE, message=FALSE, warning=FALSE, eval = FALSE}
+library(readr)
+library(tidyr)
+library(dplyr)
+library(lubridate)
+library(stringr)
+library(forcats)
+library(ggplot2)
+```
+
+```{r eval = FALSE, echo = FALSE}
+u.data <- read_tsv(
+  "u.data",
+  col_names = c("user_id", "movie_id", "rating", "timestamp")
+)
+u.item <- read_delim(
+  "u.item",
+  "|",
+  col_names = c(
+    "movie_id", "movie_title", "release_date",
+    "video_release_date", "IMDb_URL", "unknown",
+    "Action", "Adventure", "Animation", "Children's",
+    "Comedy", "Crime", "Documentary", "Drama", "Fantasy",
+    "Film-Noir", "Horror", "Musical", "Mystery", "Romance",
+    "Sci-Fi", "Thriller", "War", "Western"
+    )
+  )
+u.user <- read_delim(
+  "u.user",
+  "|",
+  col_names = c("user_id", "age", "gender", "occupation", "zip_code")
+)
+
+# u.occupation <- read_delim("u.occupation", "", col_names = "occupation")
+# u.genre <- read_delim("u.genre", "|", col_names = "genre")
+# u.info <- read_delim("u.info", " ", col_names = c("count", "stat"))
+
+
+```
+
+```{r eval = FALSE, echo = FALSE}
+# Which variable is a key? Which are foreign keys?
+
+df <- inner_join(u.data, u.user, "user_id") %>% 
+  inner_join(u.item, "movie_id") %>% 
+  mutate(
+    timestamp = as_datetime(timestamp), 
+    release_date = dmy(release_date)
+  ) %>% 
+  select(-video_release_date)
+```
+
+```{r eval = FALSE, echo = FALSE}
+select(df, unknown:Western) %>% 
+  summarise_each(funs(sum)) %>% 
+  print(width = Inf)
+
+
+gather(df, genre, presence, unknown:Western) %>%
+  distinct(movie_id, genre, presence) %>% 
+  filter(presence == 1) %>% 
+  count(genre) %>% 
+  #arrange(n) %>% 
+  mutate(genre = factor(genre), genre = fct_reorder(genre, 1 / n)) %>%   
+  ggplot(aes(genre, n)) +
+  geom_col() +
+  coord_flip() +
+  labs(y = "Count", x = "Genre",
+       title = "Genres of Movies in 1997 - 1998",
+       caption = "Source: MovieLens") + 
+  theme_bw()
+
+gather(df, genre, presence, unknown:Western) %>%
+  distinct(movie_id, genre, presence) %>% 
+  filter(presence == 1) %>% 
+  group_by(movie_id) %>% 
+  summarise(
+    genre = str_c(genre, collapse = ","),
+    n = sum(presence)
+  ) %>% 
+  glimpse
+
+filter(df, occupation %in% c("executive", "scientist"), `Sci-Fi` == 1) %>%
+  group_by(occupation) %>% 
+  summarise(mean(rating))
+
+
+group_by(df, occupation, gender) %>% 
+  summarise(q = max(age)) %>% 
+  arrange(desc(q), occupation)
+
+ggplot(df, aes(occupation, age)) +
+  geom_boxplot() +
+  facet_wrap(~ gender) +
+  coord_flip() +
+  labs(x = "Occupation", y = "Age", title = "Demographics of Users",
+    caption = "Source: MovieLens")  
+
+gather(df, genre, presence, unknown:Western) %>%
+  filter(presence == 1) %>% 
+  distinct(rating, genre, occupation) %>% 
+  ggplot(aes(rating, ..prop..)) +
+  geom_bar() +
+  facet_grid(genre ~ occupation) +
+  labs(x = "Rating", y = "Probability",
+       title = "Ratings by Genre and Occupation",
+       caption = "Source: MovieLens") +
+  scale_x_continuous(breaks = 1:5) +
+  theme(axis.text = element_text(size = 5),
+        strip.text.x = element_text(size = 6),
+        strip.text.y = element_text(size = 5, angle = 30))
+
+```  
+  
+  
+## **Learning Objectives**
+- Package loading
+- Data import
+- Data clean up
+- Data manipulation
+- Exploratory calculations and visualization
+
+## **Context**
+In this assignment, we will explore a sample of data from [MovieLens](https://movielens.org) service that collects information about users and their ratings of movies covering roughly 1997 - 1998 release dates; the data is used to build experimental exploration and recommendation products by [GroupLens](http://grouplens.org/). In our case, this data is a good source of exercises to meet various learning objectives. You can download the zip-compressed collection of files using the **Dataset** button and read more about it under **Project** button.
+
+## **Data Import** 
+As usual, start by creating a new folder and turning it into a Rstudio project, and then copy the downloaded data there. You will need software to unzip the files - it should be installed on Mac by default, and on windows you could install and use **WinZip**. Once you unzip the file, you should have a new folder called **ml-100k** or something similar, which you can check using *Files* tab in Rstudio.
+
+There will be many files in the new, unzipped folder. The first part of the assignment is to read in 3 files. Start a new Rmarkdown file to capture your import commands.
+
+Suggested functions: `read_tsv` for tab separated columns and `read_delim` for arbitrary delimited files.
+
+1. Read and assign to a variable tab-separated **u.data** file. Give columns these 
+names - *user id, movie id, rating, timestamp* - but make sure to clean up any 
+unusual symbols or spaces. This dataset contains information about rating by a 
+specific user for a specific movie on some date and time. Examine the variable you 
+created with `str` function in the console. Are there any columns that may need 
+transformation to be understood?
+
+2. Read and assign to a variable pipe-separated, |, **u.item** file. Give columns 
+these names - *movie id, movie title, release date, video release date, 
+IMDb_URL, unknown, Action, Adventure, Animation, Childrens, Comedy, 
+Crime, Documentary, Drama, Fantasy, Film-Noir, Horror, Musical, 
+Mystery, Romance, Sci-Fi, Thriller, War, Western* - but make sure to clean
+up any unusual symbols or spaces. This dataset contains information about movies, 
+like their names and what genres they fall under. Examine the variable you created 
+with `str` function in the console. Are there any columns that may need 
+transformation to be understood?
+
+3. Read and assign to a variable pipe-separated, |, **u.user** file. Give columns 
+these names - *user id, age, gender, occupation, zip code* - but make sure to
+clean up any unusual symbols or spaces. This dataset contains information about 
+users, like their age and occupation. Examine the variable you created with `str` 
+function in the console. Are there any columns that may need transformation to be 
+understood?
+
+## **Data Joins**
+You should now have three data frames loaded in R; confirm this by using the environment tab. The next step is to combine all the information together using `*_join` functions from **dplyr**. This requires knowing foreign keys - variables in common between data frames that can uniquely identify rows in each other.
+
+4. What is the foreign key between u.data and u.user data frames? How about u.data and u.item data frames?
+
+5. Experiment with `inner_join` and `full_join` from **dplyr** to join *u.data* to *u.user*, and then both to *u.item*. Could we have used a composition of two `left_join` calls here without losing data? Why? Think about the relations and cross-combinations between the three data sets in terms of users and movies.
+
+## **Data Cleanup**
+Examine the combined data frame with `str`; check that you columns corresponding to u.data, u.user, and u.item columns. One thing to notice is that types are off for a couple variables. Specifically, *timestamp* is shown to be an uninterpretable integer and *release date* is stored as character. The other is that *video release date* has nothing but missing values.
+
+6. *timestamp* stores datetime type incorrectly as integers and *release date* stores a combination of year, month and day as cahracter. Use appropriate type converting function from **lubridate** package to transform the variable types. Confirm that we have data somewhere around 1997 - 1998 with `range(df$timestamp)`, substituting your name for the final data.
+
+7. Remove *video release date* from the dataset.
+  
+## **Movies by Genre**
+Our first exploratory analysis will focus on the question of which genre was least produced and most produced in 1997 - 1998 period. The final output will be a bar chart, however the first step is to shape and transform data so it can be easily plotted.
+
+8. Note that some column names in your combined dataset actually stand for genres. We want to obtain a data frame containing two variables: genres and their count. Combine `gather` from **tidyr** and `count`, `count`, `filter` functions from **dplyr** to accomplish this. Which genre was least and which genre was most produced?
+
+9. If you examine your transformed data by printing it in the console, you will see that rows are arranged alphabetically by genre. It is more visually telling if our bar chart was arranged by count instead, however `arrange` from **dplyr** will not work here. To fix the order we need to transform genres into a factor and reorder it by count. Convert *genre* variable to factor and reorder it by count using a function from **forcats** package.
+
+10. Now make a horizontally pointed bar chart of counts by genre. Additionally, make the annotations nicer with function  
+```
+labs(x = "x label", y = "y label", title = "chart title",
+     caption = "Source: MovieLens")
+```  
+by adjusting its inputs and adding it to your ggplot code.
+
+## **Users' Demographics**
+What can we understand about the user of MovieLens? We want to examine relations between age, gender and occupation, regardless of location.
+
+11. What age and gender is the oldest engineer?
+
+12. Now, lets visualise the three-way relation. Use `geom_boxplot` to obtain a representation of age distribution for each occupation, and employ `facet_wrap` to group data by gender. Make sure to experiment with `coord_flip` to get readable labels on axes, and `labs` function to set axis titles, plot title, and caption citing the source data. Use the 0.25, 0.5 and 0.75 quantiles that define the box in the boxplot to compare users in the healthcare occupation in terms of median age, variability in age and difference across gender.
+
+
+## **Movie Ratings by Occupation**
+In this part, we will look at relations between users, movies and ratings. Lets compare average rating for a SciFi movie for an executive and a scientist.
+
+11. Calculate mean rating for an executive and a scientist using a single composition of functions from **dplyr** (both numbers should be in the same data frame). This requires filtering rows and grouped summarisation. Adapt the following syntax for creating a vector of logical values to help you filter occupations of interest:  
+```
+x <- "a"
+x %in% c("a", "b")
+```
+
+12. Create a grid of plots showing bar plots signifying proportions of ratings given to a certain genre of movie by a user of a certain occupation. This is a large plot that is legible only when you stretch the pane with *Plots* tab throughout your screen and may take a few moments to render.  
+  First, you will need to prepare a dataset similar to what you did in 8 - deriving genre from column headers - except for controlling for duplicates with `distinct` function only for rating, genre and occupation.  
+  Second, create the basic bar plots with   
+```
+facet_grid(genre ~ occupation)
+```  
+  and aesthetics specified with  
+```  
+aes(rating, ..prop..).
+```  
+The `..prop..` is what replaces counts with proportions.  
+  Third, add axis labels and title and caption as before, adjusted for the information you are displaying in this plot.  
+  Fourth, add   
+```  
+scale_x_continuous(breaks = 1:5)
+```  
+to your ggplot to control which values show up on the x-axis and determine centers of the bars.    
+  Fifth, add 
+```
+theme(axis.text = element_text(size = 5),  
+      strip.text.x = element_text(size = 6),   
+      strip.text.y = element_text(size = 5, angle = 30))
+```
+to control size of text annotating axis with numbers, and title of the rows and columns in the strips. In general, `theme` is a way to adjust many appearance elements of the plot and to make it presentable for communication.  
+  Sixth, use the plot to determine what seems to be the dominant attitude of executives towards documentaries of 1997 - 1998 period based on their ratings distribution?
+  
+**Dont forget to put all your code into Rmarkdown and test that all of it runs without errors to produce an html file that contains your answers. Good luck!**   
