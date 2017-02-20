@@ -1,7 +1,11 @@
 ---
-title: "Wrangle - Types"
 author: "Slava Nikitin"
-date: "2017-02-19"
+date: "2017-02-20"
+draft: false
+tags: ["course"]
+title: "Wrangle - Strings"
+summary: "Strings, factors, datetimes"
+math: false
 output: html_document
 ---
 
@@ -10,12 +14,155 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## Strings
-`library(stringr)`
+Package: `library(stringr)`
 
-## Factors
-`library(forcats)`
-- `factor`
-- `fct_reorder`
+1. Creation:
 
-## Dates and Datetimes
-`library(lubridate)`
+```
+x <- "Richard Stallman doesn't mind if you read his mail as long as you don't delete it before he reads it. "
+
+y <- 'Richard Stallman met Chuck Norris once. Chuck tried a roundhouse, but Richard bashed him 
+in the skull.'
+```  
+
+Try creating this string  
+
+```
+'Richard Stallman's beard trimmings can cure cancer. Too bad he never shaves.'
+```  
+
+2. Escaping quotes to have quotes inside quotes 
+
+```
+'Richard Stallman\'s beard trimmings can cure cancer. Too bad he never shaves.'
+"Richard Stallman gets \"9 bits\" to the byte."  
+```  
+
+3. Use `writeLines` as opposed to `print` to show the actual string  
+
+```
+writeLines("Richard Stallman gets \"9 bits\" to the byte.")
+```  
+
+4. Special cases:  
+- "\\n"	newline  
+- "\\r"	carriage return  
+- "\\t"	tab  
+
+5. Create a vector of strings:
+
+```
+c("a", "b", "d")
+```
+
+6. Number of characters (length):
+
+```
+str_length(
+ c("Richard Stallman can solve the halting problem... in polynomial time.", NA)
+)
+```
+
+7. Combine strings:
+
+```
+str_c("hello", c("there", "here"), sep = " ")
+str_c("hello", c("there", "here", ""), sep = " ", collapse = " ")
+
+x <- "Class"
+str_c(
+  x,
+  "is ...",
+  if (wday(Sys.time(), label = TRUE) == "Mon") "on" else "off",
+  sep = " "
+)
+```
+
+8. Sub-strings:
+
+```
+str_sub("Richard Stallman did not write GNU Emacs, he simply read the source code from /dev/null.", start = 1, end = 7)
+
+str_sub("Richard Stallman did not write GNU Emacs, he simply read the source code from /dev/null.", start = -6, end = -1)
+```
+
+9. String case:
+
+```
+str_to_lower("LARGE LETTERS")
+str_to_upper("SMALL LETTERS")
+```
+
+10. String sort:
+
+```
+str_sort(c("Monday", "Tuesday", "Saturday"))
+```
+
+Exercise:
+
+Fix the following strings if needed, lower their case, then combine them with newline character to show one quote per line, and finally get the length of the full string.
+
+```
+'Richard Stallman doesn't need sudo. I will make him a sandwich anyway.'
+"Richard Stallman's beard is made of parentheses."
+```
+
+11. Regular expression:  
+
+I often refer to this [cheatsheet](https://www.cheatography.com/davechild/cheat-sheets/regular-expressions/) to remind myself of syntax. I will show only simple examples as it is better learned piece by piece as needed.
+
+- a-b 0-9 Alpha-numerical characters
+```
+x <- "zip code 60099"
+str_extract(string = x, pattern = "zip code")
+str_detect(string = x, pattern = "60099")
+str_replace(string = x, pattern = "60099", replacement = "60000")
+str_split(string = x, pattern = " ")
+```
+- !-) Special symbols may need escaping if they are regex syntax
+```
+x <- "zip code @ (#60099)"
+str_extract(string = x, pattern = "\\(")
+str_detect(string = x, pattern = "#")
+str_replace(string = x, pattern = "@", replacement = "")
+str_split(string = x, pattern = " ")
+```
+
+- . One of any symbols
+```
+x <- "zip code @ (#60099)."
+str_extract(string = x, pattern = "z.p")
+str_detect(string = x, pattern = "co.e")
+str_replace_all(string = x, pattern = "\\.", replacement = "!")
+str_split(string = x, pattern = ".")
+```
+
+- `\d \s [abc] [^123]`
+```
+x <- "zip code @ (#60099).\n"
+str_replace_all(string = x, pattern = "\\s", replacement = " ")
+str_detect(string = x, pattern = "[@#]")
+str_extract_all(string = x, pattern = "[^@#()]")
+```
+
+- ^ $ Anchors
+```
+x <- "truth is truth"
+str_replace_all(string = x, pattern = "^truth", replacement = "lie")
+str_replace_all(string = x, pattern = "truth$", replacement = "lie")
+```
+
+- | multiple patterns
+```
+x <- "zip code @ (#60099).\n"
+str_replace_all(string = x, pattern = "\\d|[@#()]", replacement = "")
+```
+
+- ? + * Quantifiers
+```
+x <- "groowthh"
+str_extract_all(string = x, pattern = "o+")
+str_detect(string = x, pattern = "o+w?th*")
+```
+
