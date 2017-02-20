@@ -1,0 +1,439 @@
+---
+author: "Slava Nikitin"
+date: "2017-02-13"
+draft: false
+tags: ["course"]
+title: "Notes and Practice For Wrangle"
+summary: "Tidy and Relational Data"
+math: false
+output: html_document
+---
+
+
+<!-- BLOGDOWN-BODY-BEFORE
+
+/BLOGDOWN-BODY-BEFORE -->
+
+<div id="basic-concepts" class="section level1">
+<h1>Basic Concepts</h1>
+<div id="material" class="section level2">
+<h2>Material</h2>
+<ul>
+<li><code>tibble(x = 1:3)</code> local in R</li>
+<li><code>data()</code> - local in R</li>
+<li><a href="%22/Users/snikitin/Documents/training/class/analytics6600/static/data/movies.csv%22"></a> - local on disc</li>
+<li><a href="%22https://synikitin.github.io/analytics6600/data/movies.csv%22"></a> - remote on disk, direct download</li>
+<li><a href="%22https://www.quandl.com/tools/api%22"></a> - remote on disc, api</li>
+</ul>
+</div>
+<div id="machinery" class="section level2">
+<h2>Machinery</h2>
+<ul>
+<li>computer</li>
+<li>integrated development environment (IDE)</li>
+<li>programming language</li>
+<li>file formats</li>
+</ul>
+</div>
+<div id="product" class="section level2">
+<h2>Product</h2>
+<ul>
+<li>data</li>
+<li>clean data</li>
+<li>visualization</li>
+<li>statistical model</li>
+<li>report</li>
+<li>web application</li>
+<li>optimized algorithm</li>
+<li>package</li>
+</ul>
+</div>
+</div>
+<div id="task" class="section level1">
+<h1>Task</h1>
+<div id="io" class="section level2">
+<h2>IO</h2>
+<ul>
+<li><code>library(readr)</code></li>
+<li><code>library(tibble)</code></li>
+</ul>
+</div>
+<div id="tidy" class="section level2">
+<h2>Tidy</h2>
+<ul>
+<li><code>library(tidyr)</code></li>
+</ul>
+</div>
+<div id="transform" class="section level2">
+<h2>Transform</h2>
+<ul>
+<li><code>library(dplyr)</code></li>
+</ul>
+</div>
+<div id="visualization" class="section level2">
+<h2>Visualization</h2>
+<ul>
+<li><code>library(ggplot2)</code></li>
+</ul>
+</div>
+<div id="programming" class="section level2">
+<h2>Programming</h2>
+<ul>
+<li><code>library(magrittr)</code></li>
+</ul>
+</div>
+</div>
+<div id="learning-new-packages-and-functions" class="section level1">
+<h1>Learning new packages and functions</h1>
+<ul>
+<li>CRAN</li>
+<li><code>help(package = &quot;readr&quot;)</code></li>
+<li>purpose</li>
+<li>available arguments</li>
+<li>example code, sometimes <code>demo(package = &quot;stats&quot;)</code>, <code>example(&quot;summarise&quot;, package = &quot;dplyr&quot;)</code></li>
+</ul>
+</div>
+<div id="tibbles" class="section level1">
+<h1>Tibbles</h1>
+<div id="creating" class="section level2">
+<h2>Creating</h2>
+<ul>
+<li><p><code>tibble</code> tibble( population = c(783744, 923972, 823972, 789374), city = c(“chicago”, “columbus”, “boston”, “cleveland”) )</p></li>
+<li><p><code>tribble</code> tribble( ~x, ~y, 1, “2”, 3, 4 )</p></li>
+</ul>
+</div>
+<div id="printing" class="section level2">
+<h2>Printing</h2>
+<ul>
+<li><code>print(df, n, width)</code></li>
+<li><code>str</code></li>
+<li><code>View</code></li>
+</ul>
+</div>
+<div id="subsetting" class="section level2">
+<h2>Subsetting</h2>
+<ul>
+<li><code>df[[&quot;a&quot;]]</code>, <code>df[[1]]</code></li>
+<li><code>df$a</code></li>
+</ul>
+</div>
+</div>
+<div id="data-import" class="section level1">
+<h1>Data Import</h1>
+<div id="read_csv" class="section level2">
+<h2>read_csv</h2>
+<pre><code>read_csv( 
+  &quot;Some random text here
+  a,b,c
+  1,2,! #This is a comment. ! is a missing value.
+  4,5,6&quot;,
+  skip = 2,
+  na = &quot;!&quot;,
+  comment = &quot;#&quot;,
+  n_max = 2,
+  col_names = c(&quot;x&quot;, &quot;y&quot;, &quot;z&quot;),
+  col_types = cols(x = col_integer(),
+                   y = col_double(),
+                   z = col_character())
+)             </code></pre>
+</div>
+<div id="arguments" class="section level2">
+<h2>arguments</h2>
+<ul>
+<li>skip</li>
+<li>comment</li>
+<li>col_names</li>
+<li>na</li>
+<li>n_max</li>
+<li>locale</li>
+<li>col_types (logical, numbers, text, date, time, datetime)</li>
+</ul>
+</div>
+<div id="write_csv-write_excel_csv-write_rds" class="section level2">
+<h2>write_csv, write_excel_csv, write_rds</h2>
+<ul>
+<li>similar arguments</li>
+</ul>
+</div>
+<div id="other-packages" class="section level2">
+<h2>other packages</h2>
+<ul>
+<li>haven</li>
+<li>readxl</li>
+<li>DBI</li>
+<li>jsonlite</li>
+<li><p>xml2</p></li>
+<li><p>Lets practice <code>read_csv</code> with the following data:</p></li>
+</ul>
+<pre><code>x &lt;- &quot;Confidential Data - Email abc@gmail.com for Permission
+    $earnings,Months in 2017,store
+    14343.43,January,! *Note: missing values marked with !
+    34322.33,February,6343\n&quot;
+    
+writeChar(  
+  x,
+  &quot;readr_example.csv&quot;,
+  176
+)
+</code></pre>
+</div>
+</div>
+<div id="tidying-data" class="section level1">
+<h1>Tidying Data</h1>
+<div id="structure" class="section level2">
+<h2>Structure</h2>
+<ul>
+<li>columns</li>
+<li>rows</li>
+</ul>
+</div>
+<div id="semantics" class="section level2">
+<h2>Semantics</h2>
+<ul>
+<li>unit</li>
+<li>variable</li>
+<li>value</li>
+<li>observation</li>
+</ul>
+</div>
+<div id="messy-data" class="section level2">
+<h2>Messy data</h2>
+<ul>
+<li>Column headers are values, not variable names. This is messy</li>
+</ul>
+<pre class="r"><code>a &lt;- tribble(
+  ~region, ~`$0 - $100k`, ~`$100k - $1,000k`, ~`$1,000k - $10,000k`,
+  &quot;midwest&quot;, 152, 78, 5,
+  &quot;west&quot;, 190, 130, 10
+  )
+a</code></pre>
+<pre><code>## # A tibble: 2 × 4
+##    region `$0 - $100k` `$100k - $1,000k` `$1,000k - $10,000k`
+##     &lt;chr&gt;        &lt;dbl&gt;             &lt;dbl&gt;                &lt;dbl&gt;
+## 1 midwest          152                78                    5
+## 2    west          190               130                   10</code></pre>
+<p>and this is tidy by turning headers into a variable.</p>
+<pre class="r"><code>gather(data = a, key = income, value = count, 2:4)</code></pre>
+<pre><code>## # A tibble: 6 × 3
+##    region             income count
+##     &lt;chr&gt;              &lt;chr&gt; &lt;dbl&gt;
+## 1 midwest         $0 - $100k   152
+## 2    west         $0 - $100k   190
+## 3 midwest    $100k - $1,000k    78
+## 4    west    $100k - $1,000k   130
+## 5 midwest $1,000k - $10,000k     5
+## 6    west $1,000k - $10,000k    10</code></pre>
+<ul>
+<li>Multiple variables are stored in one column. This is messy</li>
+</ul>
+<pre class="r"><code>b &lt;- tribble(
+  ~`region-income`, ~count,
+  &quot;midwest, $0 - 100k&quot;, 152,
+  &quot;west, $0 - 100k&quot;, 190,
+  &quot;midwest, $100k - 1,000k&quot;, 78,
+  &quot;west, $100k - 1,000k&quot;, 130
+)
+b</code></pre>
+<pre><code>## # A tibble: 4 × 2
+##           `region-income` count
+##                     &lt;chr&gt; &lt;dbl&gt;
+## 1      midwest, $0 - 100k   152
+## 2         west, $0 - 100k   190
+## 3 midwest, $100k - 1,000k    78
+## 4    west, $100k - 1,000k   130</code></pre>
+<p>and this is tidy by splitting a variable into two variables.</p>
+<pre class="r"><code>separate(data = b, col = `region-income`,
+         into = c(&quot;region&quot;, &quot;income&quot;), sep = &quot;, &quot;)</code></pre>
+<pre><code>## # A tibble: 4 × 3
+##    region         income count
+## *   &lt;chr&gt;          &lt;chr&gt; &lt;dbl&gt;
+## 1 midwest      $0 - 100k   152
+## 2    west      $0 - 100k   190
+## 3 midwest $100k - 1,000k    78
+## 4    west $100k - 1,000k   130</code></pre>
+<ul>
+<li>Variables are stored in rows. This is messy</li>
+</ul>
+<pre class="r"><code>d &lt;- tribble(
+  ~region, ~income, ~statistic,
+  &quot;midwest&quot;, 193478374, &quot;annual_max&quot;,
+  &quot;midwest&quot;, 878743, &quot;annual_min&quot;,
+  &quot;west&quot;, 29743443, &quot;annual_max&quot;,
+  &quot;west&quot;, 19984028, &quot;annual_min&quot;
+)
+d</code></pre>
+<pre><code>## # A tibble: 4 × 3
+##    region    income  statistic
+##     &lt;chr&gt;     &lt;dbl&gt;      &lt;chr&gt;
+## 1 midwest 193478374 annual_max
+## 2 midwest    878743 annual_min
+## 3    west  29743443 annual_max
+## 4    west  19984028 annual_min</code></pre>
+<p>and this is tidy by turning a variable into column headers.</p>
+<pre class="r"><code>spread(data = d, key = statistic, value = income)</code></pre>
+<pre><code>## # A tibble: 2 × 3
+##    region annual_max annual_min
+## *   &lt;chr&gt;      &lt;dbl&gt;      &lt;dbl&gt;
+## 1 midwest  193478374     878743
+## 2    west   29743443   19984028</code></pre>
+<ul>
+<li>Multiple types of observational units are stored in the same table, in this case two separate time scales. This is messy</li>
+</ul>
+<pre class="r"><code>e &lt;- tribble(
+  ~region, ~annual_max, ~annual_min, ~monthly_avg, ~month,
+  &quot;midwest&quot;, 193478374, 878743, 193947931, &quot;January&quot;,
+  &quot;midwest&quot;, 193478374, 878743, 153394881, &quot;February&quot;
+)</code></pre>
+<p>and this is tidy by removing annual scale variables</p>
+<pre class="r"><code>select(e, -annual_max, -annual_min)</code></pre>
+<pre><code>## # A tibble: 2 × 3
+##    region monthly_avg    month
+##     &lt;chr&gt;       &lt;dbl&gt;    &lt;chr&gt;
+## 1 midwest   193947931  January
+## 2 midwest   153394881 February</code></pre>
+<p>or this is tidy by removing monthly scale variables.</p>
+<pre class="r"><code>select(e, -monthly_avg, -month) %&gt;% 
+  distinct</code></pre>
+<pre><code>## # A tibble: 1 × 3
+##    region annual_max annual_min
+##     &lt;chr&gt;      &lt;dbl&gt;      &lt;dbl&gt;
+## 1 midwest  193478374     878743</code></pre>
+<ul>
+<li>A single observational unit is stored in multiple tables. This is messy</li>
+</ul>
+<pre class="r"><code>f &lt;- tribble(
+  ~region, ~income, ~statistic,
+  &quot;midwest&quot;, 193478374, &quot;annual_max&quot;,
+  &quot;midwest&quot;, 878743, &quot;annual_min&quot;
+)
+g &lt;- tribble(
+  ~region, ~income, ~statistic,
+  &quot;west&quot;, 29743443, &quot;annual_max&quot;,
+  &quot;west&quot;, 19984028, &quot;annual_min&quot;
+)
+f</code></pre>
+<pre><code>## # A tibble: 2 × 3
+##    region    income  statistic
+##     &lt;chr&gt;     &lt;dbl&gt;      &lt;chr&gt;
+## 1 midwest 193478374 annual_max
+## 2 midwest    878743 annual_min</code></pre>
+<pre class="r"><code>g</code></pre>
+<pre><code>## # A tibble: 2 × 3
+##   region   income  statistic
+##    &lt;chr&gt;    &lt;dbl&gt;      &lt;chr&gt;
+## 1   west 29743443 annual_max
+## 2   west 19984028 annual_min</code></pre>
+<p>and this is tidy by combining them into a single data frame.</p>
+<pre class="r"><code>bind_rows(f, g)</code></pre>
+<pre><code>## # A tibble: 4 × 3
+##    region    income  statistic
+##     &lt;chr&gt;     &lt;dbl&gt;      &lt;chr&gt;
+## 1 midwest 193478374 annual_max
+## 2 midwest    878743 annual_min
+## 3    west  29743443 annual_max
+## 4    west  19984028 annual_min</code></pre>
+<ul>
+<li>Tidy the following dataset. It consists of a history of quarterly earnings per share of Johnson and Johnson.</li>
+</ul>
+<pre class="r"><code>df &lt;- matrix(JohnsonJohnson, byrow = TRUE, ncol = 4) %&gt;% 
+  as_tibble() %&gt;%
+  rename(quarter1 = V1, quarter2 = V2, quarter3 = V3, quarter4 = V4) %&gt;% 
+  mutate(year = 1960:1980, stockinfo = &quot;JNJ-NYSE&quot;)
+df</code></pre>
+<pre><code>## # A tibble: 21 × 6
+##    quarter1 quarter2 quarter3 quarter4  year stockinfo
+##       &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;int&gt;     &lt;chr&gt;
+## 1      0.71     0.63     0.85     0.44  1960  JNJ-NYSE
+## 2      0.61     0.69     0.92     0.55  1961  JNJ-NYSE
+## 3      0.72     0.77     0.92     0.60  1962  JNJ-NYSE
+## 4      0.83     0.80     1.00     0.77  1963  JNJ-NYSE
+## 5      0.92     1.00     1.24     1.00  1964  JNJ-NYSE
+## 6      1.16     1.30     1.45     1.25  1965  JNJ-NYSE
+## 7      1.26     1.38     1.86     1.56  1966  JNJ-NYSE
+## 8      1.53     1.59     1.83     1.86  1967  JNJ-NYSE
+## 9      1.53     2.07     2.34     2.25  1968  JNJ-NYSE
+## 10     2.16     2.43     2.70     2.25  1969  JNJ-NYSE
+## # ... with 11 more rows</code></pre>
+</div>
+</div>
+<div id="relational-data" class="section level1">
+<h1>Relational data</h1>
+<ul>
+<li>tables and keys (primary, foreign, surrogate); key in the following data sets</li>
+</ul>
+<pre class="r"><code>stocks &lt;- tibble(earnings = c(800, 150, 240, 65),
+                 volume = c(1599500, 30531626, 4276880, 25187460),
+                 symbol = c(&quot;GOOG&quot;, &quot;APPL&quot;, &quot;GS&quot;, &quot;MSFT&quot;))
+stocks</code></pre>
+<pre><code>## # A tibble: 4 × 3
+##   earnings   volume symbol
+##      &lt;dbl&gt;    &lt;dbl&gt;  &lt;chr&gt;
+## 1      800  1599500   GOOG
+## 2      150 30531626   APPL
+## 3      240  4276880     GS
+## 4       65 25187460   MSFT</code></pre>
+<pre class="r"><code>stocks2 &lt;- tibble(earnings = c(800, 15),
+                  volume = c(1599500, 13210000),
+                  symbol = c(&quot;GOOG&quot;, &quot;HBAN&quot;))
+
+symbols &lt;- tibble(symbol = c(&quot;GOOG&quot;, &quot;APPL&quot;, &quot;GS&quot;, &quot;HBAN&quot;),
+                  exchange = c(&quot;NASDAQ&quot;, &quot;NASDAQ&quot;, &quot;NYSE&quot;, &quot;NASDAQ&quot;))
+symbols</code></pre>
+<pre><code>## # A tibble: 4 × 2
+##   symbol exchange
+##    &lt;chr&gt;    &lt;chr&gt;
+## 1   GOOG   NASDAQ
+## 2   APPL   NASDAQ
+## 3     GS     NYSE
+## 4   HBAN   NASDAQ</code></pre>
+<ul>
+<li><p>left, right, outer join (mutating)</p>
+<pre><code>inner_join(x = stocks, y = symbols, by = &quot;symbol&quot;)
+left_join(x = stocks, y = symbols, by = &quot;symbol&quot;)
+right_join(x = stocks, y = symbols, by = &quot;symbol&quot;)
+full_join(x = stocks, y = symbols, by = &quot;symbol&quot;)</code></pre></li>
+<li><p>semi, anti join (filtering)</p>
+<pre><code>semi_join(x = stocks, y = symbols, by = &quot;symbol&quot;)
+anti_join(x = stocks, y = symbols, by = &quot;symbol&quot;)</code></pre></li>
+<li><p>intersect, union, setdiff</p>
+<pre><code>union(x = stocks, y = stocks2)
+intersect(x = stocks, y = stocks2)
+setdiff(x = stocks, y = stocks2)
+setdiff(x = stocks2, y = stocks)</code></pre></li>
+<li><p>Identify primary and foreign keys in all datasets</p></li>
+</ul>
+<pre><code>set.seed(349834)
+
+calls &lt;- tibble(
+  company = &quot;schevchenko steele&quot;, #rep(companies, each = 12)
+  number = rbinom(5, 30, .3),
+  month = month.name[1:5] #rep(month.name, 10)
+)
+sales &lt;- tibble(
+  company = &quot;schevchenko steele&quot;,
+  amount = rgamma(10, 1e4, 1 / 1e4),
+  month = month.name[-c(1, 9)]
+)
+orders &lt;- tibble(
+  company = &quot;schevchenko steele&quot;,
+  fullfilment = rbeta(10, 4, 8),
+  month = month.name[-c(1, 9)]
+) </code></pre>
+<ul>
+<li><p>Join calls and sales for only matching months</p></li>
+<li><p>Enrich calls with whatever sales data there is</p></li>
+<li><p>Enrich sales with whatever calls data there is</p></li>
+<li><p>Join calls and sales for all months</p></li>
+<li><p>Obtain sales data for which you have calls</p></li>
+<li><p>Obtain orders data for which you have no calls</p></li>
+<li><p>Join all datasets into a single data frame with all months</p></li>
+</ul>
+</div>
+
+
+<!-- BLOGDOWN-HEAD
+
+
+
+
+/BLOGDOWN-HEAD -->
