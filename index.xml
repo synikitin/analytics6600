@@ -7,8 +7,702 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Slava Nikitin</copyright>
-    <lastBuildDate>Sun, 22 Jan 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 06 Mar 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Wrangling and Exploring</title>
+      <link>https://synikitin.github.io/analytics6600/publication/wrangle/</link>
+      <pubDate>Mon, 06 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://synikitin.github.io/analytics6600/publication/wrangle/</guid>
+      <description>&lt;!-- BLOGDOWN-BODY-BEFORE
+
+/BLOGDOWN-BODY-BEFORE --&gt;
+
+&lt;div id=&#34;learning-objectives&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;Learning Objectives&lt;/strong&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Package loading&lt;/li&gt;
+&lt;li&gt;Data import&lt;/li&gt;
+&lt;li&gt;Data clean up&lt;/li&gt;
+&lt;li&gt;Data manipulation&lt;/li&gt;
+&lt;li&gt;Exploratory calculations and visualization&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;context&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;Context&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;In this assignment, we will explore a sample of data from &lt;a href=&#34;https://movielens.org&#34;&gt;MovieLens&lt;/a&gt; service that collects information about users and their ratings of movies covering roughly 1997 - 1998 release dates; the data is used to build experimental exploration and recommendation products by &lt;a href=&#34;http://grouplens.org/&#34;&gt;GroupLens&lt;/a&gt;. In our case, this data is a good source of exercises to meet various learning objectives. You can download the zip-compressed collection of files using the &lt;strong&gt;Dataset&lt;/strong&gt; button and read more about it under &lt;strong&gt;Project&lt;/strong&gt; button.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-import&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;Data Import&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;As usual, start by creating a new folder and turning it into a Rstudio project, and then copy the downloaded data there. You will need software to unzip the files - it should be installed on Mac by default, and on windows you could install and use &lt;strong&gt;WinZip&lt;/strong&gt;. Once you unzip the file, you should have a new folder called &lt;strong&gt;ml-100k&lt;/strong&gt; or something similar, which you can check using &lt;em&gt;Files&lt;/em&gt; tab in Rstudio.&lt;/p&gt;
+&lt;p&gt;There will be many files in the new, unzipped folder. The first part of the assignment is to read in 3 files. Start a new Rmarkdown file to capture your import commands.&lt;/p&gt;
+&lt;p&gt;Suggested functions: &lt;code&gt;read_tsv&lt;/code&gt; for tab separated columns and &lt;code&gt;read_delim&lt;/code&gt; for arbitrary delimited files.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Read and assign to a variable tab-separated &lt;strong&gt;u.data&lt;/strong&gt; file. Give columns these names - &lt;em&gt;user id, movie id, rating, timestamp&lt;/em&gt; - but make sure to clean up any unusual symbols or spaces. This dataset contains information about rating by a specific user for a specific movie on some date and time. Examine the variable you created with &lt;code&gt;str&lt;/code&gt; function in the console. Are there any columns that may need transformation to be understood?&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Read and assign to a variable pipe-separated, |, &lt;strong&gt;u.item&lt;/strong&gt; file. Give columns these names - &lt;em&gt;movie id, movie title, release date, video release date, IMDb_URL, unknown, Action, Adventure, Animation, Childrens, Comedy, Crime, Documentary, Drama, Fantasy, Film-Noir, Horror, Musical, Mystery, Romance, Sci-Fi, Thriller, War, Western&lt;/em&gt; - but make sure to clean up any unusual symbols or spaces. This dataset contains information about movies, like their names and what genres they fall under. Examine the variable you created with &lt;code&gt;str&lt;/code&gt; function in the console. Are there any columns that may need transformation to be understood?&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Read and assign to a variable pipe-separated, |, &lt;strong&gt;u.user&lt;/strong&gt; file. Give columns these names - &lt;em&gt;user id, age, gender, occupation, zip code&lt;/em&gt; - but make sure to clean up any unusual symbols or spaces. This dataset contains information about users, like their age and occupation. Examine the variable you created with &lt;code&gt;str&lt;/code&gt; function in the console. Are there any columns that may need transformation to be understood?&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-joins&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;Data Joins&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;You should now have three data frames loaded in R; confirm this by using the environment tab. The next step is to combine all the information together using &lt;code&gt;*_join&lt;/code&gt; functions from &lt;strong&gt;dplyr&lt;/strong&gt;. This requires knowing foreign keys - variables in common between data frames that can uniquely identify rows in each other.&lt;/p&gt;
+&lt;ol start=&#34;4&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;What is the foreign key between u.data and u.user data frames? How about u.data and u.item data frames?&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Experiment with &lt;code&gt;inner_join&lt;/code&gt; and &lt;code&gt;full_join&lt;/code&gt; from &lt;strong&gt;dplyr&lt;/strong&gt; to join &lt;em&gt;u.data&lt;/em&gt; to &lt;em&gt;u.user&lt;/em&gt;, and then both to &lt;em&gt;u.item&lt;/em&gt;. Could we have used a composition of two &lt;code&gt;left_join&lt;/code&gt; calls here without losing data? Why? Think about the relations and cross-combinations between the three data sets in terms of users and movies.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-cleanup&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;Data Cleanup&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Examine the combined data frame with &lt;code&gt;str&lt;/code&gt;; check that you columns corresponding to u.data, u.user, and u.item columns. One thing to notice is that types are off for a couple variables. Specifically, &lt;em&gt;timestamp&lt;/em&gt; is shown to be an uninterpretable integer and &lt;em&gt;release date&lt;/em&gt; is stored as character. The other is that &lt;em&gt;video release date&lt;/em&gt; has nothing but missing values.&lt;/p&gt;
+&lt;ol start=&#34;6&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;timestamp&lt;/em&gt; stores datetime type incorrectly as integers and &lt;em&gt;release date&lt;/em&gt; stores a combination of year, month and day as cahracter. Use appropriate type converting function from &lt;strong&gt;lubridate&lt;/strong&gt; package to transform the variable types. Confirm that we have data somewhere around 1997 - 1998 with &lt;code&gt;range(df$timestamp)&lt;/code&gt;, substituting your name for the final data.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Remove &lt;em&gt;video release date&lt;/em&gt; from the dataset.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;movies-by-genre&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;Movies by Genre&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Our first exploratory analysis will focus on the question of which genre was least produced and most produced in 1997 - 1998 period. The final output will be a bar chart, however the first step is to shape and transform data so it can be easily plotted.&lt;/p&gt;
+&lt;ol start=&#34;8&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Note that some column names in your combined dataset actually stand for genres. We want to obtain a data frame containing two variables: genres and their count. Combine &lt;code&gt;gather&lt;/code&gt; from &lt;strong&gt;tidyr&lt;/strong&gt; and &lt;code&gt;count&lt;/code&gt;, &lt;code&gt;count&lt;/code&gt;, &lt;code&gt;filter&lt;/code&gt; functions from &lt;strong&gt;dplyr&lt;/strong&gt; to accomplish this. Which genre was least and which genre was most produced?&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;If you examine your transformed data by printing it in the console, you will see that rows are arranged alphabetically by genre. It is more visually telling if our bar chart was arranged by count instead, however &lt;code&gt;arrange&lt;/code&gt; from &lt;strong&gt;dplyr&lt;/strong&gt; will not work here. To fix the order we need to transform genres into a factor and reorder it by count. Convert &lt;em&gt;genre&lt;/em&gt; variable to factor and reorder it by count using a function from &lt;strong&gt;forcats&lt;/strong&gt; package.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Now make a horizontally pointed bar chart of counts by genre. Additionally, make the annotations nicer with function&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;labs(x = &amp;quot;x label&amp;quot;, y = &amp;quot;y label&amp;quot;, title = &amp;quot;chart title&amp;quot;,
+ caption = &amp;quot;Source: MovieLens&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;by adjusting its inputs and adding it to your ggplot code.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;users-demographics&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;Users’ Demographics&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;What can we understand about the user of MovieLens? We want to examine relations between age, gender and occupation, regardless of location.&lt;/p&gt;
+&lt;ol start=&#34;11&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;What age and gender is the oldest engineer?&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Now, lets visualise the three-way relation. Use &lt;code&gt;geom_boxplot&lt;/code&gt; to obtain a representation of age distribution for each occupation, and employ &lt;code&gt;facet_wrap&lt;/code&gt; to group data by gender. Make sure to experiment with &lt;code&gt;coord_flip&lt;/code&gt; to get readable labels on axes, and &lt;code&gt;labs&lt;/code&gt; function to set axis titles, plot title, and caption citing the source data. Use the 0.25, 0.5 and 0.75 quantiles that define the box in the boxplot to compare users in the healthcare occupation in terms of median age, variability in age and difference across gender.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;movie-ratings-by-occupation&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;Movie Ratings by Occupation&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;In this part, we will look at relations between users, movies and ratings. Lets compare average rating for a SciFi movie for an executive and a scientist.&lt;/p&gt;
+&lt;ol start=&#34;11&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Calculate mean rating for an executive and a scientist using a single composition of functions from &lt;strong&gt;dplyr&lt;/strong&gt; (both numbers should be in the same data frame). This requires filtering rows and grouped summarisation. Adapt the following syntax for creating a vector of logical values to help you filter occupations of interest:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;x &amp;lt;- &amp;quot;a&amp;quot;
+x %in% c(&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Create a grid of plots showing bar plots signifying proportions of ratings given to a certain genre of movie by a user of a certain occupation. This is a large plot that is legible only when you stretch the pane with &lt;em&gt;Plots&lt;/em&gt; tab throughout your screen and may take a few moments to render.&lt;br /&gt;
+First, you will need to prepare a dataset similar to what you did in 8 - deriving genre from column headers - except for controlling for duplicates with &lt;code&gt;distinct&lt;/code&gt; function only for rating, genre and occupation.&lt;br /&gt;
+Second, create the basic bar plots with&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;facet_grid(genre ~ occupation)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and aesthetics specified with&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;aes(rating, ..prop..).&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;..prop..&lt;/code&gt; is what replaces counts with proportions.&lt;br /&gt;
+Third, add axis labels and title and caption as before, adjusted for the information you are displaying in this plot.&lt;br /&gt;
+Fourth, add&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;scale_x_continuous(breaks = 1:5)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;to your ggplot to control which values show up on the x-axis and determine centers of the bars.&lt;br /&gt;
+Fifth, add&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;theme(axis.text = element_text(size = 5),  
+  strip.text.x = element_text(size = 6),   
+  strip.text.y = element_text(size = 5, angle = 30))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;to control size of text annotating axis with numbers, and title of the rows and columns in the strips. In general, &lt;code&gt;theme&lt;/code&gt; is a way to adjust many appearance elements of the plot and to make it presentable for communication.&lt;br /&gt;
+Sixth, use the plot to determine what seems to be the dominant attitude of executives towards documentaries of 1997 - 1998 period based on their ratings distribution?&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Dont forget to put all your code into Rmarkdown and test that all of it runs without errors to produce an html file that contains your answers. Good luck!&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;!-- BLOGDOWN-HEAD
+
+
+
+
+/BLOGDOWN-HEAD --&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Notes and Practice For Wrangle</title>
+      <link>https://synikitin.github.io/analytics6600/post/wrangle/</link>
+      <pubDate>Mon, 13 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://synikitin.github.io/analytics6600/post/wrangle/</guid>
+      <description>&lt;!-- BLOGDOWN-BODY-BEFORE
+
+/BLOGDOWN-BODY-BEFORE --&gt;
+
+&lt;div id=&#34;basic-concepts&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Basic Concepts&lt;/h1&gt;
+&lt;div id=&#34;material&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Material&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;tibble(x = 1:3)&lt;/code&gt; local in R&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;data()&lt;/code&gt; - local in R&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;%22/Users/snikitin/Documents/training/class/analytics6600/static/data/movies.csv%22&#34;&gt;&lt;/a&gt; - local on disc&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;%22https://synikitin.github.io/analytics6600/data/movies.csv%22&#34;&gt;&lt;/a&gt; - remote on disk, direct download&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;%22https://www.quandl.com/tools/api%22&#34;&gt;&lt;/a&gt; - remote on disc, api&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;machinery&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Machinery&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;computer&lt;/li&gt;
+&lt;li&gt;integrated development environment (IDE)&lt;/li&gt;
+&lt;li&gt;programming language&lt;/li&gt;
+&lt;li&gt;file formats&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;product&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Product&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;data&lt;/li&gt;
+&lt;li&gt;clean data&lt;/li&gt;
+&lt;li&gt;visualization&lt;/li&gt;
+&lt;li&gt;statistical model&lt;/li&gt;
+&lt;li&gt;report&lt;/li&gt;
+&lt;li&gt;web application&lt;/li&gt;
+&lt;li&gt;optimized algorithm&lt;/li&gt;
+&lt;li&gt;package&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;task&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Task&lt;/h1&gt;
+&lt;div id=&#34;io&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;IO&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;library(readr)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;library(tibble)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tidy&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Tidy&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;library(tidyr)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;transform&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Transform&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;library(dplyr)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;visualization&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Visualization&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;library(ggplot2)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;programming&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Programming&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;library(magrittr)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;learning-new-packages-and-functions&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Learning new packages and functions&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;CRAN&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;help(package = &amp;quot;readr&amp;quot;)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;purpose&lt;/li&gt;
+&lt;li&gt;available arguments&lt;/li&gt;
+&lt;li&gt;example code, sometimes &lt;code&gt;demo(package = &amp;quot;stats&amp;quot;)&lt;/code&gt;, &lt;code&gt;example(&amp;quot;summarise&amp;quot;, package = &amp;quot;dplyr&amp;quot;)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tibbles&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Tibbles&lt;/h1&gt;
+&lt;div id=&#34;creating&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Creating&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;tibble&lt;/code&gt; tibble( population = c(783744, 923972, 823972, 789374), city = c(“chicago”, “columbus”, “boston”, “cleveland”) )&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;tribble&lt;/code&gt; tribble( ~x, ~y, 1, “2”, 3, 4 )&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;printing&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Printing&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;print(df, n, width)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;str&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;View&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;subsetting&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Subsetting&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;df[[&amp;quot;a&amp;quot;]]&lt;/code&gt;, &lt;code&gt;df[[1]]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;df$a&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-import&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Data Import&lt;/h1&gt;
+&lt;div id=&#34;read_csv&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;read_csv&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;read_csv( 
+  &amp;quot;Some random text here
+  a,b,c
+  1,2,! #This is a comment. ! is a missing value.
+  4,5,6&amp;quot;,
+  skip = 2,
+  na = &amp;quot;!&amp;quot;,
+  comment = &amp;quot;#&amp;quot;,
+  n_max = 2,
+  col_names = c(&amp;quot;x&amp;quot;, &amp;quot;y&amp;quot;, &amp;quot;z&amp;quot;),
+  col_types = cols(x = col_integer(),
+                   y = col_double(),
+                   z = col_character())
+)             &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;arguments&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;arguments&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;skip&lt;/li&gt;
+&lt;li&gt;comment&lt;/li&gt;
+&lt;li&gt;col_names&lt;/li&gt;
+&lt;li&gt;na&lt;/li&gt;
+&lt;li&gt;n_max&lt;/li&gt;
+&lt;li&gt;locale&lt;/li&gt;
+&lt;li&gt;col_types (logical, numbers, text, date, time, datetime)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;write_csv-write_excel_csv-write_rds&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;write_csv, write_excel_csv, write_rds&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;similar arguments&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;other-packages&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;other packages&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;haven&lt;/li&gt;
+&lt;li&gt;readxl&lt;/li&gt;
+&lt;li&gt;DBI&lt;/li&gt;
+&lt;li&gt;jsonlite&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;xml2&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Lets practice &lt;code&gt;read_csv&lt;/code&gt; with the following data:&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;x &amp;lt;- &amp;quot;Confidential Data - Email abc@gmail.com for Permission
+    $earnings,Months in 2017,store
+    14343.43,January,! *Note: missing values marked with !
+    34322.33,February,6343\n&amp;quot;
+    
+writeChar(  
+  x,
+  &amp;quot;readr_example.csv&amp;quot;,
+  176
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tidying-data&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Tidying Data&lt;/h1&gt;
+&lt;div id=&#34;structure&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Structure&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;columns&lt;/li&gt;
+&lt;li&gt;rows&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;semantics&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Semantics&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;unit&lt;/li&gt;
+&lt;li&gt;variable&lt;/li&gt;
+&lt;li&gt;value&lt;/li&gt;
+&lt;li&gt;observation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;messy-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Messy data&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Column headers are values, not variable names. This is messy&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;a &amp;lt;- tribble(
+  ~region, ~`$0 - $100k`, ~`$100k - $1,000k`, ~`$1,000k - $10,000k`,
+  &amp;quot;midwest&amp;quot;, 152, 78, 5,
+  &amp;quot;west&amp;quot;, 190, 130, 10
+  )
+a&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 2 × 4
+##    region `$0 - $100k` `$100k - $1,000k` `$1,000k - $10,000k`
+##     &amp;lt;chr&amp;gt;        &amp;lt;dbl&amp;gt;             &amp;lt;dbl&amp;gt;                &amp;lt;dbl&amp;gt;
+## 1 midwest          152                78                    5
+## 2    west          190               130                   10&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and this is tidy by turning headers into a variable.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gather(data = a, key = income, value = count, 2:4)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 × 3
+##    region             income count
+##     &amp;lt;chr&amp;gt;              &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt;
+## 1 midwest         $0 - $100k   152
+## 2    west         $0 - $100k   190
+## 3 midwest    $100k - $1,000k    78
+## 4    west    $100k - $1,000k   130
+## 5 midwest $1,000k - $10,000k     5
+## 6    west $1,000k - $10,000k    10&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Multiple variables are stored in one column. This is messy&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;b &amp;lt;- tribble(
+  ~`region-income`, ~count,
+  &amp;quot;midwest, $0 - 100k&amp;quot;, 152,
+  &amp;quot;west, $0 - 100k&amp;quot;, 190,
+  &amp;quot;midwest, $100k - 1,000k&amp;quot;, 78,
+  &amp;quot;west, $100k - 1,000k&amp;quot;, 130
+)
+b&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 4 × 2
+##           `region-income` count
+##                     &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt;
+## 1      midwest, $0 - 100k   152
+## 2         west, $0 - 100k   190
+## 3 midwest, $100k - 1,000k    78
+## 4    west, $100k - 1,000k   130&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and this is tidy by splitting a variable into two variables.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;separate(data = b, col = `region-income`,
+         into = c(&amp;quot;region&amp;quot;, &amp;quot;income&amp;quot;), sep = &amp;quot;, &amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 4 × 3
+##    region         income count
+## *   &amp;lt;chr&amp;gt;          &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt;
+## 1 midwest      $0 - 100k   152
+## 2    west      $0 - 100k   190
+## 3 midwest $100k - 1,000k    78
+## 4    west $100k - 1,000k   130&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Variables are stored in rows. This is messy&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;d &amp;lt;- tribble(
+  ~region, ~income, ~statistic,
+  &amp;quot;midwest&amp;quot;, 193478374, &amp;quot;annual_max&amp;quot;,
+  &amp;quot;midwest&amp;quot;, 878743, &amp;quot;annual_min&amp;quot;,
+  &amp;quot;west&amp;quot;, 29743443, &amp;quot;annual_max&amp;quot;,
+  &amp;quot;west&amp;quot;, 19984028, &amp;quot;annual_min&amp;quot;
+)
+d&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 4 × 3
+##    region    income  statistic
+##     &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt;      &amp;lt;chr&amp;gt;
+## 1 midwest 193478374 annual_max
+## 2 midwest    878743 annual_min
+## 3    west  29743443 annual_max
+## 4    west  19984028 annual_min&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and this is tidy by turning a variable into column headers.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;spread(data = d, key = statistic, value = income)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 2 × 3
+##    region annual_max annual_min
+## *   &amp;lt;chr&amp;gt;      &amp;lt;dbl&amp;gt;      &amp;lt;dbl&amp;gt;
+## 1 midwest  193478374     878743
+## 2    west   29743443   19984028&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Multiple types of observational units are stored in the same table, in this case two separate time scales. This is messy&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;e &amp;lt;- tribble(
+  ~region, ~annual_max, ~annual_min, ~monthly_avg, ~month,
+  &amp;quot;midwest&amp;quot;, 193478374, 878743, 193947931, &amp;quot;January&amp;quot;,
+  &amp;quot;midwest&amp;quot;, 193478374, 878743, 153394881, &amp;quot;February&amp;quot;
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and this is tidy by removing annual scale variables&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;select(e, -annual_max, -annual_min)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 2 × 3
+##    region monthly_avg    month
+##     &amp;lt;chr&amp;gt;       &amp;lt;dbl&amp;gt;    &amp;lt;chr&amp;gt;
+## 1 midwest   193947931  January
+## 2 midwest   153394881 February&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;or this is tidy by removing monthly scale variables.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;select(e, -monthly_avg, -month) %&amp;gt;% 
+  distinct&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 1 × 3
+##    region annual_max annual_min
+##     &amp;lt;chr&amp;gt;      &amp;lt;dbl&amp;gt;      &amp;lt;dbl&amp;gt;
+## 1 midwest  193478374     878743&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;A single observational unit is stored in multiple tables. This is messy&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;f &amp;lt;- tribble(
+  ~region, ~income, ~statistic,
+  &amp;quot;midwest&amp;quot;, 193478374, &amp;quot;annual_max&amp;quot;,
+  &amp;quot;midwest&amp;quot;, 878743, &amp;quot;annual_min&amp;quot;
+)
+g &amp;lt;- tribble(
+  ~region, ~income, ~statistic,
+  &amp;quot;west&amp;quot;, 29743443, &amp;quot;annual_max&amp;quot;,
+  &amp;quot;west&amp;quot;, 19984028, &amp;quot;annual_min&amp;quot;
+)
+f&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 2 × 3
+##    region    income  statistic
+##     &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt;      &amp;lt;chr&amp;gt;
+## 1 midwest 193478374 annual_max
+## 2 midwest    878743 annual_min&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 2 × 3
+##   region   income  statistic
+##    &amp;lt;chr&amp;gt;    &amp;lt;dbl&amp;gt;      &amp;lt;chr&amp;gt;
+## 1   west 29743443 annual_max
+## 2   west 19984028 annual_min&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and this is tidy by combining them into a single data frame.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;bind_rows(f, g)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 4 × 3
+##    region    income  statistic
+##     &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt;      &amp;lt;chr&amp;gt;
+## 1 midwest 193478374 annual_max
+## 2 midwest    878743 annual_min
+## 3    west  29743443 annual_max
+## 4    west  19984028 annual_min&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Tidy the following dataset. It consists of a history of quarterly earnings per share of Johnson and Johnson.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;- matrix(JohnsonJohnson, byrow = TRUE, ncol = 4) %&amp;gt;% 
+  as_tibble() %&amp;gt;%
+  rename(quarter1 = V1, quarter2 = V2, quarter3 = V3, quarter4 = V4) %&amp;gt;% 
+  mutate(year = 1960:1980, stockinfo = &amp;quot;JNJ-NYSE&amp;quot;)
+df&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 21 × 6
+##    quarter1 quarter2 quarter3 quarter4  year stockinfo
+##       &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt; &amp;lt;int&amp;gt;     &amp;lt;chr&amp;gt;
+## 1      0.71     0.63     0.85     0.44  1960  JNJ-NYSE
+## 2      0.61     0.69     0.92     0.55  1961  JNJ-NYSE
+## 3      0.72     0.77     0.92     0.60  1962  JNJ-NYSE
+## 4      0.83     0.80     1.00     0.77  1963  JNJ-NYSE
+## 5      0.92     1.00     1.24     1.00  1964  JNJ-NYSE
+## 6      1.16     1.30     1.45     1.25  1965  JNJ-NYSE
+## 7      1.26     1.38     1.86     1.56  1966  JNJ-NYSE
+## 8      1.53     1.59     1.83     1.86  1967  JNJ-NYSE
+## 9      1.53     2.07     2.34     2.25  1968  JNJ-NYSE
+## 10     2.16     2.43     2.70     2.25  1969  JNJ-NYSE
+## # ... with 11 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;relational-data&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Relational data&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;tables and keys (primary, foreign, surrogate); key in the following data sets&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;stocks &amp;lt;- tibble(earnings = c(800, 150, 240, 65),
+                 volume = c(1599500, 30531626, 4276880, 25187460),
+                 symbol = c(&amp;quot;GOOG&amp;quot;, &amp;quot;APPL&amp;quot;, &amp;quot;GS&amp;quot;, &amp;quot;MSFT&amp;quot;))
+stocks&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 4 × 3
+##   earnings   volume symbol
+##      &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;  &amp;lt;chr&amp;gt;
+## 1      800  1599500   GOOG
+## 2      150 30531626   APPL
+## 3      240  4276880     GS
+## 4       65 25187460   MSFT&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;stocks2 &amp;lt;- tibble(earnings = c(800, 15),
+                  volume = c(1599500, 13210000),
+                  symbol = c(&amp;quot;GOOG&amp;quot;, &amp;quot;HBAN&amp;quot;))
+
+symbols &amp;lt;- tibble(symbol = c(&amp;quot;GOOG&amp;quot;, &amp;quot;APPL&amp;quot;, &amp;quot;GS&amp;quot;, &amp;quot;HBAN&amp;quot;),
+                  exchange = c(&amp;quot;NASDAQ&amp;quot;, &amp;quot;NASDAQ&amp;quot;, &amp;quot;NYSE&amp;quot;, &amp;quot;NASDAQ&amp;quot;))
+symbols&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 4 × 2
+##   symbol exchange
+##    &amp;lt;chr&amp;gt;    &amp;lt;chr&amp;gt;
+## 1   GOOG   NASDAQ
+## 2   APPL   NASDAQ
+## 3     GS     NYSE
+## 4   HBAN   NASDAQ&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;left, right, outer join (mutating)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;inner_join(x = stocks, y = symbols, by = &amp;quot;symbol&amp;quot;)
+left_join(x = stocks, y = symbols, by = &amp;quot;symbol&amp;quot;)
+right_join(x = stocks, y = symbols, by = &amp;quot;symbol&amp;quot;)
+full_join(x = stocks, y = symbols, by = &amp;quot;symbol&amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;semi, anti join (filtering)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;semi_join(x = stocks, y = symbols, by = &amp;quot;symbol&amp;quot;)
+anti_join(x = stocks, y = symbols, by = &amp;quot;symbol&amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;intersect, union, setdiff&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;union(x = stocks, y = stocks2)
+intersect(x = stocks, y = stocks2)
+setdiff(x = stocks, y = stocks2)
+setdiff(x = stocks2, y = stocks)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Identify primary and foreign keys in all datasets&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;set.seed(349834)
+
+calls &amp;lt;- tibble(
+  company = &amp;quot;schevchenko steele&amp;quot;, #rep(companies, each = 12)
+  number = rbinom(5, 30, .3),
+  month = month.name[1:5] #rep(month.name, 10)
+)
+sales &amp;lt;- tibble(
+  company = &amp;quot;schevchenko steele&amp;quot;,
+  amount = rgamma(10, 1e4, 1 / 1e4),
+  month = month.name[-c(1, 9)]
+)
+orders &amp;lt;- tibble(
+  company = &amp;quot;schevchenko steele&amp;quot;,
+  fullfilment = rbeta(10, 4, 8),
+  month = month.name[-c(1, 9)]
+) &lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Join calls and sales for only matching months&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Enrich calls with whatever sales data there is&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Enrich sales with whatever calls data there is&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Join calls and sales for all months&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Obtain sales data for which you have calls&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Obtain orders data for which you have no calls&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Join all datasets into a single data frame with all months&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+
+&lt;!-- BLOGDOWN-HEAD
+
+
+
+
+/BLOGDOWN-HEAD --&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Exploratory Data Analysis</title>
+      <link>https://synikitin.github.io/analytics6600/publication/eda/</link>
+      <pubDate>Mon, 30 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://synikitin.github.io/analytics6600/publication/eda/</guid>
+      <description>&lt;!-- BLOGDOWN-BODY-BEFORE
+
+/BLOGDOWN-BODY-BEFORE --&gt;
+
+&lt;div id=&#34;learning-objectives&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;Learning Objectives&lt;/strong&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Package loading&lt;/li&gt;
+&lt;li&gt;Data import&lt;/li&gt;
+&lt;li&gt;Data clean up&lt;/li&gt;
+&lt;li&gt;Data manipulation&lt;/li&gt;
+&lt;li&gt;Exploratory visualization&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;context&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;Context&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;This assignment is about exploratory data analysis (EDA) and is based around a fivethirtyeight article that is a good example of it (under project button). EDA is about going through many question-answer cycles bridged by numerical summaries and visualizations of data. The first part of the assignment is to read the article while noting what kind of statistics and plots were chosen by the authors; the other part of the assignment will be to reproduce these and build on them.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-import&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;Data Import&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Next, use dataset button to get data. I suggest creating a separate folder for this assignment and moving data there. Read &lt;a href=&#34;http://r4ds.had.co.nz/workflow-projects.html&#34;&gt;section of 8.4&lt;/a&gt; about setting up a project folder with RStudio which is a good practice in managing files.&lt;/p&gt;
+&lt;p&gt;Open a new R markdown file by going &lt;code&gt;File -&amp;gt; New File -&amp;gt; R markdown&lt;/code&gt;. Once it opens, do &lt;code&gt;File -&amp;gt; Save As&lt;/code&gt; to save it to your folder. Assuming you have created the project folder and data is in it, to get data into R you need to run&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(readr)
+df &amp;lt;- read_csv(&amp;quot;movie.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Note the underscore (&lt;code&gt;_&lt;/code&gt;) in &lt;code&gt;read_csv&lt;/code&gt; and not the dot (&lt;code&gt;.&lt;/code&gt;)&lt;/strong&gt;. Type &lt;strong&gt;df&lt;/strong&gt; into console to test that data loaded properly and you should see the following:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 1,794 × 15
+##     year      imdb                  title            test clean_test
+## *  &amp;lt;int&amp;gt;     &amp;lt;chr&amp;gt;                  &amp;lt;chr&amp;gt;           &amp;lt;chr&amp;gt;      &amp;lt;chr&amp;gt;
+## 1   2013 tt1711425          21 &amp;amp;amp; Over          notalk     notalk
+## 2   2012 tt1343727               Dredd 3D     ok-disagree         ok
+## 3   2013 tt2024544       12 Years a Slave notalk-disagree     notalk
+## 4   2013 tt1272878                 2 Guns          notalk     notalk
+## 5   2013 tt0453562                     42             men        men
+## 6   2013 tt1335975               47 Ronin             men        men
+## 7   2013 tt1606378 A Good Day to Die Hard          notalk     notalk
+## 8   2013 tt2194499             About Time     ok-disagree         ok
+## 9   2013 tt1814621              Admission              ok         ok
+## 10  2013 tt1815862            After Earth          notalk     notalk
+## # ... with 1,784 more rows, and 10 more variables: binary &amp;lt;chr&amp;gt;,
+## #   budget &amp;lt;int&amp;gt;, domgross &amp;lt;chr&amp;gt;, intgross &amp;lt;chr&amp;gt;, code &amp;lt;chr&amp;gt;,
+## #   `budget_2013$` &amp;lt;int&amp;gt;, `domgross_2013$` &amp;lt;chr&amp;gt;, `intgross_2013$` &amp;lt;chr&amp;gt;,
+## #   `period code` &amp;lt;int&amp;gt;, `decade code` &amp;lt;int&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Also, use &lt;code&gt;str(df)&lt;/code&gt; to see column names, what types of data you have in various columns and some example values. You should see the following:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str(df)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Classes &amp;#39;tbl_df&amp;#39;, &amp;#39;tbl&amp;#39; and &amp;#39;data.frame&amp;#39;:    1794 obs. of  15 variables:
+##  $ year          : int  2013 2012 2013 2013 2013 2013 2013 2013 2013 2013 ...
+##  $ imdb          : chr  &amp;quot;tt1711425&amp;quot; &amp;quot;tt1343727&amp;quot; &amp;quot;tt2024544&amp;quot; &amp;quot;tt1272878&amp;quot; ...
+##  $ title         : chr  &amp;quot;21 &amp;amp;amp; Over&amp;quot; &amp;quot;Dredd 3D&amp;quot; &amp;quot;12 Years a Slave&amp;quot; &amp;quot;2 Guns&amp;quot; ...
+##  $ test          : chr  &amp;quot;notalk&amp;quot; &amp;quot;ok-disagree&amp;quot; &amp;quot;notalk-disagree&amp;quot; &amp;quot;notalk&amp;quot; ...
+##  $ clean_test    : chr  &amp;quot;notalk&amp;quot; &amp;quot;ok&amp;quot; &amp;quot;notalk&amp;quot; &amp;quot;notalk&amp;quot; ...
+##  $ binary        : chr  &amp;quot;FAIL&amp;quot; &amp;quot;PASS&amp;quot; &amp;quot;FAIL&amp;quot; &amp;quot;FAIL&amp;quot; ...
+##  $ budget        : int  13000000 45000000 20000000 61000000 40000000 225000000 92000000 12000000 13000000 130000000 ...
+##  $ domgross      : chr  &amp;quot;25682380&amp;quot; &amp;quot;13414714&amp;quot; &amp;quot;53107035&amp;quot; &amp;quot;75612460&amp;quot; ...
+##  $ intgross      : chr  &amp;quot;42195766&amp;quot; &amp;quot;40868994&amp;quot; &amp;quot;158607035&amp;quot; &amp;quot;132493015&amp;quot; ...
+##  $ code          : chr  &amp;quot;2013FAIL&amp;quot; &amp;quot;2012PASS&amp;quot; &amp;quot;2013FAIL&amp;quot; &amp;quot;2013FAIL&amp;quot; ...
+##  $ budget_2013$  : int  13000000 45658735 20000000 61000000 40000000 225000000 92000000 12000000 13000000 130000000 ...
+##  $ domgross_2013$: chr  &amp;quot;25682380&amp;quot; &amp;quot;13611086&amp;quot; &amp;quot;53107035&amp;quot; &amp;quot;75612460&amp;quot; ...
+##  $ intgross_2013$: chr  &amp;quot;42195766&amp;quot; &amp;quot;41467257&amp;quot; &amp;quot;158607035&amp;quot; &amp;quot;132493015&amp;quot; ...
+##  $ period code   : int  1 1 1 1 1 1 1 1 1 1 ...
+##  $ decade code   : int  1 1 1 1 1 1 1 1 1 1 ...&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Understanding symbols in the names and types of data in each column is essential for the data cleaning task. Read the output of &lt;code&gt;str(df)&lt;/code&gt; line by line where you see a pattern summarising each variable like this: &lt;code&gt;$ variable name    : data type    possible values&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-cleaning&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;Data cleaning&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Next, we should clean up a few names and types using dplyr functions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Use &lt;code&gt;rename&lt;/code&gt; function from &lt;code&gt;dplyr&lt;/code&gt; to remove &lt;strong&gt;$&lt;/strong&gt; and empty spaces from variables that have them. You will need to use backsticks &lt;strong&gt;`&lt;/strong&gt;, located in the upper left of your keyboard (not single or double quotes) to capture the bad names. For example&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;df &amp;lt;- rename(df, budget_2013 = `budget_2013$`, period_code = `period code`)&lt;/code&gt;&lt;/pre&gt;
+to have proper syntax for rename. Assign the data frame with new names to &lt;strong&gt;df&lt;/strong&gt; or with some other name, like &lt;strong&gt;df_renamed&lt;/strong&gt;. Note that you can rename multiple variables by separating &lt;code&gt;new name = old name&lt;/code&gt; with commas.&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;After correcting names, we need to also fix data types. Output of &lt;code&gt;str(df)&lt;/code&gt; shows that, say &lt;strong&gt;budget_2013$&lt;/strong&gt;, has type &lt;code&gt;chr&lt;/code&gt; which stands for &lt;strong&gt;character&lt;/strong&gt; and represents text data. Use &lt;code&gt;mutate&lt;/code&gt; from dplyr and &lt;code&gt;as.double&lt;/code&gt; to convert all variables that are by their nature numerical, but are stored as text. For example,&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;df &amp;lt;- mutate(df, domgross = as.double(domgross), intgross = as.double(intgross))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Just like &lt;code&gt;rename&lt;/code&gt;, &lt;code&gt;mutate&lt;/code&gt; can also take multiple type conversion arguments &lt;code&gt;var_name = as.double(var_name)&lt;/code&gt; separated with commas. Also, note that renaming and type correction has to be saved as a separate data frame otherwise your results are calculated, but never saved and will not be available to other code, like when you need to calculate statistics. Save the full cleaned dataset as you will need it for calculations and a visualization.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;test-and-budget-statistics&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;Test and Budget Statistics&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Now, lets get some basic information about movies and budget:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Calculate percentage of movies passing the test in the period of 1970 - 1980 using &lt;strong&gt;clean_test&lt;/strong&gt; variable, that has a value of &lt;code&gt;ok&lt;/code&gt; which stands for passing the test. Use &lt;code&gt;count&lt;/code&gt; function from dplyr to get you started and basic arithmetic for the rest. For example,&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;count(filter(df, year &amp;lt;= 1980), clean_test)&lt;/code&gt;&lt;/pre&gt;
+Is the number below 50%? Do the same calculation but for 2000 - 2010. How did the number change?&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Switching to budget, first filter out all movies from 1990 - 2013 from your data and save as an intermediate result using &lt;code&gt;&amp;lt;-&lt;/code&gt;, for example&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;df_filtered &amp;lt;- filter(df, year &amp;gt;= 1990)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then, calculate inflation-adjusted median budget for all movies and also separate medians for each unique value of &lt;strong&gt;clean_test&lt;/strong&gt; variable using &lt;code&gt;group_by&lt;/code&gt; function from dplyr. Use variable &lt;code&gt;budget_2013&lt;/code&gt; to get the correct numbers. For example, without grouping,&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;summarise(df, med_budget = median(budget_2013, na.rm = TRUE))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and with grouping,&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;summarise(group_by(df, year), med_budget = median(budget_2013, na.rm = TRUE))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;How do group-specific medians compare to the overall median? Do author’s explanations provide a satisfying explanation of these numbers or do you have some additional factors you have in mind? Note you may get a warning about missing values; you can remove missing values during calculation by adding &lt;code&gt;na.rm = TRUE&lt;/code&gt; to median, as shown above in the code example. Save this table as you will need for later visualization.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;sales-statistics&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;Sales Statistics&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Next, we will look at returns:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Lets add a few new variables to &lt;code&gt;df&lt;/code&gt; using &lt;code&gt;mutate&lt;/code&gt; from dplyr. Note that &lt;strong&gt;intgross&lt;/strong&gt; stands for worldwide gross sales. Add variables that represent international only gross sales, worldwide return, international return, and domestic return on investment, in 2013 dollars. For example,&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;df &amp;lt;- mutate(df, domreturn = (domgross_2013 - budget_2013) / budget_2013 * 100)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;Summarise returns by calculating median total return and median total returns grouped by outcome of Bechdel test as shown by &lt;strong&gt;clean_test&lt;/strong&gt;. Here you will need &lt;code&gt;summarise&lt;/code&gt; and &lt;code&gt;group_by&lt;/code&gt; from dplyr, similar to budget calculations above; also dont forget to handle missing values when calculating the median. What pattern do you see?&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Next, select international only gross in 2013 dollars and &lt;strong&gt;clean_test&lt;/strong&gt; variables followed by creating a new variable with a single value of “international”. You also need to rename the return variables in both new data frames with a common name in the &lt;code&gt;select&lt;/code&gt; function, as shown below. For example,&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;df_new1 &amp;lt;- mutate(select(df, return = intreturn_2013_only, clean_test), market = &amp;quot;international&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Save this as a separate data frame. Repeat the same computations to create a data frame for “domestic” market with domestic return variable in 2013 dollars, and then combine the two into a new data frame using &lt;code&gt;bind_rows&lt;/code&gt; from dplyr (here you had to name the new variables with the same name, say market). Example is this&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;df_new &amp;lt;- bind_rows(df_new1, df_new2)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Calculate median gross sales for combination of clean_test result and origin of sales by using both variables for grouping. Here you need two variables for &lt;code&gt;group_by&lt;/code&gt; function from dplyr like&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;group_by(df_new, clean_test, market)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;,and of course you will need &lt;code&gt;summarise&lt;/code&gt; to calculate medians of return variable and probably take care of missing values with &lt;code&gt;na.rm = TRUE&lt;/code&gt;. Save this table with medians as you will need it for later visualization. What can you say about relation of passing the test and market on returns?&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;visualizations&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;Visualizations&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;The last part of the assignment is to roughly reproduce the charts in the article.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;We start with the stacked bar chart from the article (Chart 1 in the article). First, take the full cleaned data frame you made in &lt;strong&gt;Data cleaning&lt;/strong&gt;, and add a new variable representing 5 year periods. To accomplish this, load &lt;code&gt;ggplot2&lt;/code&gt; with &lt;code&gt;library&lt;/code&gt; function and use &lt;code&gt;cut_width(year, width = 5, boundary = 1970)&lt;/code&gt; inside &lt;code&gt;mutate&lt;/code&gt; from dplyr to create a new variable, for example called year_interval. Then use &lt;code&gt;ggplot2&lt;/code&gt; to create a rough plot; all I want to see is stacked bars for each year period where each bar represents one of the possible values of clean_test. Hint: play with fill aesthetic and position argument. Read over help file for &lt;code&gt;geom_bar&lt;/code&gt;. Here is an example,&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;library(ggplot2)
+ggplot(df_plot1, aes(x = year_interval, fill = clean_test)) +   
+  geom_bar(position = &amp;quot;fill&amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Next, the median budget chart from the article (Chart 2 in the article). Use summary data from &lt;strong&gt;Test and Budget Statistics&lt;/strong&gt; section that you saved as an intermediate result when you applied a filter to obtain data from 1990 - 2013 years (second bullet point). Hint: remember about coordinate system to figure out the flipping of bars. Here is an example&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ggplot(df_plot2, aes(clean_test, median_budget_2013)) + 
+  geom_bar(stat = &amp;quot;identity&amp;quot;) +
+  coord_flip()&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Lastly, use data build with &lt;code&gt;bind_rows&lt;/code&gt; from &lt;strong&gt;Sales Statistics&lt;/strong&gt; section to make the chart from the article about returns by market and test result. (Based on Chart 3 in the article) Hint: faceting will be helpful here. Here is an example&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ggplot(df_plot3, aes(x = clean_test, y = median_return_2013)) + 
+  geom_bar(stat = &amp;quot;identity&amp;quot;) +
+  coord_flip() +
+  facet_wrap(~market) &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can try installing with &lt;code&gt;install.packages(&amp;quot;ggthemes&amp;quot;)&lt;/code&gt; and then loading with &lt;code&gt;library(ggthemes)&lt;/code&gt; a themes package to experiment with how your plots look by adding &lt;code&gt;+ theme_fivethirtyeight()&lt;/code&gt; or some other theme to your ggplot code.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;extra-challenge&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;Extra challenge&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Fivethirtyeight article arrived at certain conclusions based on the movie data. Come up either with one new summary calculation or one new visualization that will support or challenge their findings.&lt;/p&gt;
+&lt;p&gt;Remember to place all your results in R markdown, and then email me the Rmarkdown. Good luck!&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;!-- BLOGDOWN-HEAD
+
+
+
+
+/BLOGDOWN-HEAD --&gt;
+</description>
+    </item>
     
     <item>
       <title>Deep Analysis</title>
