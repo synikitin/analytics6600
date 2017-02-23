@@ -3,7 +3,7 @@ author: "Slava Nikitin"
 date: "2017-02-20"
 draft: false
 tags: ["course"]
-title: "Wrangle - Strings"
+title: "Wrangle - Part II"
 summary: "Strings, factors, datetimes"
 math: false
 output: html_document
@@ -16,47 +16,39 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Strings
 Package: `library(stringr)`
 
-1. Creation:
-
+1. Creation: 
 ```
 x <- "Richard Stallman doesn't mind if you read his mail as long as you don't delete it before he reads it. "
-
 y <- 'Richard Stallman met Chuck Norris once. Chuck tried a roundhouse, but Richard bashed him 
 in the skull.'
-```  
-
-Try creating this string  
-
+```
+Try creating this string
 ```
 'Richard Stallman's beard trimmings can cure cancer. Too bad he never shaves.'
 ```  
 
 2. Escaping quotes to have quotes inside quotes 
-
 ```
 'Richard Stallman\'s beard trimmings can cure cancer. Too bad he never shaves.'
 "Richard Stallman gets \"9 bits\" to the byte."  
 ```  
 
-3. Use `writeLines` as opposed to `print` to show the actual string  
-
+3. Use `writeLines` as opposed to `print` to show the actual string
 ```
 writeLines("Richard Stallman gets \"9 bits\" to the byte.")
 ```  
 
-4. Special cases:  
-- "\\n"	newline  
-- "\\r"	carriage return  
-- "\\t"	tab  
+4. Special strings signifying space:
+    - "\\n"	newline  
+    - "\\r"	carriage return  
+    - "\\t"	tab  
 
 5. Create a vector of strings:
-
 ```
 c("a", "b", "d")
 ```
 
 6. Number of characters (length):
-
 ```
 str_length(
  c("Richard Stallman can solve the halting problem... in polynomial time.", NA)
@@ -64,11 +56,9 @@ str_length(
 ```
 
 7. Combine strings:
-
 ```
 str_c("hello", c("there", "here"), sep = " ")
 str_c("hello", c("there", "here", ""), sep = " ", collapse = " ")
-
 x <- "Class"
 str_c(
   x,
@@ -79,37 +69,29 @@ str_c(
 ```
 
 8. Sub-strings:
-
 ```
 str_sub("Richard Stallman did not write GNU Emacs, he simply read the source code from /dev/null.", start = 1, end = 7)
-
 str_sub("Richard Stallman did not write GNU Emacs, he simply read the source code from /dev/null.", start = -6, end = -1)
 ```
 
 9. String case:
-
 ```
 str_to_lower("LARGE LETTERS")
 str_to_upper("SMALL LETTERS")
 ```
 
 10. String sort:
-
 ```
 str_sort(c("Monday", "Tuesday", "Saturday"))
 ```
-
 Exercise:
-
 Fix the following strings if needed, lower their case, then combine them with newline character to show one quote per line, and finally get the length of the full string.
-
 ```
 'Richard Stallman doesn't need sudo. I will make him a sandwich anyway.'
 "Richard Stallman's beard is made of parentheses."
 ```
 
 11. Regular expression:  
-
 I often refer to this [cheatsheet](https://www.cheatography.com/davechild/cheat-sheets/regular-expressions/) to remind myself of syntax. I will show only simple examples as it is better learned piece by piece as needed.
 
 - a-b 0-9 Alpha-numerical characters
@@ -138,7 +120,11 @@ str_replace_all(string = x, pattern = "\\.", replacement = "!")
 str_split(string = x, pattern = ".")
 ```
 
-- `\d \s [abc] [^123]`
+- Special symbols
+    + `\\d` digits 0 - 9
+    + `\\s` spaces like \\n
+    + [a1@] any group of symbols
+    + [^a1@] ^ makes it NOT this group of symbols
 ```
 x <- "zip code @ (#60099).\n"
 str_replace_all(string = x, pattern = "\\s", replacement = " ")
@@ -146,23 +132,91 @@ str_detect(string = x, pattern = "[@#]")
 str_extract_all(string = x, pattern = "[^@#()]")
 ```
 
-- ^ $ Anchors
+- Anchors
+    + ^ front
+    + $ back
 ```
 x <- "truth is truth"
 str_replace_all(string = x, pattern = "^truth", replacement = "lie")
 str_replace_all(string = x, pattern = "truth$", replacement = "lie")
 ```
 
-- | multiple patterns
+- | is a logical OR operator for multiple patterns
 ```
 x <- "zip code @ (#60099).\n"
 str_replace_all(string = x, pattern = "\\d|[@#()]", replacement = "")
 ```
-
-- ? + * Quantifiers
+- Quantifiers   
+    * ? (0 or 1 times)
+    * \+ (1 or more)
+    * \* (0 or more)
 ```
 x <- "groowthh"
 str_extract_all(string = x, pattern = "o+")
 str_detect(string = x, pattern = "o+w?th*")
 ```
+
+## Categorical Data with Factor Type
+Package: `library(forcats)`
+
+1. Create factor to represent a categorical variable
+```
+x <- c("a", "b", "a", "b")
+factor(x, levels = c("b", "a"))
+```
+
+2. Control levels (categories)
+```
+factor(c("a", "b", "c"), levels = c("b", "a"))
+```
+
+3. Reorder levels using a numerical variable
+```
+library(dplyr)
+x <- tibble(f = factor(letters[1:4]),
+            n = c(3, 1, 2, 4))
+y <- mutate(x, f = fct_reorder(f, n, mean))
+```
+
+## Date, Datetime, Time
+Package: `library(lubridate)`
+
+1. Timestamps to datetimes
+```
+library(lubridate)
+Sys.time()
+as.integer(Sys.time)
+x <- as.integer(Sys.time())
+as_datetime(x)
+```
+
+2. Range of datetimes
+```
+Sys.time() + 1:10
+range(Sys.time() + 1:10)
+min(Sys.time() + 1:10)
+max(Sys.time() + 1:10)
+```
+
+3. Extract pieces like days, weeks, years, hours, seconds...
+```
+x <- Sys.time()
+year(x)
+month(x)
+month(x, label = TRUE)
+wday(x)
+wday(x, label = TRUE)
+hour(x)
+minute(x)
+second(x)
+```
+
+4. Strings to dates
+```
+ymd("2017-02-20")
+dmy("01-01-1910")
+ymd("2017-Feb-20")
+dmy_hms("01-01-1910 23:44:56")
+```
+
 
