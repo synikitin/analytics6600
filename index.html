@@ -18,31 +18,27 @@
   
     
     
-    <link rel="stylesheet" href="./css/highlight.min.css">
+    <link rel="stylesheet" href="/analytics6600/css/highlight.min.css">
     
   
-  <link rel="stylesheet" href="./css/bootstrap.min.css">
-  <link rel="stylesheet" href="./css/font-awesome.min.css">
-  <link rel="stylesheet" href="./css/academicons.min.css">
+  <link rel="stylesheet" href="/analytics6600/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/analytics6600/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/analytics6600/css/academicons.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Merriweather|Roboto+Mono">
-  <link rel="stylesheet" href="./css/hugo-academic.css">
+  <link rel="stylesheet" href="/analytics6600/css/hugo-academic.css">
   
 
-  <link rel="alternate" href="./index.xml" type="application/rss+xml" title="Data Analytics 6600">
-  <link rel="feed" href="./index.xml" type="application/rss+xml" title="Data Analytics 6600">
+  <link rel="alternate" href="https://synikitin.github.io/analytics6600/index.xml" type="application/rss+xml" title="Data Analytics 6600">
+  <link rel="feed" href="https://synikitin.github.io/analytics6600/index.xml" type="application/rss+xml" title="Data Analytics 6600">
 
-  <link rel="icon" type="image/png" href="./img/icon.png">
-  <link rel="apple-touch-icon" type="image/png" href="./img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/analytics6600/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/analytics6600/img/apple-touch-icon.png">
 
-  <link rel="canonical" href="./">
+  <link rel="canonical" href="https://synikitin.github.io/analytics6600/">
 
   
 
   <title>Data Analytics 6600</title>
-
-
-
-
 
 </head>
 <body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
@@ -59,7 +55,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="./">Data Analytics 6600</a>
+      <a class="navbar-brand" href="/analytics6600/">Data Analytics 6600</a>
     </div>
 
     
@@ -72,7 +68,7 @@
         
 
         <li class="nav-item">
-          <a href="./#about" data-target="#about">
+          <a href="/analytics6600/#about" data-target="#about">
             
             <span>Home</span>
           </a>
@@ -84,7 +80,7 @@
         
 
         <li class="nav-item">
-          <a href="./#syllabus" data-target="#syllabus">
+          <a href="/analytics6600/#syllabus" data-target="#syllabus">
             
             <span>Syllabus</span>
           </a>
@@ -96,7 +92,7 @@
         
 
         <li class="nav-item">
-          <a href="./#resources" data-target="#resources">
+          <a href="/analytics6600/#resources" data-target="#resources">
             
             <span>Resources</span>
           </a>
@@ -108,7 +104,7 @@
         
 
         <li class="nav-item">
-          <a href="./#assignments" data-target="#assignments">
+          <a href="/analytics6600/#assignments" data-target="#assignments">
             
             <span>Assignments</span>
           </a>
@@ -120,7 +116,7 @@
         
 
         <li class="nav-item">
-          <a href="./#projects" data-target="#projects">
+          <a href="/analytics6600/#projects" data-target="#projects">
             
             <span>Projects</span>
           </a>
@@ -132,7 +128,7 @@
         
 
         <li class="nav-item">
-          <a href="./#posts" data-target="#posts">
+          <a href="/analytics6600/#posts" data-target="#posts">
             
             <span>Posts</span>
           </a>
@@ -144,7 +140,7 @@
         
 
         <li class="nav-item">
-          <a href="./#contact" data-target="#contact">
+          <a href="/analytics6600/#contact" data-target="#contact">
             
             <span>Contact</span>
           </a>
@@ -166,6 +162,638 @@
 
   
   
+  <section id="wrangle2" class="home-section">
+    <div class="container">
+      
+
+
+<div class="row">
+  <div class="col-xs-12 col-md-4 section-heading">
+    <h1>Wrangle - Part II</h1>
+    
+  </div>
+  <div class="col-xs-12 col-md-8">
+    <!-- BLOGDOWN-BODY-BEFORE
+
+/BLOGDOWN-BODY-BEFORE -->
+
+<div id="strings" class="section level2">
+<h2>Strings</h2>
+<p>Package: <code>library(stringr)</code></p>
+<ol style="list-style-type: decimal">
+<li><p>Creation:</p>
+<pre><code>x &lt;- &quot;Richard Stallman doesn&#39;t mind if you read his mail as long as you don&#39;t delete it before he reads it. &quot;
+y &lt;- &#39;Richard Stallman met Chuck Norris once. Chuck tried a roundhouse, but Richard bashed him 
+in the skull.&#39;</code></pre>
+<p>Try creating this string</p>
+<pre><code>&#39;Richard Stallman&#39;s beard trimmings can cure cancer. Too bad he never shaves.&#39;</code></pre></li>
+<li><p>Escaping quotes to have quotes inside quotes</p>
+<pre><code>&#39;Richard Stallman\&#39;s beard trimmings can cure cancer. Too bad he never shaves.&#39;
+&quot;Richard Stallman gets \&quot;9 bits\&quot; to the byte.&quot;  </code></pre></li>
+<li><p>Use <code>writeLines</code> as opposed to <code>print</code> to show the actual string</p>
+<pre><code>writeLines(&quot;Richard Stallman gets \&quot;9 bits\&quot; to the byte.&quot;)</code></pre></li>
+<li>Special strings signifying space:
+<ul>
+<li>“\n” newline<br />
+</li>
+<li>“\r” carriage return<br />
+</li>
+<li>“\t” tab</li>
+</ul></li>
+<li><p>Create a vector of strings:</p>
+<pre><code>c(&quot;a&quot;, &quot;b&quot;, &quot;d&quot;)</code></pre></li>
+<li><p>Number of characters (length):</p>
+<pre><code>str_length(
+ c(&quot;Richard Stallman can solve the halting problem... in polynomial time.&quot;, NA)
+)</code></pre></li>
+<li><p>Combine strings:</p>
+<pre><code>str_c(&quot;hello&quot;, c(&quot;there&quot;, &quot;here&quot;), sep = &quot; &quot;)
+str_c(&quot;hello&quot;, c(&quot;there&quot;, &quot;here&quot;, &quot;&quot;), sep = &quot; &quot;, collapse = &quot; &quot;)
+x &lt;- &quot;Class&quot;
+str_c(
+  x,
+  &quot;is ...&quot;,
+  if (wday(Sys.time(), label = TRUE) == &quot;Mon&quot;) &quot;on&quot; else &quot;off&quot;,
+  sep = &quot; &quot;
+)</code></pre></li>
+<li><p>Sub-strings:</p>
+<pre><code>str_sub(&quot;Richard Stallman did not write GNU Emacs, he simply read the source code from /dev/null.&quot;, start = 1, end = 7)
+str_sub(&quot;Richard Stallman did not write GNU Emacs, he simply read the source code from /dev/null.&quot;, start = -6, end = -1)</code></pre></li>
+<li><p>String case:</p>
+<pre><code>str_to_lower(&quot;LARGE LETTERS&quot;)
+str_to_upper(&quot;SMALL LETTERS&quot;)</code></pre></li>
+<li><p>String sort:</p>
+<pre><code>str_sort(c(&quot;Monday&quot;, &quot;Tuesday&quot;, &quot;Saturday&quot;))</code></pre>
+<p>Exercise: Fix the following strings if needed, lower their case, then combine them with newline character to show one quote per line, and finally get the length of the full string.</p>
+<pre><code>&#39;Richard Stallman doesn&#39;t need sudo. I will make him a sandwich anyway.&#39;
+&quot;Richard Stallman&#39;s beard is made of parentheses.&quot;</code></pre></li>
+<li><p>Regular expression:<br />
+I often refer to this <a href="https://www.cheatography.com/davechild/cheat-sheets/regular-expressions/">cheatsheet</a> to remind myself of syntax. I will show only simple examples as it is better learned piece by piece as needed.</p></li>
+</ol>
+<ul>
+<li><p>a-b 0-9 Alpha-numerical characters</p>
+<pre><code>x &lt;- &quot;zip code 60099&quot;
+str_extract(string = x, pattern = &quot;zip code&quot;)
+str_detect(string = x, pattern = &quot;60099&quot;)
+str_replace(string = x, pattern = &quot;60099&quot;, replacement = &quot;60000&quot;)
+str_split(string = x, pattern = &quot; &quot;)</code></pre></li>
+<li><p>!-) Special symbols may need escaping if they are regex syntax</p>
+<pre><code>x &lt;- &quot;zip code @ (#60099)&quot;
+str_extract(string = x, pattern = &quot;\\(&quot;)
+str_detect(string = x, pattern = &quot;#&quot;)
+str_replace(string = x, pattern = &quot;@&quot;, replacement = &quot;&quot;)
+str_split(string = x, pattern = &quot; &quot;)</code></pre></li>
+<li><p>. One of any symbols</p>
+<pre><code>x &lt;- &quot;zip code @ (#60099).&quot;
+str_extract(string = x, pattern = &quot;z.p&quot;)
+str_detect(string = x, pattern = &quot;co.e&quot;)
+str_replace_all(string = x, pattern = &quot;\\.&quot;, replacement = &quot;!&quot;)
+str_split(string = x, pattern = &quot;.&quot;)</code></pre></li>
+<li>Special symbols
+<ul>
+<li><code>\\d</code> digits 0 - 9</li>
+<li><code>\\s</code> spaces like \n</li>
+<li>[a1@] any group of symbols</li>
+<li><p>[^a1@] ^ makes it NOT this group of symbols</p>
+<pre><code>x &lt;- &quot;zip code @ (#60099).\n&quot;
+str_replace_all(string = x, pattern = &quot;\\s&quot;, replacement = &quot; &quot;)
+str_detect(string = x, pattern = &quot;[@#]&quot;)
+str_extract_all(string = x, pattern = &quot;[^@#()]&quot;)</code></pre></li>
+</ul></li>
+<li>Anchors
+<ul>
+<li>^ front</li>
+<li><p>$ back</p>
+<pre><code>x &lt;- &quot;truth is truth&quot;
+str_replace_all(string = x, pattern = &quot;^truth&quot;, replacement = &quot;lie&quot;)
+str_replace_all(string = x, pattern = &quot;truth$&quot;, replacement = &quot;lie&quot;)</code></pre></li>
+</ul></li>
+<li><p>| is a logical OR operator for multiple patterns</p>
+<pre><code>x &lt;- &quot;zip code @ (#60099).\n&quot;
+str_replace_all(string = x, pattern = &quot;\\d|[@#()]&quot;, replacement = &quot;&quot;)</code></pre></li>
+<li>Quantifiers
+<ul>
+<li>? (0 or 1 times)</li>
+<li>+ (1 or more)</li>
+<li><p>* (0 or more)</p>
+<pre><code>x &lt;- &quot;groowthh&quot;
+str_extract_all(string = x, pattern = &quot;o+&quot;)
+str_detect(string = x, pattern = &quot;o+w?th*&quot;)</code></pre></li>
+</ul></li>
+</ul>
+</div>
+<div id="categorical-data-with-factor-type" class="section level2">
+<h2>Categorical Data with Factor Type</h2>
+<p>Package: <code>library(forcats)</code></p>
+<ol style="list-style-type: decimal">
+<li><p>Create factor to represent a categorical variable</p>
+<pre><code>x &lt;- c(&quot;a&quot;, &quot;b&quot;, &quot;a&quot;, &quot;b&quot;)
+factor(x, levels = c(&quot;b&quot;, &quot;a&quot;))</code></pre></li>
+<li><p>Control levels (categories)</p>
+<pre><code>factor(c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;), levels = c(&quot;b&quot;, &quot;a&quot;))</code></pre></li>
+<li><p>Reorder levels using a numerical variable</p>
+<pre><code>library(dplyr)
+x &lt;- tibble(f = factor(letters[1:4]),
+        n = c(3, 1, 2, 4))
+y &lt;- mutate(x, f = fct_reorder(f, n, mean))</code></pre></li>
+</ol>
+</div>
+<div id="date-datetime-time" class="section level2">
+<h2>Date, Datetime, Time</h2>
+<p>Package: <code>library(lubridate)</code></p>
+<ol style="list-style-type: decimal">
+<li><p>Timestamps to datetimes</p>
+<pre><code>library(lubridate)
+Sys.time()
+as.integer(Sys.time)
+x &lt;- as.integer(Sys.time())
+as_datetime(x)</code></pre></li>
+<li><p>Range of datetimes</p>
+<pre><code>Sys.time() + 1:10
+range(Sys.time() + 1:10)
+min(Sys.time() + 1:10)
+max(Sys.time() + 1:10)</code></pre></li>
+<li><p>Extract pieces like days, weeks, years, hours, seconds…</p>
+<pre><code>x &lt;- Sys.time()
+year(x)
+month(x)
+month(x, label = TRUE)
+wday(x)
+wday(x, label = TRUE)
+hour(x)
+minute(x)
+second(x)</code></pre></li>
+<li><p>Strings to dates</p>
+<pre><code>ymd(&quot;2017-02-20&quot;)
+dmy(&quot;01-01-1910&quot;)
+ymd(&quot;2017-Feb-20&quot;)
+dmy_hms(&quot;01-01-1910 23:44:56&quot;)</code></pre></li>
+</ol>
+</div>
+
+
+<!-- BLOGDOWN-HEAD
+
+
+
+
+/BLOGDOWN-HEAD -->
+
+  </div>
+</div>
+
+    </div>
+  </section>
+
+  
+  
+  <section id="wrangle" class="home-section">
+    <div class="container">
+      
+
+
+<div class="row">
+  <div class="col-xs-12 col-md-4 section-heading">
+    <h1>Wrangle - Part I</h1>
+    
+  </div>
+  <div class="col-xs-12 col-md-8">
+    <!-- BLOGDOWN-BODY-BEFORE
+
+/BLOGDOWN-BODY-BEFORE -->
+
+<div id="basic-concepts" class="section level1">
+<h1>Basic Concepts</h1>
+<div id="material" class="section level2">
+<h2>Material</h2>
+<ul>
+<li><code>tibble(x = 1:3)</code> local in R</li>
+<li><code>data()</code> - local in R</li>
+<li><a href="%22/Users/snikitin/Documents/training/class/analytics6600/static/data/movies.csv%22"></a> - local on disc</li>
+<li><a href="%22https://synikitin.github.io/analytics6600/data/movies.csv%22"></a> - remote on disk, direct download</li>
+<li><a href="%22https://www.quandl.com/tools/api%22"></a> - remote on disc, api</li>
+</ul>
+</div>
+<div id="machinery" class="section level2">
+<h2>Machinery</h2>
+<ul>
+<li>computer</li>
+<li>integrated development environment (IDE)</li>
+<li>programming language</li>
+<li>file formats</li>
+</ul>
+</div>
+<div id="product" class="section level2">
+<h2>Product</h2>
+<ul>
+<li>data</li>
+<li>clean data</li>
+<li>visualization</li>
+<li>statistical model</li>
+<li>report</li>
+<li>web application</li>
+<li>optimized algorithm</li>
+<li>package</li>
+</ul>
+</div>
+</div>
+<div id="task" class="section level1">
+<h1>Task</h1>
+<div id="io" class="section level2">
+<h2>IO</h2>
+<ul>
+<li><code>library(readr)</code></li>
+<li><code>library(tibble)</code></li>
+</ul>
+</div>
+<div id="tidy" class="section level2">
+<h2>Tidy</h2>
+<ul>
+<li><code>library(tidyr)</code></li>
+</ul>
+</div>
+<div id="transform" class="section level2">
+<h2>Transform</h2>
+<ul>
+<li><code>library(dplyr)</code></li>
+</ul>
+</div>
+<div id="visualization" class="section level2">
+<h2>Visualization</h2>
+<ul>
+<li><code>library(ggplot2)</code></li>
+</ul>
+</div>
+<div id="programming" class="section level2">
+<h2>Programming</h2>
+<ul>
+<li><code>library(magrittr)</code></li>
+</ul>
+</div>
+</div>
+<div id="learning-new-packages-and-functions" class="section level1">
+<h1>Learning new packages and functions</h1>
+<ul>
+<li>CRAN</li>
+<li><code>help(package = &quot;readr&quot;)</code></li>
+<li>purpose</li>
+<li>available arguments</li>
+<li>example code, sometimes <code>demo(package = &quot;stats&quot;)</code>, <code>example(&quot;summarise&quot;, package = &quot;dplyr&quot;)</code></li>
+</ul>
+</div>
+<div id="tibbles" class="section level1">
+<h1>Tibbles</h1>
+<div id="creating" class="section level2">
+<h2>Creating</h2>
+<ul>
+<li><p><code>tibble</code> tibble( population = c(783744, 923972, 823972, 789374), city = c(“chicago”, “columbus”, “boston”, “cleveland”) )</p></li>
+<li><p><code>tribble</code> tribble( ~x, ~y, 1, “2”, 3, 4 )</p></li>
+</ul>
+</div>
+<div id="printing" class="section level2">
+<h2>Printing</h2>
+<ul>
+<li><code>print(df, n, width)</code></li>
+<li><code>str</code></li>
+<li><code>View</code></li>
+</ul>
+</div>
+<div id="subsetting" class="section level2">
+<h2>Subsetting</h2>
+<ul>
+<li><code>df[[&quot;a&quot;]]</code>, <code>df[[1]]</code></li>
+<li><code>df$a</code></li>
+</ul>
+</div>
+</div>
+<div id="data-import" class="section level1">
+<h1>Data Import</h1>
+<div id="read_csv" class="section level2">
+<h2>read_csv</h2>
+<pre><code>read_csv( 
+  &quot;Some random text here
+  a,b,c
+  1,2,! #This is a comment. ! is a missing value.
+  4,5,6&quot;,
+  skip = 2,
+  na = &quot;!&quot;,
+  comment = &quot;#&quot;,
+  n_max = 2,
+  col_names = c(&quot;x&quot;, &quot;y&quot;, &quot;z&quot;),
+  col_types = cols(x = col_integer(),
+                   y = col_double(),
+                   z = col_character())
+)             </code></pre>
+</div>
+<div id="arguments" class="section level2">
+<h2>arguments</h2>
+<ul>
+<li>skip</li>
+<li>comment</li>
+<li>col_names</li>
+<li>na</li>
+<li>n_max</li>
+<li>locale</li>
+<li>col_types (logical, numbers, text, date, time, datetime)</li>
+</ul>
+</div>
+<div id="write_csv-write_excel_csv-write_rds" class="section level2">
+<h2>write_csv, write_excel_csv, write_rds</h2>
+<ul>
+<li>similar arguments</li>
+</ul>
+</div>
+<div id="other-packages" class="section level2">
+<h2>other packages</h2>
+<ul>
+<li>haven</li>
+<li>readxl</li>
+<li>DBI</li>
+<li>jsonlite</li>
+<li><p>xml2</p></li>
+<li><p>Lets practice <code>read_csv</code> with the following data:</p></li>
+</ul>
+<pre><code>x &lt;- &quot;Confidential Data - Email abc@gmail.com for Permission
+    $earnings,Months in 2017,store
+    14343.43,January,! *Note: missing values marked with !
+    34322.33,February,6343\n&quot;
+    
+writeChar(  
+  x,
+  &quot;readr_example.csv&quot;,
+  176
+)
+</code></pre>
+</div>
+</div>
+<div id="tidying-data" class="section level1">
+<h1>Tidying Data</h1>
+<div id="structure" class="section level2">
+<h2>Structure</h2>
+<ul>
+<li>columns</li>
+<li>rows</li>
+</ul>
+</div>
+<div id="semantics" class="section level2">
+<h2>Semantics</h2>
+<ul>
+<li>unit</li>
+<li>variable</li>
+<li>value</li>
+<li>observation</li>
+</ul>
+</div>
+<div id="messy-data" class="section level2">
+<h2>Messy data</h2>
+<ul>
+<li>Column headers are values, not variable names. This is messy</li>
+</ul>
+<pre class="r"><code>a &lt;- tribble(
+  ~region, ~`$0 - $100k`, ~`$100k - $1,000k`, ~`$1,000k - $10,000k`,
+  &quot;midwest&quot;, 152, 78, 5,
+  &quot;west&quot;, 190, 130, 10
+  )
+a</code></pre>
+<pre><code>## # A tibble: 2 × 4
+##    region `$0 - $100k` `$100k - $1,000k` `$1,000k - $10,000k`
+##     &lt;chr&gt;        &lt;dbl&gt;             &lt;dbl&gt;                &lt;dbl&gt;
+## 1 midwest          152                78                    5
+## 2    west          190               130                   10</code></pre>
+<p>and this is tidy by turning headers into a variable.</p>
+<pre class="r"><code>gather(data = a, key = income, value = count, 2:4)</code></pre>
+<pre><code>## # A tibble: 6 × 3
+##    region             income count
+##     &lt;chr&gt;              &lt;chr&gt; &lt;dbl&gt;
+## 1 midwest         $0 - $100k   152
+## 2    west         $0 - $100k   190
+## 3 midwest    $100k - $1,000k    78
+## 4    west    $100k - $1,000k   130
+## 5 midwest $1,000k - $10,000k     5
+## 6    west $1,000k - $10,000k    10</code></pre>
+<ul>
+<li>Multiple variables are stored in one column. This is messy</li>
+</ul>
+<pre class="r"><code>b &lt;- tribble(
+  ~`region-income`, ~count,
+  &quot;midwest, $0 - 100k&quot;, 152,
+  &quot;west, $0 - 100k&quot;, 190,
+  &quot;midwest, $100k - 1,000k&quot;, 78,
+  &quot;west, $100k - 1,000k&quot;, 130
+)
+b</code></pre>
+<pre><code>## # A tibble: 4 × 2
+##           `region-income` count
+##                     &lt;chr&gt; &lt;dbl&gt;
+## 1      midwest, $0 - 100k   152
+## 2         west, $0 - 100k   190
+## 3 midwest, $100k - 1,000k    78
+## 4    west, $100k - 1,000k   130</code></pre>
+<p>and this is tidy by splitting a variable into two variables.</p>
+<pre class="r"><code>separate(data = b, col = `region-income`,
+         into = c(&quot;region&quot;, &quot;income&quot;), sep = &quot;, &quot;)</code></pre>
+<pre><code>## # A tibble: 4 × 3
+##    region         income count
+## *   &lt;chr&gt;          &lt;chr&gt; &lt;dbl&gt;
+## 1 midwest      $0 - 100k   152
+## 2    west      $0 - 100k   190
+## 3 midwest $100k - 1,000k    78
+## 4    west $100k - 1,000k   130</code></pre>
+<ul>
+<li>Variables are stored in rows. This is messy</li>
+</ul>
+<pre class="r"><code>d &lt;- tribble(
+  ~region, ~income, ~statistic,
+  &quot;midwest&quot;, 193478374, &quot;annual_max&quot;,
+  &quot;midwest&quot;, 878743, &quot;annual_min&quot;,
+  &quot;west&quot;, 29743443, &quot;annual_max&quot;,
+  &quot;west&quot;, 19984028, &quot;annual_min&quot;
+)
+d</code></pre>
+<pre><code>## # A tibble: 4 × 3
+##    region    income  statistic
+##     &lt;chr&gt;     &lt;dbl&gt;      &lt;chr&gt;
+## 1 midwest 193478374 annual_max
+## 2 midwest    878743 annual_min
+## 3    west  29743443 annual_max
+## 4    west  19984028 annual_min</code></pre>
+<p>and this is tidy by turning a variable into column headers.</p>
+<pre class="r"><code>spread(data = d, key = statistic, value = income)</code></pre>
+<pre><code>## # A tibble: 2 × 3
+##    region annual_max annual_min
+## *   &lt;chr&gt;      &lt;dbl&gt;      &lt;dbl&gt;
+## 1 midwest  193478374     878743
+## 2    west   29743443   19984028</code></pre>
+<ul>
+<li>Multiple types of observational units are stored in the same table, in this case two separate time scales. This is messy</li>
+</ul>
+<pre class="r"><code>e &lt;- tribble(
+  ~region, ~annual_max, ~annual_min, ~monthly_avg, ~month,
+  &quot;midwest&quot;, 193478374, 878743, 193947931, &quot;January&quot;,
+  &quot;midwest&quot;, 193478374, 878743, 153394881, &quot;February&quot;
+)</code></pre>
+<p>and this is tidy by removing annual scale variables</p>
+<pre class="r"><code>select(e, -annual_max, -annual_min)</code></pre>
+<pre><code>## # A tibble: 2 × 3
+##    region monthly_avg    month
+##     &lt;chr&gt;       &lt;dbl&gt;    &lt;chr&gt;
+## 1 midwest   193947931  January
+## 2 midwest   153394881 February</code></pre>
+<p>or this is tidy by removing monthly scale variables.</p>
+<pre class="r"><code>select(e, -monthly_avg, -month) %&gt;% 
+  distinct</code></pre>
+<pre><code>## # A tibble: 1 × 3
+##    region annual_max annual_min
+##     &lt;chr&gt;      &lt;dbl&gt;      &lt;dbl&gt;
+## 1 midwest  193478374     878743</code></pre>
+<ul>
+<li>A single observational unit is stored in multiple tables. This is messy</li>
+</ul>
+<pre class="r"><code>f &lt;- tribble(
+  ~region, ~income, ~statistic,
+  &quot;midwest&quot;, 193478374, &quot;annual_max&quot;,
+  &quot;midwest&quot;, 878743, &quot;annual_min&quot;
+)
+g &lt;- tribble(
+  ~region, ~income, ~statistic,
+  &quot;west&quot;, 29743443, &quot;annual_max&quot;,
+  &quot;west&quot;, 19984028, &quot;annual_min&quot;
+)
+f</code></pre>
+<pre><code>## # A tibble: 2 × 3
+##    region    income  statistic
+##     &lt;chr&gt;     &lt;dbl&gt;      &lt;chr&gt;
+## 1 midwest 193478374 annual_max
+## 2 midwest    878743 annual_min</code></pre>
+<pre class="r"><code>g</code></pre>
+<pre><code>## # A tibble: 2 × 3
+##   region   income  statistic
+##    &lt;chr&gt;    &lt;dbl&gt;      &lt;chr&gt;
+## 1   west 29743443 annual_max
+## 2   west 19984028 annual_min</code></pre>
+<p>and this is tidy by combining them into a single data frame.</p>
+<pre class="r"><code>bind_rows(f, g)</code></pre>
+<pre><code>## # A tibble: 4 × 3
+##    region    income  statistic
+##     &lt;chr&gt;     &lt;dbl&gt;      &lt;chr&gt;
+## 1 midwest 193478374 annual_max
+## 2 midwest    878743 annual_min
+## 3    west  29743443 annual_max
+## 4    west  19984028 annual_min</code></pre>
+<ul>
+<li>Tidy the following dataset. It consists of a history of quarterly earnings per share of Johnson and Johnson.</li>
+</ul>
+<pre class="r"><code>df &lt;- matrix(JohnsonJohnson, byrow = TRUE, ncol = 4) %&gt;% 
+  as_tibble() %&gt;%
+  rename(quarter1 = V1, quarter2 = V2, quarter3 = V3, quarter4 = V4) %&gt;% 
+  mutate(year = 1960:1980, stockinfo = &quot;JNJ-NYSE&quot;)
+df</code></pre>
+<pre><code>## # A tibble: 21 × 6
+##    quarter1 quarter2 quarter3 quarter4  year stockinfo
+##       &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;int&gt;     &lt;chr&gt;
+## 1      0.71     0.63     0.85     0.44  1960  JNJ-NYSE
+## 2      0.61     0.69     0.92     0.55  1961  JNJ-NYSE
+## 3      0.72     0.77     0.92     0.60  1962  JNJ-NYSE
+## 4      0.83     0.80     1.00     0.77  1963  JNJ-NYSE
+## 5      0.92     1.00     1.24     1.00  1964  JNJ-NYSE
+## 6      1.16     1.30     1.45     1.25  1965  JNJ-NYSE
+## 7      1.26     1.38     1.86     1.56  1966  JNJ-NYSE
+## 8      1.53     1.59     1.83     1.86  1967  JNJ-NYSE
+## 9      1.53     2.07     2.34     2.25  1968  JNJ-NYSE
+## 10     2.16     2.43     2.70     2.25  1969  JNJ-NYSE
+## # ... with 11 more rows</code></pre>
+</div>
+</div>
+<div id="relational-data" class="section level1">
+<h1>Relational data</h1>
+<ul>
+<li>tables and keys (primary, foreign, surrogate); key in the following data sets</li>
+</ul>
+<pre class="r"><code>stocks &lt;- tibble(earnings = c(800, 150, 240, 65),
+                 volume = c(1599500, 30531626, 4276880, 25187460),
+                 symbol = c(&quot;GOOG&quot;, &quot;APPL&quot;, &quot;GS&quot;, &quot;MSFT&quot;))
+stocks</code></pre>
+<pre><code>## # A tibble: 4 × 3
+##   earnings   volume symbol
+##      &lt;dbl&gt;    &lt;dbl&gt;  &lt;chr&gt;
+## 1      800  1599500   GOOG
+## 2      150 30531626   APPL
+## 3      240  4276880     GS
+## 4       65 25187460   MSFT</code></pre>
+<pre class="r"><code>stocks2 &lt;- tibble(earnings = c(800, 15),
+                  volume = c(1599500, 13210000),
+                  symbol = c(&quot;GOOG&quot;, &quot;HBAN&quot;))
+
+symbols &lt;- tibble(symbol = c(&quot;GOOG&quot;, &quot;APPL&quot;, &quot;GS&quot;, &quot;HBAN&quot;),
+                  exchange = c(&quot;NASDAQ&quot;, &quot;NASDAQ&quot;, &quot;NYSE&quot;, &quot;NASDAQ&quot;))
+symbols</code></pre>
+<pre><code>## # A tibble: 4 × 2
+##   symbol exchange
+##    &lt;chr&gt;    &lt;chr&gt;
+## 1   GOOG   NASDAQ
+## 2   APPL   NASDAQ
+## 3     GS     NYSE
+## 4   HBAN   NASDAQ</code></pre>
+<ul>
+<li><p>left, right, outer join (mutating)</p>
+<pre><code>inner_join(x = stocks, y = symbols, by = &quot;symbol&quot;)
+left_join(x = stocks, y = symbols, by = &quot;symbol&quot;)
+right_join(x = stocks, y = symbols, by = &quot;symbol&quot;)
+full_join(x = stocks, y = symbols, by = &quot;symbol&quot;)</code></pre></li>
+<li><p>semi, anti join (filtering)</p>
+<pre><code>semi_join(x = stocks, y = symbols, by = &quot;symbol&quot;)
+anti_join(x = stocks, y = symbols, by = &quot;symbol&quot;)</code></pre></li>
+<li><p>intersect, union, setdiff</p>
+<pre><code>union(x = stocks, y = stocks2)
+intersect(x = stocks, y = stocks2)
+setdiff(x = stocks, y = stocks2)
+setdiff(x = stocks2, y = stocks)</code></pre></li>
+<li><p>Identify primary and foreign keys in all datasets</p></li>
+</ul>
+<pre><code>set.seed(349834)
+
+calls &lt;- tibble(
+  company = &quot;schevchenko steele&quot;, #rep(companies, each = 12)
+  number = rbinom(5, 30, .3),
+  month = month.name[1:5] #rep(month.name, 10)
+)
+sales &lt;- tibble(
+  company = &quot;schevchenko steele&quot;,
+  amount = rgamma(10, 1e4, 1 / 1e4),
+  month = month.name[-c(1, 9)]
+)
+orders &lt;- tibble(
+  company = &quot;schevchenko steele&quot;,
+  fullfilment = rbeta(10, 4, 8),
+  month = month.name[-c(1, 9)]
+) </code></pre>
+<ul>
+<li><p>Join calls and sales for only matching months</p></li>
+<li><p>Enrich calls with whatever sales data there is</p></li>
+<li><p>Enrich sales with whatever calls data there is</p></li>
+<li><p>Join calls and sales for all months</p></li>
+<li><p>Obtain sales data for which you have calls</p></li>
+<li><p>Obtain orders data for which you have no calls</p></li>
+<li><p>Join all datasets into a single data frame with all months</p></li>
+</ul>
+</div>
+
+
+<!-- BLOGDOWN-HEAD
+
+
+
+
+/BLOGDOWN-HEAD -->
+
+  </div>
+</div>
+
+    </div>
+  </section>
+
+  
+  
   <section id="about" class="home-section">
     <div class="container">
       
@@ -178,7 +806,7 @@
 
       
       <div class="portrait" itemprop="image"
-           style="background-image: url('/img/face.jpg');">
+           style="background-image: url('/analytics6600/img/face.jpg');">
       </div>
       
 
@@ -245,7 +873,9 @@
     
   </div>
   <div class="col-xs-12 col-md-8">
+    <!-- BLOGDOWN-BODY-BEFORE
 
+/BLOGDOWN-BODY-BEFORE -->
 
 <div id="prerequisite" class="section level2">
 <h2><strong>Prerequisite</strong></h2>
@@ -405,6 +1035,12 @@
 </div>
 
 
+<!-- BLOGDOWN-HEAD
+
+
+
+
+/BLOGDOWN-HEAD -->
 
   </div>
 </div>
@@ -425,7 +1061,9 @@
     
   </div>
   <div class="col-xs-12 col-md-8">
+    <!-- BLOGDOWN-BODY-BEFORE
 
+/BLOGDOWN-BODY-BEFORE -->
 
 <div id="textbooks-and-helpful-links" class="section level2">
 <h2><strong>Textbooks and Helpful Links</strong></h2>
@@ -472,10 +1110,12 @@
 </div>
 
 
+<!-- BLOGDOWN-HEAD
 
 
 
 
+/BLOGDOWN-HEAD -->
 
   </div>
 </div>
@@ -511,7 +1151,7 @@
 
 
 
-<a class="btn btn-primary btn-outline btn-xs" href="./publication/wrangle/">
+<a class="btn btn-primary btn-outline btn-xs" href="https://synikitin.github.io/analytics6600/publication/wrangle/">
   Details
 </a>
 
@@ -541,7 +1181,7 @@
 
 
 
-<a class="btn btn-primary btn-outline btn-xs" href="./publication/eda/">
+<a class="btn btn-primary btn-outline btn-xs" href="https://synikitin.github.io/analytics6600/publication/eda/">
   Details
 </a>
 
@@ -550,7 +1190,7 @@
 
 
 
-<a class="btn btn-primary btn-outline btn-xs" href="./data/movies.csv">
+<a class="btn btn-primary btn-outline btn-xs" href="https://synikitin.github.io/analytics6600/data/movies.csv">
   Dataset
 </a>
 
@@ -618,13 +1258,13 @@
       <div class="col-xs-12 col-sm-6 col-md-4 col-lg-6 project-item isotope-item rmarkdown report communicate">
         <div class="card">
           
-          <a href="./project/analysis/" title="" class="card-image hover-overlay"
+          <a href="https://synikitin.github.io/analytics6600/project/analysis/" title="" class="card-image hover-overlay"
              >
-            <img src="./img/rmarkdown.PNG" alt="" class="img-responsive">
+            <img src="/analytics6600/img/rmarkdown.PNG" alt="" class="img-responsive">
           </a>
           
           <div class="card-text">
-            <h4><a href="./project/analysis/" >Deep Analysis</a></h4>
+            <h4><a href="https://synikitin.github.io/analytics6600/project/analysis/" >Deep Analysis</a></h4>
             <div class="card-desription">
               <p>Use R markdown to create a deep analysis of an interesting data set.</p>
             </div>
@@ -638,13 +1278,13 @@
       <div class="col-xs-12 col-sm-6 col-md-4 col-lg-6 project-item isotope-item devtools package produce">
         <div class="card">
           
-          <a href="./project/package/" title="" class="card-image hover-overlay"
+          <a href="https://synikitin.github.io/analytics6600/project/package/" title="" class="card-image hover-overlay"
              >
-            <img src="./img/devtools.png" alt="" class="img-responsive">
+            <img src="/analytics6600/img/devtools.png" alt="" class="img-responsive">
           </a>
           
           <div class="card-text">
-            <h4><a href="./project/package/" >R Package</a></h4>
+            <h4><a href="https://synikitin.github.io/analytics6600/project/package/" >R Package</a></h4>
             <div class="card-desription">
               <p>Create a R package that solves a focused data or programming problem(s).</p>
             </div>
@@ -658,13 +1298,13 @@
       <div class="col-xs-12 col-sm-6 col-md-4 col-lg-6 project-item isotope-item shiny web application produce">
         <div class="card">
           
-          <a href="./project/shiny/" title="" class="card-image hover-overlay"
+          <a href="https://synikitin.github.io/analytics6600/project/shiny/" title="" class="card-image hover-overlay"
              >
-            <img src="./img/shiny.png" alt="" class="img-responsive">
+            <img src="/analytics6600/img/shiny.png" alt="" class="img-responsive">
           </a>
           
           <div class="card-text">
-            <h4><a href="./project/shiny/" >Shiny Web Application</a></h4>
+            <h4><a href="https://synikitin.github.io/analytics6600/project/shiny/" >Shiny Web Application</a></h4>
             <div class="card-desription">
               <p>Create a Shiny app for exploratory or predictive use case.</p>
             </div>
@@ -713,109 +1353,7 @@
 <div class="article-list-item" itemscope itemprop="blogPost">
   
   <h3 class="article-title" itemprop="name">
-    <a href="./post/wrangle2/" itemprop="url">Wrangle - Part II</a>
-  </h3>
-  
-
-<div class="article-metadata">
-
-  <span class="article-date">
-    <time datetime="2017-02-20 00:00:00 &#43;0000 UTC" itemprop="datePublished">
-      Mon, Feb 20, 2017
-    </time>
-  </span>
-
-  
-
-  
-  
-  
-  <span class="article-tags">
-    <i class="fa fa-tags"></i>
-    
-    <a href="./tags/lecture">lecture</a
-    >
-    
-  </span>
-  
-  
-
-  
-
-</div>
-
-  <div class="article-style" itemprop="articleBody">
-    
-    <p>Strings, factors, datetimes</p>
-    
-  </div>
-  <p class="read-more">
-    <a href="./post/wrangle2/" class="btn btn-primary btn-outline">
-      CONTINUE READING
-    </a>
-  </p>
-</div>
-
-      
-        
-        
-
-
-<div class="article-list-item" itemscope itemprop="blogPost">
-  
-  <h3 class="article-title" itemprop="name">
-    <a href="./post/wrangle/" itemprop="url">Wrangle - Part I</a>
-  </h3>
-  
-
-<div class="article-metadata">
-
-  <span class="article-date">
-    <time datetime="2017-02-13 00:00:00 &#43;0000 UTC" itemprop="datePublished">
-      Mon, Feb 13, 2017
-    </time>
-  </span>
-
-  
-
-  
-  
-  
-  <span class="article-tags">
-    <i class="fa fa-tags"></i>
-    
-    <a href="./tags/lecture">lecture</a
-    >
-    
-  </span>
-  
-  
-
-  
-
-</div>
-
-  <div class="article-style" itemprop="articleBody">
-    
-    <p>Tidy and Relational Data</p>
-    
-  </div>
-  <p class="read-more">
-    <a href="./post/wrangle/" class="btn btn-primary btn-outline">
-      CONTINUE READING
-    </a>
-  </p>
-</div>
-
-      
-        
-        
-
-
-<div class="article-list-item" itemscope itemprop="blogPost">
-  
-  <h3 class="article-title" itemprop="name">
-    <a href="./post/welcome/" itemprop="url">Website is Online</a>
+    <a href="https://synikitin.github.io/analytics6600/post/welcome/" itemprop="url">Website is Online</a>
   </h3>
   
 
@@ -835,7 +1373,7 @@
   <span class="article-tags">
     <i class="fa fa-tags"></i>
     
-    <a href="./tags/course">course</a
+    <a href="/analytics6600/tags/course">course</a
     >
     
   </span>
@@ -852,77 +1390,7 @@
     
   </div>
   <p class="read-more">
-    <a href="./post/welcome/" class="btn btn-primary btn-outline">
-      CONTINUE READING
-    </a>
-  </p>
-</div>
-
-      
-        
-        
-
-
-<div class="article-list-item" itemscope itemprop="blogPost">
-  
-  <h3 class="article-title" itemprop="name">
-    <a href="./post/2015-07-23-r-rmarkdown/" itemprop="url">Hello R Markdown</a>
-  </h3>
-  
-
-<div class="article-metadata">
-
-  <span class="article-date">
-    <time datetime="2015-07-23 21:13:14 -0500 -0500" itemprop="datePublished">
-      Thu, Jul 23, 2015
-    </time>
-  </span>
-
-  
-  
-  
-  <span class="article-categories">
-    <i class="fa fa-folder"></i>
-    
-    <a href="./categories/r">R</a
-    >
-    
-  </span>
-  
-  
-
-  
-  
-  
-  <span class="article-tags">
-    <i class="fa fa-tags"></i>
-    
-    <a href="./tags/r-markdown">R Markdown</a
-    >, 
-    
-    <a href="./tags/plot">plot</a
-    >, 
-    
-    <a href="./tags/regression">regression</a
-    >
-    
-  </span>
-  
-  
-
-  
-
-</div>
-
-  <div class="article-style" itemprop="articleBody">
-    
-    R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.
-    
-  </div>
-  <p class="read-more">
-    <a href="./post/2015-07-23-r-rmarkdown/" class="btn btn-primary btn-outline">
+    <a href="https://synikitin.github.io/analytics6600/post/welcome/" class="btn btn-primary btn-outline">
       CONTINUE READING
     </a>
   </p>
@@ -1018,11 +1486,11 @@ summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/ScrollToPlugin.min.js"></script>
-    <script src="./js/jquery-1.12.3.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
-    <script src="./js/isotope.pkgd.min.js"></script>
+    <script src="/analytics6600/js/jquery-1.12.3.min.js"></script>
+    <script src="/analytics6600/js/bootstrap.min.js"></script>
+    <script src="/analytics6600/js/isotope.pkgd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.1/imagesloaded.pkgd.min.js"></script>
-    <script src="./js/hugo-academic.js"></script>
+    <script src="/analytics6600/js/hugo-academic.js"></script>
     
 
     
