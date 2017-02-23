@@ -2,8 +2,8 @@
 author: "Slava Nikitin"
 date: "2017-02-13"
 draft: false
-tags: ["course"]
-title: "Notes and Practice For Wrangle"
+tags: ["lecture"]
+title: "Wrangle - Part I"
 summary: "Tidy and Relational Data"
 math: false
 output: html_document
