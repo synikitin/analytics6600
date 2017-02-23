@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data Analytics 6600</title>
-    <link>/tags/course/index.xml</link>
+    <link>https://synikitin.github.io/analytics6600/tags/course/index.xml</link>
     <description>Recent content on Data Analytics 6600</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -11,10 +11,10 @@
     
     <item>
       <title>Wrangle - Part II</title>
-      <link>/post/wrangle2/</link>
+      <link>https://synikitin.github.io/analytics6600/post/wrangle2/</link>
       <pubDate>Mon, 20 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/wrangle2/</guid>
+      <guid>https://synikitin.github.io/analytics6600/post/wrangle2/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -185,10 +185,10 @@ dmy_hms(&amp;quot;01-01-1910 23:44:56&amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/li
     
     <item>
       <title>Notes and Practice For Wrangle</title>
-      <link>/post/wrangle/</link>
+      <link>https://synikitin.github.io/analytics6600/post/wrangle/</link>
       <pubDate>Mon, 13 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/wrangle/</guid>
+      <guid>https://synikitin.github.io/analytics6600/post/wrangle/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -621,10 +621,10 @@ orders &amp;lt;- tibble(
     
     <item>
       <title>Website is Online</title>
-      <link>/post/welcome/</link>
+      <link>https://synikitin.github.io/analytics6600/post/welcome/</link>
       <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/welcome/</guid>
+      <guid>https://synikitin.github.io/analytics6600/post/welcome/</guid>
       <description>&lt;p&gt;Greetings Students!&lt;/p&gt;
 
 &lt;p&gt;We will use this website for information about the course and any news that is longer than appropriate for an email. Here you will find the syllabus, assignments, projects, news items and ways of contacting me.&lt;/p&gt;
