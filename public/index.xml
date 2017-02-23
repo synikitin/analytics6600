@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data Analytics 6600</title>
-    <link>/index.xml</link>
+    <link>https://synikitin.github.io/analytics6600/index.xml</link>
     <description>Recent content on Data Analytics 6600</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>Wrangling and Exploring</title>
-      <link>/publication/wrangle/</link>
+      <link>https://synikitin.github.io/analytics6600/publication/wrangle/</link>
       <pubDate>Mon, 06 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>/publication/wrangle/</guid>
+      <guid>https://synikitin.github.io/analytics6600/publication/wrangle/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -120,621 +120,11 @@ Sixth, use the plot to determine what seems to be the dominant attitude of execu
     </item>
     
     <item>
-      <title>Wrangle - Part II</title>
-      <link>/post/wrangle2/</link>
-      <pubDate>Mon, 20 Feb 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/post/wrangle2/</guid>
-      <description>&lt;!-- BLOGDOWN-BODY-BEFORE
-
-/BLOGDOWN-BODY-BEFORE --&gt;
-
-&lt;div id=&#34;strings&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Strings&lt;/h2&gt;
-&lt;p&gt;Package: &lt;code&gt;library(stringr)&lt;/code&gt;&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;&lt;p&gt;Creation:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;x &amp;lt;- &amp;quot;Richard Stallman doesn&amp;#39;t mind if you read his mail as long as you don&amp;#39;t delete it before he reads it. &amp;quot;
-y &amp;lt;- &amp;#39;Richard Stallman met Chuck Norris once. Chuck tried a roundhouse, but Richard bashed him 
-in the skull.&amp;#39;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Try creating this string&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;#39;Richard Stallman&amp;#39;s beard trimmings can cure cancer. Too bad he never shaves.&amp;#39;&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Escaping quotes to have quotes inside quotes&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;#39;Richard Stallman\&amp;#39;s beard trimmings can cure cancer. Too bad he never shaves.&amp;#39;
-&amp;quot;Richard Stallman gets \&amp;quot;9 bits\&amp;quot; to the byte.&amp;quot;  &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Use &lt;code&gt;writeLines&lt;/code&gt; as opposed to &lt;code&gt;print&lt;/code&gt; to show the actual string&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;writeLines(&amp;quot;Richard Stallman gets \&amp;quot;9 bits\&amp;quot; to the byte.&amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;Special strings signifying space:
-&lt;ul&gt;
-&lt;li&gt;“\n” newline&lt;br /&gt;
-&lt;/li&gt;
-&lt;li&gt;“\r” carriage return&lt;br /&gt;
-&lt;/li&gt;
-&lt;li&gt;“\t” tab&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Create a vector of strings:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;c(&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;d&amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Number of characters (length):&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;str_length(
- c(&amp;quot;Richard Stallman can solve the halting problem... in polynomial time.&amp;quot;, NA)
-)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Combine strings:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;str_c(&amp;quot;hello&amp;quot;, c(&amp;quot;there&amp;quot;, &amp;quot;here&amp;quot;), sep = &amp;quot; &amp;quot;)
-str_c(&amp;quot;hello&amp;quot;, c(&amp;quot;there&amp;quot;, &amp;quot;here&amp;quot;, &amp;quot;&amp;quot;), sep = &amp;quot; &amp;quot;, collapse = &amp;quot; &amp;quot;)
-x &amp;lt;- &amp;quot;Class&amp;quot;
-str_c(
-  x,
-  &amp;quot;is ...&amp;quot;,
-  if (wday(Sys.time(), label = TRUE) == &amp;quot;Mon&amp;quot;) &amp;quot;on&amp;quot; else &amp;quot;off&amp;quot;,
-  sep = &amp;quot; &amp;quot;
-)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Sub-strings:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;str_sub(&amp;quot;Richard Stallman did not write GNU Emacs, he simply read the source code from /dev/null.&amp;quot;, start = 1, end = 7)
-str_sub(&amp;quot;Richard Stallman did not write GNU Emacs, he simply read the source code from /dev/null.&amp;quot;, start = -6, end = -1)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;String case:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;str_to_lower(&amp;quot;LARGE LETTERS&amp;quot;)
-str_to_upper(&amp;quot;SMALL LETTERS&amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;String sort:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;str_sort(c(&amp;quot;Monday&amp;quot;, &amp;quot;Tuesday&amp;quot;, &amp;quot;Saturday&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Exercise: Fix the following strings if needed, lower their case, then combine them with newline character to show one quote per line, and finally get the length of the full string.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;#39;Richard Stallman doesn&amp;#39;t need sudo. I will make him a sandwich anyway.&amp;#39;
-&amp;quot;Richard Stallman&amp;#39;s beard is made of parentheses.&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Regular expression:&lt;br /&gt;
-I often refer to this &lt;a href=&#34;https://www.cheatography.com/davechild/cheat-sheets/regular-expressions/&#34;&gt;cheatsheet&lt;/a&gt; to remind myself of syntax. I will show only simple examples as it is better learned piece by piece as needed.&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;a-b 0-9 Alpha-numerical characters&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;x &amp;lt;- &amp;quot;zip code 60099&amp;quot;
-str_extract(string = x, pattern = &amp;quot;zip code&amp;quot;)
-str_detect(string = x, pattern = &amp;quot;60099&amp;quot;)
-str_replace(string = x, pattern = &amp;quot;60099&amp;quot;, replacement = &amp;quot;60000&amp;quot;)
-str_split(string = x, pattern = &amp;quot; &amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;!-) Special symbols may need escaping if they are regex syntax&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;x &amp;lt;- &amp;quot;zip code @ (#60099)&amp;quot;
-str_extract(string = x, pattern = &amp;quot;\\(&amp;quot;)
-str_detect(string = x, pattern = &amp;quot;#&amp;quot;)
-str_replace(string = x, pattern = &amp;quot;@&amp;quot;, replacement = &amp;quot;&amp;quot;)
-str_split(string = x, pattern = &amp;quot; &amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;. One of any symbols&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;x &amp;lt;- &amp;quot;zip code @ (#60099).&amp;quot;
-str_extract(string = x, pattern = &amp;quot;z.p&amp;quot;)
-str_detect(string = x, pattern = &amp;quot;co.e&amp;quot;)
-str_replace_all(string = x, pattern = &amp;quot;\\.&amp;quot;, replacement = &amp;quot;!&amp;quot;)
-str_split(string = x, pattern = &amp;quot;.&amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;Special symbols
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;\\d&lt;/code&gt; digits 0 - 9&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;\\s&lt;/code&gt; spaces like \n&lt;/li&gt;
-&lt;li&gt;[a1@] any group of symbols&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;[^a1@] ^ makes it NOT this group of symbols&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;x &amp;lt;- &amp;quot;zip code @ (#60099).\n&amp;quot;
-str_replace_all(string = x, pattern = &amp;quot;\\s&amp;quot;, replacement = &amp;quot; &amp;quot;)
-str_detect(string = x, pattern = &amp;quot;[@#]&amp;quot;)
-str_extract_all(string = x, pattern = &amp;quot;[^@#()]&amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Anchors
-&lt;ul&gt;
-&lt;li&gt;^ front&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;$ back&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;x &amp;lt;- &amp;quot;truth is truth&amp;quot;
-str_replace_all(string = x, pattern = &amp;quot;^truth&amp;quot;, replacement = &amp;quot;lie&amp;quot;)
-str_replace_all(string = x, pattern = &amp;quot;truth$&amp;quot;, replacement = &amp;quot;lie&amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;| is a logical OR operator for multiple patterns&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;x &amp;lt;- &amp;quot;zip code @ (#60099).\n&amp;quot;
-str_replace_all(string = x, pattern = &amp;quot;\\d|[@#()]&amp;quot;, replacement = &amp;quot;&amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;Quantifiers
-&lt;ul&gt;
-&lt;li&gt;? (0 or 1 times)&lt;/li&gt;
-&lt;li&gt;+ (1 or more)&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;* (0 or more)&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;x &amp;lt;- &amp;quot;groowthh&amp;quot;
-str_extract_all(string = x, pattern = &amp;quot;o+&amp;quot;)
-str_detect(string = x, pattern = &amp;quot;o+w?th*&amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div id=&#34;categorical-data-with-factor-type&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Categorical Data with Factor Type&lt;/h2&gt;
-&lt;p&gt;Package: &lt;code&gt;library(forcats)&lt;/code&gt;&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;&lt;p&gt;Create factor to represent a categorical variable&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;x &amp;lt;- c(&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;)
-factor(x, levels = c(&amp;quot;b&amp;quot;, &amp;quot;a&amp;quot;))&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Control levels (categories)&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;factor(c(&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp;quot;), levels = c(&amp;quot;b&amp;quot;, &amp;quot;a&amp;quot;))&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Reorder levels using a numerical variable&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;library(dplyr)
-x &amp;lt;- tibble(f = factor(letters[1:4]),
-        n = c(3, 1, 2, 4))
-y &amp;lt;- mutate(x, f = fct_reorder(f, n, mean))&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
-&lt;div id=&#34;date-datetime-time&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Date, Datetime, Time&lt;/h2&gt;
-&lt;p&gt;Package: &lt;code&gt;library(lubridate)&lt;/code&gt;&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;&lt;p&gt;Timestamps to datetimes&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;library(lubridate)
-Sys.time()
-as.integer(Sys.time)
-x &amp;lt;- as.integer(Sys.time())
-as_datetime(x)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Range of datetimes&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Sys.time() + 1:10
-range(Sys.time() + 1:10)
-min(Sys.time() + 1:10)
-max(Sys.time() + 1:10)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Extract pieces like days, weeks, years, hours, seconds…&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;x &amp;lt;- Sys.time()
-year(x)
-month(x)
-month(x, label = TRUE)
-wday(x)
-wday(x, label = TRUE)
-hour(x)
-minute(x)
-second(x)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Strings to dates&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;ymd(&amp;quot;2017-02-20&amp;quot;)
-dmy(&amp;quot;01-01-1910&amp;quot;)
-ymd(&amp;quot;2017-Feb-20&amp;quot;)
-dmy_hms(&amp;quot;01-01-1910 23:44:56&amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
-
-
-&lt;!-- BLOGDOWN-HEAD
-
-
-
-
-/BLOGDOWN-HEAD --&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Wrangle - Part I</title>
-      <link>/post/wrangle/</link>
-      <pubDate>Mon, 13 Feb 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/post/wrangle/</guid>
-      <description>&lt;!-- BLOGDOWN-BODY-BEFORE
-
-/BLOGDOWN-BODY-BEFORE --&gt;
-
-&lt;div id=&#34;basic-concepts&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Basic Concepts&lt;/h1&gt;
-&lt;div id=&#34;material&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Material&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;tibble(x = 1:3)&lt;/code&gt; local in R&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;data()&lt;/code&gt; - local in R&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;%22/Users/snikitin/Documents/training/class/analytics6600/static/data/movies.csv%22&#34;&gt;&lt;/a&gt; - local on disc&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;%22https://synikitin.github.io/analytics6600/data/movies.csv%22&#34;&gt;&lt;/a&gt; - remote on disk, direct download&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;%22https://www.quandl.com/tools/api%22&#34;&gt;&lt;/a&gt; - remote on disc, api&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div id=&#34;machinery&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Machinery&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;computer&lt;/li&gt;
-&lt;li&gt;integrated development environment (IDE)&lt;/li&gt;
-&lt;li&gt;programming language&lt;/li&gt;
-&lt;li&gt;file formats&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div id=&#34;product&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Product&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;data&lt;/li&gt;
-&lt;li&gt;clean data&lt;/li&gt;
-&lt;li&gt;visualization&lt;/li&gt;
-&lt;li&gt;statistical model&lt;/li&gt;
-&lt;li&gt;report&lt;/li&gt;
-&lt;li&gt;web application&lt;/li&gt;
-&lt;li&gt;optimized algorithm&lt;/li&gt;
-&lt;li&gt;package&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;task&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Task&lt;/h1&gt;
-&lt;div id=&#34;io&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;IO&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;library(readr)&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;library(tibble)&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div id=&#34;tidy&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Tidy&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;library(tidyr)&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div id=&#34;transform&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Transform&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;library(dplyr)&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div id=&#34;visualization&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Visualization&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;library(ggplot2)&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div id=&#34;programming&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Programming&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;library(magrittr)&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;learning-new-packages-and-functions&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Learning new packages and functions&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;CRAN&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;help(package = &amp;quot;readr&amp;quot;)&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;purpose&lt;/li&gt;
-&lt;li&gt;available arguments&lt;/li&gt;
-&lt;li&gt;example code, sometimes &lt;code&gt;demo(package = &amp;quot;stats&amp;quot;)&lt;/code&gt;, &lt;code&gt;example(&amp;quot;summarise&amp;quot;, package = &amp;quot;dplyr&amp;quot;)&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div id=&#34;tibbles&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Tibbles&lt;/h1&gt;
-&lt;div id=&#34;creating&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Creating&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;tibble&lt;/code&gt; tibble( population = c(783744, 923972, 823972, 789374), city = c(“chicago”, “columbus”, “boston”, “cleveland”) )&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;tribble&lt;/code&gt; tribble( ~x, ~y, 1, “2”, 3, 4 )&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div id=&#34;printing&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Printing&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;print(df, n, width)&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;str&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;View&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div id=&#34;subsetting&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Subsetting&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;df[[&amp;quot;a&amp;quot;]]&lt;/code&gt;, &lt;code&gt;df[[1]]&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;df$a&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;data-import&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Data Import&lt;/h1&gt;
-&lt;div id=&#34;read_csv&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;read_csv&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;read_csv( 
-  &amp;quot;Some random text here
-  a,b,c
-  1,2,! #This is a comment. ! is a missing value.
-  4,5,6&amp;quot;,
-  skip = 2,
-  na = &amp;quot;!&amp;quot;,
-  comment = &amp;quot;#&amp;quot;,
-  n_max = 2,
-  col_names = c(&amp;quot;x&amp;quot;, &amp;quot;y&amp;quot;, &amp;quot;z&amp;quot;),
-  col_types = cols(x = col_integer(),
-                   y = col_double(),
-                   z = col_character())
-)             &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;arguments&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;arguments&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;skip&lt;/li&gt;
-&lt;li&gt;comment&lt;/li&gt;
-&lt;li&gt;col_names&lt;/li&gt;
-&lt;li&gt;na&lt;/li&gt;
-&lt;li&gt;n_max&lt;/li&gt;
-&lt;li&gt;locale&lt;/li&gt;
-&lt;li&gt;col_types (logical, numbers, text, date, time, datetime)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div id=&#34;write_csv-write_excel_csv-write_rds&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;write_csv, write_excel_csv, write_rds&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;similar arguments&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div id=&#34;other-packages&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;other packages&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;haven&lt;/li&gt;
-&lt;li&gt;readxl&lt;/li&gt;
-&lt;li&gt;DBI&lt;/li&gt;
-&lt;li&gt;jsonlite&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;xml2&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Lets practice &lt;code&gt;read_csv&lt;/code&gt; with the following data:&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre&gt;&lt;code&gt;x &amp;lt;- &amp;quot;Confidential Data - Email abc@gmail.com for Permission
-    $earnings,Months in 2017,store
-    14343.43,January,! *Note: missing values marked with !
-    34322.33,February,6343\n&amp;quot;
-    
-writeChar(  
-  x,
-  &amp;quot;readr_example.csv&amp;quot;,
-  176
-)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;tidying-data&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Tidying Data&lt;/h1&gt;
-&lt;div id=&#34;structure&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Structure&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;columns&lt;/li&gt;
-&lt;li&gt;rows&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div id=&#34;semantics&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Semantics&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;unit&lt;/li&gt;
-&lt;li&gt;variable&lt;/li&gt;
-&lt;li&gt;value&lt;/li&gt;
-&lt;li&gt;observation&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div id=&#34;messy-data&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Messy data&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Column headers are values, not variable names. This is messy&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;a &amp;lt;- tribble(
-  ~region, ~`$0 - $100k`, ~`$100k - $1,000k`, ~`$1,000k - $10,000k`,
-  &amp;quot;midwest&amp;quot;, 152, 78, 5,
-  &amp;quot;west&amp;quot;, 190, 130, 10
-  )
-a&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 2 × 4
-##    region `$0 - $100k` `$100k - $1,000k` `$1,000k - $10,000k`
-##     &amp;lt;chr&amp;gt;        &amp;lt;dbl&amp;gt;             &amp;lt;dbl&amp;gt;                &amp;lt;dbl&amp;gt;
-## 1 midwest          152                78                    5
-## 2    west          190               130                   10&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;and this is tidy by turning headers into a variable.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gather(data = a, key = income, value = count, 2:4)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 6 × 3
-##    region             income count
-##     &amp;lt;chr&amp;gt;              &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt;
-## 1 midwest         $0 - $100k   152
-## 2    west         $0 - $100k   190
-## 3 midwest    $100k - $1,000k    78
-## 4    west    $100k - $1,000k   130
-## 5 midwest $1,000k - $10,000k     5
-## 6    west $1,000k - $10,000k    10&lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
-&lt;li&gt;Multiple variables are stored in one column. This is messy&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;b &amp;lt;- tribble(
-  ~`region-income`, ~count,
-  &amp;quot;midwest, $0 - 100k&amp;quot;, 152,
-  &amp;quot;west, $0 - 100k&amp;quot;, 190,
-  &amp;quot;midwest, $100k - 1,000k&amp;quot;, 78,
-  &amp;quot;west, $100k - 1,000k&amp;quot;, 130
-)
-b&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 4 × 2
-##           `region-income` count
-##                     &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt;
-## 1      midwest, $0 - 100k   152
-## 2         west, $0 - 100k   190
-## 3 midwest, $100k - 1,000k    78
-## 4    west, $100k - 1,000k   130&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;and this is tidy by splitting a variable into two variables.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;separate(data = b, col = `region-income`,
-         into = c(&amp;quot;region&amp;quot;, &amp;quot;income&amp;quot;), sep = &amp;quot;, &amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 4 × 3
-##    region         income count
-## *   &amp;lt;chr&amp;gt;          &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt;
-## 1 midwest      $0 - 100k   152
-## 2    west      $0 - 100k   190
-## 3 midwest $100k - 1,000k    78
-## 4    west $100k - 1,000k   130&lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
-&lt;li&gt;Variables are stored in rows. This is messy&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;d &amp;lt;- tribble(
-  ~region, ~income, ~statistic,
-  &amp;quot;midwest&amp;quot;, 193478374, &amp;quot;annual_max&amp;quot;,
-  &amp;quot;midwest&amp;quot;, 878743, &amp;quot;annual_min&amp;quot;,
-  &amp;quot;west&amp;quot;, 29743443, &amp;quot;annual_max&amp;quot;,
-  &amp;quot;west&amp;quot;, 19984028, &amp;quot;annual_min&amp;quot;
-)
-d&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 4 × 3
-##    region    income  statistic
-##     &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt;      &amp;lt;chr&amp;gt;
-## 1 midwest 193478374 annual_max
-## 2 midwest    878743 annual_min
-## 3    west  29743443 annual_max
-## 4    west  19984028 annual_min&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;and this is tidy by turning a variable into column headers.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;spread(data = d, key = statistic, value = income)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 2 × 3
-##    region annual_max annual_min
-## *   &amp;lt;chr&amp;gt;      &amp;lt;dbl&amp;gt;      &amp;lt;dbl&amp;gt;
-## 1 midwest  193478374     878743
-## 2    west   29743443   19984028&lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
-&lt;li&gt;Multiple types of observational units are stored in the same table, in this case two separate time scales. This is messy&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;e &amp;lt;- tribble(
-  ~region, ~annual_max, ~annual_min, ~monthly_avg, ~month,
-  &amp;quot;midwest&amp;quot;, 193478374, 878743, 193947931, &amp;quot;January&amp;quot;,
-  &amp;quot;midwest&amp;quot;, 193478374, 878743, 153394881, &amp;quot;February&amp;quot;
-)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;and this is tidy by removing annual scale variables&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;select(e, -annual_max, -annual_min)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 2 × 3
-##    region monthly_avg    month
-##     &amp;lt;chr&amp;gt;       &amp;lt;dbl&amp;gt;    &amp;lt;chr&amp;gt;
-## 1 midwest   193947931  January
-## 2 midwest   153394881 February&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;or this is tidy by removing monthly scale variables.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;select(e, -monthly_avg, -month) %&amp;gt;% 
-  distinct&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 1 × 3
-##    region annual_max annual_min
-##     &amp;lt;chr&amp;gt;      &amp;lt;dbl&amp;gt;      &amp;lt;dbl&amp;gt;
-## 1 midwest  193478374     878743&lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
-&lt;li&gt;A single observational unit is stored in multiple tables. This is messy&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;f &amp;lt;- tribble(
-  ~region, ~income, ~statistic,
-  &amp;quot;midwest&amp;quot;, 193478374, &amp;quot;annual_max&amp;quot;,
-  &amp;quot;midwest&amp;quot;, 878743, &amp;quot;annual_min&amp;quot;
-)
-g &amp;lt;- tribble(
-  ~region, ~income, ~statistic,
-  &amp;quot;west&amp;quot;, 29743443, &amp;quot;annual_max&amp;quot;,
-  &amp;quot;west&amp;quot;, 19984028, &amp;quot;annual_min&amp;quot;
-)
-f&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 2 × 3
-##    region    income  statistic
-##     &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt;      &amp;lt;chr&amp;gt;
-## 1 midwest 193478374 annual_max
-## 2 midwest    878743 annual_min&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 2 × 3
-##   region   income  statistic
-##    &amp;lt;chr&amp;gt;    &amp;lt;dbl&amp;gt;      &amp;lt;chr&amp;gt;
-## 1   west 29743443 annual_max
-## 2   west 19984028 annual_min&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;and this is tidy by combining them into a single data frame.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;bind_rows(f, g)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 4 × 3
-##    region    income  statistic
-##     &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt;      &amp;lt;chr&amp;gt;
-## 1 midwest 193478374 annual_max
-## 2 midwest    878743 annual_min
-## 3    west  29743443 annual_max
-## 4    west  19984028 annual_min&lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
-&lt;li&gt;Tidy the following dataset. It consists of a history of quarterly earnings per share of Johnson and Johnson.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;- matrix(JohnsonJohnson, byrow = TRUE, ncol = 4) %&amp;gt;% 
-  as_tibble() %&amp;gt;%
-  rename(quarter1 = V1, quarter2 = V2, quarter3 = V3, quarter4 = V4) %&amp;gt;% 
-  mutate(year = 1960:1980, stockinfo = &amp;quot;JNJ-NYSE&amp;quot;)
-df&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 21 × 6
-##    quarter1 quarter2 quarter3 quarter4  year stockinfo
-##       &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt; &amp;lt;int&amp;gt;     &amp;lt;chr&amp;gt;
-## 1      0.71     0.63     0.85     0.44  1960  JNJ-NYSE
-## 2      0.61     0.69     0.92     0.55  1961  JNJ-NYSE
-## 3      0.72     0.77     0.92     0.60  1962  JNJ-NYSE
-## 4      0.83     0.80     1.00     0.77  1963  JNJ-NYSE
-## 5      0.92     1.00     1.24     1.00  1964  JNJ-NYSE
-## 6      1.16     1.30     1.45     1.25  1965  JNJ-NYSE
-## 7      1.26     1.38     1.86     1.56  1966  JNJ-NYSE
-## 8      1.53     1.59     1.83     1.86  1967  JNJ-NYSE
-## 9      1.53     2.07     2.34     2.25  1968  JNJ-NYSE
-## 10     2.16     2.43     2.70     2.25  1969  JNJ-NYSE
-## # ... with 11 more rows&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;relational-data&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Relational data&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;tables and keys (primary, foreign, surrogate); key in the following data sets&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;stocks &amp;lt;- tibble(earnings = c(800, 150, 240, 65),
-                 volume = c(1599500, 30531626, 4276880, 25187460),
-                 symbol = c(&amp;quot;GOOG&amp;quot;, &amp;quot;APPL&amp;quot;, &amp;quot;GS&amp;quot;, &amp;quot;MSFT&amp;quot;))
-stocks&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 4 × 3
-##   earnings   volume symbol
-##      &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;  &amp;lt;chr&amp;gt;
-## 1      800  1599500   GOOG
-## 2      150 30531626   APPL
-## 3      240  4276880     GS
-## 4       65 25187460   MSFT&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;stocks2 &amp;lt;- tibble(earnings = c(800, 15),
-                  volume = c(1599500, 13210000),
-                  symbol = c(&amp;quot;GOOG&amp;quot;, &amp;quot;HBAN&amp;quot;))
-
-symbols &amp;lt;- tibble(symbol = c(&amp;quot;GOOG&amp;quot;, &amp;quot;APPL&amp;quot;, &amp;quot;GS&amp;quot;, &amp;quot;HBAN&amp;quot;),
-                  exchange = c(&amp;quot;NASDAQ&amp;quot;, &amp;quot;NASDAQ&amp;quot;, &amp;quot;NYSE&amp;quot;, &amp;quot;NASDAQ&amp;quot;))
-symbols&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 4 × 2
-##   symbol exchange
-##    &amp;lt;chr&amp;gt;    &amp;lt;chr&amp;gt;
-## 1   GOOG   NASDAQ
-## 2   APPL   NASDAQ
-## 3     GS     NYSE
-## 4   HBAN   NASDAQ&lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;left, right, outer join (mutating)&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;inner_join(x = stocks, y = symbols, by = &amp;quot;symbol&amp;quot;)
-left_join(x = stocks, y = symbols, by = &amp;quot;symbol&amp;quot;)
-right_join(x = stocks, y = symbols, by = &amp;quot;symbol&amp;quot;)
-full_join(x = stocks, y = symbols, by = &amp;quot;symbol&amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;semi, anti join (filtering)&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;semi_join(x = stocks, y = symbols, by = &amp;quot;symbol&amp;quot;)
-anti_join(x = stocks, y = symbols, by = &amp;quot;symbol&amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;intersect, union, setdiff&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;union(x = stocks, y = stocks2)
-intersect(x = stocks, y = stocks2)
-setdiff(x = stocks, y = stocks2)
-setdiff(x = stocks2, y = stocks)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Identify primary and foreign keys in all datasets&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre&gt;&lt;code&gt;set.seed(349834)
-
-calls &amp;lt;- tibble(
-  company = &amp;quot;schevchenko steele&amp;quot;, #rep(companies, each = 12)
-  number = rbinom(5, 30, .3),
-  month = month.name[1:5] #rep(month.name, 10)
-)
-sales &amp;lt;- tibble(
-  company = &amp;quot;schevchenko steele&amp;quot;,
-  amount = rgamma(10, 1e4, 1 / 1e4),
-  month = month.name[-c(1, 9)]
-)
-orders &amp;lt;- tibble(
-  company = &amp;quot;schevchenko steele&amp;quot;,
-  fullfilment = rbeta(10, 4, 8),
-  month = month.name[-c(1, 9)]
-) &lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Join calls and sales for only matching months&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Enrich calls with whatever sales data there is&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Enrich sales with whatever calls data there is&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Join calls and sales for all months&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Obtain sales data for which you have calls&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Obtain orders data for which you have no calls&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Join all datasets into a single data frame with all months&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-
-
-&lt;!-- BLOGDOWN-HEAD
-
-
-
-
-/BLOGDOWN-HEAD --&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Exploratory Data Analysis</title>
-      <link>/publication/eda/</link>
+      <link>https://synikitin.github.io/analytics6600/publication/eda/</link>
       <pubDate>Mon, 30 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>/publication/eda/</guid>
+      <guid>https://synikitin.github.io/analytics6600/publication/eda/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -880,105 +270,45 @@ ggplot(df_plot1, aes(x = year_interval, fill = clean_test)) +
     
     <item>
       <title>Deep Analysis</title>
-      <link>/project/analysis/</link>
+      <link>https://synikitin.github.io/analytics6600/project/analysis/</link>
       <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>/project/analysis/</guid>
+      <guid>https://synikitin.github.io/analytics6600/project/analysis/</guid>
       <description>&lt;p&gt;Details to be determined.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>R Package</title>
-      <link>/project/package/</link>
+      <link>https://synikitin.github.io/analytics6600/project/package/</link>
       <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>/project/package/</guid>
+      <guid>https://synikitin.github.io/analytics6600/project/package/</guid>
       <description>&lt;p&gt;Details to be determined.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Shiny Web Application</title>
-      <link>/project/shiny/</link>
+      <link>https://synikitin.github.io/analytics6600/project/shiny/</link>
       <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>/project/shiny/</guid>
+      <guid>https://synikitin.github.io/analytics6600/project/shiny/</guid>
       <description>&lt;p&gt;Details to be determined.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Website is Online</title>
-      <link>/post/welcome/</link>
+      <link>https://synikitin.github.io/analytics6600/post/welcome/</link>
       <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/welcome/</guid>
+      <guid>https://synikitin.github.io/analytics6600/post/welcome/</guid>
       <description>&lt;p&gt;Greetings Students!&lt;/p&gt;
 
 &lt;p&gt;We will use this website for information about the course and any news that is longer than appropriate for an email. Here you will find the syllabus, assignments, projects, news items and ways of contacting me.&lt;/p&gt;
 
 &lt;p&gt;I am looking forward to discussing the exciting field of data science with you and teaching you its practical aspects 😄&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Hello R Markdown</title>
-      <link>/post/2015-07-23-r-rmarkdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      
-      <guid>/post/2015-07-23-r-rmarkdown/</guid>
-      <description>&lt;!-- BLOGDOWN-BODY-BEFORE
-
-/BLOGDOWN-BODY-BEFORE --&gt;
-
-&lt;div id=&#34;r-markdown&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;R Markdown&lt;/h1&gt;
-&lt;p&gt;This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see &lt;a href=&#34;http://rmarkdown.rstudio.com&#34; class=&#34;uri&#34;&gt;http://rmarkdown.rstudio.com&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;You can embed an R code chunk like this:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(cars)
-##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00
-fit &amp;lt;- lm(dist ~ speed, data = cars)
-fit
-## 
-## Call:
-## lm(formula = dist ~ speed, data = cars)
-## 
-## Coefficients:
-## (Intercept)        speed  
-##     -17.579        3.932&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;including-plots&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Including Plots&lt;/h1&gt;
-&lt;p&gt;You can also embed plots. See Figure &lt;a href=&#34;#fig:pie&#34;&gt;1&lt;/a&gt; for example:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;par(mar = c(0, 1, 0, 1))
-pie(
-  c(280, 60, 20),
-  c(&amp;#39;Sky&amp;#39;, &amp;#39;Sunny side of pyramid&amp;#39;, &amp;#39;Shady side of pyramid&amp;#39;),
-  col = c(&amp;#39;#0292D8&amp;#39;, &amp;#39;#F7EA39&amp;#39;, &amp;#39;#C4B632&amp;#39;),
-  init.angle = -50, border = NA
-)&lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:pie&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;#####../content/post/2015-07-23-r-rmarkdown_files/figure-html/pie-1.png&#34; alt=&#34;A fancy pie chart.&#34; width=&#34;672&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;
-Figure 1: A fancy pie chart.
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-
-&lt;!-- BLOGDOWN-HEAD
-
-
-
-
-/BLOGDOWN-HEAD --&gt;
 </description>
     </item>
     
