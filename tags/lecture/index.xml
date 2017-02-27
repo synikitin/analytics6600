@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data Analytics 6600</title>
-    <link>https://synikitin.github.io/analytics6600/tags/lecture/index.xml</link>
+    <link>/tags/lecture/index.xml</link>
     <description>Recent content on Data Analytics 6600</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -11,10 +11,10 @@
     
     <item>
       <title>Wrangle - Part II</title>
-      <link>https://synikitin.github.io/analytics6600/post/wrangle2/</link>
+      <link>/post/wrangle2/</link>
       <pubDate>Mon, 20 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/post/wrangle2/</guid>
+      <guid>/post/wrangle2/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -146,10 +146,11 @@ y &amp;lt;- mutate(x, f = fct_reorder(f, n, mean))&lt;/code&gt;&lt;/pre&gt;&lt;/
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;&lt;p&gt;Timestamps to datetimes&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;library(lubridate)
-Sys.time()
-as.integer(Sys.time)
-x &amp;lt;- as.integer(Sys.time())
-as_datetime(x)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+timestamp &amp;lt;- Sys.time() # creates an example timestamp
+timestamp # shows timestamp
+as.integer(timestamp) # shows underlying representation of timestamp
+x &amp;lt;- as.integer(timestamp) # convert timestamp to integer
+as_datetime(x) # convert integer to timestamp&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Range of datetimes&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;Sys.time() + 1:10
 range(Sys.time() + 1:10)
@@ -185,10 +186,10 @@ dmy_hms(&amp;quot;01-01-1910 23:44:56&amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/li
     
     <item>
       <title>Wrangle - Part I</title>
-      <link>https://synikitin.github.io/analytics6600/post/wrangle/</link>
+      <link>/post/wrangle/</link>
       <pubDate>Mon, 13 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/post/wrangle/</guid>
+      <guid>/post/wrangle/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
