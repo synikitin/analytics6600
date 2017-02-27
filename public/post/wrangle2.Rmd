@@ -184,10 +184,11 @@ Package: `library(lubridate)`
 1. Timestamps to datetimes
 ```
 library(lubridate)
-Sys.time()
-as.integer(Sys.time)
-x <- as.integer(Sys.time())
-as_datetime(x)
+timestamp <- Sys.time() # creates an example timestamp
+timestamp # shows timestamp
+as.integer(timestamp) # shows underlying representation of timestamp
+x <- as.integer(timestamp) # convert timestamp to integer
+as_datetime(x) # convert integer to timestamp
 ```
 
 2. Range of datetimes
