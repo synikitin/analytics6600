@@ -200,7 +200,7 @@ Examine the combined data frame with `str`; check that you columns corresponding
 ## **Movies by Genre**
 Our first exploratory analysis will focus on the question of which genre was least produced and most produced in 1997 - 1998 period. The final output will be a bar chart, however the first step is to shape and transform data so it can be easily plotted.
 
-8. Note that some column names in your combined dataset actually stand for genres. We want to obtain a data frame containing two variables: genres and their count. Combine `gather` from **tidyr** and `count`, `count`, `filter` functions from **dplyr** to accomplish this. Which genre was least and which genre was most produced?
+8. Note that some column names in your combined dataset actually stand for genres. We want to obtain a data frame containing two variables: genres and their count. Combine `gather` from **tidyr** and `distinct`, `filter`, `count` functions from **dplyr** to accomplish this. Which genre was least and which genre was most produced?
 
 9. If you examine your transformed data by printing it in the console, you will see that rows are arranged alphabetically by genre. It is more visually telling if our bar chart was arranged by count instead, however `arrange` from **dplyr** will not work here. To fix the order we need to transform genres into a factor and reorder it by count. Convert *genre* variable to factor and reorder it by count using a function from **forcats** package.
 
