@@ -84,7 +84,6 @@ select(df, unknown:Western) %>%
   summarise_each(funs(sum)) %>% 
   print(width = Inf)
 
-
 gather(df, genre, presence, unknown:Western) %>%
   distinct(movie_id, genre, presence) %>% 
   filter(presence == 1) %>% 
@@ -166,6 +165,11 @@ specific user for a specific movie on some date and time. Examine the variable y
 created with `str` function in the console. Are there any columns that may need 
 transformation to be understood?
 
+Example code:
+```
+read_tsv(file = "u.data", col_names = c("one", "two"))
+```
+
 2. Read and assign to a variable pipe-separated, |, **u.item** file. Give columns 
 these names - *movie id, movie title, release date, video release date, 
 IMDb_URL, unknown, Action, Adventure, Animation, Childrens, Comedy, 
@@ -176,12 +180,22 @@ like their names and what genres they fall under. Examine the variable you creat
 with `str` function in the console. Are there any columns that may need 
 transformation to be understood?
 
+Example code:
+```
+read_delim(file = "u.item", delim = "|", col_names = c("one", "two"))
+```
+
 3. Read and assign to a variable pipe-separated, |, **u.user** file. Give columns 
 these names - *user id, age, gender, occupation, zip code* - but make sure to
 clean up any unusual symbols or spaces. This dataset contains information about 
 users, like their age and occupation. Examine the variable you created with `str` 
 function in the console. Are there any columns that may need transformation to be 
 understood?
+
+Example code:
+```
+read_delim(file = "u.user", delim = "|", col_names = c("one", "two"))
+```
 
 ## **Data Joins**
 You should now have three data frames loaded in R; confirm this by using the environment tab. The next step is to combine all the information together using `*_join` functions from **dplyr**. This requires knowing foreign keys - variables in common between data frames that can uniquely identify rows in each other.
@@ -190,33 +204,95 @@ You should now have three data frames loaded in R; confirm this by using the env
 
 5. Experiment with `inner_join` and `full_join` from **dplyr** to join *u.data* to *u.user*, and then both to *u.item*. Could we have used a composition of two `left_join` calls here without losing data? Why? Think about the relations and cross-combinations between the three data sets in terms of users and movies.
 
-## **Data Cleanup**
-Examine the combined data frame with `str`; check that you columns corresponding to u.data, u.user, and u.item columns. One thing to notice is that types are off for a couple variables. Specifically, *timestamp* is shown to be an uninterpretable integer and *release date* is stored as character. The other is that *video release date* has nothing but missing values.
+Example code:
+```
+inner_join(inner_join(df1, df2, "key"), df3, "key")
+```
 
-6. *timestamp* stores datetime type incorrectly as integers and *release date* stores a combination of year, month and day as cahracter. Use appropriate type converting function from **lubridate** package to transform the variable types. Confirm that we have data somewhere around 1997 - 1998 with `range(df$timestamp)`, substituting your name for the final data.
+## **Data Cleanup**
+Examine the combined data frame with `str`; check that you have all columns corresponding to u.data, u.user, and u.item columns. One thing to notice is that types are off for a couple variables. Specifically, *timestamp* is shown to be an uninterpretable integer and *release date* is stored as character. The other is that *video release date* has nothing but missing values.
+
+6. *timestamp* stores datetime type incorrectly as integers and *release date* stores a combination of year, month and day as character. Use appropriate type converting function from **lubridate** package to transform the variable types. Confirm that we have data somewhere around 1997 - 1998 with `range(df$timestamp)`, substituting your name for `df`. 
+
+Example code:
+```
+as_datetime(1488508654)
+ymd("2017-January-01")
+```
 
 7. Remove *video release date* from the dataset.
+
+Example code:
+```
+select(df, -var)
+```
   
 ## **Movies by Genre**
 Our first exploratory analysis will focus on the question of which genre was least produced and most produced in 1997 - 1998 period. The final output will be a bar chart, however the first step is to shape and transform data so it can be easily plotted.
 
-8. Note that some column names in your combined dataset actually stand for genres. We want to obtain a data frame containing two variables: genres and their count. Combine `gather` from **tidyr** and `distinct`, `filter`, `count` functions from **dplyr** to accomplish this. Which genre was least and which genre was most produced?
+8. Note that some column names in your combined dataset actually stand for genres. Check that it is so by using `str`. **The question is which genre was least and which genre was most produced?** To answer it, we could use a data frame containing only two variables: genres and their count. Combine `gather` from **tidyr** and `distinct`, `filter`, `count` functions from **dplyr** to accomplish this. `gather` can turn genre headers and values under the headers into two separate columns, genre and value, say. By placing them into columns you can then apply various tools from **dplyr**. `distinct` should be used to make sure there are no duplicates among movies, genres, and values. `filter` should be used to remove genres which where not present for a given movie. Finally, `count` of genres will contain both least and most produced movies.
+
+Example code:
+```
+stocks <- data_frame(
+  time = ymd('2009-01-01') + 0:9,
+  X = rnorm(10, 0, 1),
+  Y = rnorm(10, 0, 2),
+  Z = rnorm(10, 0, 4)
+)
+
+gather(stocks, stock, price, 2:4) %>% 
+  distinct(time, stock, .keep_all = TRUE) %>% 
+  filter(stock == "X") %>% 
+  count(stock) 
+```
 
 9. If you examine your transformed data by printing it in the console, you will see that rows are arranged alphabetically by genre. It is more visually telling if our bar chart was arranged by count instead, however `arrange` from **dplyr** will not work here. To fix the order we need to transform genres into a factor and reorder it by count. Convert *genre* variable to factor and reorder it by count using a function from **forcats** package.
 
-10. Now make a horizontally pointed bar chart of counts by genre. Additionally, make the annotations nicer with function  
+Example code:
 ```
-labs(x = "x label", y = "y label", title = "chart title",
-     caption = "Source: MovieLens")
+mutate(df, x = factor(x), x = fct_reorder(x, n))
+```
+
+10. Now make a horizontally pointed bar chart of counts by genre (you have done this in assignment 1). Additionally, make the annotations nicer with function by adding this to your ggplot
+```
+  labs(x = "x label", y = "y label", title = "chart title",
+       caption = "Source: MovieLens")
 ```  
 by adjusting its inputs and adding it to your ggplot code.
+
+Example code:
+```
+ggplot(df, aes(x, n)) +
+  geom_col() + 
+  coord_flip() +
+  labs(x = "x label", y = "y label", title = "chart title",
+       caption = "Source: MovieLens")
+```
 
 ## **Users' Demographics**
 What can we understand about the user of MovieLens? We want to examine relations between age, gender and occupation, regardless of location.
 
 11. What age and gender is the oldest engineer?
 
+Example code:
+```
+group_by(df, x, y) %>% 
+  summarise(max_z = max(z)) %>% 
+  arrange(desc(max_z), x)
+```
+
 12. Now, lets visualise the three-way relation. Use `geom_boxplot` to obtain a representation of age distribution for each occupation, and employ `facet_wrap` to group data by gender. Make sure to experiment with `coord_flip` to get readable labels on axes, and `labs` function to set axis titles, plot title, and caption citing the source data. Use the 0.25, 0.5 and 0.75 quantiles that define the box in the boxplot to compare users in the healthcare occupation in terms of median age, variability in age and difference across gender.
+
+Example code:
+```
+ggplot(df, aes(x, y)) +
+  geom_boxplot() +
+  facet_wrap(~ z) +
+  coord_flip() +
+  labs(x = "a", y = "b", title = "c",
+    caption = "d")  
+```
 
 
 ## **Movie Ratings by Occupation**
@@ -228,15 +304,22 @@ x <- "a"
 x %in% c("a", "b")
 ```
 
+Example code:
+```
+filter(df, x %in% c("a", "b"), y == 1) %>%
+  group_by(x) %>% 
+  summarise(mean(z))
+```
+
 12. Create a grid of plots showing bar plots signifying proportions of ratings given to a certain genre of movie by a user of a certain occupation. This is a large plot that is legible only when you stretch the pane with *Plots* tab throughout your screen and may take a few moments to render.  
   First, you will need to prepare a dataset similar to what you did in 8 - deriving genre from column headers - except for controlling for duplicates with `distinct` function only for rating, genre and occupation.  
-  Second, create the basic bar plots with   
+  Second, create the basic bar plots and group them with 
 ```
 facet_grid(genre ~ occupation)
 ```  
   and aesthetics specified with  
 ```  
-aes(rating, ..prop..).
+aes(x = rating, y = ..prop..).
 ```  
 The `..prop..` is what replaces counts with proportions.  
   Third, add axis labels and title and caption as before, adjusted for the information you are displaying in this plot.  
@@ -253,5 +336,22 @@ theme(axis.text = element_text(size = 5),
 ```
 to control size of text annotating axis with numbers, and title of the rows and columns in the strips. In general, `theme` is a way to adjust many appearance elements of the plot and to make it presentable for communication.  
   Sixth, use the plot to determine what seems to be the dominant attitude of executives towards documentaries of 1997 - 1998 period based on their ratings distribution?
+  
+Example code:
+```
+gather() %>%
+  filter() %>% 
+  distinct(rating, genre, occupation) %>% 
+  ggplot(aes(rating, ..prop..)) +
+  geom_bar() +
+  facet_grid(genre ~ occupation) +
+  labs(x = "a", y = "b",
+       title = "c",
+       caption = "Source: MovieLens") +
+  scale_x_continuous(breaks = 1:5) +
+  theme(axis.text = element_text(size = 5),
+        strip.text.x = element_text(size = 6),
+        strip.text.y = element_text(size = 5, angle = 30))
+```
   
 **Dont forget to put all your code into Rmarkdown and test that all of it runs without errors to produce an html file that contains your answers. Good luck!**   
