@@ -1,0 +1,402 @@
+---
+author: "Slava Nikitin"
+date: "2017-03-06"
+draft: false
+tags: ["lecture"]
+title: "Program"
+summary: "Pipes, functions, data structures, iteration"
+math: false
+output: html_document
+---
+
+
+<!-- BLOGDOWN-BODY-BEFORE
+
+/BLOGDOWN-BODY-BEFORE -->
+
+<div id="pipe" class="section level2">
+<h2>Pipe</h2>
+<p>The purpose behind pipes is to help simplify code that contains a chain of function calls by avoiding saving intermediate results. Here is data prep as an example:</p>
+<ol style="list-style-type: decimal">
+<li><p>All tidyverse packages load the pipe by default, but <strong>magrittr</strong> is the official package that contains it, and other operators as well.</p>
+<pre><code>library(magrittr)</code></pre>
+<p>Data example is based on the second assignment:</p>
+<pre><code>u.data &lt;- read_tsv(
+  &quot;u.data&quot;,
+  col_names = c(&quot;user_id&quot;, &quot;movie_id&quot;, &quot;rating&quot;, &quot;timestamp&quot;)
+)
+u.item &lt;- read_delim(
+  &quot;u.item&quot;,
+  &quot;|&quot;,
+  col_names = c(
+&quot;movie_id&quot;, &quot;movie_title&quot;, &quot;release_date&quot;,
+&quot;video_release_date&quot;, &quot;IMDb_URL&quot;, &quot;unknown&quot;,
+&quot;Action&quot;, &quot;Adventure&quot;, &quot;Animation&quot;, &quot;Children&#39;s&quot;,
+&quot;Comedy&quot;, &quot;Crime&quot;, &quot;Documentary&quot;, &quot;Drama&quot;, &quot;Fantasy&quot;,
+&quot;Film-Noir&quot;, &quot;Horror&quot;, &quot;Musical&quot;, &quot;Mystery&quot;, &quot;Romance&quot;,
+&quot;Sci-Fi&quot;, &quot;Thriller&quot;, &quot;War&quot;, &quot;Western&quot;
+)
+  )
+u.user &lt;- read_delim(
+  &quot;u.user&quot;,
+  &quot;|&quot;,
+  col_names = c(&quot;user_id&quot;, &quot;age&quot;, &quot;gender&quot;, &quot;occupation&quot;, &quot;zip_code&quot;)
+)</code></pre></li>
+<li><p>Save each intermediate result</p>
+<pre><code>df1 &lt;- inner_join(u.data, u.user, &quot;user_id&quot;)
+df2 &lt;- inner_join(df1, u.item, &quot;movie_id&quot;)
+df3 &lt;- mutate(df2,
+timestamp = as_datetime(timestamp), 
+release_date = dmy(release_date)
+  ) 
+df4 &lt;- select(df3, -video_release_date)</code></pre></li>
+<li><p>Overwrite each result</p>
+<pre><code>df &lt;- inner_join(u.data, u.user, &quot;user_id&quot;)
+df &lt;- inner_join(df, u.item, &quot;movie_id&quot;)
+df &lt;- mutate(df,
+timestamp = as_datetime(timestamp), 
+release_date = dmy(release_date)
+  ) 
+df &lt;- select(df, -video_release_date)</code></pre></li>
+<li><p>Nest each result</p>
+<pre><code>df &lt;- select(
+  mutate(
+inner_join(
+  inner_join(
+    u.data,
+    u.user,
+    &quot;user_id&quot;
+  ),
+  u.item,
+  &quot;movie_id&quot;
+),
+timestamp = as_datetime(timestamp), 
+release_date = dmy(release_date)
+  ),
+  -video_release_date
+)</code></pre></li>
+<li><p>Pipe each result</p>
+<pre><code>df &lt;- inner_join(u.data, u.user, &quot;user_id&quot;) %&gt;% 
+  inner_join(u.item, &quot;movie_id&quot;) %&gt;% 
+  mutate(
+timestamp = as_datetime(timestamp), 
+release_date = dmy(release_date)
+  ) %&gt;% 
+  select(-video_release_date)</code></pre></li>
+<li>Pipes rewrite your code as if you used pattern in 3., that is assigning results into the same name over and passing it forward. When you see pipes you should think that the left-handside is becoming the first argument in a function call:
+<ul>
+<li><code>x %&gt;% f()</code> is <code>f(x)</code></li>
+<li><code>x %&gt;% f(y)</code> is <code>f(x, y)</code></li>
+<li><code>10 %&gt;% rnorm(mean = 5, sd = 1)</code> is <code>rnorm(10, mean = 5, sd = 1)</code></li>
+</ul></li>
+<li><p>Pipes are great for several function calls that operate on the same or maybe a couple datasets and result in a single output. Long chains of function calls should be broken up, and when you are dealing with many datasets or many outputs, these cannot be or should not be combined as it may actually lead to more confusing code. It will also not work out of the box or at all with some special functions (book has examples).</p></li>
+<li><p>Additional operator allowing side-effects, like printing structure to check intermediate results, in the middle of transformations</p>
+<pre><code>df &lt;- inner_join(u.data, u.user, &quot;user_id&quot;) %T&gt;%
+  str %&gt;% 
+  inner_join(u.item, &quot;movie_id&quot;) %T&gt;% 
+  str %&gt;% 
+  mutate(
+timestamp = as_datetime(timestamp), 
+release_date = dmy(release_date)
+  ) %T&gt;% 
+  str %&gt;% 
+  select(-video_release_date)</code></pre></li>
+</ol>
+</div>
+<div id="functions" class="section level2">
+<h2>Functions</h2>
+<p>One value of functions is to capture repeatedly written and used blocks of code, potentially with varying arguments, to enable reuse and code simplification. It is also about extending R to do things it cannot do out of the box or with any package. Lastly, it is a good way to wrap your complicated code into larger logical units and make it better communicable.</p>
+<ol style="list-style-type: decimal">
+<li><p>A function is an object that has several components: name, arguments, body, return value, environment. Here is a generic example of creating a new function</p>
+<pre><code>name &lt;- function(argument) {
+  var &lt;- code(argument)
+  return(var)
+}</code></pre>
+<p>The generic example does not do anything, but here is a simple working example:</p>
+<pre><code>test_miss &lt;- function(column) {
+  missingness &lt;- is.na(column)
+  test &lt;- any(missingness)
+  return(test)
+}</code></pre>
+This example takes a column, checks for missing values and returns TRUE if there are any missing values and FALSE if there are no missing values. Here are its components:
+<ul>
+<li><code>test_miss</code> is the name</li>
+<li><code>col</code> is the argument</li>
+<li><code>{missingness &lt;- is.na(col); test &lt;- any(missingness)}</code> is the body, or where your code goes</li>
+<li>return value is <code>test</code></li>
+<li>environmment is global; this is where you have been creating your data objects and what you see in the <em>environment</em> tab in Rstudio. Do not worry about this component too much as it is a more advanced feature of R.</li>
+</ul></li>
+<li>Name functions as any other object. Avoid reserved names
+<ul>
+<li>Start with letters, but can also contain numbers, as well as underscores <code>_</code> and points <code>.</code> to separate letters. <code>sum_var</code>, <code>sum.var</code>, <code>sum1</code> are all valid names. You can add special symbols by placing the name of your function into backsticks ``.</li>
+</ul></li>
+<li>Arguments are also named. These can have default values.
+<ul>
+<li>Same naming conventions</li>
+<li><p>Arguments can have default values by setting an argument equal to some value:</p>
+<pre><code>mean_na &lt;- function(var, na = TRUE) {
+  x &lt;- mean(var, na.rm = na)
+  return(x)
+}</code></pre></li>
+</ul></li>
+<li>Body contains all the computations you want to perform repeatedly. This may be quite complex by adding conditional statements
+<ul>
+<li>The braces <code>{}</code> contain all your code as if it was in a script or Rmarkdown chunk</li>
+<li>You can make your function do different things depending on some conditions ``` check_categories &lt;- function(var) { if (is.character(var) || is.factor(var)) { return(TRUE) } else { return(FALSE) } }</li>
+</ul>
+<p>discretise &lt;- function(var) { if (var &lt; 0) { value &lt;- “negative” return(value) } else if (var &gt; 0) { value &lt;- “positive” return(value) } else if (var == 0) { value &lt;- “neutral” return(value) } } ```</p></li>
+<li><p>Return value may be required inside conditional statements, but otherwise is not needed because by default your funciton will return the last computed result in the body.</p></li>
+<li><p>Environments are an advanced topic, but one thing that is important, is that functions can use variables not passed as arguments or created in the body, but rather created in the same place as the function. This is not recommended as it can make your functions unpredictable.</p></li>
+<li>Write all these functions and test them with example inputs:
+<ul>
+<li>Implement a function, with no arguments or code in the body</li>
+<li>Implement a function that has one argument and it just returns the argument value</li>
+<li>Implement a function that takes a vector of numbers and a single number to check whether a number is in the vector. It should return TRUE or FALSE</li>
+<li>Implement a function that takes a vector and a single value of the same type to find all missing values in a vector and replace them with a single value; use <code>if_else</code> from <em>dplyr</em> to help with this</li>
+<li>Implement a function that takes a vector and returns how many unique elements it has</li>
+<li>Implement a function that takes a vector and returns the shortest string if a vector is type character and smallest number if a vector is type double or integer. You can use function <code>which</code> to find position of the minimum value, e.g. <code>which(3:1 == min(1:3))</code></li>
+<li>Implement a function that calculates average squared difference between two vectors of numerical values</li>
+</ul></li>
+</ol>
+</div>
+<div id="vectors" class="section level2">
+<h2>Vectors</h2>
+<p>Data frames are a very useful data structure for data analysis, however when programming it may be an overkill or inadequate. This chapter introduces other ways of representing data in R. We concentrate on vectors - basic data structures in R out of which everything else is build, even data frames.</p>
+<p>Load <code>purrr</code> library to get some of the functions.</p>
+<ol style="list-style-type: decimal">
+<li><p>Two basic types of vectors, atomic vectors that are usually just called vectors, and recursive vectors, usually called lists. There are two main differences: each element of an atomic vector has the same type and atomic vectors are flat, while recursive vectors can contain elements of different types and have hierarchical structure.</p></li>
+<li><p>Vectors have types of logical, integer, double, complex, character, raw</p>
+<pre><code>c(TRUE, FALSE, NA) #logical
+c(3L, 1L, 99L, NA) #integer
+c(1.0, 0.008, NA, Inf, -Inf, NaN) #double
+c(1+4i, 44+1i, NA, Inf, -Inf, NaN) #complex
+c(&quot;hello&quot;, &quot;there&quot;, NA) #character
+c(as.raw(0x00), as.raw(0xf4)) #raw</code></pre></li>
+<li><p>You can create vectors with the <code>c()</code> function - which is mostly manual and shown above - or various functions that generate vectors with special values in them.</p></li>
+<li><p>Logical vectors are typically created with logical comparisons or read from a file:</p></li>
+</ol>
+<pre class="r"><code>c(3L, 1L, 99L, NA) == 1L</code></pre>
+<pre><code>## [1] FALSE  TRUE FALSE    NA</code></pre>
+<pre class="r"><code>c(3L, 1L, 99L, NA) &gt; 5L</code></pre>
+<pre><code>## [1] FALSE FALSE  TRUE    NA</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li>Integer vectors are often read from a file, but are also used for subsetting other vectors, which requires pattern generation. If created by hand, numbers need <em>L</em> as a suffix because the default numbers are double type:</li>
+</ol>
+<pre class="r"><code>1</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="r"><code>1L</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="r"><code>1:3</code></pre>
+<pre><code>## [1] 1 2 3</code></pre>
+<pre class="r"><code>rep(1:3, times = 3)</code></pre>
+<pre><code>## [1] 1 2 3 1 2 3 1 2 3</code></pre>
+<pre class="r"><code>rep(1:3, each = 3)</code></pre>
+<pre><code>## [1] 1 1 1 2 2 2 3 3 3</code></pre>
+<pre class="r"><code>seq(0, 12, by = 4)</code></pre>
+<pre><code>## [1]  0  4  8 12</code></pre>
+<pre class="r"><code>seq(0, 12, length.out = 3)</code></pre>
+<pre><code>## [1]  0  6 12</code></pre>
+<pre class="r"><code>seq_along(letters)</code></pre>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+## [24] 24 25 26</code></pre>
+<ol start="6" style="list-style-type: decimal">
+<li>Double vectors are often read from a file or may be generated with a random number generator:</li>
+</ol>
+<pre class="r"><code>rnorm(10, mean = 5, sd = 1)</code></pre>
+<pre><code>##  [1] 5.833045 3.732404 4.939552 5.880227 3.979677 3.589788 4.908387
+##  [8] 3.458542 4.982259 3.566554</code></pre>
+<ol start="7" style="list-style-type: decimal">
+<li><p>You will not see complex vectors unless you are doing pretty advanced math or physics.</p></li>
+<li><p>Character vectors are often read from files, but also created, as you saw before with the Strings chapter:</p></li>
+</ol>
+<pre class="r"><code>library(stringr)
+str_c(&quot;file&quot;, 1:10, &quot;.csv&quot;, sep = &quot;&quot;)</code></pre>
+<pre><code>##  [1] &quot;file1.csv&quot;  &quot;file2.csv&quot;  &quot;file3.csv&quot;  &quot;file4.csv&quot;  &quot;file5.csv&quot; 
+##  [6] &quot;file6.csv&quot;  &quot;file7.csv&quot;  &quot;file8.csv&quot;  &quot;file9.csv&quot;  &quot;file10.csv&quot;</code></pre>
+<ol start="9" style="list-style-type: decimal">
+<li><p>Raw vectors are also pretty rare and mostly used in more intricate programming.</p></li>
+<li><p>Another way to create a vector is to coerce one into another.</p></li>
+</ol>
+<pre class="r"><code>as.logical(c(0, 1, 1, 0))</code></pre>
+<pre><code>## [1] FALSE  TRUE  TRUE FALSE</code></pre>
+<pre class="r"><code>as.integer(c(&quot;1&quot;, &quot;2&quot;, &quot;3&quot;))</code></pre>
+<pre><code>## [1] 1 2 3</code></pre>
+<pre class="r"><code>as.double(c(&quot;1.001&quot;, &quot;9.2842&quot;))</code></pre>
+<pre><code>## [1] 1.0010 9.2842</code></pre>
+<pre class="r"><code>as.complex(c(&quot;1.001&quot;, &quot;9.2842&quot;))</code></pre>
+<pre><code>## [1] 1.0010+0i 9.2842+0i</code></pre>
+<pre class="r"><code>as.character(c(TRUE, FALSE))</code></pre>
+<pre><code>## [1] &quot;TRUE&quot;  &quot;FALSE&quot;</code></pre>
+<pre class="r"><code>as.raw(0xf4)</code></pre>
+<pre><code>## [1] f4</code></pre>
+<ol start="10" style="list-style-type: decimal">
+<li>Coercision may be implicit by a function as a preparation for the downstream code</li>
+</ol>
+<pre class="r"><code>typeof(c(TRUE, 1L)) # these conversions follow the hierarchy from logical to character</code></pre>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<pre class="r"><code>typeof(c(TRUE, 1))</code></pre>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<pre class="r"><code>typeof(c(TRUE, &quot;1&quot;))</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="r"><code>sum(1:10 &lt; 5)</code></pre>
+<pre><code>## [1] 4</code></pre>
+<ol start="11" style="list-style-type: decimal">
+<li><p>You can use <code>typeof</code> or special test functions to determine types:</p>
+<pre><code>is.logical(TRUE)
+is.integer(1L)
+is.double(1.0)
+is.complex(1+1i)
+is.character(&quot;1&quot;)
+is.raw(as.raw(0x00))</code></pre></li>
+<li><p>Another useful property of vectors is <code>length</code>:</p></li>
+</ol>
+<pre class="r"><code>x &lt;- c(TRUE, FALSE, NA)
+length(x)</code></pre>
+<pre><code>## [1] 3</code></pre>
+<ol start="13" style="list-style-type: decimal">
+<li>Working with multiple vectors of different length will invoke recycling which is repeating the elements of the shorter vector to match the length of the longer vector:</li>
+</ol>
+<pre class="r"><code>1:3 + 3 == 1:3 + c(3, 3, 3)</code></pre>
+<pre><code>## [1] TRUE TRUE TRUE</code></pre>
+<ol start="14" style="list-style-type: decimal">
+<li>It may be useful to name vectors</li>
+</ol>
+<pre class="r"><code>c(a = 1, b = 2, c = 3)</code></pre>
+<pre><code>## a b c 
+## 1 2 3</code></pre>
+<pre class="r"><code>setNames(1:3, c(&quot;one&quot;, &quot;two&quot;, &quot;three&quot;))</code></pre>
+<pre><code>##   one   two three 
+##     1     2     3</code></pre>
+<ol start="15" style="list-style-type: decimal">
+<li>It is often needed to pull out specific elements of vectors. For this we use <code>[]</code> syntax, with either position or name:</li>
+</ol>
+<pre class="r"><code>c(1, 2, 3)[3]</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code>c(&quot;one&quot;, &quot;two&quot;, &quot;three&quot;)[2:3]</code></pre>
+<pre><code>## [1] &quot;two&quot;   &quot;three&quot;</code></pre>
+<pre class="r"><code>c(&quot;one&quot;, &quot;two&quot;, &quot;three&quot;)[-1]</code></pre>
+<pre><code>## [1] &quot;two&quot;   &quot;three&quot;</code></pre>
+<pre class="r"><code>c(&quot;one&quot;, &quot;two&quot;, &quot;three&quot;, &quot;one&quot;, &quot;two&quot;, &quot;three&quot;)[c(1, 3, 5)]</code></pre>
+<pre><code>## [1] &quot;one&quot;   &quot;three&quot; &quot;two&quot;</code></pre>
+<pre class="r"><code>c(1, 2, 3, 4)[-(2:3)]</code></pre>
+<pre><code>## [1] 1 4</code></pre>
+<pre class="r"><code>letters[TRUE]</code></pre>
+<pre><code>##  [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot; &quot;j&quot; &quot;k&quot; &quot;l&quot; &quot;m&quot; &quot;n&quot; &quot;o&quot; &quot;p&quot; &quot;q&quot;
+## [18] &quot;r&quot; &quot;s&quot; &quot;t&quot; &quot;u&quot; &quot;v&quot; &quot;w&quot; &quot;x&quot; &quot;y&quot; &quot;z&quot;</code></pre>
+<pre class="r"><code>letters[c(TRUE, FALSE)]</code></pre>
+<pre><code>##  [1] &quot;a&quot; &quot;c&quot; &quot;e&quot; &quot;g&quot; &quot;i&quot; &quot;k&quot; &quot;m&quot; &quot;o&quot; &quot;q&quot; &quot;s&quot; &quot;u&quot; &quot;w&quot; &quot;y&quot;</code></pre>
+<pre class="r"><code>1[0]</code></pre>
+<pre><code>## numeric(0)</code></pre>
+<pre class="r"><code>x &lt;- c(one = 1, two = 2, three = 3)
+x[c(&quot;one&quot;, &quot;two&quot;)]</code></pre>
+<pre><code>## one two 
+##   1   2</code></pre>
+<ol start="16" style="list-style-type: decimal">
+<li>Lists share many features of atomic vectors, like naming, but are more complex than atomic vector because they can contain mixed types and hierarchies. To create a list you use</li>
+</ol>
+<pre class="r"><code>list(1, 2, 3)</code></pre>
+<pre><code>## [[1]]
+## [1] 1
+## 
+## [[2]]
+## [1] 2
+## 
+## [[3]]
+## [1] 3</code></pre>
+<pre class="r"><code>list(TRUE, 1L, 1, 1+1i, &quot;one&quot;)</code></pre>
+<pre><code>## [[1]]
+## [1] TRUE
+## 
+## [[2]]
+## [1] 1
+## 
+## [[3]]
+## [1] 1
+## 
+## [[4]]
+## [1] 1+1i
+## 
+## [[5]]
+## [1] &quot;one&quot;</code></pre>
+<pre class="r"><code>list(one = 1, two = 2, three = 3)</code></pre>
+<pre><code>## $one
+## [1] 1
+## 
+## $two
+## [1] 2
+## 
+## $three
+## [1] 3</code></pre>
+<pre class="r"><code>list(one = 1, two = list(three = 3, four = 4))</code></pre>
+<pre><code>## $one
+## [1] 1
+## 
+## $two
+## $two$three
+## [1] 3
+## 
+## $two$four
+## [1] 4</code></pre>
+<pre class="r"><code>str(list(one = 1, two = list(three = 3, four = 4)))</code></pre>
+<pre><code>## List of 2
+##  $ one: num 1
+##  $ two:List of 2
+##   ..$ three: num 3
+##   ..$ four : num 4</code></pre>
+<ol start="17" style="list-style-type: decimal">
+<li>Lists also have the basic properties of vectors:</li>
+</ol>
+<pre class="r"><code>typeof(list(1))</code></pre>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+<pre class="r"><code>length(list(1, 2, 3, 4))</code></pre>
+<pre><code>## [1] 4</code></pre>
+<ol start="18" style="list-style-type: decimal">
+<li><p>You can also subset lists to pull various elements, either by position or name:</p>
+<pre><code>list(1, 2, 3)[1:2]
+list(1, 2, list(3, 4))[[3]]
+x &lt;- list(one = 1, two = 2)
+x[&quot;one&quot;]
+x$one</code></pre></li>
+<li><p>Vectors and lists can be enhanced with <code>attributes</code>. The most important ones are <em>names</em>, <em>dims</em> and <em>class</em>.</p></li>
+</ol>
+<pre class="r"><code>attributes(mtcars) #to check</code></pre>
+<pre><code>## $names
+##  [1] &quot;mpg&quot;  &quot;cyl&quot;  &quot;disp&quot; &quot;hp&quot;   &quot;drat&quot; &quot;wt&quot;   &quot;qsec&quot; &quot;vs&quot;   &quot;am&quot;   &quot;gear&quot;
+## [11] &quot;carb&quot;
+## 
+## $row.names
+##  [1] &quot;Mazda RX4&quot;           &quot;Mazda RX4 Wag&quot;       &quot;Datsun 710&quot;         
+##  [4] &quot;Hornet 4 Drive&quot;      &quot;Hornet Sportabout&quot;   &quot;Valiant&quot;            
+##  [7] &quot;Duster 360&quot;          &quot;Merc 240D&quot;           &quot;Merc 230&quot;           
+## [10] &quot;Merc 280&quot;            &quot;Merc 280C&quot;           &quot;Merc 450SE&quot;         
+## [13] &quot;Merc 450SL&quot;          &quot;Merc 450SLC&quot;         &quot;Cadillac Fleetwood&quot; 
+## [16] &quot;Lincoln Continental&quot; &quot;Chrysler Imperial&quot;   &quot;Fiat 128&quot;           
+## [19] &quot;Honda Civic&quot;         &quot;Toyota Corolla&quot;      &quot;Toyota Corona&quot;      
+## [22] &quot;Dodge Challenger&quot;    &quot;AMC Javelin&quot;         &quot;Camaro Z28&quot;         
+## [25] &quot;Pontiac Firebird&quot;    &quot;Fiat X1-9&quot;           &quot;Porsche 914-2&quot;      
+## [28] &quot;Lotus Europa&quot;        &quot;Ford Pantera L&quot;      &quot;Ferrari Dino&quot;       
+## [31] &quot;Maserati Bora&quot;       &quot;Volvo 142E&quot;         
+## 
+## $class
+## [1] &quot;data.frame&quot;</code></pre>
+<pre class="r"><code>attr(mtcars, &quot;something&quot;) &lt;- 1:3 #to set</code></pre>
+<ol start="20" style="list-style-type: decimal">
+<li>Several data structures you have seen are actually build out of vectors and lists combined with special attributes:</li>
+</ol>
+<pre class="r"><code>typeof(lubridate::as_date(Sys.time()))</code></pre>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<pre class="r"><code>attributes(lubridate::as_date(Sys.time()))</code></pre>
+<pre><code>## $class
+## [1] &quot;Date&quot;</code></pre>
+</div>
+<div id="iteration" class="section level2">
+<h2>Iteration</h2>
+</div>
+
+
+<!-- BLOGDOWN-HEAD
+
+
+
+
+/BLOGDOWN-HEAD -->

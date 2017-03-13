@@ -126,7 +126,7 @@ ggplot(df, aes(occupation, age)) +
 
 gather(df, genre, presence, unknown:Western) %>%
   filter(presence == 1) %>% 
-  distinct(rating, genre, occupation) %>% 
+  #distinct(rating, genre, occupation) %>% 
   ggplot(aes(rating, ..prop..)) +
   geom_bar() +
   facet_grid(genre ~ occupation) +
