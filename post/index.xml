@@ -7,8 +7,407 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Slava Nikitin</copyright>
-    <lastBuildDate>Mon, 20 Feb 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 06 Mar 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Program</title>
+      <link>https://synikitin.github.io/analytics6600/post/program/</link>
+      <pubDate>Mon, 06 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://synikitin.github.io/analytics6600/post/program/</guid>
+      <description>&lt;!-- BLOGDOWN-BODY-BEFORE
+
+/BLOGDOWN-BODY-BEFORE --&gt;
+
+&lt;div id=&#34;pipe&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Pipe&lt;/h2&gt;
+&lt;p&gt;The purpose behind pipes is to help simplify code that contains a chain of function calls by avoiding saving intermediate results. Here is data prep as an example:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;All tidyverse packages load the pipe by default, but &lt;strong&gt;magrittr&lt;/strong&gt; is the official package that contains it, and other operators as well.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;library(magrittr)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Data example is based on the second assignment:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;u.data &amp;lt;- read_tsv(
+  &amp;quot;u.data&amp;quot;,
+  col_names = c(&amp;quot;user_id&amp;quot;, &amp;quot;movie_id&amp;quot;, &amp;quot;rating&amp;quot;, &amp;quot;timestamp&amp;quot;)
+)
+u.item &amp;lt;- read_delim(
+  &amp;quot;u.item&amp;quot;,
+  &amp;quot;|&amp;quot;,
+  col_names = c(
+&amp;quot;movie_id&amp;quot;, &amp;quot;movie_title&amp;quot;, &amp;quot;release_date&amp;quot;,
+&amp;quot;video_release_date&amp;quot;, &amp;quot;IMDb_URL&amp;quot;, &amp;quot;unknown&amp;quot;,
+&amp;quot;Action&amp;quot;, &amp;quot;Adventure&amp;quot;, &amp;quot;Animation&amp;quot;, &amp;quot;Children&amp;#39;s&amp;quot;,
+&amp;quot;Comedy&amp;quot;, &amp;quot;Crime&amp;quot;, &amp;quot;Documentary&amp;quot;, &amp;quot;Drama&amp;quot;, &amp;quot;Fantasy&amp;quot;,
+&amp;quot;Film-Noir&amp;quot;, &amp;quot;Horror&amp;quot;, &amp;quot;Musical&amp;quot;, &amp;quot;Mystery&amp;quot;, &amp;quot;Romance&amp;quot;,
+&amp;quot;Sci-Fi&amp;quot;, &amp;quot;Thriller&amp;quot;, &amp;quot;War&amp;quot;, &amp;quot;Western&amp;quot;
+)
+  )
+u.user &amp;lt;- read_delim(
+  &amp;quot;u.user&amp;quot;,
+  &amp;quot;|&amp;quot;,
+  col_names = c(&amp;quot;user_id&amp;quot;, &amp;quot;age&amp;quot;, &amp;quot;gender&amp;quot;, &amp;quot;occupation&amp;quot;, &amp;quot;zip_code&amp;quot;)
+)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Save each intermediate result&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;df1 &amp;lt;- inner_join(u.data, u.user, &amp;quot;user_id&amp;quot;)
+df2 &amp;lt;- inner_join(df1, u.item, &amp;quot;movie_id&amp;quot;)
+df3 &amp;lt;- mutate(df2,
+timestamp = as_datetime(timestamp), 
+release_date = dmy(release_date)
+  ) 
+df4 &amp;lt;- select(df3, -video_release_date)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Overwrite each result&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;df &amp;lt;- inner_join(u.data, u.user, &amp;quot;user_id&amp;quot;)
+df &amp;lt;- inner_join(df, u.item, &amp;quot;movie_id&amp;quot;)
+df &amp;lt;- mutate(df,
+timestamp = as_datetime(timestamp), 
+release_date = dmy(release_date)
+  ) 
+df &amp;lt;- select(df, -video_release_date)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nest each result&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;df &amp;lt;- select(
+  mutate(
+inner_join(
+  inner_join(
+    u.data,
+    u.user,
+    &amp;quot;user_id&amp;quot;
+  ),
+  u.item,
+  &amp;quot;movie_id&amp;quot;
+),
+timestamp = as_datetime(timestamp), 
+release_date = dmy(release_date)
+  ),
+  -video_release_date
+)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Pipe each result&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;df &amp;lt;- inner_join(u.data, u.user, &amp;quot;user_id&amp;quot;) %&amp;gt;% 
+  inner_join(u.item, &amp;quot;movie_id&amp;quot;) %&amp;gt;% 
+  mutate(
+timestamp = as_datetime(timestamp), 
+release_date = dmy(release_date)
+  ) %&amp;gt;% 
+  select(-video_release_date)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;Pipes rewrite your code as if you used pattern in 3., that is assigning results into the same name over and passing it forward. When you see pipes you should think that the left-handside is becoming the first argument in a function call:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;x %&amp;gt;% f()&lt;/code&gt; is &lt;code&gt;f(x)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;x %&amp;gt;% f(y)&lt;/code&gt; is &lt;code&gt;f(x, y)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;10 %&amp;gt;% rnorm(mean = 5, sd = 1)&lt;/code&gt; is &lt;code&gt;rnorm(10, mean = 5, sd = 1)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Pipes are great for several function calls that operate on the same or maybe a couple datasets and result in a single output. Long chains of function calls should be broken up, and when you are dealing with many datasets or many outputs, these cannot be or should not be combined as it may actually lead to more confusing code. It will also not work out of the box or at all with some special functions (book has examples).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Additional operator allowing side-effects, like printing structure to check intermediate results, in the middle of transformations&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;df &amp;lt;- inner_join(u.data, u.user, &amp;quot;user_id&amp;quot;) %T&amp;gt;%
+  str %&amp;gt;% 
+  inner_join(u.item, &amp;quot;movie_id&amp;quot;) %T&amp;gt;% 
+  str %&amp;gt;% 
+  mutate(
+timestamp = as_datetime(timestamp), 
+release_date = dmy(release_date)
+  ) %T&amp;gt;% 
+  str %&amp;gt;% 
+  select(-video_release_date)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;functions&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Functions&lt;/h2&gt;
+&lt;p&gt;One value of functions is to capture repeatedly written and used blocks of code, potentially with varying arguments, to enable reuse and code simplification. It is also about extending R to do things it cannot do out of the box or with any package. Lastly, it is a good way to wrap your complicated code into larger logical units and make it better communicable.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;A function is an object that has several components: name, arguments, body, return value, environment. Here is a generic example of creating a new function&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;name &amp;lt;- function(argument) {
+  var &amp;lt;- code(argument)
+  return(var)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The generic example does not do anything, but here is a simple working example:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;test_miss &amp;lt;- function(column) {
+  missingness &amp;lt;- is.na(column)
+  test &amp;lt;- any(missingness)
+  return(test)
+}&lt;/code&gt;&lt;/pre&gt;
+This example takes a column, checks for missing values and returns TRUE if there are any missing values and FALSE if there are no missing values. Here are its components:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;test_miss&lt;/code&gt; is the name&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;col&lt;/code&gt; is the argument&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;{missingness &amp;lt;- is.na(col); test &amp;lt;- any(missingness)}&lt;/code&gt; is the body, or where your code goes&lt;/li&gt;
+&lt;li&gt;return value is &lt;code&gt;test&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;environmment is global; this is where you have been creating your data objects and what you see in the &lt;em&gt;environment&lt;/em&gt; tab in Rstudio. Do not worry about this component too much as it is a more advanced feature of R.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Name functions as any other object. Avoid reserved names
+&lt;ul&gt;
+&lt;li&gt;Start with letters, but can also contain numbers, as well as underscores &lt;code&gt;_&lt;/code&gt; and points &lt;code&gt;.&lt;/code&gt; to separate letters. &lt;code&gt;sum_var&lt;/code&gt;, &lt;code&gt;sum.var&lt;/code&gt;, &lt;code&gt;sum1&lt;/code&gt; are all valid names. You can add special symbols by placing the name of your function into backsticks ``.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Arguments are also named. These can have default values.
+&lt;ul&gt;
+&lt;li&gt;Same naming conventions&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Arguments can have default values by setting an argument equal to some value:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mean_na &amp;lt;- function(var, na = TRUE) {
+  x &amp;lt;- mean(var, na.rm = na)
+  return(x)
+}&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Body contains all the computations you want to perform repeatedly. This may be quite complex by adding conditional statements
+&lt;ul&gt;
+&lt;li&gt;The braces &lt;code&gt;{}&lt;/code&gt; contain all your code as if it was in a script or Rmarkdown chunk&lt;/li&gt;
+&lt;li&gt;You can make your function do different things depending on some conditions ``` check_categories &amp;lt;- function(var) { if (is.character(var) || is.factor(var)) { return(TRUE) } else { return(FALSE) } }&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;discretise &amp;lt;- function(var) { if (var &amp;lt; 0) { value &amp;lt;- “negative” return(value) } else if (var &amp;gt; 0) { value &amp;lt;- “positive” return(value) } else if (var == 0) { value &amp;lt;- “neutral” return(value) } } ```&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Return value may be required inside conditional statements, but otherwise is not needed because by default your funciton will return the last computed result in the body.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Environments are an advanced topic, but one thing that is important, is that functions can use variables not passed as arguments or created in the body, but rather created in the same place as the function. This is not recommended as it can make your functions unpredictable.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Write all these functions and test them with example inputs:
+&lt;ul&gt;
+&lt;li&gt;Implement a function, with no arguments or code in the body&lt;/li&gt;
+&lt;li&gt;Implement a function that has one argument and it just returns the argument value&lt;/li&gt;
+&lt;li&gt;Implement a function that takes a vector of numbers and a single number to check whether a number is in the vector. It should return TRUE or FALSE&lt;/li&gt;
+&lt;li&gt;Implement a function that takes a vector and a single value of the same type to find all missing values in a vector and replace them with a single value; use &lt;code&gt;if_else&lt;/code&gt; from &lt;em&gt;dplyr&lt;/em&gt; to help with this&lt;/li&gt;
+&lt;li&gt;Implement a function that takes a vector and returns how many unique elements it has&lt;/li&gt;
+&lt;li&gt;Implement a function that takes a vector and returns the shortest string if a vector is type character and smallest number if a vector is type double or integer. You can use function &lt;code&gt;which&lt;/code&gt; to find position of the minimum value, e.g. &lt;code&gt;which(3:1 == min(1:3))&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Implement a function that calculates average squared difference between two vectors of numerical values&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;vectors&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Vectors&lt;/h2&gt;
+&lt;p&gt;Data frames are a very useful data structure for data analysis, however when programming it may be an overkill or inadequate. This chapter introduces other ways of representing data in R. We concentrate on vectors - basic data structures in R out of which everything else is build, even data frames.&lt;/p&gt;
+&lt;p&gt;Load &lt;code&gt;purrr&lt;/code&gt; library to get some of the functions.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Two basic types of vectors, atomic vectors that are usually just called vectors, and recursive vectors, usually called lists. There are two main differences: each element of an atomic vector has the same type and atomic vectors are flat, while recursive vectors can contain elements of different types and have hierarchical structure.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Vectors have types of logical, integer, double, complex, character, raw&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;c(TRUE, FALSE, NA) #logical
+c(3L, 1L, 99L, NA) #integer
+c(1.0, 0.008, NA, Inf, -Inf, NaN) #double
+c(1+4i, 44+1i, NA, Inf, -Inf, NaN) #complex
+c(&amp;quot;hello&amp;quot;, &amp;quot;there&amp;quot;, NA) #character
+c(as.raw(0x00), as.raw(0xf4)) #raw&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;You can create vectors with the &lt;code&gt;c()&lt;/code&gt; function - which is mostly manual and shown above - or various functions that generate vectors with special values in them.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Logical vectors are typically created with logical comparisons or read from a file:&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;c(3L, 1L, 99L, NA) == 1L&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] FALSE  TRUE FALSE    NA&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;c(3L, 1L, 99L, NA) &amp;gt; 5L&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] FALSE FALSE  TRUE    NA&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;5&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Integer vectors are often read from a file, but are also used for subsetting other vectors, which requires pattern generation. If created by hand, numbers need &lt;em&gt;L&lt;/em&gt; as a suffix because the default numbers are double type:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;1L&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;1:3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 1 2 3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rep(1:3, times = 3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 1 2 3 1 2 3 1 2 3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rep(1:3, each = 3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 1 1 1 2 2 2 3 3 3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;seq(0, 12, by = 4)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1]  0  4  8 12&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;seq(0, 12, length.out = 3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1]  0  6 12&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;seq_along(letters)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+## [24] 24 25 26&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;6&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Double vectors are often read from a file or may be generated with a random number generator:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rnorm(10, mean = 5, sd = 1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1] 5.833045 3.732404 4.939552 5.880227 3.979677 3.589788 4.908387
+##  [8] 3.458542 4.982259 3.566554&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;7&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;You will not see complex vectors unless you are doing pretty advanced math or physics.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Character vectors are often read from files, but also created, as you saw before with the Strings chapter:&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(stringr)
+str_c(&amp;quot;file&amp;quot;, 1:10, &amp;quot;.csv&amp;quot;, sep = &amp;quot;&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1] &amp;quot;file1.csv&amp;quot;  &amp;quot;file2.csv&amp;quot;  &amp;quot;file3.csv&amp;quot;  &amp;quot;file4.csv&amp;quot;  &amp;quot;file5.csv&amp;quot; 
+##  [6] &amp;quot;file6.csv&amp;quot;  &amp;quot;file7.csv&amp;quot;  &amp;quot;file8.csv&amp;quot;  &amp;quot;file9.csv&amp;quot;  &amp;quot;file10.csv&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;9&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Raw vectors are also pretty rare and mostly used in more intricate programming.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Another way to create a vector is to coerce one into another.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;as.logical(c(0, 1, 1, 0))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] FALSE  TRUE  TRUE FALSE&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;as.integer(c(&amp;quot;1&amp;quot;, &amp;quot;2&amp;quot;, &amp;quot;3&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 1 2 3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;as.double(c(&amp;quot;1.001&amp;quot;, &amp;quot;9.2842&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 1.0010 9.2842&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;as.complex(c(&amp;quot;1.001&amp;quot;, &amp;quot;9.2842&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 1.0010+0i 9.2842+0i&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;as.character(c(TRUE, FALSE))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;TRUE&amp;quot;  &amp;quot;FALSE&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;as.raw(0xf4)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] f4&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;10&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Coercision may be implicit by a function as a preparation for the downstream code&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;typeof(c(TRUE, 1L)) # these conversions follow the hierarchy from logical to character&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;integer&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;typeof(c(TRUE, 1))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;double&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;typeof(c(TRUE, &amp;quot;1&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;character&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sum(1:10 &amp;lt; 5)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 4&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;11&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;You can use &lt;code&gt;typeof&lt;/code&gt; or special test functions to determine types:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;is.logical(TRUE)
+is.integer(1L)
+is.double(1.0)
+is.complex(1+1i)
+is.character(&amp;quot;1&amp;quot;)
+is.raw(as.raw(0x00))&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Another useful property of vectors is &lt;code&gt;length&lt;/code&gt;:&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- c(TRUE, FALSE, NA)
+length(x)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 3&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;13&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Working with multiple vectors of different length will invoke recycling which is repeating the elements of the shorter vector to match the length of the longer vector:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;1:3 + 3 == 1:3 + c(3, 3, 3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] TRUE TRUE TRUE&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;14&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;It may be useful to name vectors&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;c(a = 1, b = 2, c = 3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## a b c 
+## 1 2 3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;setNames(1:3, c(&amp;quot;one&amp;quot;, &amp;quot;two&amp;quot;, &amp;quot;three&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   one   two three 
+##     1     2     3&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;15&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;It is often needed to pull out specific elements of vectors. For this we use &lt;code&gt;[]&lt;/code&gt; syntax, with either position or name:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;c(1, 2, 3)[3]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;c(&amp;quot;one&amp;quot;, &amp;quot;two&amp;quot;, &amp;quot;three&amp;quot;)[2:3]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;two&amp;quot;   &amp;quot;three&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;c(&amp;quot;one&amp;quot;, &amp;quot;two&amp;quot;, &amp;quot;three&amp;quot;)[-1]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;two&amp;quot;   &amp;quot;three&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;c(&amp;quot;one&amp;quot;, &amp;quot;two&amp;quot;, &amp;quot;three&amp;quot;, &amp;quot;one&amp;quot;, &amp;quot;two&amp;quot;, &amp;quot;three&amp;quot;)[c(1, 3, 5)]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;one&amp;quot;   &amp;quot;three&amp;quot; &amp;quot;two&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;c(1, 2, 3, 4)[-(2:3)]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 1 4&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;letters[TRUE]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1] &amp;quot;a&amp;quot; &amp;quot;b&amp;quot; &amp;quot;c&amp;quot; &amp;quot;d&amp;quot; &amp;quot;e&amp;quot; &amp;quot;f&amp;quot; &amp;quot;g&amp;quot; &amp;quot;h&amp;quot; &amp;quot;i&amp;quot; &amp;quot;j&amp;quot; &amp;quot;k&amp;quot; &amp;quot;l&amp;quot; &amp;quot;m&amp;quot; &amp;quot;n&amp;quot; &amp;quot;o&amp;quot; &amp;quot;p&amp;quot; &amp;quot;q&amp;quot;
+## [18] &amp;quot;r&amp;quot; &amp;quot;s&amp;quot; &amp;quot;t&amp;quot; &amp;quot;u&amp;quot; &amp;quot;v&amp;quot; &amp;quot;w&amp;quot; &amp;quot;x&amp;quot; &amp;quot;y&amp;quot; &amp;quot;z&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;letters[c(TRUE, FALSE)]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1] &amp;quot;a&amp;quot; &amp;quot;c&amp;quot; &amp;quot;e&amp;quot; &amp;quot;g&amp;quot; &amp;quot;i&amp;quot; &amp;quot;k&amp;quot; &amp;quot;m&amp;quot; &amp;quot;o&amp;quot; &amp;quot;q&amp;quot; &amp;quot;s&amp;quot; &amp;quot;u&amp;quot; &amp;quot;w&amp;quot; &amp;quot;y&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;1[0]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## numeric(0)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- c(one = 1, two = 2, three = 3)
+x[c(&amp;quot;one&amp;quot;, &amp;quot;two&amp;quot;)]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## one two 
+##   1   2&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;16&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Lists share many features of atomic vectors, like naming, but are more complex than atomic vector because they can contain mixed types and hierarchies. To create a list you use&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(1, 2, 3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [[1]]
+## [1] 1
+## 
+## [[2]]
+## [1] 2
+## 
+## [[3]]
+## [1] 3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(TRUE, 1L, 1, 1+1i, &amp;quot;one&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [[1]]
+## [1] TRUE
+## 
+## [[2]]
+## [1] 1
+## 
+## [[3]]
+## [1] 1
+## 
+## [[4]]
+## [1] 1+1i
+## 
+## [[5]]
+## [1] &amp;quot;one&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(one = 1, two = 2, three = 3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## $one
+## [1] 1
+## 
+## $two
+## [1] 2
+## 
+## $three
+## [1] 3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(one = 1, two = list(three = 3, four = 4))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## $one
+## [1] 1
+## 
+## $two
+## $two$three
+## [1] 3
+## 
+## $two$four
+## [1] 4&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str(list(one = 1, two = list(three = 3, four = 4)))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## List of 2
+##  $ one: num 1
+##  $ two:List of 2
+##   ..$ three: num 3
+##   ..$ four : num 4&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;17&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Lists also have the basic properties of vectors:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;typeof(list(1))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;list&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;length(list(1, 2, 3, 4))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 4&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;18&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;You can also subset lists to pull various elements, either by position or name:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;list(1, 2, 3)[1:2]
+list(1, 2, list(3, 4))[[3]]
+x &amp;lt;- list(one = 1, two = 2)
+x[&amp;quot;one&amp;quot;]
+x$one&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Vectors and lists can be enhanced with &lt;code&gt;attributes&lt;/code&gt;. The most important ones are &lt;em&gt;names&lt;/em&gt;, &lt;em&gt;dims&lt;/em&gt; and &lt;em&gt;class&lt;/em&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;attributes(mtcars) #to check&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## $names
+##  [1] &amp;quot;mpg&amp;quot;  &amp;quot;cyl&amp;quot;  &amp;quot;disp&amp;quot; &amp;quot;hp&amp;quot;   &amp;quot;drat&amp;quot; &amp;quot;wt&amp;quot;   &amp;quot;qsec&amp;quot; &amp;quot;vs&amp;quot;   &amp;quot;am&amp;quot;   &amp;quot;gear&amp;quot;
+## [11] &amp;quot;carb&amp;quot;
+## 
+## $row.names
+##  [1] &amp;quot;Mazda RX4&amp;quot;           &amp;quot;Mazda RX4 Wag&amp;quot;       &amp;quot;Datsun 710&amp;quot;         
+##  [4] &amp;quot;Hornet 4 Drive&amp;quot;      &amp;quot;Hornet Sportabout&amp;quot;   &amp;quot;Valiant&amp;quot;            
+##  [7] &amp;quot;Duster 360&amp;quot;          &amp;quot;Merc 240D&amp;quot;           &amp;quot;Merc 230&amp;quot;           
+## [10] &amp;quot;Merc 280&amp;quot;            &amp;quot;Merc 280C&amp;quot;           &amp;quot;Merc 450SE&amp;quot;         
+## [13] &amp;quot;Merc 450SL&amp;quot;          &amp;quot;Merc 450SLC&amp;quot;         &amp;quot;Cadillac Fleetwood&amp;quot; 
+## [16] &amp;quot;Lincoln Continental&amp;quot; &amp;quot;Chrysler Imperial&amp;quot;   &amp;quot;Fiat 128&amp;quot;           
+## [19] &amp;quot;Honda Civic&amp;quot;         &amp;quot;Toyota Corolla&amp;quot;      &amp;quot;Toyota Corona&amp;quot;      
+## [22] &amp;quot;Dodge Challenger&amp;quot;    &amp;quot;AMC Javelin&amp;quot;         &amp;quot;Camaro Z28&amp;quot;         
+## [25] &amp;quot;Pontiac Firebird&amp;quot;    &amp;quot;Fiat X1-9&amp;quot;           &amp;quot;Porsche 914-2&amp;quot;      
+## [28] &amp;quot;Lotus Europa&amp;quot;        &amp;quot;Ford Pantera L&amp;quot;      &amp;quot;Ferrari Dino&amp;quot;       
+## [31] &amp;quot;Maserati Bora&amp;quot;       &amp;quot;Volvo 142E&amp;quot;         
+## 
+## $class
+## [1] &amp;quot;data.frame&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;attr(mtcars, &amp;quot;something&amp;quot;) &amp;lt;- 1:3 #to set&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;20&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Several data structures you have seen are actually build out of vectors and lists combined with special attributes:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;typeof(lubridate::as_date(Sys.time()))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;double&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;attributes(lubridate::as_date(Sys.time()))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## $class
+## [1] &amp;quot;Date&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;iteration&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Iteration&lt;/h2&gt;
+&lt;/div&gt;
+
+
+&lt;!-- BLOGDOWN-HEAD
+
+
+
+
+/BLOGDOWN-HEAD --&gt;
+</description>
+    </item>
     
     <item>
       <title>Wrangle - Part II</title>
