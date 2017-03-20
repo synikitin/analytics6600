@@ -147,9 +147,28 @@ This example takes a column, checks for missing values and returns TRUE if there
 &lt;li&gt;Body contains all the computations you want to perform repeatedly. This may be quite complex by adding conditional statements
 &lt;ul&gt;
 &lt;li&gt;The braces &lt;code&gt;{}&lt;/code&gt; contain all your code as if it was in a script or Rmarkdown chunk&lt;/li&gt;
-&lt;li&gt;You can make your function do different things depending on some conditions ``` check_categories &amp;lt;- function(var) { if (is.character(var) || is.factor(var)) { return(TRUE) } else { return(FALSE) } }&lt;/li&gt;
+&lt;li&gt;You can make your function do different things depending on some conditions&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;discretise &amp;lt;- function(var) { if (var &amp;lt; 0) { value &amp;lt;- “negative” return(value) } else if (var &amp;gt; 0) { value &amp;lt;- “positive” return(value) } else if (var == 0) { value &amp;lt;- “neutral” return(value) } } ```&lt;/p&gt;&lt;/li&gt;
+&lt;pre&gt;&lt;code&gt;check_categories &amp;lt;- function(var) {
+  if (is.character(var) || is.factor(var)) {
+    return(TRUE)
+  } else {
+    return(FALSE)
+  }
+}
+
+discretise &amp;lt;- function(var) {
+  if (var &amp;lt; 0) {
+    value &amp;lt;- &amp;quot;negative&amp;quot;
+    return(value)
+  } else if (var &amp;gt; 0) {
+    value &amp;lt;- &amp;quot;positive&amp;quot;
+    return(value)
+  } else if (var == 0) {
+    value &amp;lt;- &amp;quot;neutral&amp;quot;
+    return(value)
+  }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Return value may be required inside conditional statements, but otherwise is not needed because by default your funciton will return the last computed result in the body.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Environments are an advanced topic, but one thing that is important, is that functions can use variables not passed as arguments or created in the body, but rather created in the same place as the function. This is not recommended as it can make your functions unpredictable.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;Write all these functions and test them with example inputs:
@@ -171,12 +190,12 @@ This example takes a column, checks for missing values and returns TRUE if there
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;&lt;p&gt;Two basic types of vectors, atomic vectors that are usually just called vectors, and recursive vectors, usually called lists. There are two main differences: each element of an atomic vector has the same type and atomic vectors are flat, while recursive vectors can contain elements of different types and have hierarchical structure.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Vectors have types of logical, integer, double, complex, character, raw&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;c(TRUE, FALSE, NA) #logical
-c(3L, 1L, 99L, NA) #integer
-c(1.0, 0.008, NA, Inf, -Inf, NaN) #double
+&lt;pre&gt;&lt;code&gt;c(TRUE, FALSE, NA)                 #logical
+c(3L, 1L, 99L, NA)                 #integer
+c(1.0, 0.008, NA, Inf, -Inf, NaN)  #double
 c(1+4i, 44+1i, NA, Inf, -Inf, NaN) #complex
-c(&amp;quot;hello&amp;quot;, &amp;quot;there&amp;quot;, NA) #character
-c(as.raw(0x00), as.raw(0xf4)) #raw&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+c(&amp;quot;hello&amp;quot;, &amp;quot;there&amp;quot;, NA)            #character
+c(as.raw(0x00), as.raw(0xf4))      #raw&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;You can create vectors with the &lt;code&gt;c()&lt;/code&gt; function - which is mostly manual and shown above - or various functions that generate vectors with special values in them.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Logical vectors are typically created with logical comparisons or read from a file:&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
@@ -208,8 +227,8 @@ c(as.raw(0x00), as.raw(0xf4)) #raw&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;Double vectors are often read from a file or may be generated with a random number generator:&lt;/li&gt;
 &lt;/ol&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rnorm(10, mean = 5, sd = 1)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##  [1] 5.833045 3.732404 4.939552 5.880227 3.979677 3.589788 4.908387
-##  [8] 3.458542 4.982259 3.566554&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1] 4.493558 6.582178 4.045153 5.208287 5.576345 5.614356 6.146393
+##  [8] 4.978498 5.796296 5.268173&lt;/code&gt;&lt;/pre&gt;
 &lt;ol start=&#34;7&#34; style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;&lt;p&gt;You will not see complex vectors unless you are doing pretty advanced math or physics.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Character vectors are often read from files, but also created, as you saw before with the Strings chapter:&lt;/p&gt;&lt;/li&gt;
@@ -266,11 +285,11 @@ length(x)&lt;/code&gt;&lt;/pre&gt;
 &lt;ol start=&#34;14&#34; style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;It may be useful to name vectors&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;c(a = 1, b = 2, c = 3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;c(a = 1, b = 2, c = 3)
+setNames(1:3, c(&amp;quot;one&amp;quot;, &amp;quot;two&amp;quot;, &amp;quot;three&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## a b c 
-## 1 2 3&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;setNames(1:3, c(&amp;quot;one&amp;quot;, &amp;quot;two&amp;quot;, &amp;quot;three&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   one   two three 
+## 1 2 3 
+##   one   two three 
 ##     1     2     3&lt;/code&gt;&lt;/pre&gt;
 &lt;ol start=&#34;15&#34; style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;It is often needed to pull out specific elements of vectors. For this we use &lt;code&gt;[]&lt;/code&gt; syntax, with either position or name:&lt;/li&gt;
@@ -351,20 +370,36 @@ x[c(&amp;quot;one&amp;quot;, &amp;quot;two&amp;quot;)]&lt;/code&gt;&lt;/pre&gt;
 &lt;ol start=&#34;17&#34; style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;Lists also have the basic properties of vectors:&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;typeof(list(1))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;list&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;length(list(1, 2, 3, 4))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 4&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;typeof(list(1))
+length(list(1, 2, 3, 4))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;list&amp;quot;
+## [1] 4&lt;/code&gt;&lt;/pre&gt;
 &lt;ol start=&#34;18&#34; style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;&lt;p&gt;You can also subset lists to pull various elements, either by position or name:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;list(1, 2, 3)[1:2]
-list(1, 2, list(3, 4))[[3]]
-x &amp;lt;- list(one = 1, two = 2)
-x[&amp;quot;one&amp;quot;]
-x$one&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Vectors and lists can be enhanced with &lt;code&gt;attributes&lt;/code&gt;. The most important ones are &lt;em&gt;names&lt;/em&gt;, &lt;em&gt;dims&lt;/em&gt; and &lt;em&gt;class&lt;/em&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;You can also subset lists to pull various elements, either by position or name:&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;attributes(mtcars) #to check&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(1, 2, 3)[1:2]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [[1]]
+## [1] 1
+## 
+## [[2]]
+## [1] 2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(1, 2, list(3, 4))[[3]]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [[1]]
+## [1] 3
+## 
+## [[2]]
+## [1] 4&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- list(one = 1, two = 2)
+x[&amp;quot;one&amp;quot;]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## $one
+## [1] 1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x$one&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 1&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;19&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Vectors and lists can be enhanced with &lt;code&gt;attributes&lt;/code&gt;. The most important ones are &lt;em&gt;names&lt;/em&gt;, &lt;em&gt;dims&lt;/em&gt; and &lt;em&gt;class&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;attributes(mtcars) #to check
+attr(mtcars, &amp;quot;something&amp;quot;) &amp;lt;- 1:3 #to set&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## $names
 ##  [1] &amp;quot;mpg&amp;quot;  &amp;quot;cyl&amp;quot;  &amp;quot;disp&amp;quot; &amp;quot;hp&amp;quot;   &amp;quot;drat&amp;quot; &amp;quot;wt&amp;quot;   &amp;quot;qsec&amp;quot; &amp;quot;vs&amp;quot;   &amp;quot;am&amp;quot;   &amp;quot;gear&amp;quot;
 ## [11] &amp;quot;carb&amp;quot;
@@ -384,18 +419,132 @@ x$one&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 ## 
 ## $class
 ## [1] &amp;quot;data.frame&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;attr(mtcars, &amp;quot;something&amp;quot;) &amp;lt;- 1:3 #to set&lt;/code&gt;&lt;/pre&gt;
 &lt;ol start=&#34;20&#34; style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;Several data structures you have seen are actually build out of vectors and lists combined with special attributes:&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;typeof(lubridate::as_date(Sys.time()))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;double&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;attributes(lubridate::as_date(Sys.time()))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## $class
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;typeof(lubridate::as_date(Sys.time()))
+attributes(lubridate::as_date(Sys.time()))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;double&amp;quot;
+## $class
 ## [1] &amp;quot;Date&amp;quot;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;iteration&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Iteration&lt;/h2&gt;
+&lt;p&gt;Recall that functions can extend functionality of R in novel directions, and also help you avoid duplication or rewriting of the same code. Another technique with managing duplication is iteration: doing the same operation on different inputs, be it single numbers stored in a vector, or columns of a data frame, or multiple data frames stored in a list.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Consider a situation where you loaded multiple data sets into a list and you want to check their dimensions to determine where they can be combined into a single data frame.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;datasets &amp;lt;- list(
+  data1 = mtcars,
+  data2 = ToothGrowth,
+  data3 = WorldPhones,
+  data4 = anscombe
+)
+dim(datasets$data1)
+dim(datasets$data2)
+dim(datasets$data3)
+dim(datasets$data4)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 32 11
+## [1] 60  3
+## [1] 7 7
+## [1] 11  8&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This code is repetitive and requires multiple copy-paste combinations and is not efficient, is error-prone and its verbosity competes with the logic of the code.&lt;/p&gt;
+&lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;To remove repetitiveness of known, finite length, we can use for loops:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;results &amp;lt;- vector(&amp;quot;integer&amp;quot;, 4)       # 1. output
+for (i in seq_along(datasets)) {      # 2. sequence
+  results[i] &amp;lt;- ncol(datasets[[i]])   # 3. body 
+}
+results&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 11  3  7  8&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;output: usually a vector or a list to store results. &lt;code&gt;results &amp;lt;- vector(&amp;quot;integer&amp;quot;, 4)&lt;/code&gt; uses &lt;code&gt;vector&lt;/code&gt; function that takes type of data and length of the vector to create.&lt;/li&gt;
+&lt;li&gt;sequence: usually a vector or a list that holds varying inputs. &lt;code&gt;i in seq_along(df)&lt;/code&gt; says that &lt;code&gt;i&lt;/code&gt; will take values in a sequence of numbers going from 1 to the length of &lt;code&gt;datasets&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;body: code that is called repetitively with varying inputs. &lt;code&gt;results[i] &amp;lt;- ncol(datasets[[i]])&lt;/code&gt; is the code that is executed with different values of i. &lt;code&gt;ncol&lt;/code&gt; determines the number of columns for each data set in &lt;code&gt;datasets&lt;/code&gt; and stores it inside &lt;code&gt;results&lt;/code&gt;. This translates to&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;results[1] &amp;lt;- ncol(datasets[[1]])
+results[2] &amp;lt;- ncol(datasets[[2]])
+results[3] &amp;lt;- ncol(datasets[[3]])
+results[4] &amp;lt;- ncol(datasets[[4]])&lt;/code&gt;&lt;/pre&gt;
+Do these examples. Think carefully about how each problem relates to components of the loop:&lt;/li&gt;
+&lt;li&gt;Apply function &lt;code&gt;sd&lt;/code&gt;, which calculates a standard deviation, to each column of mtcars&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Determine type of each column in ToothGrowth data&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;3&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;The pattern you have seen so far is to loop over indices and create a new data object, however there are several useful variants on it:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Modifying an existing data object&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;normalize &amp;lt;- function(x) {
+  x_norm &amp;lt;- (x - mean(x)) / sd(x)
+  x_norm2 &amp;lt;- round(x_norm, 2)
+  return(x_norm2)
+}
+mtcars2 &amp;lt;- mtcars
+head(mtcars)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;for (i in seq_along(mtcars2)) {
+  mtcars2[[i]] &amp;lt;- normalize(mtcars2[[i]])
+}
+head(mtcars2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##                     mpg   cyl  disp    hp  drat    wt  qsec    vs    am
+## Mazda RX4          0.15 -0.10 -0.57 -0.54  0.57 -0.61 -0.78 -0.87  1.19
+## Mazda RX4 Wag      0.15 -0.10 -0.57 -0.54  0.57 -0.35 -0.46 -0.87  1.19
+## Datsun 710         0.45 -1.22 -0.99 -0.78  0.47 -0.92  0.43  1.12  1.19
+## Hornet 4 Drive     0.22 -0.10  0.22 -0.54 -0.97  0.00  0.89  1.12 -0.81
+## Hornet Sportabout -0.23  1.01  1.04  0.41 -0.84  0.23 -0.46 -0.87 -0.81
+## Valiant           -0.33 -0.10 -0.05 -0.61 -1.56  0.25  1.33  1.12 -0.81
+##                    gear  carb
+## Mazda RX4          0.42  0.74
+## Mazda RX4 Wag      0.42  0.74
+## Datsun 710         0.42 -1.12
+## Hornet 4 Drive    -0.93 -1.12
+## Hornet Sportabout -0.93 -0.50
+## Valiant           -0.93 -1.12&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Looping over values or names instead of indices&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;image_names &amp;lt;- dir(pattern = &amp;quot;.jpg&amp;quot;)
+image_data &amp;lt;- vector(&amp;quot;list&amp;quot;, 4)
+par(mfrow = c(2, 2))
+
+for (name in image_names) {
+  img &amp;lt;- jpeg::readJPEG(name)
+  plot(1, 1, xlim = c(1, 640), ylim = c(1, 480), axes = FALSE, xlab = NA, ylab = NA)
+  rasterImage(img, 1, 1, 640, 480)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;#####../content/post/program_files/figure-html/unnamed-chunk-19-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Handling outputs of unknown length&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;means &amp;lt;- c(0, 1, 2)
+out &amp;lt;- vector(&amp;quot;list&amp;quot;, length(means))
+for (i in seq_along(means)) {
+  n &amp;lt;- sample(100, 1)
+  out[[i]] &amp;lt;- rnorm(n, means[[i]])
+}
+out &amp;lt;- unlist(out)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Handling inputs of unknown length&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;while (condition) {
+  body
+}&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;4&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Loop exercises:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;input: vector of logical values body: checks for TRUE and saves the index in the output vector output: vector of integers representing positions of TRUE values&lt;/li&gt;
+&lt;li&gt;Create a function that takes a data frame, loops through its columns, calculates mean of each column, and returns a vector of double numbers&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/div&gt;
 
 
