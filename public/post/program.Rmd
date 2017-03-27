@@ -413,7 +413,8 @@ for (i in seq_along(mtcars2)) {
 head(mtcars2)
 ```
   - Looping over values or names instead of indices
-```{r}
+  
+```
 image_names <- dir(pattern = ".jpg")
 image_data <- vector("list", 4)
 par(mfrow = c(2, 2))
@@ -424,6 +425,8 @@ for (name in image_names) {
   rasterImage(img, 1, 1, 640, 480)
 }
 ```
+
+![](img/iteration.png)
 
   - Handling outputs of unknown length
   

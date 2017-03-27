@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data Analytics 6600</title>
-    <link>https://synikitin.github.io/analytics6600/index.xml</link>
+    <link>/index.xml</link>
     <description>Recent content on Data Analytics 6600</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>Program</title>
-      <link>https://synikitin.github.io/analytics6600/post/program/</link>
+      <link>/post/program/</link>
       <pubDate>Mon, 06 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/post/program/</guid>
+      <guid>/post/program/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -228,8 +228,8 @@ c(as.raw(0x00), as.raw(0xf4))      #raw&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;Double vectors are often read from a file or may be generated with a random number generator:&lt;/li&gt;
 &lt;/ol&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rnorm(10, mean = 5, sd = 1)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##  [1] 4.493558 6.582178 4.045153 5.208287 5.576345 5.614356 6.146393
-##  [8] 4.978498 5.796296 5.268173&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1] 3.605338 4.745919 7.456151 4.729131 5.035488 5.663089 4.269506
+##  [8] 5.387134 5.120955 6.211883&lt;/code&gt;&lt;/pre&gt;
 &lt;ol start=&#34;7&#34; style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;&lt;p&gt;You will not see complex vectors unless you are doing pretty advanced math or physics.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Character vectors are often read from files, but also created, as you saw before with the Strings chapter:&lt;/p&gt;&lt;/li&gt;
@@ -512,7 +512,7 @@ head(mtcars2)&lt;/code&gt;&lt;/pre&gt;
 &lt;ul&gt;
 &lt;li&gt;Looping over values or names instead of indices&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;image_names &amp;lt;- dir(pattern = &amp;quot;.jpg&amp;quot;)
+&lt;pre&gt;&lt;code&gt;image_names &amp;lt;- dir(pattern = &amp;quot;.jpg&amp;quot;)
 image_data &amp;lt;- vector(&amp;quot;list&amp;quot;, 4)
 par(mfrow = c(2, 2))
 
@@ -521,7 +521,10 @@ for (name in image_names) {
   plot(1, 1, xlim = c(1, 640), ylim = c(1, 480), axes = FALSE, xlab = NA, ylab = NA)
   rasterImage(img, 1, 1, 640, 480)
 }&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;#####../content/post/program_files/figure-html/unnamed-chunk-19-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;img/iteration.png&#34; /&gt;
+
+&lt;/div&gt;
 &lt;ul&gt;
 &lt;li&gt;Handling outputs of unknown length&lt;/li&gt;
 &lt;/ul&gt;
@@ -560,10 +563,10 @@ out &amp;lt;- unlist(out)
     
     <item>
       <title>Wrangling and Exploring</title>
-      <link>https://synikitin.github.io/analytics6600/publication/wrangle/</link>
+      <link>/publication/wrangle/</link>
       <pubDate>Mon, 06 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/publication/wrangle/</guid>
+      <guid>/publication/wrangle/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -745,10 +748,10 @@ Sixth, use the plot to determine what seems to be the dominant attitude of execu
     
     <item>
       <title>Wrangle - Part II</title>
-      <link>https://synikitin.github.io/analytics6600/post/wrangle2/</link>
+      <link>/post/wrangle2/</link>
       <pubDate>Mon, 20 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/post/wrangle2/</guid>
+      <guid>/post/wrangle2/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -920,10 +923,10 @@ dmy_hms(&amp;quot;01-01-1910 23:44:56&amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/li
     
     <item>
       <title>Wrangle - Part I</title>
-      <link>https://synikitin.github.io/analytics6600/post/wrangle/</link>
+      <link>/post/wrangle/</link>
       <pubDate>Mon, 13 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/post/wrangle/</guid>
+      <guid>/post/wrangle/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -1356,10 +1359,10 @@ orders &amp;lt;- tibble(
     
     <item>
       <title>Exploratory Data Analysis</title>
-      <link>https://synikitin.github.io/analytics6600/publication/eda/</link>
+      <link>/publication/eda/</link>
       <pubDate>Mon, 30 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/publication/eda/</guid>
+      <guid>/publication/eda/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -1505,40 +1508,40 @@ ggplot(df_plot1, aes(x = year_interval, fill = clean_test)) +
     
     <item>
       <title>Deep Analysis</title>
-      <link>https://synikitin.github.io/analytics6600/project/analysis/</link>
+      <link>/project/analysis/</link>
       <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/project/analysis/</guid>
+      <guid>/project/analysis/</guid>
       <description>&lt;p&gt;Details to be determined.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>R Package</title>
-      <link>https://synikitin.github.io/analytics6600/project/package/</link>
+      <link>/project/package/</link>
       <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/project/package/</guid>
+      <guid>/project/package/</guid>
       <description>&lt;p&gt;Details to be determined.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Shiny Web Application</title>
-      <link>https://synikitin.github.io/analytics6600/project/shiny/</link>
+      <link>/project/shiny/</link>
       <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/project/shiny/</guid>
+      <guid>/project/shiny/</guid>
       <description>&lt;p&gt;Details to be determined.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Website is Online</title>
-      <link>https://synikitin.github.io/analytics6600/post/welcome/</link>
+      <link>/post/welcome/</link>
       <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/post/welcome/</guid>
+      <guid>/post/welcome/</guid>
       <description>&lt;p&gt;Greetings Students!&lt;/p&gt;
 
 &lt;p&gt;We will use this website for information about the course and any news that is longer than appropriate for an email. Here you will find the syllabus, assignments, projects, news items and ways of contacting me.&lt;/p&gt;

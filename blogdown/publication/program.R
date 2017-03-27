@@ -1,9 +1,10 @@
 library(json)
 library(ggplot2)
+library(xgboost)
 library(dplyr)
 library(tidyr)
 library(tidytext)
-library(lda)
+library(topicmodels)
 library(purrr)
 library(tibble)
 library(stringr)
@@ -37,10 +38,10 @@ process_photos <- function(photo_urls) {
 }
 
 unzip("~/Downloads/train.json.zip")
-train <- jsonlite::fromJSON("train.json")
+train_raw <- jsonlite::fromJSON("train.json")
 vars <- setdiff(names(train), c("photos", "features"))
-train <- map_at(train, vars, unlist) %>%
-  as_tibble() %>%
+train <- map_at(train_raw, vars, unlist) %>% #as_tibble(train_raw) %>% 
+  as_tibble() %>% #mutate_at(vars, unlist)
   slice(1:5) %>% 
   select(features) %>% 
   mutate(
@@ -50,53 +51,53 @@ train <- map_at(train, vars, unlist) %>%
   
 
 
-select(train, features) %>% 
-  do(tibble(feat = unlist(.$features))) %>%
-  mutate(feat = str_to_lower(feat)) %>% 
-  count(feat) %>% 
-  filter(n > 600) %>% 
-  ggplot(aes(reorder(factor(feat), n), n)) +
-  geom_col() +
-  coord_flip()
-
-
-vocab <- data_frame(feat = unlist(train$features))  %>%
-  unnest_tokens(word, feat) %>% 
-  anti_join(stop_words) %>% 
-  distinct %>% 
-  bind_rows(tibble(word = "nothing"))
-
-indx_vocab <- setNames(seq_len(nrow(vocab)) - 1L, unlist(vocab))
-
-
-docs <- data_frame(feat = train$features, ad = names(train$features)) %>% 
-  mutate(feat = map(feat, insert_nothing))
-  unnest(feat)
-  mutate(id_doc = seq_along(Details)) %>%
-  slice(1:100) %>% 
-  unnest_tokens(word, feat, drop = FALSE) %>% 
-  semi_join(vocab, "word")
-
-docs_sum <- docs %>% 
-  select(-Details) %>% 
-  count(id_doc, word, sort = TRUE) %>% 
-  ungroup() %>% 
-  #arrange(id_doc) %>% 
-  mutate(id_term = indx_vocab[word]) %>% 
-  select(id_doc, id_term, n) %>%
-  split(.$id_doc) %>%
-  lapply(function(df) t(as.matrix(df[, -1])))
-
-
-
-set.seed(9844)
-model <- lda.collapsed.gibbs.sampler(docs_sum, 20, unlist(vocab), 100, .1, .1, compute.log.likelihood = TRUE)
-
-plot.ts(t(model$log.likelihoods))
-
-top.topic.words(model$topics, 5, by.score = TRUE)
-
-top.topic.documents(model$document_sums)
-
-predictive.distribution(model$document_sums[, 1:10], model$topics, 0.1, 0.1)
+# select(train, features) %>% 
+#   do(tibble(feat = unlist(.$features))) %>%
+#   mutate(feat = str_to_lower(feat)) %>% 
+#   count(feat) %>% 
+#   filter(n > 600) %>% 
+#   ggplot(aes(reorder(factor(feat), n), n)) +
+#   geom_col() +
+#   coord_flip()
+# 
+# 
+# vocab <- data_frame(feat = unlist(train$features))  %>%
+#   unnest_tokens(word, feat) %>% 
+#   anti_join(stop_words) %>% 
+#   distinct %>% 
+#   bind_rows(tibble(word = "nothing"))
+# 
+# indx_vocab <- setNames(seq_len(nrow(vocab)) - 1L, unlist(vocab))
+# 
+# 
+# docs <- data_frame(feat = train$features, ad = names(train$features)) %>% 
+#   mutate(feat = map(feat, insert_nothing))
+#   unnest(feat)
+#   mutate(id_doc = seq_along(Details)) %>%
+#   slice(1:100) %>% 
+#   unnest_tokens(word, feat, drop = FALSE) %>% 
+#   semi_join(vocab, "word")
+# 
+# docs_sum <- docs %>% 
+#   select(-Details) %>% 
+#   count(id_doc, word, sort = TRUE) %>% 
+#   ungroup() %>% 
+#   #arrange(id_doc) %>% 
+#   mutate(id_term = indx_vocab[word]) %>% 
+#   select(id_doc, id_term, n) %>%
+#   split(.$id_doc) %>%
+#   lapply(function(df) t(as.matrix(df[, -1])))
+# 
+# 
+# 
+# set.seed(9844)
+# model <- lda.collapsed.gibbs.sampler(docs_sum, 20, unlist(vocab), 100, .1, .1, compute.log.likelihood = TRUE)
+# 
+# plot.ts(t(model$log.likelihoods))
+# 
+# top.topic.words(model$topics, 5, by.score = TRUE)
+# 
+# top.topic.documents(model$document_sums)
+# 
+# predictive.distribution(model$document_sums[, 1:10], model$topics, 0.1, 0.1)
 
