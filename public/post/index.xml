@@ -52,17 +52,17 @@ u.user &amp;lt;- read_delim(
 &lt;pre&gt;&lt;code&gt;df1 &amp;lt;- inner_join(u.data, u.user, &amp;quot;user_id&amp;quot;)
 df2 &amp;lt;- inner_join(df1, u.item, &amp;quot;movie_id&amp;quot;)
 df3 &amp;lt;- mutate(df2,
-timestamp = as_datetime(timestamp), 
+timestamp = as_datetime(timestamp),
 release_date = dmy(release_date)
-  ) 
+  )
 df4 &amp;lt;- select(df3, -video_release_date)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Overwrite each result&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;df &amp;lt;- inner_join(u.data, u.user, &amp;quot;user_id&amp;quot;)
 df &amp;lt;- inner_join(df, u.item, &amp;quot;movie_id&amp;quot;)
 df &amp;lt;- mutate(df,
-timestamp = as_datetime(timestamp), 
+timestamp = as_datetime(timestamp),
 release_date = dmy(release_date)
-  ) 
+  )
 df &amp;lt;- select(df, -video_release_date)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Nest each result&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;df &amp;lt;- select(
@@ -76,18 +76,18 @@ inner_join(
   u.item,
   &amp;quot;movie_id&amp;quot;
 ),
-timestamp = as_datetime(timestamp), 
+timestamp = as_datetime(timestamp),
 release_date = dmy(release_date)
   ),
   -video_release_date
 )&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Pipe each result&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;df &amp;lt;- inner_join(u.data, u.user, &amp;quot;user_id&amp;quot;) %&amp;gt;% 
-  inner_join(u.item, &amp;quot;movie_id&amp;quot;) %&amp;gt;% 
+&lt;pre&gt;&lt;code&gt;df &amp;lt;- inner_join(u.data, u.user, &amp;quot;user_id&amp;quot;) %&amp;gt;%
+  inner_join(u.item, &amp;quot;movie_id&amp;quot;) %&amp;gt;%
   mutate(
-timestamp = as_datetime(timestamp), 
+timestamp = as_datetime(timestamp),
 release_date = dmy(release_date)
-  ) %&amp;gt;% 
+  ) %&amp;gt;%
   select(-video_release_date)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;Pipes rewrite your code as if you used pattern in 3., that is assigning results into the same name over and passing it forward. When you see pipes you should think that the left-handside is becoming the first argument in a function call:
 &lt;ul&gt;
@@ -98,14 +98,14 @@ release_date = dmy(release_date)
 &lt;li&gt;&lt;p&gt;Pipes are great for several function calls that operate on the same or maybe a couple datasets and result in a single output. Long chains of function calls should be broken up, and when you are dealing with many datasets or many outputs, these cannot be or should not be combined as it may actually lead to more confusing code. It will also not work out of the box or at all with some special functions (book has examples).&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Additional operator allowing side-effects, like printing structure to check intermediate results, in the middle of transformations&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;df &amp;lt;- inner_join(u.data, u.user, &amp;quot;user_id&amp;quot;) %T&amp;gt;%
-  str %&amp;gt;% 
-  inner_join(u.item, &amp;quot;movie_id&amp;quot;) %T&amp;gt;% 
-  str %&amp;gt;% 
+  str %&amp;gt;%
+  inner_join(u.item, &amp;quot;movie_id&amp;quot;) %T&amp;gt;%
+  str %&amp;gt;%
   mutate(
-timestamp = as_datetime(timestamp), 
+timestamp = as_datetime(timestamp),
 release_date = dmy(release_date)
-  ) %T&amp;gt;% 
-  str %&amp;gt;% 
+  ) %T&amp;gt;%
+  str %&amp;gt;%
   select(-video_release_date)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
@@ -236,7 +236,7 @@ c(as.raw(0x00), as.raw(0xf4))      #raw&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(stringr)
 str_c(&amp;quot;file&amp;quot;, 1:10, &amp;quot;.csv&amp;quot;, sep = &amp;quot;&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##  [1] &amp;quot;file1.csv&amp;quot;  &amp;quot;file2.csv&amp;quot;  &amp;quot;file3.csv&amp;quot;  &amp;quot;file4.csv&amp;quot;  &amp;quot;file5.csv&amp;quot; 
+&lt;pre&gt;&lt;code&gt;##  [1] &amp;quot;file1.csv&amp;quot;  &amp;quot;file2.csv&amp;quot;  &amp;quot;file3.csv&amp;quot;  &amp;quot;file4.csv&amp;quot;  &amp;quot;file5.csv&amp;quot;
 ##  [6] &amp;quot;file6.csv&amp;quot;  &amp;quot;file7.csv&amp;quot;  &amp;quot;file8.csv&amp;quot;  &amp;quot;file9.csv&amp;quot;  &amp;quot;file10.csv&amp;quot;&lt;/code&gt;&lt;/pre&gt;
 &lt;ol start=&#34;9&#34; style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;&lt;p&gt;Raw vectors are also pretty rare and mostly used in more intricate programming.&lt;/p&gt;&lt;/li&gt;
@@ -288,9 +288,9 @@ length(x)&lt;/code&gt;&lt;/pre&gt;
 &lt;/ol&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;c(a = 1, b = 2, c = 3)
 setNames(1:3, c(&amp;quot;one&amp;quot;, &amp;quot;two&amp;quot;, &amp;quot;three&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## a b c 
-## 1 2 3 
-##   one   two three 
+&lt;pre&gt;&lt;code&gt;## a b c
+## 1 2 3
+##   one   two three
 ##     1     2     3&lt;/code&gt;&lt;/pre&gt;
 &lt;ol start=&#34;15&#34; style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;It is often needed to pull out specific elements of vectors. For this we use &lt;code&gt;[]&lt;/code&gt; syntax, with either position or name:&lt;/li&gt;
@@ -314,7 +314,7 @@ setNames(1:3, c(&amp;quot;one&amp;quot;, &amp;quot;two&amp;quot;, &amp;quot;thre
 &lt;pre&gt;&lt;code&gt;## numeric(0)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- c(one = 1, two = 2, three = 3)
 x[c(&amp;quot;one&amp;quot;, &amp;quot;two&amp;quot;)]&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## one two 
+&lt;pre&gt;&lt;code&gt;## one two
 ##   1   2&lt;/code&gt;&lt;/pre&gt;
 &lt;ol start=&#34;16&#34; style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;Lists share many features of atomic vectors, like naming, but are more complex than atomic vector because they can contain mixed types and hierarchies. To create a list you use&lt;/li&gt;
@@ -322,44 +322,44 @@ x[c(&amp;quot;one&amp;quot;, &amp;quot;two&amp;quot;)]&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(1, 2, 3)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [[1]]
 ## [1] 1
-## 
+##
 ## [[2]]
 ## [1] 2
-## 
+##
 ## [[3]]
 ## [1] 3&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(TRUE, 1L, 1, 1+1i, &amp;quot;one&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [[1]]
 ## [1] TRUE
-## 
+##
 ## [[2]]
 ## [1] 1
-## 
+##
 ## [[3]]
 ## [1] 1
-## 
+##
 ## [[4]]
 ## [1] 1+1i
-## 
+##
 ## [[5]]
 ## [1] &amp;quot;one&amp;quot;&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(one = 1, two = 2, three = 3)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## $one
 ## [1] 1
-## 
+##
 ## $two
 ## [1] 2
-## 
+##
 ## $three
 ## [1] 3&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(one = 1, two = list(three = 3, four = 4))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## $one
 ## [1] 1
-## 
+##
 ## $two
 ## $two$three
 ## [1] 3
-## 
+##
 ## $two$four
 ## [1] 4&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str(list(one = 1, two = list(three = 3, four = 4)))&lt;/code&gt;&lt;/pre&gt;
@@ -381,13 +381,13 @@ length(list(1, 2, 3, 4))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(1, 2, 3)[1:2]&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [[1]]
 ## [1] 1
-## 
+##
 ## [[2]]
 ## [1] 2&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(1, 2, list(3, 4))[[3]]&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [[1]]
 ## [1] 3
-## 
+##
 ## [[2]]
 ## [1] 4&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- list(one = 1, two = 2)
@@ -404,20 +404,20 @@ attr(mtcars, &amp;quot;something&amp;quot;) &amp;lt;- 1:3 #to set&lt;/code&gt;&l
 &lt;pre&gt;&lt;code&gt;## $names
 ##  [1] &amp;quot;mpg&amp;quot;  &amp;quot;cyl&amp;quot;  &amp;quot;disp&amp;quot; &amp;quot;hp&amp;quot;   &amp;quot;drat&amp;quot; &amp;quot;wt&amp;quot;   &amp;quot;qsec&amp;quot; &amp;quot;vs&amp;quot;   &amp;quot;am&amp;quot;   &amp;quot;gear&amp;quot;
 ## [11] &amp;quot;carb&amp;quot;
-## 
+##
 ## $row.names
-##  [1] &amp;quot;Mazda RX4&amp;quot;           &amp;quot;Mazda RX4 Wag&amp;quot;       &amp;quot;Datsun 710&amp;quot;         
-##  [4] &amp;quot;Hornet 4 Drive&amp;quot;      &amp;quot;Hornet Sportabout&amp;quot;   &amp;quot;Valiant&amp;quot;            
-##  [7] &amp;quot;Duster 360&amp;quot;          &amp;quot;Merc 240D&amp;quot;           &amp;quot;Merc 230&amp;quot;           
-## [10] &amp;quot;Merc 280&amp;quot;            &amp;quot;Merc 280C&amp;quot;           &amp;quot;Merc 450SE&amp;quot;         
-## [13] &amp;quot;Merc 450SL&amp;quot;          &amp;quot;Merc 450SLC&amp;quot;         &amp;quot;Cadillac Fleetwood&amp;quot; 
-## [16] &amp;quot;Lincoln Continental&amp;quot; &amp;quot;Chrysler Imperial&amp;quot;   &amp;quot;Fiat 128&amp;quot;           
-## [19] &amp;quot;Honda Civic&amp;quot;         &amp;quot;Toyota Corolla&amp;quot;      &amp;quot;Toyota Corona&amp;quot;      
-## [22] &amp;quot;Dodge Challenger&amp;quot;    &amp;quot;AMC Javelin&amp;quot;         &amp;quot;Camaro Z28&amp;quot;         
-## [25] &amp;quot;Pontiac Firebird&amp;quot;    &amp;quot;Fiat X1-9&amp;quot;           &amp;quot;Porsche 914-2&amp;quot;      
-## [28] &amp;quot;Lotus Europa&amp;quot;        &amp;quot;Ford Pantera L&amp;quot;      &amp;quot;Ferrari Dino&amp;quot;       
-## [31] &amp;quot;Maserati Bora&amp;quot;       &amp;quot;Volvo 142E&amp;quot;         
-## 
+##  [1] &amp;quot;Mazda RX4&amp;quot;           &amp;quot;Mazda RX4 Wag&amp;quot;       &amp;quot;Datsun 710&amp;quot;
+##  [4] &amp;quot;Hornet 4 Drive&amp;quot;      &amp;quot;Hornet Sportabout&amp;quot;   &amp;quot;Valiant&amp;quot;
+##  [7] &amp;quot;Duster 360&amp;quot;          &amp;quot;Merc 240D&amp;quot;           &amp;quot;Merc 230&amp;quot;
+## [10] &amp;quot;Merc 280&amp;quot;            &amp;quot;Merc 280C&amp;quot;           &amp;quot;Merc 450SE&amp;quot;
+## [13] &amp;quot;Merc 450SL&amp;quot;          &amp;quot;Merc 450SLC&amp;quot;         &amp;quot;Cadillac Fleetwood&amp;quot;
+## [16] &amp;quot;Lincoln Continental&amp;quot; &amp;quot;Chrysler Imperial&amp;quot;   &amp;quot;Fiat 128&amp;quot;
+## [19] &amp;quot;Honda Civic&amp;quot;         &amp;quot;Toyota Corolla&amp;quot;      &amp;quot;Toyota Corona&amp;quot;
+## [22] &amp;quot;Dodge Challenger&amp;quot;    &amp;quot;AMC Javelin&amp;quot;         &amp;quot;Camaro Z28&amp;quot;
+## [25] &amp;quot;Pontiac Firebird&amp;quot;    &amp;quot;Fiat X1-9&amp;quot;           &amp;quot;Porsche 914-2&amp;quot;
+## [28] &amp;quot;Lotus Europa&amp;quot;        &amp;quot;Ford Pantera L&amp;quot;      &amp;quot;Ferrari Dino&amp;quot;
+## [31] &amp;quot;Maserati Bora&amp;quot;       &amp;quot;Volvo 142E&amp;quot;
+##
 ## $class
 ## [1] &amp;quot;data.frame&amp;quot;&lt;/code&gt;&lt;/pre&gt;
 &lt;ol start=&#34;20&#34; style=&#34;list-style-type: decimal&#34;&gt;
@@ -455,7 +455,7 @@ dim(datasets$data4)&lt;/code&gt;&lt;/pre&gt;
 &lt;/ol&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;results &amp;lt;- vector(&amp;quot;integer&amp;quot;, 4)       # 1. output
 for (i in seq_along(datasets)) {      # 2. sequence
-  results[i] &amp;lt;- ncol(datasets[[i]])   # 3. body 
+  results[i] &amp;lt;- ncol(datasets[[i]])   # 3. body
 }
 results&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 11  3  7  8&lt;/code&gt;&lt;/pre&gt;
@@ -522,7 +522,7 @@ for (name in image_names) {
   rasterImage(img, 1, 1, 640, 480)
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;img/iteration.png&#34; /&gt;
+&lt;img src=&#34;https://synikitin.github.io/analytics6600/img/iteration.png&#34; /&gt;
 
 &lt;/div&gt;
 &lt;ul&gt;
