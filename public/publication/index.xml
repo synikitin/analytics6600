@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Publication-rsses on Data Analytics 6600</title>
-    <link>/publication/index.xml</link>
+    <link>https://synikitin.github.io/analytics6600/publication/index.xml</link>
     <description>Recent content in Publication-rsses on Data Analytics 6600</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>Functions and Iteration</title>
-      <link>/publication/program/</link>
+      <link>https://synikitin.github.io/analytics6600/publication/program/</link>
       <pubDate>Mon, 03 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>/publication/program/</guid>
+      <guid>https://synikitin.github.io/analytics6600/publication/program/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -113,10 +113,10 @@ for (sequence) {
     
     <item>
       <title>Wrangling and Exploring</title>
-      <link>/publication/wrangle/</link>
+      <link>https://synikitin.github.io/analytics6600/publication/wrangle/</link>
       <pubDate>Mon, 06 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>/publication/wrangle/</guid>
+      <guid>https://synikitin.github.io/analytics6600/publication/wrangle/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -298,10 +298,10 @@ Sixth, use the plot to determine what seems to be the dominant attitude of execu
     
     <item>
       <title>Exploratory Data Analysis</title>
-      <link>/publication/eda/</link>
+      <link>https://synikitin.github.io/analytics6600/publication/eda/</link>
       <pubDate>Mon, 30 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>/publication/eda/</guid>
+      <guid>https://synikitin.github.io/analytics6600/publication/eda/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
