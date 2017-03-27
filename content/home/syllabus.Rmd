@@ -30,30 +30,29 @@ Statistics I (MATH 1240)
 |               | - 02/20       | - Strings, Factors, Dates, Times            | - Read 14 - 16, Assignment 2 |
 +---------------+---------------+---------------------------------------------+------------------------------+
 | Program       | - 03/06       | - Assignment 2, Pipes, Functions            | - Read 17 - 19               |
-|               | - 03/13       | - Vectors, Iteration                        | - Read 20 - 21, Assignment 3 |
+|               | - 03/13       | - Vectors, Iteration                        | - Read 20 - 21               |
 +---------------+---------------+---------------------------------------------+------------------------------+
-| Model         | - 03/20       | - Model basics                              | - Read 22 - 23               |
-|               | - 03/27       | - Model building                            | - Read 24 - 25, Assignment 4 |
+| Program       | - 03/20       | - Vectors, Iteration, Assignment 3          | - Read 20 - 21               |
+|               | - 03/27       | - Assignment 3, Modeling basics             | - Read 22 - 23               |
 +---------------+---------------+---------------------------------------------+------------------------------+
-| Produce       | - 04/03       | - Student's choice                          | - Project work               |
-|               | - 04/10       | - Student's choice                          | - Project work               |
+| Model         | - 04/03       | - Modeling basics                           | - Read 22 - 23               |
+| Produce       | - 04/10       | - Student's choice                          | - Project work               |
 +---------------+---------------+---------------------------------------------+------------------------------+
-| Share         | - 04/17       | - Student's choice                          | - Presentation               |
-|               | - 04/24       | - Student's choice                          | - Presentation               |
+| Produce       | - 04/17       | - Student's choice                          | - Project work               |
+| Share         | - 04/24       | - Student's choice                          | - Presentations              |
 +---------------+---------------+---------------------------------------------+------------------------------+
 
 ## **Assignment**
 - Exploratory Data Analysis
 - Data Organization
 - Basic Programming Concepts
-- Predictive Modeling
 
 ## **Project**
 - R package of functions useful for your work
 - R markdown report of deep analysis
 
 ## **Assessment**
-- 4 Assignments - 40%
-- Project - 50%
+- 3 Assignments - 30%
+- Project - 60%
 - Participation - 10%
 

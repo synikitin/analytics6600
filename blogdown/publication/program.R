@@ -9,18 +9,22 @@ library(purrr)
 library(tibble)
 library(stringr)
 
-insert_nothing <- function(vec) {
-  vec <- if (is.list(vec)) "nothing" else vec
-}
 combine_features <- function(vec) {
-  if (length(vec) > 1) str_c(vec, collapse = " ") else vec
+  #vec <- if (is.list(vec)) "nothing" else vec
+  if (length(vec) == 0L) vec <- "nothing"
+  str_c(vec, collapse = " ")
 }
+
+
+# combine_features <- function(vec) {
+# }
 clean_features <- function(features) {
   features_clean <- features %>% 
-    map(insert_nothing) %>% 
-    map_chr(combine_features) %>% 
+    lapply(combine_features) %>%
+    unlist %>% 
     str_to_lower %>% 
     str_replace_all("[^a-z]", " ")
+  features_clean
 }
 
 process_photos <- function(photo_urls) {
