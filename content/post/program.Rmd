@@ -426,7 +426,7 @@ for (name in image_names) {
 }
 ```
 
-![](img/iteration.png)
+![](https://synikitin.github.io/analytics6600/img/iteration.png)
 
   - Handling outputs of unknown length
   
