@@ -2,20 +2,121 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data Analytics 6600</title>
-    <link>https://synikitin.github.io/analytics6600/index.xml</link>
+    <link>/index.xml</link>
     <description>Recent content on Data Analytics 6600</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Slava Nikitin</copyright>
-    <lastBuildDate>Mon, 06 Mar 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 03 Apr 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Functions and Iteration</title>
+      <link>/publication/program/</link>
+      <pubDate>Mon, 03 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/program/</guid>
+      <description>&lt;!-- BLOGDOWN-BODY-BEFORE
+
+/BLOGDOWN-BODY-BEFORE --&gt;
+
+&lt;div id=&#34;learning-objectives&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;Learning Objectives&lt;/strong&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Package loading&lt;/li&gt;
+&lt;li&gt;Data import&lt;/li&gt;
+&lt;li&gt;Data clean up&lt;/li&gt;
+&lt;li&gt;Data manipulation&lt;/li&gt;
+&lt;li&gt;Piping&lt;/li&gt;
+&lt;li&gt;Functions&lt;/li&gt;
+&lt;li&gt;Data structures: vectors, lists, data frames&lt;/li&gt;
+&lt;li&gt;Iteration&lt;/li&gt;
+&lt;li&gt;Watson API services&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;context&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;Context&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;To practice programming concepts, we will use a data set from a kaggle competition. &lt;a href=&#34;renthop.com&#34; class=&#34;uri&#34;&gt;renthop.com&lt;/a&gt; is a service for listing and searching for apartments. For each apartment, there is information about the bedrooms, bathrooms, pricing, and interest level, based on how many views a listing got when it was opened. In addition to numerical data, there is also text describing features of an apartment and images showing the decor, data that will require special treatment and provide new learning opportunities.&lt;/p&gt;
+&lt;p&gt;How much interest will a new rental listing on RentHop receive? This question motivates the competition, and will guide this assignment, which involves data import, clean up, manipulation, interacting with an api, assisted by functions and iteration.&lt;/p&gt;
+&lt;!-- the second part will cover predictive modeling that will involve taking all variables we have and using them to predict interest level to figure what makes for a good rental listing. --&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-import&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;Data Import&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Start by creating a project folder. Use the dataset link to obtain data; then move it to your project folder. Data is somewhat large, and has been compressed with zip algorithm. Assuming you moved downloaded data to your project folder, use the following R code to unzip it:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;unzip(&amp;quot;test.json.zip&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If the code does not work, do it manually with &lt;a href=&#34;http://www.7-zip.org/&#34;&gt;7zip&lt;/a&gt; on Windows or Archive Utility on Mac. Once you unzipped the file, you should see a test.json file in your project folder - make sure you do before proceeding. .json file is a popular storage format to transport data over the internet, and requires a special package and function to import it into R. Run the following commands to get the required package and load it,&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;install.packages(&amp;quot;jsonlite&amp;quot;)
+library(jsonlite)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and then run the following command to read the data into R,&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;train_raw &amp;lt;- fromJSON(&amp;quot;train.json&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;fromJSON&lt;/code&gt; and &lt;strong&gt;jsonlite&lt;/strong&gt; are similar to &lt;code&gt;read_csv&lt;/code&gt; and &lt;strong&gt;readr&lt;/strong&gt; in that they import data into R, but address different formats.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-cleanup&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;Data Cleanup&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;You should see a pretty large list. Explore it using these commands,&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;typeof(train_raw)
+names(train_raw)
+str(train_raw)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;While &lt;code&gt;fromJSON&lt;/code&gt; created a list, our data can be conveniently stored as a data frame, with each row being a listing and each column being some part of that listing. The only novel aspect of this data is how to handle &lt;strong&gt;features&lt;/strong&gt; and &lt;strong&gt;photos&lt;/strong&gt; because unlike standard column that have a single value per cell, apartment listings can have multiple features or photos, hence we need to somehow store a vector of multiple values in a single cell of a data frame.&lt;/p&gt;
+&lt;p&gt;Recall that data frames are made out of lists, and that lists can have lists inside of them and that components of a list can be vectors with multiple values of the same type. This means that a data frame can have a list column and allows us to store multiple features and photo urls in a single cell of a data frame.&lt;/p&gt;
+&lt;p&gt;Apply &lt;code&gt;as_tibble&lt;/code&gt; and then structure of data to see that it is tabular. Next task is to fix types of columns. Most of the columns are list type, but should be integer or character. Write &lt;code&gt;for&lt;/code&gt; loop code to modify the tibble by iterating over columns and applying &lt;code&gt;unlist&lt;/code&gt; to all the columns but features and photos. Fill in the missing pieces of the &lt;code&gt;for&lt;/code&gt; loop to carry this out:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;for (sequence) {
+  code
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Next task is to combine features for a given apartment into a single string. For this we need to iterate over the cell values of the &lt;strong&gt;features&lt;/strong&gt; column. Some values are empty and others contain one or more strings. If a value is empty, then we need to replace empty values with some default string like “nothing”, otherwise collapse strings into a single string separated by a space. For this you will need to create a function that takes a list, loops over its components, replacing the value of a component if its length is 0 and applying &lt;code&gt;str_c&lt;/code&gt; function from &lt;strong&gt;stringr&lt;/strong&gt; package. Here is a logical skeleton:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func &amp;lt;- function(arguments) {
+  for (sequence) {
+    if (length is 0) replace with &amp;quot;nothing&amp;quot;
+    collapse values into a single value
+  }
+  apply lower case transformation
+  replace all symbols that are not english characters with empty space
+  return value
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;After finishing this funciton, modify your data frame inside &lt;code&gt;mutate&lt;/code&gt; with it. Next, we will examine what could be done with photo urls.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ibm-image-analysis&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;IBM Image Analysis&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;In this part will further pratice function writing and iteration by downloading the photos using the urls and then sending them for object analysis to IBM. &lt;strong&gt;photos&lt;/strong&gt; is a list column and each component is a vector of urls represented as strings. Install these packages before you go on:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;install.packages(&amp;quot;devtools&amp;quot;)
+library(devtools)
+install_github(&amp;quot;cbuscollaboratory/cognizer&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Next, we need to create a function that can take a vector of urls, go to the url to download a photo and store it locally on your hard drive, then send all the images together to IBM for object analysis. Here is the logical skeleton:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func &amp;lt;- function(arguments) {
+  create a vector of names for the images
+  download images from urls with names you created above
+  send these images to IBM using image_classify function from cognizer package
+  return results of IBM analysis 
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I created a free account to try this for everyone. IBM services are what is called APIs - application programming interfaces - which require an api key to interact with. Once you have the key, you can store it as a variable and pass it to your function.&lt;/p&gt;
+&lt;p&gt;The daily limit is 250 images, so everyone can send ten or so as an exercise. Use this code to get ten random urls and apply your function to it. Dont forget to assign a name to your results, so you can examine it further.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;key &amp;lt;- &amp;quot;key goes here&amp;quot;
+urls &amp;lt;- sample(unlist(df$photos), 10)
+result &amp;lt;- func(urls, key)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The results you get from IBM is a complicated, nested list. The last part is to iterate over the results, pulling out the information about classes and algorithm’s confidence scores and storing them in a list. To navigate through the list you will need to use a combination of names and positions of the components. Here is a logical skeleton of the problem:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;output &amp;lt;- vector()
+for (sequence) {
+  output &amp;lt;- results$name[[i]]$name[[i]]
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Dont forget to put all your code into Rmarkdown and test that all of it runs without errors to produce an html file that contains your answers. Good luck!&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;!-- BLOGDOWN-HEAD
+
+
+
+
+/BLOGDOWN-HEAD --&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Program</title>
-      <link>https://synikitin.github.io/analytics6600/post/program/</link>
+      <link>/post/program/</link>
       <pubDate>Mon, 06 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/post/program/</guid>
+      <guid>/post/program/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -52,17 +153,17 @@ u.user &amp;lt;- read_delim(
 &lt;pre&gt;&lt;code&gt;df1 &amp;lt;- inner_join(u.data, u.user, &amp;quot;user_id&amp;quot;)
 df2 &amp;lt;- inner_join(df1, u.item, &amp;quot;movie_id&amp;quot;)
 df3 &amp;lt;- mutate(df2,
-timestamp = as_datetime(timestamp),
+timestamp = as_datetime(timestamp), 
 release_date = dmy(release_date)
-  )
+  ) 
 df4 &amp;lt;- select(df3, -video_release_date)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Overwrite each result&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;df &amp;lt;- inner_join(u.data, u.user, &amp;quot;user_id&amp;quot;)
 df &amp;lt;- inner_join(df, u.item, &amp;quot;movie_id&amp;quot;)
 df &amp;lt;- mutate(df,
-timestamp = as_datetime(timestamp),
+timestamp = as_datetime(timestamp), 
 release_date = dmy(release_date)
-  )
+  ) 
 df &amp;lt;- select(df, -video_release_date)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Nest each result&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;df &amp;lt;- select(
@@ -76,18 +177,18 @@ inner_join(
   u.item,
   &amp;quot;movie_id&amp;quot;
 ),
-timestamp = as_datetime(timestamp),
+timestamp = as_datetime(timestamp), 
 release_date = dmy(release_date)
   ),
   -video_release_date
 )&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Pipe each result&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;df &amp;lt;- inner_join(u.data, u.user, &amp;quot;user_id&amp;quot;) %&amp;gt;%
-  inner_join(u.item, &amp;quot;movie_id&amp;quot;) %&amp;gt;%
+&lt;pre&gt;&lt;code&gt;df &amp;lt;- inner_join(u.data, u.user, &amp;quot;user_id&amp;quot;) %&amp;gt;% 
+  inner_join(u.item, &amp;quot;movie_id&amp;quot;) %&amp;gt;% 
   mutate(
-timestamp = as_datetime(timestamp),
+timestamp = as_datetime(timestamp), 
 release_date = dmy(release_date)
-  ) %&amp;gt;%
+  ) %&amp;gt;% 
   select(-video_release_date)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;Pipes rewrite your code as if you used pattern in 3., that is assigning results into the same name over and passing it forward. When you see pipes you should think that the left-handside is becoming the first argument in a function call:
 &lt;ul&gt;
@@ -98,14 +199,14 @@ release_date = dmy(release_date)
 &lt;li&gt;&lt;p&gt;Pipes are great for several function calls that operate on the same or maybe a couple datasets and result in a single output. Long chains of function calls should be broken up, and when you are dealing with many datasets or many outputs, these cannot be or should not be combined as it may actually lead to more confusing code. It will also not work out of the box or at all with some special functions (book has examples).&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Additional operator allowing side-effects, like printing structure to check intermediate results, in the middle of transformations&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;df &amp;lt;- inner_join(u.data, u.user, &amp;quot;user_id&amp;quot;) %T&amp;gt;%
-  str %&amp;gt;%
-  inner_join(u.item, &amp;quot;movie_id&amp;quot;) %T&amp;gt;%
-  str %&amp;gt;%
+  str %&amp;gt;% 
+  inner_join(u.item, &amp;quot;movie_id&amp;quot;) %T&amp;gt;% 
+  str %&amp;gt;% 
   mutate(
-timestamp = as_datetime(timestamp),
+timestamp = as_datetime(timestamp), 
 release_date = dmy(release_date)
-  ) %T&amp;gt;%
-  str %&amp;gt;%
+  ) %T&amp;gt;% 
+  str %&amp;gt;% 
   select(-video_release_date)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
@@ -228,15 +329,15 @@ c(as.raw(0x00), as.raw(0xf4))      #raw&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;Double vectors are often read from a file or may be generated with a random number generator:&lt;/li&gt;
 &lt;/ol&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rnorm(10, mean = 5, sd = 1)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##  [1] 3.605338 4.745919 7.456151 4.729131 5.035488 5.663089 4.269506
-##  [8] 5.387134 5.120955 6.211883&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1] 4.961494 4.891863 5.180934 5.142750 5.389000 5.990083 4.720025
+##  [8] 5.037426 4.957679 6.044893&lt;/code&gt;&lt;/pre&gt;
 &lt;ol start=&#34;7&#34; style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;&lt;p&gt;You will not see complex vectors unless you are doing pretty advanced math or physics.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Character vectors are often read from files, but also created, as you saw before with the Strings chapter:&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(stringr)
 str_c(&amp;quot;file&amp;quot;, 1:10, &amp;quot;.csv&amp;quot;, sep = &amp;quot;&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##  [1] &amp;quot;file1.csv&amp;quot;  &amp;quot;file2.csv&amp;quot;  &amp;quot;file3.csv&amp;quot;  &amp;quot;file4.csv&amp;quot;  &amp;quot;file5.csv&amp;quot;
+&lt;pre&gt;&lt;code&gt;##  [1] &amp;quot;file1.csv&amp;quot;  &amp;quot;file2.csv&amp;quot;  &amp;quot;file3.csv&amp;quot;  &amp;quot;file4.csv&amp;quot;  &amp;quot;file5.csv&amp;quot; 
 ##  [6] &amp;quot;file6.csv&amp;quot;  &amp;quot;file7.csv&amp;quot;  &amp;quot;file8.csv&amp;quot;  &amp;quot;file9.csv&amp;quot;  &amp;quot;file10.csv&amp;quot;&lt;/code&gt;&lt;/pre&gt;
 &lt;ol start=&#34;9&#34; style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;&lt;p&gt;Raw vectors are also pretty rare and mostly used in more intricate programming.&lt;/p&gt;&lt;/li&gt;
@@ -288,9 +389,9 @@ length(x)&lt;/code&gt;&lt;/pre&gt;
 &lt;/ol&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;c(a = 1, b = 2, c = 3)
 setNames(1:3, c(&amp;quot;one&amp;quot;, &amp;quot;two&amp;quot;, &amp;quot;three&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## a b c
-## 1 2 3
-##   one   two three
+&lt;pre&gt;&lt;code&gt;## a b c 
+## 1 2 3 
+##   one   two three 
 ##     1     2     3&lt;/code&gt;&lt;/pre&gt;
 &lt;ol start=&#34;15&#34; style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;It is often needed to pull out specific elements of vectors. For this we use &lt;code&gt;[]&lt;/code&gt; syntax, with either position or name:&lt;/li&gt;
@@ -314,7 +415,7 @@ setNames(1:3, c(&amp;quot;one&amp;quot;, &amp;quot;two&amp;quot;, &amp;quot;thre
 &lt;pre&gt;&lt;code&gt;## numeric(0)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- c(one = 1, two = 2, three = 3)
 x[c(&amp;quot;one&amp;quot;, &amp;quot;two&amp;quot;)]&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## one two
+&lt;pre&gt;&lt;code&gt;## one two 
 ##   1   2&lt;/code&gt;&lt;/pre&gt;
 &lt;ol start=&#34;16&#34; style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;Lists share many features of atomic vectors, like naming, but are more complex than atomic vector because they can contain mixed types and hierarchies. To create a list you use&lt;/li&gt;
@@ -322,44 +423,44 @@ x[c(&amp;quot;one&amp;quot;, &amp;quot;two&amp;quot;)]&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(1, 2, 3)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [[1]]
 ## [1] 1
-##
+## 
 ## [[2]]
 ## [1] 2
-##
+## 
 ## [[3]]
 ## [1] 3&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(TRUE, 1L, 1, 1+1i, &amp;quot;one&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [[1]]
 ## [1] TRUE
-##
+## 
 ## [[2]]
 ## [1] 1
-##
+## 
 ## [[3]]
 ## [1] 1
-##
+## 
 ## [[4]]
 ## [1] 1+1i
-##
+## 
 ## [[5]]
 ## [1] &amp;quot;one&amp;quot;&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(one = 1, two = 2, three = 3)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## $one
 ## [1] 1
-##
+## 
 ## $two
 ## [1] 2
-##
+## 
 ## $three
 ## [1] 3&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(one = 1, two = list(three = 3, four = 4))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## $one
 ## [1] 1
-##
+## 
 ## $two
 ## $two$three
 ## [1] 3
-##
+## 
 ## $two$four
 ## [1] 4&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str(list(one = 1, two = list(three = 3, four = 4)))&lt;/code&gt;&lt;/pre&gt;
@@ -381,13 +482,13 @@ length(list(1, 2, 3, 4))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(1, 2, 3)[1:2]&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [[1]]
 ## [1] 1
-##
+## 
 ## [[2]]
 ## [1] 2&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(1, 2, list(3, 4))[[3]]&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [[1]]
 ## [1] 3
-##
+## 
 ## [[2]]
 ## [1] 4&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- list(one = 1, two = 2)
@@ -404,20 +505,20 @@ attr(mtcars, &amp;quot;something&amp;quot;) &amp;lt;- 1:3 #to set&lt;/code&gt;&l
 &lt;pre&gt;&lt;code&gt;## $names
 ##  [1] &amp;quot;mpg&amp;quot;  &amp;quot;cyl&amp;quot;  &amp;quot;disp&amp;quot; &amp;quot;hp&amp;quot;   &amp;quot;drat&amp;quot; &amp;quot;wt&amp;quot;   &amp;quot;qsec&amp;quot; &amp;quot;vs&amp;quot;   &amp;quot;am&amp;quot;   &amp;quot;gear&amp;quot;
 ## [11] &amp;quot;carb&amp;quot;
-##
+## 
 ## $row.names
-##  [1] &amp;quot;Mazda RX4&amp;quot;           &amp;quot;Mazda RX4 Wag&amp;quot;       &amp;quot;Datsun 710&amp;quot;
-##  [4] &amp;quot;Hornet 4 Drive&amp;quot;      &amp;quot;Hornet Sportabout&amp;quot;   &amp;quot;Valiant&amp;quot;
-##  [7] &amp;quot;Duster 360&amp;quot;          &amp;quot;Merc 240D&amp;quot;           &amp;quot;Merc 230&amp;quot;
-## [10] &amp;quot;Merc 280&amp;quot;            &amp;quot;Merc 280C&amp;quot;           &amp;quot;Merc 450SE&amp;quot;
-## [13] &amp;quot;Merc 450SL&amp;quot;          &amp;quot;Merc 450SLC&amp;quot;         &amp;quot;Cadillac Fleetwood&amp;quot;
-## [16] &amp;quot;Lincoln Continental&amp;quot; &amp;quot;Chrysler Imperial&amp;quot;   &amp;quot;Fiat 128&amp;quot;
-## [19] &amp;quot;Honda Civic&amp;quot;         &amp;quot;Toyota Corolla&amp;quot;      &amp;quot;Toyota Corona&amp;quot;
-## [22] &amp;quot;Dodge Challenger&amp;quot;    &amp;quot;AMC Javelin&amp;quot;         &amp;quot;Camaro Z28&amp;quot;
-## [25] &amp;quot;Pontiac Firebird&amp;quot;    &amp;quot;Fiat X1-9&amp;quot;           &amp;quot;Porsche 914-2&amp;quot;
-## [28] &amp;quot;Lotus Europa&amp;quot;        &amp;quot;Ford Pantera L&amp;quot;      &amp;quot;Ferrari Dino&amp;quot;
-## [31] &amp;quot;Maserati Bora&amp;quot;       &amp;quot;Volvo 142E&amp;quot;
-##
+##  [1] &amp;quot;Mazda RX4&amp;quot;           &amp;quot;Mazda RX4 Wag&amp;quot;       &amp;quot;Datsun 710&amp;quot;         
+##  [4] &amp;quot;Hornet 4 Drive&amp;quot;      &amp;quot;Hornet Sportabout&amp;quot;   &amp;quot;Valiant&amp;quot;            
+##  [7] &amp;quot;Duster 360&amp;quot;          &amp;quot;Merc 240D&amp;quot;           &amp;quot;Merc 230&amp;quot;           
+## [10] &amp;quot;Merc 280&amp;quot;            &amp;quot;Merc 280C&amp;quot;           &amp;quot;Merc 450SE&amp;quot;         
+## [13] &amp;quot;Merc 450SL&amp;quot;          &amp;quot;Merc 450SLC&amp;quot;         &amp;quot;Cadillac Fleetwood&amp;quot; 
+## [16] &amp;quot;Lincoln Continental&amp;quot; &amp;quot;Chrysler Imperial&amp;quot;   &amp;quot;Fiat 128&amp;quot;           
+## [19] &amp;quot;Honda Civic&amp;quot;         &amp;quot;Toyota Corolla&amp;quot;      &amp;quot;Toyota Corona&amp;quot;      
+## [22] &amp;quot;Dodge Challenger&amp;quot;    &amp;quot;AMC Javelin&amp;quot;         &amp;quot;Camaro Z28&amp;quot;         
+## [25] &amp;quot;Pontiac Firebird&amp;quot;    &amp;quot;Fiat X1-9&amp;quot;           &amp;quot;Porsche 914-2&amp;quot;      
+## [28] &amp;quot;Lotus Europa&amp;quot;        &amp;quot;Ford Pantera L&amp;quot;      &amp;quot;Ferrari Dino&amp;quot;       
+## [31] &amp;quot;Maserati Bora&amp;quot;       &amp;quot;Volvo 142E&amp;quot;         
+## 
 ## $class
 ## [1] &amp;quot;data.frame&amp;quot;&lt;/code&gt;&lt;/pre&gt;
 &lt;ol start=&#34;20&#34; style=&#34;list-style-type: decimal&#34;&gt;
@@ -455,7 +556,7 @@ dim(datasets$data4)&lt;/code&gt;&lt;/pre&gt;
 &lt;/ol&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;results &amp;lt;- vector(&amp;quot;integer&amp;quot;, 4)       # 1. output
 for (i in seq_along(datasets)) {      # 2. sequence
-  results[i] &amp;lt;- ncol(datasets[[i]])   # 3. body
+  results[i] &amp;lt;- ncol(datasets[[i]])   # 3. body 
 }
 results&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 11  3  7  8&lt;/code&gt;&lt;/pre&gt;
@@ -563,10 +664,10 @@ out &amp;lt;- unlist(out)
     
     <item>
       <title>Wrangling and Exploring</title>
-      <link>https://synikitin.github.io/analytics6600/publication/wrangle/</link>
+      <link>/publication/wrangle/</link>
       <pubDate>Mon, 06 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/publication/wrangle/</guid>
+      <guid>/publication/wrangle/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -748,10 +849,10 @@ Sixth, use the plot to determine what seems to be the dominant attitude of execu
     
     <item>
       <title>Wrangle - Part II</title>
-      <link>https://synikitin.github.io/analytics6600/post/wrangle2/</link>
+      <link>/post/wrangle2/</link>
       <pubDate>Mon, 20 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/post/wrangle2/</guid>
+      <guid>/post/wrangle2/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -923,10 +1024,10 @@ dmy_hms(&amp;quot;01-01-1910 23:44:56&amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/li
     
     <item>
       <title>Wrangle - Part I</title>
-      <link>https://synikitin.github.io/analytics6600/post/wrangle/</link>
+      <link>/post/wrangle/</link>
       <pubDate>Mon, 13 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/post/wrangle/</guid>
+      <guid>/post/wrangle/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -1359,10 +1460,10 @@ orders &amp;lt;- tibble(
     
     <item>
       <title>Exploratory Data Analysis</title>
-      <link>https://synikitin.github.io/analytics6600/publication/eda/</link>
+      <link>/publication/eda/</link>
       <pubDate>Mon, 30 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/publication/eda/</guid>
+      <guid>/publication/eda/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -1508,40 +1609,40 @@ ggplot(df_plot1, aes(x = year_interval, fill = clean_test)) +
     
     <item>
       <title>Deep Analysis</title>
-      <link>https://synikitin.github.io/analytics6600/project/analysis/</link>
+      <link>/project/analysis/</link>
       <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/project/analysis/</guid>
+      <guid>/project/analysis/</guid>
       <description>&lt;p&gt;Details to be determined.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>R Package</title>
-      <link>https://synikitin.github.io/analytics6600/project/package/</link>
+      <link>/project/package/</link>
       <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/project/package/</guid>
+      <guid>/project/package/</guid>
       <description>&lt;p&gt;Details to be determined.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Shiny Web Application</title>
-      <link>https://synikitin.github.io/analytics6600/project/shiny/</link>
+      <link>/project/shiny/</link>
       <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/project/shiny/</guid>
+      <guid>/project/shiny/</guid>
       <description>&lt;p&gt;Details to be determined.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Website is Online</title>
-      <link>https://synikitin.github.io/analytics6600/post/welcome/</link>
+      <link>/post/welcome/</link>
       <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/post/welcome/</guid>
+      <guid>/post/welcome/</guid>
       <description>&lt;p&gt;Greetings Students!&lt;/p&gt;
 
 &lt;p&gt;We will use this website for information about the course and any news that is longer than appropriate for an email. Here you will find the syllabus, assignments, projects, news items and ways of contacting me.&lt;/p&gt;
