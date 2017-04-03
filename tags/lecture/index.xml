@@ -79,28 +79,28 @@ preds &amp;lt;- setdiff(names(mtcars), response)&lt;/code&gt;&lt;/pre&gt;
                       nfold = 5, prediction = TRUE, verbose = FALSE)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## $dt
 ##     train.rmse.mean train.rmse.std test.rmse.mean test.rmse.std
-##  1:       14.993933       0.291984      14.822759      1.634960
-##  2:       11.068695       0.219158      11.123965      1.554061
-##  3:        8.231948       0.148299       8.329076      1.521883
-##  4:        6.173751       0.101293       6.478337      1.500839
-##  5:        4.670877       0.064149       5.173599      1.504159
-##  6:        3.582215       0.042977       4.243949      1.516869
-##  7:        2.792007       0.031579       3.678892      1.448387
-##  8:        2.221686       0.024015       3.365655      1.319669
-##  9:        1.815382       0.023632       3.168318      1.177537
-## 10:        1.524795       0.022420       3.051389      1.066124
-## 11:        1.315182       0.026904       2.997304      0.962810
-## 12:        1.162248       0.029580       2.964006      0.919975
-## 13:        1.045998       0.037697       2.946803      0.853121
-## 14:        0.957839       0.046413       2.954466      0.806175
-## 15:        0.882804       0.035988       2.977791      0.808784
+##  1:       14.994247       0.590925      14.909984      3.097480
+##  2:       11.072227       0.423146      10.925548      2.974110
+##  3:        8.234335       0.286660       8.197776      2.774081
+##  4:        6.169467       0.202543       6.208961      2.552080
+##  5:        4.675557       0.150496       4.841571      2.428749
+##  6:        3.589425       0.108938       3.922092      2.261225
+##  7:        2.803943       0.093603       3.377539      2.106795
+##  8:        2.238899       0.090968       3.063617      1.957420
+##  9:        1.831239       0.100018       2.856681      1.801024
+## 10:        1.542348       0.108157       2.758663      1.677425
+## 11:        1.331137       0.115022       2.734206      1.562043
+## 12:        1.175391       0.120495       2.728540      1.506692
+## 13:        1.052263       0.117392       2.737890      1.455536
+## 14:        0.959195       0.104982       2.702063      1.414629
+## 15:        0.890466       0.104234       2.709136      1.387883
 ## 
 ## $pred
-##  [1] 20.16540 21.20982 25.94812 18.13794 16.48970 20.21816 15.24580
-##  [8] 26.06040 21.14948 16.87186 20.08516 17.39670 15.75836 17.39670
-## [15] 14.96215 14.96215 11.47685 27.09625 30.94643 30.16395 22.97746
-## [22] 17.90004 17.74608 14.65228 15.80265 31.88300 22.31139 20.98132
-## [29] 16.32927 18.55604 13.80461 20.85459&lt;/code&gt;&lt;/pre&gt;
+##  [1] 21.23776 20.54247 25.01806 18.48677 18.89520 17.93952 15.37514
+##  [8] 25.30877 22.11276 18.41322 19.26246 15.75770 16.07236 16.07236
+## [15] 15.20911 15.20911 11.32027 27.15747 30.78554 29.94482 25.53799
+## [22] 18.45447 18.89520 15.28373 16.05636 30.86668 22.26302 21.12897
+## [29] 15.67945 20.61279 15.28373 22.60438&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Output of &lt;code&gt;xgb.cv&lt;/code&gt; contains summary statistics on train and test data, and also predictions on the hold-out data. In addition to summary statistics, we can also do a few visualizations of the full pattern of predictive accuracy.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot.ts(as.data.frame(model_check$dt)[,c(1, 3)], plot.type = &amp;quot;single&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;#####../content/post/model_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt; The plot above shows mean predictive error in the model over training iterations. The gap between train and test shows the slight bias towards predicting train rather than test data. A good model should have both values low and not too far from each other.&lt;/p&gt;
@@ -146,37 +146,37 @@ model &amp;lt;- xgboost(data, nrounds = 15, params = params)&lt;/code&gt;&lt;/pr
                       nfold = 5, prediction = TRUE, verbose = FALSE)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## $dt
 ##     train.error.mean train.error.std test.error.mean test.error.std
-##  1:         0.070792        0.034027        0.222857       0.184501
-##  2:         0.046792        0.016893        0.194286       0.209372
-##  3:         0.039100        0.001332        0.194286       0.209372
-##  4:         0.039100        0.001332        0.194286       0.209372
-##  5:         0.031100        0.017429        0.194286       0.209372
-##  6:         0.031100        0.017429        0.194286       0.209372
-##  7:         0.023407        0.021402        0.194286       0.209372
-##  8:         0.023407        0.021402        0.194286       0.209372
-##  9:         0.023407        0.021402        0.194286       0.209372
-## 10:         0.031100        0.017429        0.194286       0.209372
-## 11:         0.023407        0.021402        0.194286       0.209372
-## 12:         0.023100        0.021113        0.194286       0.209372
-## 13:         0.015407        0.021123        0.194286       0.209372
-## 14:         0.023100        0.021113        0.194286       0.209372
-## 15:         0.015407        0.021123        0.194286       0.209372
+##  1:         0.070154        0.016909        0.152381       0.175449
+##  2:         0.054769        0.034771        0.185714       0.153751
+##  3:         0.039077        0.027209        0.152381       0.175449
+##  4:         0.039077        0.027209        0.185714       0.153751
+##  5:         0.023692        0.021637        0.185714       0.153751
+##  6:         0.031385        0.017561        0.185714       0.153751
+##  7:         0.023692        0.021637        0.185714       0.153751
+##  8:         0.023692        0.021637        0.185714       0.153751
+##  9:         0.023692        0.021637        0.185714       0.153751
+## 10:         0.015692        0.021495        0.185714       0.153751
+## 11:         0.023692        0.021637        0.185714       0.153751
+## 12:         0.015692        0.021495        0.185714       0.153751
+## 13:         0.023692        0.021637        0.185714       0.153751
+## 14:         0.023692        0.021637        0.185714       0.153751
+## 15:         0.023692        0.021637        0.152381       0.175449
 ## 
 ## $pred
-##  [1] 0.93444717 0.93444717 0.86359012 0.03390779 0.06941897 0.04334350
-##  [7] 0.06941897 0.33191431 0.93641293 0.70334697 0.70334697 0.09114783
-## [13] 0.05321305 0.06589319 0.03390779 0.05321305 0.09114783 0.86729366
-## [19] 0.86680818 0.83597845 0.55232960 0.04659716 0.05118420 0.12264583
-## [25] 0.07874634 0.86729366 0.93522042 0.87377137 0.38232031 0.92300272
-## [31] 0.09084942 0.86680818&lt;/code&gt;&lt;/pre&gt;
+##  [1] 0.92728728 0.90635574 0.93324083 0.04087094 0.03606226 0.04217334
+##  [7] 0.08039906 0.89858121 0.89858121 0.49988678 0.19096196 0.08440615
+## [13] 0.06083688 0.05418482 0.06083688 0.05418482 0.10307471 0.87841910
+## [19] 0.90354389 0.78469765 0.54893976 0.07726826 0.05943105 0.06083688
+## [25] 0.06083688 0.88798708 0.90354389 0.92670751 0.27569479 0.92728728
+## [31] 0.09309671 0.91976297&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot.ts(as.data.frame(model_check$dt)[,c(1, 3)], plot.type = &amp;quot;single&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;#####../content/post/model_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;When dealing with a classification problem, instead of residuals, it is typicaly to see which classes a model gets well, and how often, using what is called a confusion matrix. Basically, we count how many correct and incorrect predictions are made and put them into a table. Note that predictions from the model are actually probabilities, and to get a class prediction we need to threshold a probability. It is typical to use .5.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;table(pred = as.integer(model_check$pred &amp;gt; .5), obs = mtcars$am)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##     obs
 ## pred  0  1
-##    0 15  2
-##    1  4 11&lt;/code&gt;&lt;/pre&gt;
+##    0 16  2
+##    1  3 11&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;We the model can discriminate between automatic and manual pretty well, only confusing the two sometimes.&lt;/p&gt;
 &lt;p&gt;This example showed a two-class prediction problem, but &lt;code&gt;xgboost&lt;/code&gt; can handle multi-class problem, too. We just need to adjust our parameters by setting objective argument by to &lt;code&gt;&amp;quot;multi:softmax&amp;quot;&lt;/code&gt; and &lt;code&gt;num_class&lt;/code&gt; to number of classes we are dealing with. Lastly, the classes should be represented with integers, starting from 0 and going to &lt;code&gt;num_class - 1&lt;/code&gt;.&lt;/p&gt;
 &lt;/div&gt;
