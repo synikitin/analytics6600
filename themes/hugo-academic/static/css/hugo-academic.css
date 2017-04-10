@@ -20,6 +20,11 @@
   display: table;
 }
 
+ code .MathJax {
+  color: black;
+  background-color: white;
+}
+
 html {
   font-family: 'Merriweather', serif;
   font-size: 16px;

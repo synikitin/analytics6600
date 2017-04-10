@@ -5,7 +5,7 @@ draft: false
 tags: ["lecture"]
 title: "Model"
 summary: "Predictive models, accuracy diagnostics, xgboost"
-math: false
+math: true
 output: 
   html_document:
     self_contained: true
@@ -36,6 +36,7 @@ Lets consider a row $i \in \{1, 2, \dots, n\}$ of a data frame, where one value 
 - that there is a function $g(x_{1}, \dots, x_{p-1})$ that provides a true description of how $mean(y)$ dependends on predictors, meaning there is a dependency of response on predictors.
 
 The first two assumptions are theoretical. To attempt to solve the problem, we also need practical assumptions that we are in control of and are primary components of what makes up a predictive model methodology:
+
 - that we can define a set of possible models, $\{f(x_{1}, \dots, x_{p-1}, \theta) : \theta \in \Theta\ \subset \mathbb R\}$, such that there is at least one function in a set of possible functions that approximates the true relationship, $f(x_{1}, \dots, x_{p-1}, \theta ^ *)$, meaning we can find an adequate model of the true relationship
 - that we can find a function to quantify overall predictive accuracy  $\sum_{i=1}^n L(y_i, f(x_{1}, \dots, x_{p-1}, \theta))$, called a loss function, meaning we can quantify discrepancy between truth and approximation
 - that we can obtain an estimation algorithm that searches through the possible values of $\theta \in \Theta$, which modifies how response variable and predictors are related, so that we can maximize overall predictive accuracy, meaning we can solve $\mathrm{argmin}_{\theta \in \Theta}\ L(\theta)$ within computational, statistical, and organizational constraints
@@ -43,7 +44,10 @@ The first two assumptions are theoretical. To attempt to solve the problem, we a
 
 The above points are very general, and we need to specify some details to actually make this doable. First, we are going to use a set of functions and an estimation algorithm offered by package `xgboost`, which iteratively builds step-wise functions, called trees, and combines them by averaging their outputs. We could consider other function sets like planes, quadratics, exponential curves, but all of these are very restrained and it becomes harder to manually put these together in a multivariate case, so we will just rely on a very general set of function from `xgboost` that can approximate any of those and more.
 
-Secondly, we are going to use mean squared error to quantify mean predictive error of a model that predicts a quantitative response, defined as $\sqrt{\frac{1}{n}\sum_{i = 1}^n(y_i - f(x_{1}, \dots, x_{p-1}, \theta))^2}$, and misclassification rate for a categorical response, defined as $\frac{1}{n}\sum_{i = 1}^n \delta(y_i \neq f(x_{1}, \dots, x_{p-1}, \theta))$, where $\delta(condition)$ is 1 if true and 0 if false.
+Secondly, we are going to use mean squared error to quantify mean predictive error of a model that predicts a quantitative response, defined as 
+
+$$\sqrt{\frac{1}{n}\sum_{i = 1}^n(y_i - f(x_{1}, \dots, x_{p-1}, \theta))^2}$$
+ and misclassification rate for a categorical response, defined as $\frac{1}{n}\sum_{i = 1}^n \delta(y_i \neq f(x_{1}, \dots, x_{p-1}, \theta))$, where $\delta(condition)$ is 1 if true and 0 if false.
 
 ## Examples
 
@@ -98,7 +102,7 @@ model_check
 Output of `xgb.cv` contains summary statistics on train and test data, and also predictions on the hold-out data. In addition to summary statistics, we can also do a few visualizations of the full pattern of predictive accuracy.
 
 ```{r}
-plot.ts(as.data.frame(model_check$dt)[,c(1, 3)], plot.type = "single")
+plot.ts(as.data.frame(model_check$evaluation_log)[,c(2, 4)], plot.type = "single")
 ```
 The plot above shows mean predictive error in the model over training iterations. The gap between train and test shows the slight bias towards predicting train rather than test data. A good model should have both values low and not too far from each other.
 
@@ -148,7 +152,7 @@ model_check
 
 ```
 ```{r}
-plot.ts(as.data.frame(model_check$dt)[,c(1, 3)], plot.type = "single")
+plot.ts(as.data.frame(model_check$evaluation_log)[,c(2, 4)], plot.type = "single")
 ```
 
 When dealing with a classification problem, instead of residuals, it is typicaly to see which classes a model gets well, and how often, using what is called a confusion matrix. Basically, we count how many correct and incorrect predictions are made and put them into a table. Note that predictions from the model are actually probabilities, and to get a class prediction we need to threshold a probability. It is typical to use .5.
@@ -160,7 +164,7 @@ We the model can discriminate between automatic and manual pretty well, only con
 This example showed a two-class prediction problem, but `xgboost` can handle multi-class problem, too. We just need to adjust our parameters by setting objective argument by to `"multi:softmax"` and `num_class` to number of classes we are dealing with. Lastly, the classes should be represented with integers, starting from 0 and going to `num_class - 1`.
 
 
-```{r echo = F, eval = F}
+```{r eval = F, echo = F}
 model <- xgboost(data, nrounds = 15, params = list(objective = "reg:linear"))
 model = xgboost(xgb.DMatrix(mtcars[, -9], label = mtcars$am), nrounds = 50,params = list(objective = "binary:logistic"))
 mean((predict(model, xgb.DMatrix(as.matrix(mtcars[, -1]))) - mtcars$mpg) ^ 2)
