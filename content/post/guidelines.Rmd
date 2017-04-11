@@ -1,0 +1,129 @@
+---
+title: "Projects"
+summary: "Project sections and formatting guidelines"
+author: "Slava Nikitin"
+date: "2017-04-10"
+draft: false
+tags: ["lecture"]
+output:
+  html_document:
+    self_contained: true
+    code_folding: hide
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Sections
+
+- Properly formated YAML section including self_contained and code_folding      options
+
+- Context
+
+- Thorough data description including source, format, variable meanings (in groups if too many)
+
+- If you are writing functions for automation, describe each input and output in terms of what type and dimensions are expected, and what the overall purpose of the function is
+
+- Print out of a few rows of data
+
+- Data Prep details
+
+- Section for each question with reasons provided for why you are calculating some number or making a chart to answer a specific question.
+
+- Summary statement for each question section that says which packages you used and for what functionality.  
+
+- Well-formated tables and charts 
+
+- Organization of text and code and its output in readable form
+
+- Given data and your .Rmd, I can knit it into a self-contained html with code folding
+
+- Knitted html is the presentation material
+
+## Formatting guidelines
+
+The markdown file should be formatted in a readable form. Here are some rules I expect you apply:
+
+- Use headings for sections with `## Heading` syntax. You control the size with the numbere of `#`, where more is smaller:
+
+## Heading  
+
+- Break up your comments into text with one return between text blocks
+
+```
+Statements here.
+SPACE
+Statements here.
+```
+
+- Separate your code into separate r-chunks that divide code into logical units, like importing and preparing data
+
+- Surround r-chunks with one return on either side
+
+```
+SPACE
+'''{r}
+x <- 1:3
+'''
+SPACE
+```
+
+
+- Use markdown formatting for lists if you need to enumerate something. For example,
+
+```
+- line one
+- line two
+    1. line two.one
+    2. line two.two
+```
+
+- line one
+- line two
+    1. line two.one
+    2. line two.two
+    
+    
+- Include images with 
+```
+![](url/or/disk/path/to/your/image)
+```
+
+- Include urls with 
+```
+[word or phrase to hyperlink](url)
+```
+
+- Modify YAML settings, the top part of the document, by adding this:
+```
+title: "Project"
+author: "Your Name"
+date: "April 10, 2017"
+output:
+  html_document:
+    self_contained: true
+    code_folding: hide
+```
+
+- Here is example of code_folding option. Look to the right to toggle on and off the code:
+
+```{r}
+3 + 3
+```
+
+- Insert simple tables with package `knitr::kable(data_frame)`, for example:
+
+```{r}
+knitr::kable(head(mtcars))
+
+```
+
+- Additional markdown formatting syntax is here [here](http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html)
+
+- You should make your code as readable as possible. Break lines after 80 characters
+(shown in the bottom left corner). Also, read over our book's suggested style guide for other formatting issues [here](http://adv-r.had.co.nz/Style.html).
+
+- Format your charts to have nice axis labels and a title and any legends that are useful.
+
