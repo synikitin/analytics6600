@@ -1,0 +1,211 @@
+---
+title: "Projects"
+summary: "Project sections and formatting guidelines"
+author: "Slava Nikitin"
+date: "2017-04-10"
+draft: false
+tags: ["lecture"]
+output:
+  html_document:
+    self_contained: true
+    code_folding: hide
+---
+
+
+<!-- BLOGDOWN-BODY-BEFORE
+
+/BLOGDOWN-BODY-BEFORE -->
+
+<div id="sections" class="section level2">
+<h2>Sections</h2>
+<ul>
+<li><p>Properly formated YAML section including self_contained and code_folding options</p></li>
+<li><p>Context</p></li>
+<li><p>Thorough data description including source, format, variable meanings (in groups if too many)</p></li>
+<li><p>If you are writing functions for automation, describe each input and output in terms of what type and dimensions are expected, and what the overall purpose of the function is</p></li>
+<li><p>Print out of a few rows of data</p></li>
+<li><p>Data Prep details</p></li>
+<li><p>Section for each question with reasons provided for why you are calculating some number or making a chart to answer a specific question.</p></li>
+<li><p>Summary statement for each question section that says which packages you used and for what functionality.</p></li>
+<li><p>Well-formated tables and charts</p></li>
+<li><p>Organization of text and code and its output in readable form</p></li>
+<li><p>Given data and your .Rmd, I can knit it into a self-contained html with code folding</p></li>
+<li><p>Knitted html is the presentation material</p></li>
+</ul>
+</div>
+<div id="formatting-guidelines" class="section level2">
+<h2>Formatting guidelines</h2>
+<p>The markdown file should be formatted in a readable form. Here are some rules I expect you apply:</p>
+<ul>
+<li>Use headings for sections with <code>## Heading</code> syntax. You control the size with the numbere of <code>#</code>, where more is smaller:</li>
+</ul>
+</div>
+<div id="heading" class="section level2">
+<h2>Heading</h2>
+<ul>
+<li>Break up your comments into text with one return between text blocks</li>
+</ul>
+<pre><code>Statements here.
+SPACE
+Statements here.</code></pre>
+<ul>
+<li><p>Separate your code into separate r-chunks that divide code into logical units, like importing and preparing data</p></li>
+<li><p>Surround r-chunks with one return on either side</p></li>
+</ul>
+<pre><code>SPACE
+&#39;&#39;&#39;{r}
+x &lt;- 1:3
+&#39;&#39;&#39;
+SPACE</code></pre>
+<ul>
+<li>Use markdown formatting for lists if you need to enumerate something. For example,</li>
+</ul>
+<pre><code>- line one
+- line two
+    1. line two.one
+    2. line two.two</code></pre>
+<ul>
+<li>line one</li>
+<li>line two
+<ol style="list-style-type: decimal">
+<li>line two.one</li>
+<li>line two.two</li>
+</ol></li>
+<li><p>Include images with</p>
+<pre><code>![](url/or/disk/path/to/your/image)</code></pre></li>
+<li><p>Include urls with</p>
+<pre><code>[word or phrase to hyperlink](url)</code></pre></li>
+<li><p>Modify YAML settings, the top part of the document, by adding this:</p>
+<pre><code>title: &quot;Project&quot;
+author: &quot;Your Name&quot;
+date: &quot;April 10, 2017&quot;
+output:
+  html_document:
+self_contained: true
+code_folding: hide</code></pre></li>
+<li><p>Here is example of code_folding option. Look to the right to toggle on and off the code:</p></li>
+</ul>
+<pre class="r"><code>3 + 3</code></pre>
+<pre><code>## [1] 6</code></pre>
+<ul>
+<li>Insert simple tables with package <code>knitr::kable(data_frame)</code>, for example:</li>
+</ul>
+<pre class="r"><code>knitr::kable(head(mtcars))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">mpg</th>
+<th align="right">cyl</th>
+<th align="right">disp</th>
+<th align="right">hp</th>
+<th align="right">drat</th>
+<th align="right">wt</th>
+<th align="right">qsec</th>
+<th align="right">vs</th>
+<th align="right">am</th>
+<th align="right">gear</th>
+<th align="right">carb</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mazda RX4</td>
+<td align="right">21.0</td>
+<td align="right">6</td>
+<td align="right">160</td>
+<td align="right">110</td>
+<td align="right">3.90</td>
+<td align="right">2.620</td>
+<td align="right">16.46</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td>Mazda RX4 Wag</td>
+<td align="right">21.0</td>
+<td align="right">6</td>
+<td align="right">160</td>
+<td align="right">110</td>
+<td align="right">3.90</td>
+<td align="right">2.875</td>
+<td align="right">17.02</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td>Datsun 710</td>
+<td align="right">22.8</td>
+<td align="right">4</td>
+<td align="right">108</td>
+<td align="right">93</td>
+<td align="right">3.85</td>
+<td align="right">2.320</td>
+<td align="right">18.61</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td>Hornet 4 Drive</td>
+<td align="right">21.4</td>
+<td align="right">6</td>
+<td align="right">258</td>
+<td align="right">110</td>
+<td align="right">3.08</td>
+<td align="right">3.215</td>
+<td align="right">19.44</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td>Hornet Sportabout</td>
+<td align="right">18.7</td>
+<td align="right">8</td>
+<td align="right">360</td>
+<td align="right">175</td>
+<td align="right">3.15</td>
+<td align="right">3.440</td>
+<td align="right">17.02</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td>Valiant</td>
+<td align="right">18.1</td>
+<td align="right">6</td>
+<td align="right">225</td>
+<td align="right">105</td>
+<td align="right">2.76</td>
+<td align="right">3.460</td>
+<td align="right">20.22</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Additional markdown formatting syntax is here <a href="http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html">here</a></p></li>
+<li><p>You should make your code as readable as possible. Break lines after 80 characters (shown in the bottom left corner). Also, read over our book’s suggested style guide for other formatting issues <a href="http://adv-r.had.co.nz/Style.html">here</a>.</p></li>
+<li><p>Format your charts to have nice axis labels and a title and any legends that are useful.</p></li>
+</ul>
+</div>
+
+
+<!-- BLOGDOWN-HEAD
+
+
+
+
+/BLOGDOWN-HEAD -->
