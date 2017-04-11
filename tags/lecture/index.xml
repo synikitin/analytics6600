@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data Analytics 6600</title>
-    <link>https://synikitin.github.io/analytics6600/tags/lecture/index.xml</link>
+    <link>/tags/lecture/index.xml</link>
     <description>Recent content on Data Analytics 6600</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,11 +10,217 @@
     <atom:link href="/tags/lecture/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Projects</title>
+      <link>/post/guidelines/</link>
+      <pubDate>Mon, 10 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/guidelines/</guid>
+      <description>&lt;!-- BLOGDOWN-BODY-BEFORE
+
+/BLOGDOWN-BODY-BEFORE --&gt;
+
+&lt;div id=&#34;sections&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Sections&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Properly formated YAML section including self_contained and code_folding options&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Context&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Thorough data description including source, format, variable meanings (in groups if too many)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;If you are writing functions for automation, describe each input and output in terms of what type and dimensions are expected, and what the overall purpose of the function is&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Print out of a few rows of data&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Data Prep details&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Section for each question with reasons provided for why you are calculating some number or making a chart to answer a specific question.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Summary statement for each question section that says which packages you used and for what functionality.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Well-formated tables and charts&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Organization of text and code and its output in readable form&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Given data and your .Rmd, I can knit it into a self-contained html with code folding&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Knitted html is the presentation material&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;formatting-guidelines&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Formatting guidelines&lt;/h2&gt;
+&lt;p&gt;The markdown file should be formatted in a readable form. Here are some rules I expect you apply:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Use headings for sections with &lt;code&gt;## Heading&lt;/code&gt; syntax. You control the size with the numbere of &lt;code&gt;#&lt;/code&gt;, where more is smaller:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;heading&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Heading&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Break up your comments into text with one return between text blocks&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;Statements here.
+SPACE
+Statements here.&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Separate your code into separate r-chunks that divide code into logical units, like importing and preparing data&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Surround r-chunks with one return on either side&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;SPACE
+&amp;#39;&amp;#39;&amp;#39;{r}
+x &amp;lt;- 1:3
+&amp;#39;&amp;#39;&amp;#39;
+SPACE&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Use markdown formatting for lists if you need to enumerate something. For example,&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;- line one
+- line two
+    1. line two.one
+    2. line two.two&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;line one&lt;/li&gt;
+&lt;li&gt;line two
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;line two.one&lt;/li&gt;
+&lt;li&gt;line two.two&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Include images with&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;![](url/or/disk/path/to/your/image)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Include urls with&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[word or phrase to hyperlink](url)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Modify YAML settings, the top part of the document, by adding this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;title: &amp;quot;Project&amp;quot;
+author: &amp;quot;Your Name&amp;quot;
+date: &amp;quot;April 10, 2017&amp;quot;
+output:
+  html_document:
+self_contained: true
+code_folding: hide&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Here is example of code_folding option. Look to the right to toggle on and off the code:&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;3 + 3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 6&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Insert simple tables with package &lt;code&gt;knitr::kable(data_frame)&lt;/code&gt;, for example:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;knitr::kable(head(mtcars))&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;mpg&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;cyl&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;disp&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;hp&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;drat&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;wt&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;qsec&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;vs&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;am&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;gear&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;carb&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Mazda RX4&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;21.0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;6&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;160&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;110&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;3.90&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.620&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;16.46&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;4&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;Mazda RX4 Wag&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;21.0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;6&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;160&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;110&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;3.90&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.875&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;17.02&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;4&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Datsun 710&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;22.8&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;4&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;108&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;93&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;3.85&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.320&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;18.61&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;4&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;Hornet 4 Drive&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;21.4&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;6&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;258&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;110&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;3.08&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;3.215&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;19.44&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;3&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Hornet Sportabout&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;18.7&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;8&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;360&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;175&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;3.15&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;3.440&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;17.02&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;3&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;Valiant&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;18.1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;6&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;225&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;105&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.76&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;3.460&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;20.22&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;3&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Additional markdown formatting syntax is here &lt;a href=&#34;http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html&#34;&gt;here&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;You should make your code as readable as possible. Break lines after 80 characters (shown in the bottom left corner). Also, read over our book’s suggested style guide for other formatting issues &lt;a href=&#34;http://adv-r.had.co.nz/Style.html&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Format your charts to have nice axis labels and a title and any legends that are useful.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+
+&lt;!-- BLOGDOWN-HEAD
+
+
+
+
+/BLOGDOWN-HEAD --&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Model</title>
-      <link>https://synikitin.github.io/analytics6600/post/model/</link>
+      <link>/post/model/</link>
       <pubDate>Mon, 03 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/post/model/</guid>
+      <guid>/post/model/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -39,7 +245,7 @@
 &lt;/ul&gt;
 &lt;p&gt;The above points are very general, and we need to specify some details to actually make this doable. First, we are going to use a set of functions and an estimation algorithm offered by package &lt;code&gt;xgboost&lt;/code&gt;, which iteratively builds step-wise functions, called trees, and combines them by averaging their outputs. We could consider other function sets like planes, quadratics, exponential curves, but all of these are very restrained and it becomes harder to manually put these together in a multivariate case, so we will just rely on a very general set of function from &lt;code&gt;xgboost&lt;/code&gt; that can approximate any of those and more.&lt;/p&gt;
 &lt;p&gt;Secondly, we are going to use mean squared error to quantify mean predictive error of a model that predicts a quantitative response, defined as&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\sqrt{\frac{1}{n}\sum_{i = 1}^n(y_i - f(x_{1}, \dots, x_{p-1}, \theta))^2}\]&lt;/span&gt; , and misclassification rate for a categorical response, defined as &lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n}\sum_{i = 1}^n \delta(y_i \neq f(x_{1}, \dots, x_{p-1}, \theta))\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(\delta(condition)\)&lt;/span&gt; is 1 if true and 0 if false.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\sqrt{\frac{1}{n}\sum_{i = 1}^n(y_i - f(x_{1}, \dots, x_{p-1}, \theta))^2}\]&lt;/span&gt; and misclassification rate for a categorical response, defined as &lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n}\sum_{i = 1}^n \delta(y_i \neq f(x_{1}, \dots, x_{p-1}, \theta))\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(\delta(condition)\)&lt;/span&gt; is 1 if true and 0 if false.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;examples&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Examples&lt;/h2&gt;
@@ -87,21 +293,21 @@ preds &amp;lt;- setdiff(names(mtcars), response)&lt;/code&gt;&lt;/pre&gt;
                       nfold = 5, prediction = TRUE, verbose = FALSE)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## ##### xgb.cv 5-folds
 ##  iter train_rmse_mean train_rmse_std test_rmse_mean test_rmse_std
-##     1      14.9865054      0.5257447      14.982052     2.8758852
-##     2      11.0743584      0.4070889      11.128094     2.8632975
-##     3       8.2187960      0.2907496       8.621362     2.5515342
-##     4       6.1540420      0.2090359       6.771716     2.2324925
-##     5       4.6579516      0.1575179       5.334634     1.9483710
-##     6       3.5673142      0.1322848       4.364431     1.6823284
-##     7       2.7806432      0.1204595       3.622974     1.4888226
-##     8       2.2080690      0.1097065       3.115145     1.3114281
-##     9       1.7923216      0.1095583       2.845088     1.2345175
-##    10       1.4937438      0.1127278       2.678858     1.1852658
-##    11       1.2712408      0.1166591       2.602069     1.1364210
-##    12       1.1132406      0.1197332       2.594733     1.0634258
-##    13       0.9793500      0.1142072       2.617169     0.9967036
-##    14       0.8829374      0.1150030       2.605794     0.9573460
-##    15       0.8161680      0.1180128       2.622229     0.9348836&lt;/code&gt;&lt;/pre&gt;
+##     1      14.9878500     0.31380895      15.032428     1.3405395
+##     2      11.0812408     0.20888959      11.157466     1.1113524
+##     3       8.2421278     0.12427311       8.408589     0.8754797
+##     4       6.1807056     0.07131542       6.455044     0.7856974
+##     5       4.6787872     0.04965321       5.017423     0.7272057
+##     6       3.5850778     0.05129103       3.997474     0.6469281
+##     7       2.7906300     0.06210156       3.400866     0.6075206
+##     8       2.2131812     0.06280777       3.001698     0.5637378
+##     9       1.7991018     0.06750369       2.748674     0.5096921
+##    10       1.5036920     0.07305091       2.595312     0.4707660
+##    11       1.2832924     0.07423395       2.517527     0.3743411
+##    12       1.1252114     0.07913846       2.466789     0.3799666
+##    13       0.9963048     0.07112970       2.431705     0.3670777
+##    14       0.9108604     0.07362564       2.404471     0.3923193
+##    15       0.8446332     0.07651620       2.376313     0.4261411&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Output of &lt;code&gt;xgb.cv&lt;/code&gt; contains summary statistics on train and test data, and also predictions on the hold-out data. In addition to summary statistics, we can also do a few visualizations of the full pattern of predictive accuracy.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot.ts(as.data.frame(model_check$evaluation_log)[,c(2, 4)], plot.type = &amp;quot;single&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;#####../content/post/model_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt; The plot above shows mean predictive error in the model over training iterations. The gap between train and test shows the slight bias towards predicting train rather than test data. A good model should have both values low and not too far from each other.&lt;/p&gt;
@@ -147,29 +353,29 @@ model &amp;lt;- xgboost(data, nrounds = 15, params = params)&lt;/code&gt;&lt;/pr
                       nfold = 5, prediction = TRUE, verbose = FALSE)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## ##### xgb.cv 5-folds
 ##  iter train_error_mean train_error_std test_error_mean test_error_std
-##     1        0.0698718      0.01410240       0.0833334      0.1054093
-##     2        0.0621796      0.01808532       0.0833334      0.1054093
-##     3        0.0391030      0.00128200       0.0833334      0.1054093
-##     4        0.0391030      0.00128200       0.0833334      0.1054093
-##     5        0.0314106      0.01575428       0.0833334      0.1054093
-##     6        0.0237182      0.01940116       0.0833334      0.1054093
-##     7        0.0237182      0.01940116       0.0833334      0.1054093
-##     8        0.0153848      0.01884245       0.1083334      0.1481366
-##     9        0.0237182      0.01940116       0.0833334      0.1054093
-##    10        0.0083334      0.01666680       0.0833334      0.1054093
-##    11        0.0160258      0.01965367       0.0833334      0.1054093
-##    12        0.0160258      0.01965367       0.0833334      0.1054093
-##    13        0.0160258      0.01965367       0.0833334      0.1054093
-##    14        0.0160258      0.01965367       0.0833334      0.1054093
-##    15        0.0237182      0.01940116       0.1083334      0.1481366&lt;/code&gt;&lt;/pre&gt;
+##     1        0.0858976      0.02855265       0.2666668      0.2260777
+##     2        0.0628206      0.02002597       0.2000000      0.1943650
+##     3        0.0307696      0.01538480       0.2000000      0.1943650
+##     4        0.0307696      0.01538480       0.2000000      0.1943650
+##     5        0.0307696      0.01538480       0.1333334      0.1247218
+##     6        0.0307696      0.01538480       0.1333334      0.1247218
+##     7        0.0307696      0.01538480       0.1333334      0.1247218
+##     8        0.0307696      0.01538480       0.1000000      0.1333333
+##     9        0.0307696      0.01538480       0.1000000      0.1333333
+##    10        0.0307696      0.01538480       0.1000000      0.1333333
+##    11        0.0307696      0.01538480       0.1000000      0.1333333
+##    12        0.0307696      0.01538480       0.1000000      0.1333333
+##    13        0.0307696      0.01538480       0.1000000      0.1333333
+##    14        0.0307696      0.01538480       0.1000000      0.1333333
+##    15        0.0307696      0.01538480       0.1000000      0.1333333&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot.ts(as.data.frame(model_check$evaluation_log)[,c(2, 4)], plot.type = &amp;quot;single&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;#####../content/post/model_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;When dealing with a classification problem, instead of residuals, it is typicaly to see which classes a model gets well, and how often, using what is called a confusion matrix. Basically, we count how many correct and incorrect predictions are made and put them into a table. Note that predictions from the model are actually probabilities, and to get a class prediction we need to threshold a probability. It is typical to use .5.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;table(pred = as.integer(model_check$pred &amp;gt; .5), obs = mtcars$am)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##     obs
 ## pred  0  1
-##    0 18  3
-##    1  1 10&lt;/code&gt;&lt;/pre&gt;
+##    0 18  2
+##    1  1 11&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;We the model can discriminate between automatic and manual pretty well, only confusing the two sometimes.&lt;/p&gt;
 &lt;p&gt;This example showed a two-class prediction problem, but &lt;code&gt;xgboost&lt;/code&gt; can handle multi-class problem, too. We just need to adjust our parameters by setting objective argument by to &lt;code&gt;&amp;quot;multi:softmax&amp;quot;&lt;/code&gt; and &lt;code&gt;num_class&lt;/code&gt; to number of classes we are dealing with. Lastly, the classes should be represented with integers, starting from 0 and going to &lt;code&gt;num_class - 1&lt;/code&gt;.&lt;/p&gt;
 &lt;/div&gt;
@@ -186,10 +392,10 @@ model &amp;lt;- xgboost(data, nrounds = 15, params = params)&lt;/code&gt;&lt;/pr
     
     <item>
       <title>Program</title>
-      <link>https://synikitin.github.io/analytics6600/post/program/</link>
+      <link>/post/program/</link>
       <pubDate>Mon, 06 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/post/program/</guid>
+      <guid>/post/program/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -737,10 +943,10 @@ out &amp;lt;- unlist(out)
     
     <item>
       <title>Wrangle - Part II</title>
-      <link>https://synikitin.github.io/analytics6600/post/wrangle2/</link>
+      <link>/post/wrangle2/</link>
       <pubDate>Mon, 20 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/post/wrangle2/</guid>
+      <guid>/post/wrangle2/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -912,10 +1118,10 @@ dmy_hms(&amp;quot;01-01-1910 23:44:56&amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/li
     
     <item>
       <title>Wrangle - Part I</title>
-      <link>https://synikitin.github.io/analytics6600/post/wrangle/</link>
+      <link>/post/wrangle/</link>
       <pubDate>Mon, 13 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/post/wrangle/</guid>
+      <guid>/post/wrangle/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
