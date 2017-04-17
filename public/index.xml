@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data Analytics 6600</title>
-    <link>https://synikitin.github.io/analytics6600/index.xml</link>
+    <link>/index.xml</link>
     <description>Recent content on Data Analytics 6600</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,88 +12,105 @@
     
     <item>
       <title>Projects</title>
-      <link>https://synikitin.github.io/analytics6600/post/guidelines/</link>
+      <link>/post/guidelines/</link>
       <pubDate>Mon, 10 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/post/guidelines/</guid>
+      <guid>/post/guidelines/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
 
-&lt;div id=&#34;sections&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Sections&lt;/h2&gt;
+&lt;div id=&#34;sections-and-rubric&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Sections and Rubric&lt;/h2&gt;
+&lt;p&gt;You can get total of 60 points for the project. Here is the break down:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Document settings (1 point)&lt;/strong&gt;&lt;br /&gt;
+Fix your upper functions. Put the bit of code below at the top of your Rmarkdown document (replace what’s there be default). Note the self_contained and code_folding options. Also, note the indentation, it is necessary for the options to take effect.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;title: &amp;quot;Project&amp;quot;
+author: &amp;quot;Your Name&amp;quot;
+date: &amp;quot;April 10, 2017&amp;quot;
+output:  
+  html_document:    
+    self_contained: true   
+    code_folding: hide   &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Knitting (1 point)&lt;/strong&gt;&lt;br /&gt;
+Make sure knitting works. Given data and your .Rmd, I should be able to knit a self-contained html with code folding without any errors. The .html file is what you will use for your presentation, so you must be able to knit your .Rmd file.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Context (5 points)&lt;/strong&gt;&lt;br /&gt;
+Describe the domain or motivation behind the project. Why is it interesting or useful? Where does the data come from? What questions or problems, at a high level, you want to solve? This section needs to set expectations and tune the intuitions of readers before they see your analyses or function code. At least 5 sentences.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Data (5 points)&lt;/strong&gt;&lt;br /&gt;
+Provide a thorough description of data. It should include source (with hyperlink if possible), format of file, number of data structures, dimensions, variable meanings (in groups if there are too many variables). Print out of a few rows of data. For example,&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(mtcars)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Data prep details (5 points)&lt;/strong&gt;&lt;br /&gt;
+Discuss issues with the raw data. For example, problems with column names, data types, missing values, data being split among multiple file, or important variables being stored in column headers. Or maybe what you did to make the data nicer to work with.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Core (30 points)&lt;/strong&gt;&lt;br /&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Properly formated YAML section including self_contained and code_folding options&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Context&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Thorough data description including source, format, variable meanings (in groups if too many)&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;If you are writing functions for automation, describe each input and output in terms of what type and dimensions are expected, and what the overall purpose of the function is&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Print out of a few rows of data&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Data Prep details&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Section for each question with reasons provided for why you are calculating some number or making a chart to answer a specific question.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Summary statement for each question section that says which packages you used and for what functionality.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Well-formated tables and charts&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Organization of text and code and its output in readable form&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Given data and your .Rmd, I can knit it into a self-contained html with code folding&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Knitted html is the presentation material&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Questions and Answers&lt;/strong&gt;&lt;br /&gt;
+Separate your question-answer combinations into separate sections. State each question clearly. For each question, provide reasons for why you are calculating some number or making a chart to answer a specific question (why this and not something else). You should try to do a mixture of question-answers where you do calculations, like means, explore the full distribution of a variable, maybe with a histogram, and explore relationships among variables, using scatterplots and ggplot’s faceting to group data by a categorical variable. Provide a summary statement for each question describing which packages you used and for what functionality.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Functions&lt;/strong&gt;&lt;br /&gt;
+Separate your functions into separate sections. Describe what the initial input is and what the final output is. Then describe the set of functions that you will write and what each does and how they fit together into a larger program that allows you to automate your task. For each function you code, provide high level logical version.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func &amp;lt;- function(x) {
+  I create a container for outputs based on length of x
+  I run a loop over columns of x
+  Inside the loop I calculate a mean
+  After the loop is done I return means for all columns
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Also, for each function, describe each input and output in terms of what R type of data and dimensions are expected, and what the overall purpose of the function is. You can place these in comments like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Purpose: This function does awesome stuff
+# Input: x is a data frame of mixed types, but with more rows than columns
+# Output: y is a double vector of summary statistics for each column
+func &amp;lt;- function(x) {
+  y &amp;lt;- something(x)
+  return(y)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Provide a summary statement for each function describing which packages you used and for what functionality.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;ol start=&#34;7&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Tables and Charts (3 points)&lt;/strong&gt;&lt;br /&gt;
+Make well-formated tables and charts. See a suggestion for tables below using &lt;code&gt;kable&lt;/code&gt; function from &lt;strong&gt;knitr&lt;/strong&gt; package. For charts, use &lt;strong&gt;ggplot2&lt;/strong&gt;. Make sure to fix title, axes labels, colors, legend and theme, if any. Remember that you can control every feature of the plot and make it look very nice. I only expect cleaned up displays, not professionally designed.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Organization (5 points)&lt;/strong&gt;&lt;br /&gt;
+Text and code and its output should be in readable, formatted way. Look at the formatting guideliness below for pointers.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Presentation (5 points)&lt;/strong&gt;&lt;br /&gt;
+Walk the class through your analysis or automation problem. Talk about the context, data quality and how you prepared it. Discuss what questions you had, how you approached answering them, and what the answer was. If you answered many, pick a couple that you find most interesting. Similarly, if you had an automation project, discuss what was the initial input and final output; walk through the sequence of functions that need to be used to get your from initial input to final output. Finally, mention what packages and maybe the crucial functions that were necessary to complete your project.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
 &lt;/div&gt;
 &lt;div id=&#34;formatting-guidelines&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Formatting guidelines&lt;/h2&gt;
+&lt;h2&gt;Formatting Guidelines&lt;/h2&gt;
 &lt;p&gt;The markdown file should be formatted in a readable form. Here are some rules I expect you apply:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Use headings for sections with &lt;code&gt;## Heading&lt;/code&gt; syntax. You control the size with the numbere of &lt;code&gt;#&lt;/code&gt;, where more is smaller:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div id=&#34;heading&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Heading&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Break up your comments into text with one return between text blocks&lt;/li&gt;
-&lt;/ul&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Make a special R chunk right after the setup chunk where you load all your packages.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Use headings for sections with &lt;code&gt;## Heading&lt;/code&gt; syntax. You control the size with the number of &lt;code&gt;#&lt;/code&gt;, where more is smaller:&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Break up your text with one return into blocks&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;Statements here.
 SPACE
-Statements here.&lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Separate your code into separate r-chunks that divide code into logical units, like importing and preparing data&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Surround r-chunks with one return on either side&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
+Statements here.&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Separate your code into separate r-chunks that divide code into logical units, like importing and preparing data.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Surround r-chunks with one return on either side&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;SPACE
 &amp;#39;&amp;#39;&amp;#39;{r}
 x &amp;lt;- 1:3
 &amp;#39;&amp;#39;&amp;#39;
-SPACE&lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
-&lt;li&gt;Use markdown formatting for lists if you need to enumerate something. For example,&lt;/li&gt;
-&lt;/ul&gt;
+SPACE&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;You should make your code as readable as possible. Break lines after 80 characters (shown in the bottom left corner). Also, read over our book’s suggested style guide for other formatting issues &lt;a href=&#34;http://adv-r.had.co.nz/Style.html&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Use markdown formatting for lists if you need to enumerate something. For example,&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;- line one
 - line two
     1. line two.one
-    2. line two.two&lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
-&lt;li&gt;line one&lt;/li&gt;
-&lt;li&gt;line two
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;line two.one&lt;/li&gt;
-&lt;li&gt;line two.two&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Include images with&lt;/p&gt;
+    2. line two.two&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Include external images with&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;![](url/or/disk/path/to/your/image)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Include urls with&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;[word or phrase to hyperlink](url)&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Modify YAML settings, the top part of the document, by adding this:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;title: &amp;quot;Project&amp;quot;
-author: &amp;quot;Your Name&amp;quot;
-date: &amp;quot;April 10, 2017&amp;quot;
-output:
-  html_document:
-self_contained: true
-code_folding: hide&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Here is example of code_folding option. Look to the right to toggle on and off the code:&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;3 + 3&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 6&lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
-&lt;li&gt;Insert simple tables with package &lt;code&gt;knitr::kable(data_frame)&lt;/code&gt;, for example:&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;&lt;p&gt;Make simple tables with package &lt;strong&gt;knitr&lt;/strong&gt; using function &lt;code&gt;kable&lt;/code&gt;, for example:&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;knitr::kable(head(mtcars))&lt;/code&gt;&lt;/pre&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -199,11 +216,18 @@ code_folding: hide&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Additional markdown formatting syntax is here &lt;a href=&#34;http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html&#34;&gt;here&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;You should make your code as readable as possible. Break lines after 80 characters (shown in the bottom left corner). Also, read over our book’s suggested style guide for other formatting issues &lt;a href=&#34;http://adv-r.had.co.nz/Style.html&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Format your charts to have nice axis labels and a title and any legends that are useful.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;ol start=&#34;11&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Format your charts to have nice axis labels and a title and any legends that are useful. Check out assignment 2 for some code examples. For example,&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ggplot(aes(rating, ..prop..)) +
+  geom_bar() +
+  facet_grid(genre ~ occupation) +
+  labs(x = &amp;quot;a&amp;quot;, y = &amp;quot;b&amp;quot;, title = &amp;quot;c&amp;quot;, caption = &amp;quot;Source: MovieLens&amp;quot;) +
+  scale_x_continuous(breaks = 1:5) +
+  theme(axis.text = element_text(size = 5),
+    strip.text.x = element_text(size = 6),
+    strip.text.y = element_text(size = 5, angle = 30))&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Additional markdown formatting syntax is &lt;a href=&#34;http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
 &lt;/div&gt;
 
 
@@ -218,10 +242,10 @@ code_folding: hide&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
     
     <item>
       <title>Functions and Iteration</title>
-      <link>https://synikitin.github.io/analytics6600/publication/program/</link>
+      <link>/publication/program/</link>
       <pubDate>Mon, 03 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/publication/program/</guid>
+      <guid>/publication/program/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -319,10 +343,10 @@ for (sequence) {
     
     <item>
       <title>Model</title>
-      <link>https://synikitin.github.io/analytics6600/post/model/</link>
+      <link>/post/model/</link>
       <pubDate>Mon, 03 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/post/model/</guid>
+      <guid>/post/model/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -494,10 +518,10 @@ model &amp;lt;- xgboost(data, nrounds = 15, params = params)&lt;/code&gt;&lt;/pr
     
     <item>
       <title>Program</title>
-      <link>https://synikitin.github.io/analytics6600/post/program/</link>
+      <link>/post/program/</link>
       <pubDate>Mon, 06 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/post/program/</guid>
+      <guid>/post/program/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -1045,10 +1069,10 @@ out &amp;lt;- unlist(out)
     
     <item>
       <title>Wrangling and Exploring</title>
-      <link>https://synikitin.github.io/analytics6600/publication/wrangle/</link>
+      <link>/publication/wrangle/</link>
       <pubDate>Mon, 06 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/publication/wrangle/</guid>
+      <guid>/publication/wrangle/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -1230,10 +1254,10 @@ Sixth, use the plot to determine what seems to be the dominant attitude of execu
     
     <item>
       <title>Wrangle - Part II</title>
-      <link>https://synikitin.github.io/analytics6600/post/wrangle2/</link>
+      <link>/post/wrangle2/</link>
       <pubDate>Mon, 20 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/post/wrangle2/</guid>
+      <guid>/post/wrangle2/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -1405,10 +1429,10 @@ dmy_hms(&amp;quot;01-01-1910 23:44:56&amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/li
     
     <item>
       <title>Wrangle - Part I</title>
-      <link>https://synikitin.github.io/analytics6600/post/wrangle/</link>
+      <link>/post/wrangle/</link>
       <pubDate>Mon, 13 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/post/wrangle/</guid>
+      <guid>/post/wrangle/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -1841,10 +1865,10 @@ orders &amp;lt;- tibble(
     
     <item>
       <title>Exploratory Data Analysis</title>
-      <link>https://synikitin.github.io/analytics6600/publication/eda/</link>
+      <link>/publication/eda/</link>
       <pubDate>Mon, 30 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/publication/eda/</guid>
+      <guid>/publication/eda/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -1990,40 +2014,40 @@ ggplot(df_plot1, aes(x = year_interval, fill = clean_test)) +
     
     <item>
       <title>Deep Analysis</title>
-      <link>https://synikitin.github.io/analytics6600/project/analysis/</link>
+      <link>/project/analysis/</link>
       <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/project/analysis/</guid>
+      <guid>/project/analysis/</guid>
       <description>&lt;p&gt;Details to be determined.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>R Package</title>
-      <link>https://synikitin.github.io/analytics6600/project/package/</link>
+      <link>/project/package/</link>
       <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/project/package/</guid>
+      <guid>/project/package/</guid>
       <description>&lt;p&gt;Details to be determined.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Shiny Web Application</title>
-      <link>https://synikitin.github.io/analytics6600/project/shiny/</link>
+      <link>/project/shiny/</link>
       <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/project/shiny/</guid>
+      <guid>/project/shiny/</guid>
       <description>&lt;p&gt;Details to be determined.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Website is Online</title>
-      <link>https://synikitin.github.io/analytics6600/post/welcome/</link>
+      <link>/post/welcome/</link>
       <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://synikitin.github.io/analytics6600/post/welcome/</guid>
+      <guid>/post/welcome/</guid>
       <description>&lt;p&gt;Greetings Students!&lt;/p&gt;
 
 &lt;p&gt;We will use this website for information about the course and any news that is longer than appropriate for an email. Here you will find the syllabus, assignments, projects, news items and ways of contacting me.&lt;/p&gt;
