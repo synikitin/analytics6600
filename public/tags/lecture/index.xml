@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data Analytics 6600</title>
-    <link>/tags/lecture/index.xml</link>
+    <link>https://synikitin.github.io/analytics6600/tags/lecture/index.xml</link>
     <description>Recent content on Data Analytics 6600</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -11,10 +11,10 @@
     
     <item>
       <title>Projects</title>
-      <link>/post/guidelines/</link>
+      <link>https://synikitin.github.io/analytics6600/post/guidelines/</link>
       <pubDate>Mon, 10 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/guidelines/</guid>
+      <guid>https://synikitin.github.io/analytics6600/post/guidelines/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -241,10 +241,10 @@ SPACE&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
     
     <item>
       <title>Model</title>
-      <link>/post/model/</link>
+      <link>https://synikitin.github.io/analytics6600/post/model/</link>
       <pubDate>Mon, 03 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/model/</guid>
+      <guid>https://synikitin.github.io/analytics6600/post/model/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -416,10 +416,10 @@ model &amp;lt;- xgboost(data, nrounds = 15, params = params)&lt;/code&gt;&lt;/pr
     
     <item>
       <title>Program</title>
-      <link>/post/program/</link>
+      <link>https://synikitin.github.io/analytics6600/post/program/</link>
       <pubDate>Mon, 06 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/program/</guid>
+      <guid>https://synikitin.github.io/analytics6600/post/program/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -967,10 +967,10 @@ out &amp;lt;- unlist(out)
     
     <item>
       <title>Wrangle - Part II</title>
-      <link>/post/wrangle2/</link>
+      <link>https://synikitin.github.io/analytics6600/post/wrangle2/</link>
       <pubDate>Mon, 20 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/wrangle2/</guid>
+      <guid>https://synikitin.github.io/analytics6600/post/wrangle2/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
@@ -1142,10 +1142,10 @@ dmy_hms(&amp;quot;01-01-1910 23:44:56&amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/li
     
     <item>
       <title>Wrangle - Part I</title>
-      <link>/post/wrangle/</link>
+      <link>https://synikitin.github.io/analytics6600/post/wrangle/</link>
       <pubDate>Mon, 13 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/wrangle/</guid>
+      <guid>https://synikitin.github.io/analytics6600/post/wrangle/</guid>
       <description>&lt;!-- BLOGDOWN-BODY-BEFORE
 
 /BLOGDOWN-BODY-BEFORE --&gt;
