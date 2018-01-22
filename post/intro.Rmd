@@ -31,6 +31,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ![](https://upload.wikimedia.org/wikipedia/commons/3/33/Spiral_model_%28Boehm%2C_1988%29.png)
 
+## Problem-Driven Innovation
+
 
 ![](https://synikitin.github.io/analytics6600/img/design_circle.png)
 
@@ -55,8 +57,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Data Science Cycle
 
+
 ![](https://synikitin.github.io/analytics6600/img/data-science.png)
 
+
+## Application to Wait Time Prediction Project
 
 ![](https://synikitin.github.io/analytics6600/img/waittime.png)
 
