@@ -7,8 +7,94 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018 Slava Nikitin</copyright>
-    <lastBuildDate>Sun, 22 Jan 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 08 Jan 2018 00:00:00 +0000</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Introduction</title>
+      <link>https://synikitin.github.io/analytics6600/post/intro/</link>
+      <pubDate>Mon, 08 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://synikitin.github.io/analytics6600/post/intro/</guid>
+      <description>&lt;!-- BLOGDOWN-BODY-BEFORE
+
+/BLOGDOWN-BODY-BEFORE --&gt;
+
+&lt;div id=&#34;outline&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Outline&lt;/h2&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Introductions&lt;/li&gt;
+&lt;li&gt;Analytics as a Layer of Digital Transformations&lt;/li&gt;
+&lt;li&gt;Introduction to R&lt;/li&gt;
+&lt;li&gt;Installation of RStudio&lt;/li&gt;
+&lt;li&gt;Demo of Programming in RStudio&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-science-as-a-layer-of-digital-transformation&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Data Science as a Layer of Digital Transformation&lt;/h2&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;https://synikitin.github.io/analytics6600/img/digital.png&#34; /&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;cycles-of-innovation&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Cycles of Innovation&lt;/h2&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/3/33/Spiral_model_%28Boehm%2C_1988%29.png&#34; /&gt;
+
+&lt;/div&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;https://synikitin.github.io/analytics6600/img/design_circle.png&#34; /&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;analytics-producer&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Analytics Producer:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Roles: Data scientists, software developers, infrastructure engineers, business analysts, subject matter experts&lt;/li&gt;
+&lt;li&gt;Backgrounds: Math/stats, social sciences, economics, computer science&lt;/li&gt;
+&lt;li&gt;Skills: Math/statistics, communications, domain expertise, “end-to-end”&lt;/li&gt;
+&lt;li&gt;Key Attributes: Curiosity, a desire to learn, a willingness to get hands dirty&lt;/li&gt;
+&lt;li&gt;Culture: Work in close proximity, exposure to variety of problems, safe to question, acceptable failure rate&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;analytics-client&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Analytics Client:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Available data and an SME (can someone plug in a laptop and query the data?)&lt;/li&gt;
+&lt;li&gt;Business lead (provides guidance, removes roadblocks, serves as sounding board)&lt;/li&gt;
+&lt;li&gt;Quantifying the value to be created&lt;/li&gt;
+&lt;li&gt;Understanding the existing workflow (flowcharts are your friend)&lt;/li&gt;
+&lt;li&gt;Access to a real live user in the wild&lt;/li&gt;
+&lt;li&gt;Well-defined scope, in writing&lt;/li&gt;
+&lt;li&gt;Frequent communications with feedback (design sessions)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-science-cycle&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Data Science Cycle&lt;/h2&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;https://synikitin.github.io/analytics6600/img/data-science.png&#34; /&gt;
+
+&lt;/div&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;https://synikitin.github.io/analytics6600/img/waittime.png&#34; /&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;technical-ecosystem&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Technical Ecosystem&lt;/h2&gt;
+&lt;p&gt;Overview of R and Rstudio ecosystem: &lt;a href=&#34;http://fg2re.sellorm.com&#34; class=&#34;uri&#34;&gt;http://fg2re.sellorm.com&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;!-- BLOGDOWN-HEAD
+
+
+
+
+/BLOGDOWN-HEAD --&gt;
+</description>
+    </item>
     
     <item>
       <title>Deep Analysis</title>
