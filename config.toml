@@ -1,6 +1,6 @@
 baseurl = "https://synikitin.github.io/analytics6600/"
 title = "Data Analytics 6600"
-copyright = "&copy; 2017 Slava Nikitin"
+copyright = "&copy; 2018 Slava Nikitin"
 theme = "hugo-academic"
 enableEmoji = true
 footnotereturnlinkcontents = "<sup>^</sup>"
@@ -120,12 +120,12 @@ defaultContentLanguageInSubdir = false
   #   google-scholar, arxiv, orcid, researchgate, mendeley
   #
   #   Full list: https://jpswalsh.github.io/academicons/
-    
+
   [[params.social]]
     icon = "envelope"
     icon_pack = "fa"
     link = "mailto:analytics6600@gmail.com"
-    
+
   [[params.social]]
     icon = "github"
     icon_pack = "fa"
@@ -141,12 +141,12 @@ defaultContentLanguageInSubdir = false
   name = "Home"
   url = "#about"
   weight = 1
-  
+
 [[menu.main]]
   name = "Syllabus"
   url = "#syllabus"
   weight = 2
-  
+
 [[menu.main]]
   name = "Resources"
   url = "#resources"
@@ -171,7 +171,7 @@ defaultContentLanguageInSubdir = false
   name = "Contact"
   url = "#contact"
   weight = 7
-  
+
 # Taxonomies.
 [taxonomies]
   tag = "tags"
