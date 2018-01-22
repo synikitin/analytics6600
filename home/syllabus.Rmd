@@ -13,46 +13,65 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## **Prerequisite**
-Statistics I (MATH 1240) 
+Statistics I (MATH 1240)
+
+## **Textbook and Equipment**
+- All assignments are delivered through DataCamp and access is provided as part of the course
+- A laptop is required. The classroom has a limited number of computers.
 
 ## **Schedule (subject to change)**
 
 +---------------+---------------+---------------------------------------------+------------------------------+
 | Module        |      Dates    |         Topics                              |  Assignments                 |
 +===============+===============+=============================================+==============================+
-| Explore       | - 01/09       | - Setup, Visualization                      | - Read 2 - 4                 |
-|               | - 01/23       | - Data Transformation, EDA                  | - Read 5 - 8,   Assignment 1 |
+| Program       | - 01/08       | - RStudio, Data Structures                  | - Rstudio, Intro to R        |
+|               | - 01/22       | - Conditionals, Loops, Functions            | - Intermediate R & Practice  |
+|               | - 01/29       | - Functions                                 | - Writing Functions in R     |
 +---------------+---------------+---------------------------------------------+------------------------------+
-| Wrangle I     | - 01/30       | - EDA, Assignment 1                         | - Read 2 - 8                 |
-|               | - 02/06       | - Import, Tibbles, Tidy                     | - Read 9 - 12                |
+| Import        | - 01/29       | - CSV, XLS, Databases, Web, Stats Packages  | - Importing Data 1 & 2       |
 +---------------+---------------+---------------------------------------------+------------------------------+
-| Wrangle II    | - 02/13       | - Tidy and Relational Data                  | - Read 12 - 13               |
-|               | - 02/20       | - Strings, Factors, Dates, Times            | - Read 14 - 16, Assignment 2 |
+| Tidy          | - 02/05       | - Tidy Data, Types, Missingness, Outliers   | - Cleaning & Practice        |
 +---------------+---------------+---------------------------------------------+------------------------------+
-| Program       | - 03/06       | - Assignment 2, Pipes, Functions            | - Read 17 - 19               |
-|               | - 03/13       | - Vectors, Iteration                        | - Read 20 - 21               |
+| Transform     | - 02/12       | - Tabular Manipulations, Relational Data    | - Data Manipulation & Joining|
+|               | - 02/19       | - Strings, Dates, Times                     | - Working Strings, Date, Time|
 +---------------+---------------+---------------------------------------------+------------------------------+
-| Program       | - 03/20       | - Vectors, Iteration, Assignment 3          | - Read 20 - 21               |
-|               | - 03/27       | - Assignment 3, Modeling basics             | - Read 22 - 23               |
+| Visualize     | - 03/05       | - Grammar of Graphics, Visualization        | - GGplot 1, GGplot 2         |
+|               | - 03/12       | - Grammar of Graphics, Visualization, EDA   | - GGplot 2 & EDA Practice    |
 +---------------+---------------+---------------------------------------------+------------------------------+
-| Model         | - 04/03       | - Modeling basics                           | - Read 22 - 23               |
-| Produce       | - 04/10       | - Student's choice                          | - Project work               |
+| Model         | - 03/19       | - Machine Learning: Supervised              | - Classification, Regression |
+|               | - 03/26       | - Machine Learning: Unsupervised, Framework | - Clustering, caret          |
+|               | - 04/02       | - Machine Learning: Text analysis           | - Bag of Words, Sentiment    |
 +---------------+---------------+---------------------------------------------+------------------------------+
-| Produce       | - 04/17       | - Student's choice                          | - Project work               |
-| Share         | - 04/24       | - Student's choice                          | - Presentations              |
+| Communicate   | - 04/09       | - Custom visuals, Reports, Web Apps         | - GGplot, Rmarkdown, Shiny   |
++---------------+---------------+---------------------------------------------+------------------------------+
+| Produce       | - 04/16       | - Student's Choice                          | - Project work               |
++---------------+---------------+---------------------------------------------+------------------------------+
+| Share         | - 04/23       | - Student's Choice                          | - Presentations              |
 +---------------+---------------+---------------------------------------------+------------------------------+
 
-## **Assignment**
-- Exploratory Data Analysis
-- Data Organization
-- Basic Programming Concepts
+## **Assignments**
+Modules covering the data science production cycle: import, tidy, transform, visualize, model, communicate, program.
+- (DataCamp)[https://www.datacamp.com/home] provides the premium content covering relevant R packages and practice exercises
+- Deadlines are meant to maintain a pace, but are not enforced. However, all assignments must be finished
+  by the end of the semester.
+- You have to work on assignments individually; there is sufficient guidance in the videos to help you
+move through them, as material was designed for self-study. We will also have a Q-A session in class.
+In general, programming and data science can only be internalized by thinking and working through the
+problems yourself.
 
 ## **Project**
-- R package of functions useful for your work
-- R markdown report of deep analysis
+An interesting or work-related idea developed and executed from ground up
+- Collection of functions useful for your work
+- Automation script
+- R markdown report of deep, exploratory analysis
+- Interactive web application
+- Repeatable R markdown report
+
+## **Participation**
+- Class attendance is mandatory, unless there is a legitimate reason to skip, which you should communicate
+- Participation in the discussion is highly encouraged
 
 ## **Assessment**
-- 3 Assignments - 30%
-- Project - 60%
+- Assignments - 45%
+- Project - 45%
 - Participation - 10%
-

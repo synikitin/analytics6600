@@ -50,6 +50,7 @@ Discuss issues with the raw data. For example, problems with column names, data 
 - **Questions and Answers**   
     Separate your question-answer combinations into separate sections. State each question clearly. For each question, provide reasons for why you are calculating some number or making a chart to answer a specific question (why this and not something else). You should try to do a mixture of question-answers where you do calculations, like means, explore the full distribution of a variable, maybe with a histogram, and explore relationships among variables, using scatterplots and ggplot's faceting to group data by a categorical variable. Provide a summary statement for each question describing which packages you used and for what functionality. 
 
+
 - **Functions**   
     Separate your functions into separate sections. Describe what the initial input is and what the final output is. Then describe the set of functions that you will write and what each does and how they fit together into a larger program that allows you to automate your task. For each function you code, provide high level logical version.
     ```
