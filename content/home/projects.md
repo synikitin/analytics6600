@@ -24,7 +24,7 @@ view = 1
 [[filter]]
   name = "All"
   tag = "*"
-  
+
 [[filter]]
   name = "Analysis"
   tag = ".rmarkdown"
@@ -38,4 +38,3 @@ view = 1
   tag = ".shiny"
 
 +++
-

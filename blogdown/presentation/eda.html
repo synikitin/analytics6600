@@ -1,0 +1,164 @@
+---
+title: "Exploratory Data Analysis"
+author: "Slava Nikitin"
+date: "2017-01-30"
+abstract: ""
+abstract_short: ""
+authors: []
+image: ""
+image_preview: ""
+math: true
+publication_types: []
+publication: ""
+publication_short: ""
+selected: false
+url_code: ""
+url_dataset: "data/movies.csv"
+url_pdf: ""
+url_project: "https://fivethirtyeight.com/features/the-dollar-and-cents-case-against-hollywoods-exclusion-of-women/"
+url_slides: ""
+url_video: ""
+output: html_document
+---
+
+
+<!-- BLOGDOWN-BODY-BEFORE
+
+/BLOGDOWN-BODY-BEFORE -->
+
+<div id="learning-objectives" class="section level2">
+<h2><strong>Learning Objectives</strong></h2>
+<ul>
+<li>Package loading</li>
+<li>Data import</li>
+<li>Data clean up</li>
+<li>Data manipulation</li>
+<li>Exploratory visualization</li>
+</ul>
+</div>
+<div id="context" class="section level2">
+<h2><strong>Context</strong></h2>
+<p>This assignment is about exploratory data analysis (EDA) and is based around a fivethirtyeight article that is a good example of it (under project button). EDA is about going through many question-answer cycles bridged by numerical summaries and visualizations of data. The first part of the assignment is to read the article while noting what kind of statistics and plots were chosen by the authors; the other part of the assignment will be to reproduce these and build on them.</p>
+</div>
+<div id="data-import" class="section level2">
+<h2><strong>Data Import</strong></h2>
+<p>Next, use dataset button to get data. I suggest creating a separate folder for this assignment and moving data there. Read <a href="http://r4ds.had.co.nz/workflow-projects.html">section of 8.4</a> about setting up a project folder with RStudio which is a good practice in managing files.</p>
+<p>Open a new R markdown file by going <code>File -&gt; New File -&gt; R markdown</code>. Once it opens, do <code>File -&gt; Save As</code> to save it to your folder. Assuming you have created the project folder and data is in it, to get data into R you need to run</p>
+<pre class="r"><code>library(readr)
+df &lt;- read_csv(&quot;movie.csv&quot;)</code></pre>
+<p><strong>Note the underscore (<code>_</code>) in <code>read_csv</code> and not the dot (<code>.</code>)</strong>. Type <strong>df</strong> into console to test that data loaded properly and you should see the following:</p>
+<pre class="r"><code>df</code></pre>
+<pre><code>## # A tibble: 1,794 x 15
+##     year      imdb                  title            test clean_test
+##  * &lt;int&gt;     &lt;chr&gt;                  &lt;chr&gt;           &lt;chr&gt;      &lt;chr&gt;
+##  1  2013 tt1711425          21 &amp;amp; Over          notalk     notalk
+##  2  2012 tt1343727               Dredd 3D     ok-disagree         ok
+##  3  2013 tt2024544       12 Years a Slave notalk-disagree     notalk
+##  4  2013 tt1272878                 2 Guns          notalk     notalk
+##  5  2013 tt0453562                     42             men        men
+##  6  2013 tt1335975               47 Ronin             men        men
+##  7  2013 tt1606378 A Good Day to Die Hard          notalk     notalk
+##  8  2013 tt2194499             About Time     ok-disagree         ok
+##  9  2013 tt1814621              Admission              ok         ok
+## 10  2013 tt1815862            After Earth          notalk     notalk
+## # ... with 1,784 more rows, and 10 more variables: binary &lt;chr&gt;,
+## #   budget &lt;int&gt;, domgross &lt;chr&gt;, intgross &lt;chr&gt;, code &lt;chr&gt;,
+## #   `budget_2013$` &lt;int&gt;, `domgross_2013$` &lt;chr&gt;, `intgross_2013$` &lt;chr&gt;,
+## #   `period code` &lt;int&gt;, `decade code` &lt;int&gt;</code></pre>
+<p>Also, use <code>str(df)</code> to see column names, what types of data you have in various columns and some example values. You should see the following:</p>
+<pre class="r"><code>str(df)</code></pre>
+<pre><code>## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    1794 obs. of  15 variables:
+##  $ year          : int  2013 2012 2013 2013 2013 2013 2013 2013 2013 2013 ...
+##  $ imdb          : chr  &quot;tt1711425&quot; &quot;tt1343727&quot; &quot;tt2024544&quot; &quot;tt1272878&quot; ...
+##  $ title         : chr  &quot;21 &amp;amp; Over&quot; &quot;Dredd 3D&quot; &quot;12 Years a Slave&quot; &quot;2 Guns&quot; ...
+##  $ test          : chr  &quot;notalk&quot; &quot;ok-disagree&quot; &quot;notalk-disagree&quot; &quot;notalk&quot; ...
+##  $ clean_test    : chr  &quot;notalk&quot; &quot;ok&quot; &quot;notalk&quot; &quot;notalk&quot; ...
+##  $ binary        : chr  &quot;FAIL&quot; &quot;PASS&quot; &quot;FAIL&quot; &quot;FAIL&quot; ...
+##  $ budget        : int  13000000 45000000 20000000 61000000 40000000 225000000 92000000 12000000 13000000 130000000 ...
+##  $ domgross      : chr  &quot;25682380&quot; &quot;13414714&quot; &quot;53107035&quot; &quot;75612460&quot; ...
+##  $ intgross      : chr  &quot;42195766&quot; &quot;40868994&quot; &quot;158607035&quot; &quot;132493015&quot; ...
+##  $ code          : chr  &quot;2013FAIL&quot; &quot;2012PASS&quot; &quot;2013FAIL&quot; &quot;2013FAIL&quot; ...
+##  $ budget_2013$  : int  13000000 45658735 20000000 61000000 40000000 225000000 92000000 12000000 13000000 130000000 ...
+##  $ domgross_2013$: chr  &quot;25682380&quot; &quot;13611086&quot; &quot;53107035&quot; &quot;75612460&quot; ...
+##  $ intgross_2013$: chr  &quot;42195766&quot; &quot;41467257&quot; &quot;158607035&quot; &quot;132493015&quot; ...
+##  $ period code   : int  1 1 1 1 1 1 1 1 1 1 ...
+##  $ decade code   : int  1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+<p>Understanding symbols in the names and types of data in each column is essential for the data cleaning task. Read the output of <code>str(df)</code> line by line where you see a pattern summarising each variable like this: <code>$ variable name    : data type    possible values</code>.</p>
+</div>
+<div id="data-cleaning" class="section level2">
+<h2><strong>Data cleaning</strong></h2>
+<p>Next, we should clean up a few names and types using dplyr functions:</p>
+<ul>
+<li><p>Use <code>rename</code> function from <code>dplyr</code> to remove <strong>$</strong> and empty spaces from variables that have them. You will need to use backsticks <strong>`</strong>, located in the upper left of your keyboard (not single or double quotes) to capture the bad names. For example</p>
+<pre><code>df &lt;- rename(df, budget_2013 = `budget_2013$`, period_code = `period code`)</code></pre>
+to have proper syntax for rename. Assign the data frame with new names to <strong>df</strong> or with some other name, like <strong>df_renamed</strong>. Note that you can rename multiple variables by separating <code>new name = old name</code> with commas.</li>
+<li><p>After correcting names, we need to also fix data types. Output of <code>str(df)</code> shows that, say <strong>budget_2013$</strong>, has type <code>chr</code> which stands for <strong>character</strong> and represents text data. Use <code>mutate</code> from dplyr and <code>as.double</code> to convert all variables that are by their nature numerical, but are stored as text. For example,</p>
+<pre><code>df &lt;- mutate(df, domgross = as.double(domgross), intgross = as.double(intgross))</code></pre>
+<p>Just like <code>rename</code>, <code>mutate</code> can also take multiple type conversion arguments <code>var_name = as.double(var_name)</code> separated with commas. Also, note that renaming and type correction has to be saved as a separate data frame otherwise your results are calculated, but never saved and will not be available to other code, like when you need to calculate statistics. Save the full cleaned dataset as you will need it for calculations and a visualization.</p></li>
+</ul>
+</div>
+<div id="test-and-budget-statistics" class="section level2">
+<h2><strong>Test and Budget Statistics</strong></h2>
+<p>Now, lets get some basic information about movies and budget:</p>
+<ul>
+<li><p>Calculate percentage of movies passing the test in the period of 1970 - 1980 using <strong>clean_test</strong> variable, that has a value of <code>ok</code> which stands for passing the test. Use <code>count</code> function from dplyr to get you started and basic arithmetic for the rest. For example,</p>
+<pre><code>count(filter(df, year &lt;= 1980), clean_test)</code></pre>
+Is the number below 50%? Do the same calculation but for 2000 - 2010. How did the number change?</li>
+<li><p>Switching to budget, first filter out all movies from 1990 - 2013 from your data and save as an intermediate result using <code>&lt;-</code>, for example</p>
+<pre><code>df_filtered &lt;- filter(df, year &gt;= 1990)</code></pre>
+<p>Then, calculate inflation-adjusted median budget for all movies and also separate medians for each unique value of <strong>clean_test</strong> variable using <code>group_by</code> function from dplyr. Use variable <code>budget_2013</code> to get the correct numbers. For example, without grouping,</p>
+<pre><code>summarise(df, med_budget = median(budget_2013, na.rm = TRUE))</code></pre>
+<p>and with grouping,</p>
+<pre><code>summarise(group_by(df, year), med_budget = median(budget_2013, na.rm = TRUE))</code></pre>
+<p>How do group-specific medians compare to the overall median? Do author’s explanations provide a satisfying explanation of these numbers or do you have some additional factors you have in mind? Note you may get a warning about missing values; you can remove missing values during calculation by adding <code>na.rm = TRUE</code> to median, as shown above in the code example. Save this table as you will need for later visualization.</p></li>
+</ul>
+</div>
+<div id="sales-statistics" class="section level2">
+<h2><strong>Sales Statistics</strong></h2>
+<p>Next, we will look at returns:</p>
+<ul>
+<li><p>Lets add a few new variables to <code>df</code> using <code>mutate</code> from dplyr. Note that <strong>intgross</strong> stands for worldwide gross sales. Add variables that represent international only gross sales, worldwide return, international return, and domestic return on investment, in 2013 dollars. For example,</p>
+<pre><code>df &lt;- mutate(df, domreturn = (domgross_2013 - budget_2013) / budget_2013 * 100)</code></pre></li>
+<li>Summarise returns by calculating median total return and median total returns grouped by outcome of Bechdel test as shown by <strong>clean_test</strong>. Here you will need <code>summarise</code> and <code>group_by</code> from dplyr, similar to budget calculations above; also dont forget to handle missing values when calculating the median. What pattern do you see?</li>
+<li><p>Next, select international only gross in 2013 dollars and <strong>clean_test</strong> variables followed by creating a new variable with a single value of “international”. You also need to rename the return variables in both new data frames with a common name in the <code>select</code> function, as shown below. For example,</p>
+<pre><code>df_new1 &lt;- mutate(select(df, return = intreturn_2013_only, clean_test), market = &quot;international&quot;)</code></pre>
+<p>Save this as a separate data frame. Repeat the same computations to create a data frame for “domestic” market with domestic return variable in 2013 dollars, and then combine the two into a new data frame using <code>bind_rows</code> from dplyr (here you had to name the new variables with the same name, say market). Example is this</p>
+<pre><code>df_new &lt;- bind_rows(df_new1, df_new2)</code></pre>
+<p>Calculate median gross sales for combination of clean_test result and origin of sales by using both variables for grouping. Here you need two variables for <code>group_by</code> function from dplyr like</p>
+<pre><code>group_by(df_new, clean_test, market)</code></pre>
+<p>,and of course you will need <code>summarise</code> to calculate medians of return variable and probably take care of missing values with <code>na.rm = TRUE</code>. Save this table with medians as you will need it for later visualization. What can you say about relation of passing the test and market on returns?</p></li>
+</ul>
+</div>
+<div id="visualizations" class="section level2">
+<h2><strong>Visualizations</strong></h2>
+<p>The last part of the assignment is to roughly reproduce the charts in the article.</p>
+<ul>
+<li><p>We start with the stacked bar chart from the article (Chart 1 in the article). First, take the full cleaned data frame you made in <strong>Data cleaning</strong>, and add a new variable representing 5 year periods. To accomplish this, load <code>ggplot2</code> with <code>library</code> function and use <code>cut_width(year, width = 5, boundary = 1970)</code> inside <code>mutate</code> from dplyr to create a new variable, for example called year_interval. Then use <code>ggplot2</code> to create a rough plot; all I want to see is stacked bars for each year period where each bar represents one of the possible values of clean_test. Hint: play with fill aesthetic and position argument. Read over help file for <code>geom_bar</code>. Here is an example,</p>
+<pre><code>library(ggplot2)
+ggplot(df_plot1, aes(x = year_interval, fill = clean_test)) +   
+  geom_bar(position = &quot;fill&quot;)</code></pre></li>
+<li><p>Next, the median budget chart from the article (Chart 2 in the article). Use summary data from <strong>Test and Budget Statistics</strong> section that you saved as an intermediate result when you applied a filter to obtain data from 1990 - 2013 years (second bullet point). Hint: remember about coordinate system to figure out the flipping of bars. Here is an example</p>
+<pre><code>ggplot(df_plot2, aes(clean_test, median_budget_2013)) + 
+  geom_bar(stat = &quot;identity&quot;) +
+  coord_flip()</code></pre></li>
+<li><p>Lastly, use data build with <code>bind_rows</code> from <strong>Sales Statistics</strong> section to make the chart from the article about returns by market and test result. (Based on Chart 3 in the article) Hint: faceting will be helpful here. Here is an example</p>
+<pre><code>ggplot(df_plot3, aes(x = clean_test, y = median_return_2013)) + 
+  geom_bar(stat = &quot;identity&quot;) +
+  coord_flip() +
+  facet_wrap(~market) </code></pre></li>
+</ul>
+<p>You can try installing with <code>install.packages(&quot;ggthemes&quot;)</code> and then loading with <code>library(ggthemes)</code> a themes package to experiment with how your plots look by adding <code>+ theme_fivethirtyeight()</code> or some other theme to your ggplot code.</p>
+</div>
+<div id="extra-challenge" class="section level2">
+<h2><strong>Extra challenge</strong></h2>
+<p>Fivethirtyeight article arrived at certain conclusions based on the movie data. Come up either with one new summary calculation or one new visualization that will support or challenge their findings.</p>
+<p>Remember to place all your results in R markdown, and then email me the Rmarkdown. Good luck!</p>
+</div>
+
+
+<!-- BLOGDOWN-HEAD
+
+
+
+
+/BLOGDOWN-HEAD -->
