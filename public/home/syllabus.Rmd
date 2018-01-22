@@ -25,7 +25,7 @@ Statistics I (MATH 1240)
 | Module        |      Dates    |         Topics                              |  Assignments                 |
 +===============+===============+=============================================+==============================+
 | Program       | - 01/08       | - RStudio, Data Structures                  | - Rstudio, Intro to R        |
-|               | - 01/22       | - Conditionals, Loops, Functions            | - Intermediate R & Practice  |
+|               | - 01/22       | - Conditionals, Loops, Utilities            | - Intermediate R & Practice  |
 |               | - 01/29       | - Functions                                 | - Writing Functions in R     |
 +---------------+---------------+---------------------------------------------+------------------------------+
 | Import        | - 01/29       | - CSV, XLS, Databases, Web, Stats Packages  | - Importing Data 1 & 2       |
@@ -51,16 +51,15 @@ Statistics I (MATH 1240)
 
 ## **Assignments**
 Modules covering the data science production cycle: import, tidy, transform, visualize, model, communicate, program.
-- (DataCamp)[https://www.datacamp.com/home] provides the premium content covering relevant R packages and practice exercises
-- Deadlines are meant to maintain a pace, but are not enforced. However, all assignments must be finished
-  by the end of the semester.
-- You have to work on assignments individually; there is sufficient guidance in the videos to help you
-move through them, as material was designed for self-study. We will also have a Q-A session in class.
-In general, programming and data science can only be internalized by thinking and working through the
+
+- [DataCamp](https://www.datacamp.com/home) provides the premium content covering relevant R packages and practice exercises
+- Deadlines are meant to maintain a pace, but are not enforced. However, all assignments must be finished by the end of the semester.
+- You have to work on assignments individually; there is sufficient guidance in the videos to help you move through them, as material was designed for self-study. We will also have a Q-A session in class. In general, programming and data science can only be internalized by thinking and working through the
 problems yourself.
 
 ## **Project**
-An interesting or work-related idea developed and executed from ground up
+An interesting or work-related idea developed, documented and executed from scratch
+
 - Collection of functions useful for your work
 - Automation script
 - R markdown report of deep, exploratory analysis

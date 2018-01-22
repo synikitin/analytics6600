@@ -1,14 +1,20 @@
 ---
-title: "Analytics 6600"
+title: "Introduction"
+summary: "Data Analytics as a Layer of Digital Transformation"
 author: "Slava Nikitin"
-date: "January 8, 2018"
+date: "2018-01-08"
+draft: false
+tags: ["lecture"]
 output: 
-  revealjs::revealjs_presentation
+  html_document:
+    self_contained: true
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+## Outline
 
 1. Introductions
 2. Analytics as a Layer of Digital Transformations
@@ -16,54 +22,47 @@ knitr::opts_chunk$set(echo = TRUE)
 4. Installation of RStudio
 5. Demo of Programming in RStudio
 
----
 
-![](digital.png)
+## Data Science as a Layer of Digital Transformation
 
----
+![](https://synikitin.github.io/analytics6600/img/digital.png)
+
+## Cycles of Innovation
 
 ![](https://upload.wikimedia.org/wikipedia/commons/3/33/Spiral_model_%28Boehm%2C_1988%29.png)
 
----
 
-![](design_circle.png)
+![](https://synikitin.github.io/analytics6600/img/design_circle.png)
 
+## Analytics Producer:
 
----
+- Roles: Data scientists, software developers, infrastructure engineers, business analysts, subject matter experts
+- Backgrounds: Math/stats, social sciences, economics, computer science
+- Skills: Math/statistics, communications, domain expertise, “end-to-end”
+- Key Attributes: Curiosity, a desire to learn, a willingness to get hands dirty
+- Culture: Work in close proximity, exposure to variety of problems, safe to question, acceptable failure rate
 
->- Roles: Data scientists, software developers, infrastructure engineers, business analysts, subject matter experts
->- Backgrounds: Math/stats, social sciences, economics, computer science
->- Skills: Math/statistics, communications, domain expertise, “end-to-end”
->- Key Attributes: Curiosity, a desire to learn, a willingness to get hands dirty
->- Culture: Work in close proximity, exposure to variety of problems, safe to question, acceptable failure rate
+## Analytics Client:
 
----
-
->- Available data and an SME (can someone plug in a laptop and query the data?)
->- Business lead (provides guidance, removes roadblocks, serves as sounding board)
->- Quantifying the value to be created
->- Understanding the existing workflow (flowcharts are your friend)
->- Access to a real live user in the wild
->- Well-defined scope, in writing
->- Frequent communications with feedback (design sessions)
+- Available data and an SME (can someone plug in a laptop and query the data?)
+- Business lead (provides guidance, removes roadblocks, serves as sounding board)
+- Quantifying the value to be created
+- Understanding the existing workflow (flowcharts are your friend)
+- Access to a real live user in the wild
+- Well-defined scope, in writing
+- Frequent communications with feedback (design sessions)
 
 
----
+## Data Science Cycle
 
-![](data-science.png)
-
----
-
-![](waittime.png)
+![](https://synikitin.github.io/analytics6600/img/data-science.png)
 
 
----
+![](https://synikitin.github.io/analytics6600/img/waittime.png)
 
-<iframe width="1200px" height="900px" src="http://fg2re.sellorm.com/"></iframe>s
 
----
-
-<iframe width="1200px" height="900px" src="https://synikitin.github.io/analytics6600/"></iframe>
+## Technical Ecosystem
+Overview of R and Rstudio ecosystem: http://fg2re.sellorm.com
 
 
 

@@ -152,10 +152,10 @@ defaultContentLanguageInSubdir = false
   url = "#resources"
   weight = 3
 
-[[menu.main]]
-  name = "Assignments"
-  url = "#assignments"
-  weight = 4
+#[[menu.main]]
+#  name = "Assignments"
+#  url = "#assignments"
+#  weight = 4
 
 [[menu.main]]
   name = "Projects"
