@@ -2,7 +2,7 @@
 title: "Case Study 2"
 summary: "Conference Proceedings Analysis"
 author: "Slava Nikitin"
-date: "2018-01-22"
+date: "2018-01-29"
 draft: false
 tags: ["lecture"]
 output: 
