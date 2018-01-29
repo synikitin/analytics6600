@@ -34,11 +34,11 @@
   <link rel="icon" type="image/png" href="../../img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="../../img/apple-touch-icon.png">
 
-  <link rel="canonical" href="../../post/case1_abstracts/">
+  <link rel="canonical" href="../../post/case2/">
 
   
 
-  <title>Case Study 1 | Data Analytics 6600</title>
+  <title>Case Study 2 | Data Analytics 6600</title>
   
  
 
@@ -154,7 +154,7 @@
 
     
 
-    <h1 itemprop="name">Case Study 1</h1>
+    <h1 itemprop="name">Case Study 2</h1>
 
     
 
@@ -187,35 +187,35 @@
   <ul class="share">
     <li>
       <a class="facebook"
-         href="https://www.facebook.com/sharer.php?u=%2fpost%2fcase1_abstracts%2f"
+         href="https://www.facebook.com/sharer.php?u=%2fpost%2fcase2%2f"
          target="_blank">
         <i class="fa fa-facebook"></i>
       </a>
     </li>
     <li>
       <a class="twitter"
-         href="https://twitter.com/intent/tweet?text=Case%20Study%201&amp;url=%2fpost%2fcase1_abstracts%2f"
+         href="https://twitter.com/intent/tweet?text=Case%20Study%202&amp;url=%2fpost%2fcase2%2f"
          target="_blank">
         <i class="fa fa-twitter"></i>
       </a>
     </li>
     <li>
       <a class="linkedin"
-         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2fcase1_abstracts%2f&amp;title=Case%20Study%201"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2fcase2%2f&amp;title=Case%20Study%202"
          target="_blank">
         <i class="fa fa-linkedin"></i>
       </a>
     </li>
     <li>
       <a class="weibo"
-         href="http://service.weibo.com/share/share.php?url=%2fpost%2fcase1_abstracts%2f&amp;title=Case%20Study%201"
+         href="http://service.weibo.com/share/share.php?url=%2fpost%2fcase2%2f&amp;title=Case%20Study%202"
          target="_blank">
         <i class="fa fa-weibo"></i>
       </a>
     </li>
     <li>
       <a class="email"
-         href="mailto:?subject=Case%20Study%201&amp;body=%2fpost%2fcase1_abstracts%2f">
+         href="mailto:?subject=Case%20Study%202&amp;body=%2fpost%2fcase2%2f">
         <i class="fa fa-envelope"></i>
       </a>
     </li>
@@ -237,22 +237,22 @@
 <h3>Project</h3>
 <ul>
 <li><strong>Background</strong><br />
-A health care company XYZ LLC hosts conferences on novel variants of cancer and technologies meant to detect it early. Scientists in charge of it are responsible for preparing a summary presentation of past and present research.</li>
+A retail company XYZ LLC prides itself on excellent customer service. One way to deliver excellence is by listening to customer complaints about their products and services collected through various channels like email or phone. Upon receiving a complaint, it is supposed to go through a classification process assigning it a product, sub-product and progressively detailed reasons for the complaint. The purpose of the classes is to organize complaints, and enable calculation of descriptive statistics and trending to get a better insight into what needs to be adjusted and how to prioritize work. However, being a large company with many and multifaceted products, the classification tree is deep and broad. During each complaint classification cycle, a complaint can pass through subtrees with options in the dozens which is a heavy cognitive load on the customer associate. The heavy load translates into slow downs, avoidance of work, missing data, poor data quality, a need for a quality assurance process, job dissatisfaction and increased turnover. All these negative side-effects undermine delivery of excellent customer service and impose extra costs.</li>
 <li><strong>Objectives</strong><br />
-Understand origins of authors, co-author network, novel variants of cancer, clusters of abstracts based on similar topics, trends across the last decade in most prominent research topics.</li>
+The central task is to make the classification process much easier to reduce or eliminate its negative side-effects. Provide a wrapper around the code such that it can integrate into the existing user interface and improve the current classification process.</li>
 <li><strong>Benefits</strong><br />
-Maintain reputation of thought leadership in the area of cancer research, advance knowledge by submitting a paper into a proceedings journal based on the trends, come up with a repeatable, automated process, potentially <strong>reuse</strong> the process as a service to meet the demand of understanding ongoing trends in technology.</li>
+Making the classification process substantially easier will lead to</li>
 <li><strong>Data Specification</strong><br />
-Data from prior conferences in .docx, .pdf, .xlsx, .csv will be provided to support the work.</li>
+Few years of complaints data in .csv will be provided to support the work.</li>
 <li><strong>Solution</strong><br />
-Visuals for the 5 objectives will be provided with appropriate resolution as .jpeg images. Code underlying all the data preparation and analysis will be provided, too.</li>
+Use the data generated by the complaint classification process to develop a predictive model that can take complaint text and predict class probabilities. Computed class probabilities can be used to sort the classes and only show the most likely batch. This will produce a dynamic classification process that will be sensitive to the information in the complaint and guide the customer associate towards the most fitting classes without completely removing them out of the process.</li>
 </ul>
 </div>
 <div id="people" class="section level3">
 <h3>People</h3>
 <ul>
-<li>A project manager and a data scientist from Awesome Analytics.</li>
-<li>A cancer scientist from the client to guide the design and aesthetic features of the visuals.</li>
+<li>A project manager, a data scientist and a developer from Awesome Analytics.</li>
+<li>An expert on the complaint data and the user interface, a customer associate, developers responsible for the user interface from XYZ.</li>
 </ul>
 </div>
 <div id="process" class="section level3">
@@ -263,47 +263,47 @@ Emphasize, Define, Ideate, Prototype, Test, Implement</li>
 <li><strong>Communication</strong><br />
 Weekly meetings will take place to collect feedback.</li>
 <li><strong>Security Classification</strong><br />
-Data is public.</li>
+Data is private.</li>
 </ul>
 </div>
 <div id="issues-ideas-and-principles" class="section level3">
 <h3>Issues, Ideas and Principles</h3>
 <ul>
 <li><strong>Purpose</strong><br />
-Understanding of conference authors and research trends, not simple data summaries or prediction or technology. Maybe a technology - a program rerun each conference.</li>
+A predictive model integrated into an interactive user interface rather than understanding or automated actions.</li>
 <li><strong>Confidentiality</strong><br />
-Transmission of public data does not pose much issue: email is a valid method. Things get more complicated with private or classified data.</li>
+Complaint data has personally identifying as well as business sensitive information.</li>
+<li><strong>Data Transfer</strong><br />
+Private data requires a more serious consideration of data transfer. For example, working on site or placing a machine in client’s environment or establishing direct, encrypted transfer.</li>
+<li><strong>Data Management</strong><br />
+With confidential data you have to worry about access, provinence, and potentially destruction. A good access principle to follow is limitting access project materials only to those actually working the projects. Provinence involves recording the trail of the data as it moves around and is modified. Finally, data destruction upon project completion is a good, risk-averse practice.</li>
 <li><strong>Data Formats</strong><br />
-Text data can be stored on disk using many formats, each requiring its own parsing methods to convert text into a common representation.</li>
-<li><strong>Data Encoding</strong><br />
-Technical abstracts are submitted from around the world. Text in abstracts contains many special symbols and letters from other alphabets. These are handled by an expanded character set, called UTF-8, but may require special handling when cleaning text.</li>
-<li><strong>Data Collection</strong><br />
-Generated by humans with a non-standard process which creates much nuisance variation in data, say how names and countries are written down, that complicates data preparation.</li>
-<li><strong>Sources of variation</strong><br />
-Key idea in dealing with much data, including messy text, is to think of it in terms of variable components that combine together to make the observed data.</li>
-<li><strong>Automated Tools vs Manual Rules</strong><br />
-Data with nuisance variation breaks assumptions of automated tools and often requires creation of manually crafted rules, one by one, through trial and error. Regular expression and dictionaries are key technologies. This, of course, slows down work quite a bit.</li>
-<li><strong>Simple versus Complex Transformations</strong><br />
-The questions of author origins and cooperation can be obtained through straightforward manipulations of the provided data. However, finding novel variants of cancer, clustering abstracts by topic or trending research topics over time is not as clear-cut. The later set of problems requires statistical models to give us algorithms that can output probabilities, topics, and clusters.</li>
+A .csv format is really typical, but can be generated in various ways as there is no commonly agreed upon specification. Commas and new line characters and double quotes can appear in text fields, and without properly quoting them, the separation of cells or lines can get lost.</li>
+<li><strong>Complex Transformations</strong><br />
+How to transform a piece of text into a class, especially when text is highly variable and there are hundreds of classes? No intuitive answer comes - the problem is complex, and manually constructed rules will do poorly and take enourmous time to develop. Data, however, contains many examples of what class was assigned to a piece of text. Statistical models can be used to represent a large number of possible relationship between text and class, and then data be used to find the relationship most consistent with data.</li>
+<li><strong>Assessment of Predictive Models</strong><br />
+We can split the data into two, one part for learning a relationship of text and class consistent with data, another for testing its accuracy. We could calculate overall accuracy as well as class specific accuracies.</li>
+<li><strong>Interpretability of Predictive Models</strong><br />
+Complex non-linear mathematical functions are learned to represent the relationship of text and class. What if someone wanted to know what pieces of information in the complaint contributed to it being classified in some way? Interpretability is an important aspect of understanding the learned model and providing reasons for the automated predictions.</li>
+<li><strong>Conditions of Application</strong><br />
+In this case, applying the predictive model to the whole classification tree is unnecessary and not possible from the beginning. In this project, the most impact can be achieved by considering subtrees that have more than 5 options, have sufficient data and can be handled accurately by the model.</li>
+<li><strong>Kinds and Gradations of Automation</strong><br />
+This is an example of outsourcing some mental work to a machine. If a task is repeatable and can be broken down into steps, then we can think of sharing those steps between a human and a machine, with the balance roughly giving you the amount of automation.</li>
+<li><strong>Improvement over Time</strong> A system built on data can often improve with more data. In this case, predictive models will get more accurate, more parts of the classification tree can be reached systematically by a customer associate and generate data to build additional models. By putting some predictive models into a system sets a company on a trajectory of improvements.</li>
 </ul>
 </div>
 <div id="relevant-r-packages" class="section level3">
 <h3>Relevant R packages</h3>
 <ul>
-<li><strong>Data</strong><br />
-state.abb, mapdata</li>
 <li><strong>Import</strong><br />
-readxl, readr, pdftools</li>
-<li><strong>Tidy</strong><br />
-tidytext, tidygraph</li>
+readr</li>
 <li><strong>Transform</strong><br />
-xml2, dplyr, stringr</li>
+dplyr, stringr, text2vec</li>
 <li><strong>Visualize</strong><br />
-ggplot2, ggrepel</li>
+ggplot2</li>
 <li><strong>Model</strong><br />
-topicmodels</li>
-<li><strong>Communicate</strong><br />
-Rmarkdown</li>
+xgboost, lime</li>
+<li><strong>Automate</strong> R packaging system</li>
 </ul>
 </div>
 </div>
@@ -317,10 +317,13 @@ Rmarkdown</li>
   <nav>
   <ul class="pager">
     
-    <li class="previous"><a href="../../post/case2/"><span
-      aria-hidden="true">&larr;</span> Case Study 2</a></li>
+    <li class="previous"><a href="../../post/intro/"><span
+      aria-hidden="true">&larr;</span> Introduction</a></li>
     
 
+    
+    <li class="next"><a href="../../post/case1_abstracts/">Case Study 1 <span
+      aria-hidden="true">&rarr;</span></a></li>
     
   </ul>
 </nav>
