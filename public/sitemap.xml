@@ -4,7 +4,15 @@
     
     
     <url>
-      <loc>/</loc>
+      <loc>/analytics6600/post/case3_ids/</loc>
+      <lastmod>2018-02-05T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>/analytics6600/post/case2/</loc>
       <lastmod>2018-01-29T00:00:00+00:00</lastmod>
     </url>
     
@@ -12,15 +20,7 @@
     
     
     <url>
-      <loc>/post/case2/</loc>
-      <lastmod>2018-01-29T00:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-      <loc>/post/case1_abstracts/</loc>
+      <loc>/analytics6600/post/case1_abstracts/</loc>
       <lastmod>2018-01-22T00:00:00+00:00</lastmod>
     </url>
     
@@ -28,7 +28,7 @@
     
     
     <url>
-      <loc>/post/intro/</loc>
+      <loc>/analytics6600/post/intro/</loc>
       <lastmod>2018-01-08T00:00:00+00:00</lastmod>
     </url>
     
@@ -36,7 +36,7 @@
     
     
     <url>
-      <loc>/post/guidelines/</loc>
+      <loc>/analytics6600/post/guidelines/</loc>
       <lastmod>2017-04-10T00:00:00+00:00</lastmod>
     </url>
     
@@ -44,23 +44,7 @@
     
     
     <url>
-      <loc>/post/model/</loc>
-      <lastmod>2017-04-03T00:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-      <loc>/post/program/</loc>
-      <lastmod>2017-03-06T00:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-      <loc>/post/wrangle2/</loc>
+      <loc>/analytics6600/post/wrangle2/</loc>
       <lastmod>2017-02-20T00:00:00+00:00</lastmod>
     </url>
     
@@ -68,7 +52,7 @@
     
     
     <url>
-      <loc>/post/wrangle/</loc>
+      <loc>/analytics6600/post/wrangle/</loc>
       <lastmod>2017-02-13T00:00:00+00:00</lastmod>
     </url>
     
@@ -76,15 +60,7 @@
     
     
     <url>
-      <loc>/presentation/eda/</loc>
-      <lastmod>2017-01-30T00:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-      <loc>/project/analysis/</loc>
+      <loc>/analytics6600/project/analysis/</loc>
       <lastmod>2017-01-22T00:00:00+00:00</lastmod>
     </url>
     
@@ -92,7 +68,7 @@
     
     
     <url>
-      <loc>/project/package/</loc>
+      <loc>/analytics6600/project/package/</loc>
       <lastmod>2017-01-22T00:00:00+00:00</lastmod>
     </url>
     
@@ -100,8 +76,141 @@
     
     
     <url>
-      <loc>/project/shiny/</loc>
+      <loc>/analytics6600/project/shiny/</loc>
       <lastmod>2017-01-22T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>/analytics6600/categories/</loc>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>/analytics6600/tags/communicate/</loc>
+      <lastmod>2017-01-22T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>/analytics6600/</loc>
+      <lastmod>2016-04-20T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>/analytics6600/tags/devtools/</loc>
+      <lastmod>2017-01-22T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>/analytics6600/tags/lecture/</loc>
+      <lastmod>2018-02-05T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>/analytics6600/tags/package/</loc>
+      <lastmod>2017-01-22T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>/analytics6600/post/</loc>
+      <lastmod>2018-02-05T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>/analytics6600/tags/produce/</loc>
+      <lastmod>2017-01-22T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>/analytics6600/project/</loc>
+      <lastmod>2017-01-22T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>/analytics6600/publication_types/</loc>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>/analytics6600/tags/report/</loc>
+      <lastmod>2017-01-22T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>/analytics6600/tags/rmarkdown/</loc>
+      <lastmod>2017-01-22T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>/analytics6600/tags/shiny/</loc>
+      <lastmod>2017-01-22T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>/analytics6600/tags/</loc>
+      <lastmod>2017-01-22T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>/analytics6600/tags/web-application/</loc>
+      <lastmod>2017-01-22T00:00:00+00:00</lastmod>
+      <priority>0</priority>
     </url>
     
   

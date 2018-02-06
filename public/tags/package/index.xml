@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Data Analytics 6600</title>
-    <link>/tags/package/index.xml</link>
-    <description>Recent content on Data Analytics 6600</description>
+    <title>Package on Data Analytics 6600</title>
+    <link>/analytics6600/tags/package/</link>
+    <description>Recent content in Package on Data Analytics 6600</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018 Slava Nikitin</copyright>
-    <atom:link href="/tags/package/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 22 Jan 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/analytics6600/tags/package/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>R Package</title>
-      <link>/project/package/</link>
+      <link>/analytics6600/project/package/</link>
       <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>/project/package/</guid>
-      <description>&lt;p&gt;Details to be determined.&lt;/p&gt;
-</description>
+      <guid>/analytics6600/project/package/</guid>
+      <description>Details to be determined.</description>
     </item>
     
   </channel>

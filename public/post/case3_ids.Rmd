@@ -1,0 +1,79 @@
+---
+title: "Case Study 3"
+summary: "Intrusion Detection on Computer Networks"
+author: "Slava Nikitin"
+date: "2018-02-05"
+draft: false
+tags: ["lecture"]
+output: 
+  html_document:
+    self_contained: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Intrusion Detection on Computer Networks
+
+### Project
+
+- **Background**  
+  A gas utility company XYZ LLC delivers gas to residential and commercial customers across three states. The extraction and distribution infrastructure is computerized, with some computers having public access and others operated by empoyees. The lack of complete isolation of the computer network presents a cyber target of strategic value. The utility is mandated to defend the periphery of the network from the connection perspective, but has no internal monitoring of harmful, intentional or unintentional, activity. Manual monitoring is very ineffective because of high volume of data, so most of the data is currently unanalyzed. 
+- **Objectives**  
+  The primary technical objective is to develop an automated process to process a high volume of connection data to pick out security events, sort and group them. The second goal is develop a user interface that can present the algorithm output in an easily consumable form.
+- **Benefits**  
+  Providing an automated analysis pipeline to highlight security events will extend the visibility of the security team into the periphery of the strategic computer network and reduce time to detection of harmful activity.  
+- **Data Specification**  
+  9 months of historical connection logs and ongoing stream in .json format will be provided to support the work.
+- **Solution**  
+  Without access to labeled network data, we can formulate security event detection as anomaly detection. An anomaly is a low probability event. The historical data provides information to estimate the probability distribution of connection characteristics on the network of interest. Estimated probability distribution can be used to calculate probabilities of novel connections and compare them to a threshold to highlight anomalies.
+
+### People
+- A project manager, a data scientist and a developer from Awesome Analytics.
+- An expert on the network data, a security analyst, devops, developers responsible for the user interface from XYZ.   
+
+### Process
+- **Phases**  
+  Emphasize, Define, Ideate, Prototype, Test, Implement
+- **Security Classification**  
+  Connection data is private; network design and roles of machines is classified.
+  
+### Issues, Ideas and Principles
+- **Strong versus Weak AI**  
+  This kind of project can be and usually is marketed as artificial intelligence (AI). A big difference is between strong AI, that is the stuff of movies, and weak AI, task-specific algorithms that have a well-defined input and output. The recent trend of AI systems is riding the massive access to data where AI is better understood as Automated Inference.
+- **Cyber Security**  
+  Network security can be conceived around protecting confidentiality, integrity and access of data and systems. The typical activities inside security teams are vulnerability patching, alert response, hunting, and forensic analysis. Situational awareness is often the biggest deficit. 
+- **Confidentiality**  
+  Data being private already imposes a more strict and careful approach to data and project work, but the classified data presents a choice of either getting clearance for it or steering away from it or getting some safe surrogate of it.
+- **Data Transfer**  
+  The high-volume stream provides a crucial constraint on the design of the automated analysis pipeline. How much to store and how to keep up with high rate? Remembering that this is an analysis problem, not a storage problem, suggests that we can use some data for estimating and updating our estimate of the probability distribution of connection data, and simply analyze the rest.
+- **Anomaly Detection versus Predictive Models**  
+  Unlike the complaint classification, where there is ground truth, in security the ground truth is typically unavailable or is not collected systematically. This leads to learning probability distributions and thresholds to find lowest probability events rather than learning a relationship between input and most likely output. 
+- **Assessment of Anomaly Detection Models**  
+  The fundamental assumption of anomaly detection is that anomalous connections are security events and security events are anomalous connections. In some domains this is clearly correct, but in security this is not obvious. The system needs to be carefully tested with penetration testing and tuned until the assumption holds. Both false positives and false negatives need to be low to have an effective system.
+- **Improvements from User Feedback**  
+  User feedback is the only way to test the assumption of a useful anomaly detector. Also, structured feedback is a source of missing labels, marking each connection as security or not security event. The feedback can be used to provide an additional layer of prioritization.
+- **Algorithmic Bias**  
+  Humans bring their own beliefs, values and temperament to judgments. Unless there is a representative sample of human judgments, data can inherit their "bias". Hence, a system built on top of the data will also be biased. 
+- **Need for some Automation**  
+  In high data volume conditions, automation is not a threat or luxury, it is imperative to extract any value from the collected data. In this case, picking interesting connections for further examination opens a new security analyst position.
+- **Data Rate and Work Units**  
+  Low probability events interact with data generation rate. If each data point translates into a unit of work, then very careful selection and prioritization of points is necessary. At the same time, very low probability events are hard to estimate because there is very little data there, so the thresholding may reach a certain order of magnitude where every event looks the same. The amount of work and data rate and estimation accuracy are tradeoffs in this environment.
+- **Jobs and AI**  
+  This is a pattern of outsourcing mental work, similar to complain classification, to an automated system. The rest of investigation or hunting requires reasoning and knowledge that today only humans possess. 
+  
+### Relevant R packages 
+- **Import**  
+  readr, elastic, jsonlite  
+- **Transform**  
+  dplyr, stringr
+- **Visualize**  
+  ggplot2
+- **Model**  
+  ks
+- **Communicate**  
+  shiny, Rmarkdown
+- **Automate**  
+  R packaging system
+  

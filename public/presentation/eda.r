@@ -1,0 +1,231 @@
+---
+title: "Exploratory Data Analysis"
+author: "Slava Nikitin"
+date: "2017-01-30"
+abstract: ""
+abstract_short: ""
+authors: []
+image: ""
+image_preview: ""
+math: true
+publication_types: []
+publication: ""
+publication_short: ""
+selected: false
+url_code: ""
+url_dataset: "data/movies.csv"
+url_pdf: ""
+url_project: "https://fivethirtyeight.com/features/the-dollar-and-cents-case-against-hollywoods-exclusion-of-women/"
+url_slides: ""
+url_video: ""
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = "~/Documents/training/class/")
+```
+
+```{r echo = FALSE, message=FALSE, warning=FALSE, eval = TRUE}
+library(readr)
+library(magrittr)
+library(dplyr)
+library(ggplot2)
+df <- structure(read_csv("analytics6600/static/data/movies.csv"), "spec" = NULL)
+```
+
+```{r echo = FALSE, eval = FALSE}
+df <- df %>% 
+  rename(
+  budget_2013 = `budget_2013$`,
+  domgross_2013 = `domgross_2013$`,
+  intgross_2013 = `intgross_2013$`,
+  period_code = `period code`,
+  decade_code = `decade code`
+  ) %>% 
+  mutate(
+    domgross = as.double(domgross),
+    intgross = as.double(intgross),
+    domgross_2013 = as.double(domgross_2013),
+    intgross_2013 = as.double(intgross_2013),
+    intgross_only = intgross_2013 - domgross_2013,
+    int_return = (intgross_only - budget_2013) / budget_2013 * 100,
+    dom_return = (domgross_2013 - budget_2013) / budget_2013 * 100,
+    world_return = (intgross_2013 - budget_2013) / budget_2013 * 100
+  )
+
+test1 <- filter(df, year <= 1980) %>% 
+  count(clean_test) %>% 
+  mutate(perc = n / sum(n) * 100)
+
+test2 <- filter(df, year <= 2010, year >= 2000) %>% 
+  count(clean_test) %>% 
+  mutate(perc = n / sum(n) * 100)
+
+budget1 <- filter(df, year >= 1990) %>% 
+  summarise(med_budget = median(budget_2013, na.rm = TRUE))
+budget2 <- filter(df, year >= 1990) %>% 
+  group_by(clean_test) %>% 
+  summarise(med_budget = median(budget_2013, na.rm = TRUE))
+
+return1 <- summarise(df, med_budget = median(int_return, na.rm = TRUE))
+return2 <- group_by(df, clean_test) %>% 
+  summarise(med_gross = median(int_return, na.rm = TRUE))
+  
+df_plot1 <- mutate(df, year_interval = cut_width(year, width = 5, boundary = 1970))
+ggobj1 <- ggplot(df_plot1, aes(x = year_interval, fill = clean_test)) +   
+  geom_bar(position = "fill")
+
+df_plot2 <- group_by(df, clean_test) %>% 
+  filter(year >= 1990) %>% 
+  summarise(median_budget_2013 = median(budget_2013, na.rm = TRUE))
+ggobj2 <- ggplot(df_plot2, aes(clean_test, median_budget_2013)) + 
+    geom_bar(stat = "identity") +
+    coord_flip()
+
+df_plot3 <- bind_rows(
+  mutate(select(df, clean_test, return = int_return), market = "international"),
+  mutate(select(df, clean_test, return = dom_return), market = "domestic")
+  ) %>% 
+  group_by(clean_test, market) %>% 
+  summarise(median_return = median(return, na.rm = TRUE))
+
+ggobj3 <- ggplot(df_plot3, aes(x = clean_test, y = median_return)) + 
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  facet_wrap(~market) 
+
+```
+
+## **Learning Objectives**
+- Package loading
+- Data import
+- Data clean up
+- Data manipulation
+- Exploratory visualization
+
+## **Context**
+This assignment is about exploratory data analysis (EDA) and is based around a fivethirtyeight article that is a good example of it (under project button). EDA is about going through many question-answer cycles bridged by numerical summaries and visualizations of data. The first part of the assignment is to read the article while noting what kind of statistics and plots were chosen by the authors; the other part of the assignment will be to reproduce these and build on them.
+
+## **Data Import**
+
+Next, use dataset button to get data. I suggest creating a separate folder for this assignment and moving data there. Read [section of 8.4](http://r4ds.had.co.nz/workflow-projects.html) about setting up a project folder with RStudio which is a good practice in managing files.
+
+Open a new R markdown file by going `File -> New File -> R markdown`. Once it opens, do `File -> Save As` to save it to your folder. Assuming you have created the project folder and data is in it, to get data into R you need to run
+
+```{r eval = FALSE}
+library(readr)
+df <- read_csv("movie.csv")
+```
+
+**Note the underscore (`_`) in `read_csv` and not the dot (`.`)**. Type **df** into console to test that data loaded properly and you should see the following:
+```{r}
+df
+```
+
+Also, use `str(df)` to see column names, what types of data you have in various columns and some example values. You should see the following:
+```{r}
+str(df)
+```
+
+Understanding symbols in the names and types of data in each column is essential for the data cleaning task. Read the output of `str(df)` line by line where you see a pattern summarising each variable like this: `$ variable name    : data type    possible values`.
+
+## **Data cleaning**
+
+Next, we should clean up a few names and types using dplyr functions:
+
+- Use `rename` function from `dplyr` to remove **\$** and empty spaces from variables that have them. You will need to use backsticks **\`**, located in the upper left of your keyboard (not single or double quotes) to capture the bad names. For example
+```
+df <- rename(df, budget_2013 = `budget_2013$`, period_code = `period code`)
+```
+to have proper syntax for rename. Assign the data frame with new names to **df** or with some other name, like **df_renamed**. Note that you can rename multiple variables by separating `new name = old name` with commas.
+- After correcting names, we need to also fix data types. Output of `str(df)` shows that, say **budget_2013$**, has type `chr` which stands for **character** and represents text data. Use `mutate` from dplyr and `as.double` to convert all variables that are by their nature numerical, but are stored as text. For example,
+```
+df <- mutate(df, domgross = as.double(domgross), intgross = as.double(intgross))
+```
+Just like `rename`, `mutate` can also take multiple type conversion arguments `var_name = as.double(var_name)` separated with commas. Also, note that renaming and type correction has to be saved as a separate data frame otherwise your results are calculated, but never saved and will not be available to other code, like when you need to calculate statistics. Save the full cleaned dataset as you will need it for calculations and a visualization.
+
+## **Test and Budget Statistics**
+
+Now, lets get some basic information about movies and budget:
+
+- Calculate percentage of movies passing the test in the period of 1970 - 1980 using **clean_test** variable, that has a value of `ok` which stands for passing the test. Use `count` function from dplyr to get you started and basic arithmetic for the rest. For example,
+```
+count(filter(df, year <= 1980), clean_test)
+```
+Is the number below 50%? Do the same calculation but for 2000 - 2010. How did the number change?
+- Switching to budget, first filter out all movies from 1990 - 2013 from your data and save as an intermediate result using `<-`, for example
+```
+df_filtered <- filter(df, year >= 1990)
+```
+Then, calculate inflation-adjusted median budget for all movies and also separate medians for each unique value of **clean_test** variable using `group_by` function from dplyr. Use variable `budget_2013` to get the correct numbers. For example, without grouping,
+```
+summarise(df, med_budget = median(budget_2013, na.rm = TRUE))
+```
+and with grouping,
+```
+summarise(group_by(df, year), med_budget = median(budget_2013, na.rm = TRUE))
+```
+How do group-specific medians compare to the overall median? Do author's explanations provide a satisfying explanation of these numbers or do you have some additional factors you have in mind? Note you may get a warning about missing values; you can remove missing values during calculation by adding `na.rm = TRUE` to median, as shown above in the code example. Save this table as you will need for later visualization.
+
+## **Sales Statistics**
+
+Next, we will look at returns:
+
+- Lets add a few new variables to `df` using `mutate` from dplyr. Note that **intgross** stands for worldwide gross sales. Add variables that represent international only gross sales, worldwide return, international return, and domestic return on investment, in 2013 dollars. For example,
+```
+df <- mutate(df, domreturn = (domgross_2013 - budget_2013) / budget_2013 * 100)
+```
+- Summarise returns by calculating median total return and median total returns grouped by outcome of Bechdel test as shown by **clean_test**. Here you will need `summarise` and `group_by` from dplyr, similar to budget calculations above; also dont forget to handle missing values when calculating the median. What pattern do you see?
+- Next, select international only gross in 2013 dollars and **clean_test** variables followed by creating a new variable with a single value of "international". You also need to rename the return variables in both new data frames with a common name in the `select` function, as shown below. For example,
+```
+df_new1 <- mutate(select(df, return = intreturn_2013_only, clean_test), market = "international")
+```
+Save this as a separate data frame. Repeat the same computations to create a data frame for "domestic" market with domestic return variable in 2013 dollars, and then combine the two into a new data frame using `bind_rows` from dplyr (here you had to name the new variables with the same name, say market). Example is this
+```
+df_new <- bind_rows(df_new1, df_new2)
+```
+Calculate median gross sales for combination of clean_test result and origin of sales by using both variables for grouping. Here you need two variables for `group_by` function from dplyr like
+```
+group_by(df_new, clean_test, market)
+```
+,and of course you will need `summarise` to calculate medians of return variable and probably take care of missing values with `na.rm = TRUE`. Save this table with medians as you will need it for later visualization.
+What can you say about relation of passing the test and market on returns?
+
+## **Visualizations**
+
+The last part of the assignment is to roughly reproduce the charts in the article.
+
+- We start with the stacked bar chart from the article (Chart 1 in the article). First, take the full cleaned data frame you made in **Data cleaning**, and add a new variable representing 5 year periods. To accomplish this, load `ggplot2` with `library` function and use `cut_width(year, width = 5, boundary = 1970)` inside `mutate` from dplyr to create a new variable, for example called year_interval. Then use `ggplot2` to create a rough plot; all I want to see is stacked bars for each year period where each bar represents one of the possible values of clean_test. Hint: play with fill aesthetic and position argument. Read over help file for `geom_bar`. Here is an example,
+```
+library(ggplot2)
+ggplot(df_plot1, aes(x = year_interval, fill = clean_test)) +   
+  geom_bar(position = "fill")
+```
+
+- Next, the median budget chart from the article (Chart 2 in the article). Use summary data from **Test and Budget Statistics** section that you saved as an intermediate result when you applied a filter to obtain data from 1990 - 2013 years (second bullet point). Hint: remember about coordinate system to figure out the flipping of bars. Here is an example
+```
+ggplot(df_plot2, aes(clean_test, median_budget_2013)) + 
+  geom_bar(stat = "identity") +
+  coord_flip()
+```
+
+- Lastly, use data build with `bind_rows` from **Sales Statistics** section to make the
+chart from the article about returns by market and test result. (Based on Chart 3 in the
+article) Hint: faceting will be helpful here. Here is an example
+```
+ggplot(df_plot3, aes(x = clean_test, y = median_return_2013)) + 
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  facet_wrap(~market) 
+```
+
+You can try installing with `install.packages("ggthemes")` and then loading with `library(ggthemes)` a themes package to experiment with how your plots look by adding `+ theme_fivethirtyeight()` or some other theme to your ggplot code.
+
+## **Extra challenge**
+
+Fivethirtyeight article arrived at certain conclusions based on the movie data. Come up either with one new summary calculation or one new visualization that will support or challenge their findings.
+
+Remember to place all your results in R markdown, and then email me the Rmarkdown. Good luck!
+
+

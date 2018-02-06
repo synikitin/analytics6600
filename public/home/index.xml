@@ -1,14 +1,92 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Home-rsses on Data Analytics 6600</title>
-    <link>/home/index.xml</link>
-    <description>Recent content in Home-rsses on Data Analytics 6600</description>
+    <title>Homes on Data Analytics 6600</title>
+    <link>/analytics6600/home/</link>
+    <description>Recent content in Homes on Data Analytics 6600</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018 Slava Nikitin</copyright>
     <lastBuildDate>Wed, 20 Apr 2016 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/home/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="/analytics6600/home/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>/analytics6600/home/about/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/analytics6600/home/about/</guid>
+      <description>Course Description This course will introduce you to data science cycle of formulating a problem, getting, preparing, visualizing and modeling data with intention of communication or automation. We will examine a variety of issues that arise in real-world data science projects through case studies. Additionally, elements of programming and practical aspects of data science required to move through the cycle will be practiced using the R language.</description>
+    </item>
+    
+    <item>
+      <title>Syllabus</title>
+      <link>/analytics6600/home/syllabus/</link>
+      <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/analytics6600/home/syllabus/</guid>
+      <description>Prerequisite Statistics I (MATH 1240)
+ Textbook and Equipment  All assignments are delivered through DataCamp and access is provided as part of the course A laptop is required. The classroom has a limited number of computers.   Schedule (subject to change)     Module Dates Topics Assignments    Program
+  01/08 01/22 01/29   RStudio, Data Structures Conditionals, Loops, Utilities Functions   Rstudio, Intro to R Intermediate R &amp;amp; Practice Writing Functions in R   Import</description>
+    </item>
+    
+    <item>
+      <title>Resources</title>
+      <link>/analytics6600/home/resources/</link>
+      <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/analytics6600/home/resources/</guid>
+      <description>Textbooks and Helpful Links  Main Text Rweekly R-bloggers Basic R Programming
+ Advanced R Programming
+ Graphics in R
+ Cheatsheets for Packages
+ Awesome-R List
+ Stats/ML in R   Example Data Sets  HR Analytics
+ House Sales Prediction
+ Lending Club Loan
+ Credit Card Fraud
+ Twitter User Gender Classification
+ Online Auctions
+ Fivethirtyeight   Coding Style  Hadley’s   </description>
+    </item>
+    
+    <item>
+      <title>Recent Assignments</title>
+      <link>/analytics6600/home/assignments/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/analytics6600/home/assignments/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Projects</title>
+      <link>/analytics6600/home/projects/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/analytics6600/home/projects/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Recent Posts</title>
+      <link>/analytics6600/home/posts/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/analytics6600/home/posts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>/analytics6600/home/contact/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/analytics6600/home/contact/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>
